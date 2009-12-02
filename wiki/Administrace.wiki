@@ -1,0 +1,7 @@
+#summary One-sentence summary of this page.
+= Administrativní modul =
+
+Popis funkcionality administrace
+
+== Oprávnění ==
+== Editace existujících záznamů ==
