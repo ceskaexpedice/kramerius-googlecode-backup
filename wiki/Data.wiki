@@ -1,0 +1,19 @@
+#summary One-sentence summary of this page.
+
+= MODS =
+
+Datová struktura je laděna podle NKP,
+bude popsáno mapování stávajícího DTD na MODS. 
+Vychází se z POC, které bude doplněno o administrativní metadata a specifické požadavky NKP (donátor).
+
+== Administrativní data ==
+Administrativní data budou zrevidována, dále ověřeno zda se neprolínají s popisem v DTD. V úložišti Fedora bude ověřeno, zda lze rozšířit popis přidáním nové vazby RELS-EXT. Výsledek mapování v MODS bude vystaven jako závazný standard v NKP.
+
+= Vícestránkový dokument =
+účelem je umožňit přidat grafickou podobu na všech úrovních. Nejčastější podobou bude soubor pdf.
+
+Reliazace bude formou přidání datastreamu ke všem úrovním dokumentu.
+
+== Ostatní ==
+z DB bude nutné vybrat data co nejsou součástí dat ani MD. 
+Jedná se o oprávnění, viditelnost, handl, pořadí
