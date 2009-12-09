@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Administrativní modul, jeho funkce ...
 = Administrativní modul =
 
 Popis funkcionality administrace
