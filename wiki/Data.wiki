@@ -1,6 +1,5 @@
-#summary One-sentence summary of this page.
-
-= MODS =
+#summary popis dat
+= formát MODS =
 
 Datová struktura je laděna podle NKP,
 bude popsáno mapování stávajícího DTD na MODS. 
