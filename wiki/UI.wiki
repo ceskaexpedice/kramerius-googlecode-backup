@@ -7,9 +7,14 @@ Primární přístup umožní procházení katalogem podle prvních písmen náz
 = Implementace do okolních systémů =
 
 Rozhraní je tvořeno sadou jsp stránek, které bude možné integrovat do HTML, případně portletů.
+Pro distribuci bude vhodné vytvořit minimální verzi – komponenty Krameria spojené pomocí statického HTML a plnou s využitím portálu Liferay.
 
 = Úpravy vzhledu =
 
 Jednotlivé komponenty budou zpracovány samostatně, tak aby bylo možné je rozmístit na obrazovce v různém pořadí.
 
 Vzhled na úrovni designu pak bude ovlivněn volitelným css.
+
+= Použití prohlížečů =
+
+Prohlížeč DFG muže být využit při prezentaci samotných stránek dokumentů. Zobrazení vazeb není schopen. Využití se neplánuje, případně je možné jej použít jako alternativní prohlížeč. DFG umí zobrazit vzdáleně záznam na základě METS. Kramerius4 bude z důvodu kompatibility používat METS ve formátu podporovaném DFG.
