@@ -1,0 +1,15 @@
+#to co bude zobrazeno koncovým uživatelům
+= Uživatelské rozhraní =
+
+Vše co koncový uživatel dostane, bude zprostředkováno za pomocí Lucene. Finální implementace bude pravděpodobně používat nadstavbu SOLR.
+Primární přístup umožní procházení katalogem podle prvních písmen názvů a autorů.
+
+= Implementace do okolních systémů =
+
+Rozhraní je tvořeno sadou jsp stránek, které bude možné integrovat do HTML, případně portletů.
+
+= Úpravy vzhledu =
+
+Jednotlivé komponenty budou zpracovány samostatně, tak aby bylo možné je rozmístit na obrazovce v různém pořadí.
+
+Vzhled na úrovni designu pak bude ovlivněn volitelným css.
