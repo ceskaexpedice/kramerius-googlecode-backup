@@ -1,4 +1,4 @@
-#to co bude zobrazeno koncovým uživatelům
+#summary to co bude zobrazeno koncovým uživatelům
 = Uživatelské rozhraní =
 
 Vše co koncový uživatel dostane, bude zprostředkováno za pomocí Lucene. Finální implementace bude pravděpodobně používat nadstavbu SOLR.
