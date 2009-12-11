@@ -1,7 +1,7 @@
 #summary to co bude zobrazeno koncovým uživatelům
 == Uživatelské rozhraní ==
 
-Vše co koncový uživatel dostane, bude zprostředkováno za pomocí Lucene. Finální implementace bude pravděpodobně používat nadstavbu SOLR.
+Vše co koncový uživatel dostane, bude zprostředkováno za pomocí Lucene. Finální implementace bude pravděpodobně používat nadstavbu SOLR,GSe.
 Primární přístup umožní procházení katalogem podle prvních písmen názvů a autorů.
 
 == Implementace do okolních systémů ==
@@ -14,6 +14,11 @@ Pro distribuci bude vhodné vytvořit minimální verzi – komponenty Krameria 
 Jednotlivé komponenty budou zpracovány samostatně, tak aby bylo možné je rozmístit na obrazovce v různém pořadí.
 
 Vzhled na úrovni designu pak bude ovlivněn volitelným css.
+
+== Národní prostředí ==
+
+Je požadováno korektní abecední řazení dle zvoleného prostředí (znaky s diakritikou a dvojznaky). 
+Volbu prostředí bude možné ovlivnit při instalaci, či ji přebrat ze systému.
 
 == Použití prohlížečů ==
 
