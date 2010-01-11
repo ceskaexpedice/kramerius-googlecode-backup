@@ -1,3 +1,6 @@
+#sidebar FunkcniPozadavky
+<wiki:toc max_depth="1" />
+
 =Přihlášení=
 ===Popis požadavku:=== 
 Systém umožňuje přihlášení administrátora pomocí standardního mechanismu zadáním uživatelského jména a hesla. 
