@@ -1,18 +1,22 @@
-#summary popis dat
-= formát MODS =
+#summary Datový model
+#sidebar FunkcniPozadavky
+=Datový model=
+Kramerius 4 používá zobecněný datový model vycházející z návrhu společnosti Qbizm vytvořeném v rámci proof of concept převodu dat ze struktury Kramerius 3 do úložiště Fedora.  
 
-Datová struktura je laděna podle NKP,
-bude popsáno mapování stávajícího DTD na MODS. 
-Vychází se z POC, které bude doplněno o administrativní metadata a specifické požadavky NKP (donátor).
 
-== Administrativní data ==
-Administrativní data budou zrevidována, dále ověřeno zda se neprolínají s popisem v DTD. V úložišti Fedora bude ověřeno, zda lze rozšířit popis přidáním nové vazby RELS-EXT. Výsledek mapování v MODS bude vystaven jako závazný standard v NKP.
+==Identifikátor digitálních objektů==
+Každý digitální objekt systému Kramerius 4 má jednoznačný identifikátor UUID, generovaný stejným algoritmem, který byl použit v systému Kramerius 3, doplněný prefixem uuid:
 
-= Vícestránkový dokument =
-účelem je umožňit přidat grafickou podobu na všech úrovních. Nejčastější podobou bude soubor pdf.
+_TODO:_ Je třeba vyjasnit požadavky na použití identifikátorů založených na SIGLA a číslech zakázek. Rovněž je třeba přesně specifikovat požadavky na funkcionalitu persistentních identifikátorů  handle. Tyto informace je možné uchovávat v poli AlternateIDs.  
 
-Reliazace bude formou přidání datastreamu ke všem úrovním dokumentu.
+==Datové streamy==
+Objekty používají datové streamy navržené v rámci POC, povinné streamy jsou DC, BIBLIO_MODS a RELS_EXT. 
 
-== Ostatní ==
-z DB bude nutné vybrat data co nejsou součástí dat ani MD. 
-Jedná se o oprávnění, viditelnost, handl, pořadí
+Objekty, které obsahují binární stream IMG_FULL s obrázkem v plném rozlišení, jsou oproti POC rozšířeny o další binární stream IMG_THUMB s náhledem obrázku (ve formátu JPG s nízkým rozlišením) pro zobrazení v souhrnných přehledech.
+
+Další rozšíření oproti POC je standardní datový stream POLICY, který obsahuje přístupová  práva ve formátu XACML - použit pouze u objektů s omezeným přístupem.
+
+==Rozšiřování modelu o nové typy dokumentů==
+Digitální objekty v systému Kramerius 4 tvoří obecnou stromovou strukturu s vazbami definovanými  pomocí RDF vazeb, které jsou potomky vazeb fedora:hasPart a fedora:isPartOf. 
+
+Systém lze libovolně rozšiřovat o nové typy objektů přidáním příslušného objektu cmodel s povinnými datovými streamy DC, BIBLIO_MODS a RELS_EXT.   
