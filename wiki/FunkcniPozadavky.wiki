@@ -1,3 +1,5 @@
-*[Data Datový model]
-*[UI Zobrazení a vyhledávání]
-*[Administrace Administrace]
+* [Data Datový model]
+
+* [UI Zobrazení a vyhledávání]
+
+* [Administrace Administrace]
