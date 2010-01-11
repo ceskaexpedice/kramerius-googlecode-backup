@@ -1,25 +1,66 @@
-#summary to co bude zobrazeno koncovým uživatelům
-== Uživatelské rozhraní ==
+#summary Zobrazení a vyhledávání
+#sidebar FunkcniPozadavky
+<wiki:toc max_depth="1" />
 
-Vše co koncový uživatel dostane, bude zprostředkováno za pomocí Lucene. Finální implementace bude pravděpodobně používat nadstavbu SOLR,GSe.
-Primární přístup umožní procházení katalogem podle prvních písmen názvů a autorů.
+Uživatelské rozhraní systému Kramerius 4 vychází z implementace předchozí verze a v maximální možné míře zachovává základní rozvržení pracovní plochy a rozmístění ovládacích prvků (Stavový řádek a servisní menu v horní části, hlavní menu vlevo od pracovní plochy) 
 
-== Implementace do okolních systémů ==
+=Volba jazykové verze=
+===Popis požadavku:===
+Jazyk uživatelského rozhraní je volen v servisním menu, volba je uložena v uživatelských předvolbách. Pro první přihlášení je zvolen jazyk nastavený v předvolbách prohlížeče.
+
+
+=Kontextová nápověda=
+===Popis požadavku:===
+Kontextová nápověda je vyvolána pomocí ovládacího prvku v servisním menu.
+
+===Poznámky k technickému řešení:===
+Nápověda je otevřena v samostatném okně prohlížeče.
+
+
+=Procházení stromové struktury=
+===Popis požadavku:===
+Základním způsobem navigace v systému Kramerius 4 je procházení hierarchické struktury dokumentů. Je zobecněním stávajícího systému verze 3 tak, aby splňoval hlavní nový požadavek, tedy možnost zobrazení dalších typů dokumentů, než stávající periodika a monografie.
+
+Úvodní stránka hierarchie je výběr základního typu dokumentu. Seznam zde zobrazených typů je konfigurovatelný a představuje seznam kořenových modelů v úložišti Fedora (např. v současném návrhu struktury POC jsou to modely model:periodical a model:monograph).
+
+Po výběru základního typu dokumentu je stejně jako ve verzi 3 zobrazen seznam písmen abecedy se statistikami titulů a stran u jednoltivých písmen, po výběru písmene je rovněž zobrazen příslušný seznam titulů.
+
+Od této úrovně dále je zobrazení obsahu zobecněno pro libovolný typ dokumentu. V horní části panelu je zobrazen obsah datastreamu BIBLIO-MODS (formátovaný s ohledem na přehlednost a úsporu místa), následovaný seznamem náhledů na součásti dokumentu nižší úrovně, zobrazený jako komponenta CoverFlow.
+
+Obsahem náhledů je :
+  * ikona s náhledem stránky, pokud dokument nižší úrovně obsahuje datastream IMG_THUMB
+  * generická ikona s textem získaným z pole Title datastreamu DC
+
+=Vyhledávání=
+===Popis požadavku:=== 
+Uživatelské rozhraní pro vyhledávání dokumentů je řešeno obdobně jako ve verzi 3, s doplněním o facety.
+
+
+=Zobrazení objektu=
+===Popis požadavku:===
+Libovolný objekt vybraný procházením stromové struktury nebo vyhledáváním je moýno zobrazit v hlavním panelu. V horní části panelu je úplný obsah datového streamu BIBLIO_MODS. Pokud objekt obsahuje RDF vazby na další objekty, budou tyto objekty zobrazeny v dolní části panelu v javascriptové komponentě typu Cover Flow (obdoba browseru přehrávače iTunes nebo správce souborů MacOS).  Obsah jednotlivých ikon v CoverFlow bude načten z datového streamu IMG_THUMB. Pro objekty, které tento binární datastream neobsahují, bude místo náhledu zobrazena generická ikona s textem načteným z datastreamu DC, pole Title.
+
+Pokud objekt obsahuje více typů RDF vazeb (např. hasPage i hasInternalPart), budou odkazované objekty sdruženy do více komponent CoverFlow podle typu vazby, přičemž každá komponenta CoverFlow bude na samostatné záložce. 
+
+===Poznámky k technickému řešení:===
+K zobrazení MODS bude použita XSLT transformace, je třeba navrhnout obecnou šablonu.
+Komponenta Coverflow bude vytvořena v GWT.
+
+=Generování PDF=
+===Popis požadavku:===
+Pro libovolnou úroveň zobrazeného objektu je možné vygenerovat PDF klikutím na tlačítko v levém ovládacím panelu. Uživatel může zadat rozsah stran, které bude PDF obsahovat
+
+===Poznámky k technickému řešení:===
+Systém rekurzivně projde všechny případné objekty odkazované přes vazby RDF typu fedora:hasPart, sestaví z nich seznam objektů, které mají datastream IMG_FULL a zobrazí jej v dialogovém okně, kde uživatel potvrdí požadovaný rozsah a spustí generování PDF. Výsledné PDF je nabídnuto ke stažení na uživatelův lokální disk. 
+
+
+=Integrace do existujících systémů=
 
 Rozhraní je tvořeno sadou jsp stránek, které bude možné integrovat do HTML, případně portletů.
 Pro distribuci bude vhodné vytvořit minimální verzi – komponenty Krameria spojené pomocí statického HTML a plnou s využitím portálu Liferay.
 
-== Úpravy vzhledu ==
+=Úpravy vzhledu=
 
 Jednotlivé komponenty budou zpracovány samostatně, tak aby bylo možné je rozmístit na obrazovce v různém pořadí.
 
 Vzhled na úrovni designu pak bude ovlivněn volitelným css.
-
-== Národní prostředí ==
-
-Je požadováno korektní abecední řazení dle zvoleného prostředí (znaky s diakritikou a dvojznaky). 
-Volbu prostředí bude možné ovlivnit při instalaci, či ji přebrat ze systému.
-
-== Použití prohlížečů ==
-
-Prohlížeč DFG muže být využit při prezentaci samotných stránek dokumentů. Zobrazení vazeb není schopen. Využití se neplánuje, případně je možné jej použít jako alternativní prohlížeč. DFG umí zobrazit vzdáleně záznam na základě METS. Kramerius4 bude z důvodu kompatibility používat METS ve formátu podporovaném DFG.
