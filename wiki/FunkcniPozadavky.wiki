@@ -3,5 +3,3 @@
 * [UI Zobrazení a vyhledávání]
 
 * [Administrace Administrace]
-
-[http://kramerius.googlecode.com/svn/wiki/ZobrazeniTitulu.png]
