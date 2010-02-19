@@ -4,4 +4,4 @@
 
 * [Administrace Administrace]
 
-[http://code.google.com/p/kramerius/wiki/fedora.wiki]
+[http://code.google.com/p/kramerius/wiki/fedora]
