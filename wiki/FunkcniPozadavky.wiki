@@ -4,4 +4,4 @@
 
 * [Administrace Administrace]
 
-[http://code.google.com/p/kramerius/wiki/ZobrazeniTitulu.png]
+[http://kramerius.googlecode.com/svn/wiki/ZobrazeniTitulu.png]
