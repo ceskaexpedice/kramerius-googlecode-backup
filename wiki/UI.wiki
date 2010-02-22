@@ -52,6 +52,8 @@ Pro libovolnou úroveň zobrazeného objektu je možné vygenerovat PDF výběre
 ===Poznámky k technickému řešení:===
 Systém rekurzivně projde všechny případné objekty odkazované přes vazby RDF typu fedora:hasPart, sestaví z nich seznam objektů, které mají datastream IMG_FULL a zobrazí jej v dialogovém okně, kde uživatel potvrdí požadovaný rozsah a spustí generování PDF. Výsledné PDF je nabídnuto ke stažení na uživatelův lokální disk. 
 
+Bude možno určit maximální počet stran generovaného PDF, v budoucnu budou stránky označeny skrytým vodoznakem.
+
 
 =Integrace do existujících systémů=
 
