@@ -21,3 +21,5 @@ Další rozšíření oproti POC je standardní datový stream POLICY, který ob
 Digitální objekty v systému Kramerius 4 tvoří obecnou stromovou strukturu s vazbami definovanými  pomocí RDF vazeb, které jsou potomky vazeb fedora:hasPart a fedora:isPartOf. 
 
 Systém lze libovolně rozšiřovat o nové typy objektů přidáním příslušného objektu cmodel s povinnými datovými streamy DC, BIBLIO_MODS a RELS_EXT.   
+
+Paralelně s určením typu dokumentu pomocí RDF vazby na contents model je typ dokumentu uveden i v BIBLIO_MODS v elementu typeOfResource. Stávající implementace konvertoru zde vyplňuje hodnotu "text", bude změněno. TypeOfResource označuje typ dokumentu z bibliografického hlediska, nemusí být vždy identický s přiřazeným cmodelem.
