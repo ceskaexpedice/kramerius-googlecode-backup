@@ -2,13 +2,19 @@
 #sidebar FunkcniPozadavky
 <wiki:toc max_depth="1" />
 
+Oproti předchozí verzi, založené na procházení stromové struktury dat, je uživatelské rozhraní Kramerius 4 více orientováno na fulltextové vyhledávání dokumentů, doplněné o rychlý výběr skupin dokumentů pomocí faset a časové osy. Další změnou je způsob zobrazení vlastního obsahu vybraného dokumentu, kde je vždy vidět jeho celá struktura namísto "zanořování" do nižších úrovní dokumentu - uživatel má vždy k dispozici přehlednou informaci o celkovém kontextu.
+
 =Úvodní obrazovka=
 
 http://kramerius.googlecode.com/svn/wiki/UvodniStranka.png
 
+Pole pro zadání klíčových slov pro fulltextové vyhledání je v záhlaví stránky, hlavní panel obsahuje sadu vyhledávacích faset (abeceda titul, abeceda autor, typ dokumentu, jazyk) doplněnou o vertikální časovou osu (specializovaná faseta pro datum vydání). V dolní části stránky je prostor pro "upoutávky" na vybrané dokumenty, případně na obsah definovaný administrátorem.
+
 =Výsledky vyhledávání=
 
 http://kramerius.googlecode.com/svn/wiki/VysledkyVyhledavani.png
+
+Po spuštění vyhledávání jsou výsledky zobrazeny ve stránkovaném seznamu, pro jehož jednotlivé položky je možno načíst více podrobností (kliknutím na rozevírací trojúhelník vlevo) nebo přejít do zobrazení celého záznamu. Uživatel má k dispozici i všechny ovládací prvky pro zadání nových vyhledávacích kritérií, stejně jako na úvodní stránce.
 
 
 =Zobrazení objektu=
