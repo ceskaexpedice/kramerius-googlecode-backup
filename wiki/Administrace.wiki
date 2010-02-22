@@ -8,7 +8,7 @@ Systém umožňuje přihlášení administrátora pomocí standardního mechanis
 ===Poznámky k technickému řešení:===
 Jako autentizační mechanismus je použit systém JAAS (viz http://java.sun.com/j2se/1.5.0/docs/guide/security/jaas), který je standardním mechanismem nového systému zabezpečení úložiště Fedora - FESL.
 
-V aktuální implementaci se autentizace týká pouze administrátorů, v dalších verzích rovněž běžných uživatelů (případně budou jejich přístupová práva nadále určována pouze podle IP adresy).
+V aktuální implementaci se autentizace týká pouze administrátorů, v dalších verzích rovněž běžných uživatelů (případně budou jejich přístupová práva nadále určována pouze podle IP adresy). Veškerá práva budou držena ve Fedoře.
 
 
 =Editace úvodní stránky=
@@ -37,13 +37,18 @@ Administrátor pro nový import zadává prostřednictvím GUI následující pa
   * příznak, zda mají být importované objekty automaticky přístupné
 zpracování duplicitních objektů (automatické sloučení, automatické přepsání, vynechání)
 
-Informace o zadaných importech, jejich průběhu a výsledku (včetně příslušných log souborů) jsou zobrazeny  ve stránce přehledu importů.
+Informace o zadaných importech, jejich průběhu a výsledku (včetně příslušných log souborů) jsou zobrazeny  ve stránce přehledu importů. Bude doplněna možnost volby pořadí spuštění importů a zrušení probíhajícího importu.
+
+Po restartu serveru je nutné kontrolovat stav probíhajících importů před pádem a případně je znovu spustit.  Doplnit možnost nastavit úrovně logování.
+
 
 ===Poznámky k technickému řešení:===
 Systém importuje všechny soubory v zadané složce a jejích podsložkách pomocí funkce ingest z Fedora API-M.
 Podle požadavků administrátora u všech objektů nastaví příznak Active a do datastreamu POLICY zapíše výchozí přístupová pravidla XACML.
 
 Slučování duplicitních objektů: v úložišti je zachován původní objekt, do jehož datastreamu RELS-EXT jsou doplněny nové RDF záznamy typu hasPart a isPartOf z nově importovaného objektu.  
+
+Prověřit možnost zapisování checksumu u obrázků pro zpětnou kontrolu správnosti importů? 
 
 =Export=
 ===Popis požadavku:=== 
@@ -71,7 +76,8 @@ Hromadné úpravy jsou programovány jako dynamické moduly v interpretovaném j
 =Editace objektů=
 ===Popis požadavku:=== 
 Administrátor může u aktuálně vybraného objektu modifikovat jeho obsah následujícími způsoby:
-smazání objektu. Po potvrzení operace je objekt odstraněn z úložiště včetně všech objektů, na které odkazuje prostřednictvím vazeb RDF. Pokud je objekt referencován z jiných objektů vyšší úrovně, jsou z těchto objektů rovněž odstraněny příslušné RDF vazby. 
+
+ * smazání objektu. Po potvrzení operace je objekt odstraněn z úložiště včetně všech objektů, na které odkazuje prostřednictvím vazeb RDF. Pokud je objekt referencován z jiných objektů vyšší úrovně, jsou z těchto objektů rovněž odstraněny příslušné RDF vazby. 
   * změna viditelnosti - u vybarného objektu je příslušným způsobem nastaven příznak Active
   * změna přístupových práv - u vybraného objektu je pomocí GUI editoru modifikován obsah datastreamu POLICY. Je možno nastavovat přístupová práva veřejný - neveřejný - zděděný. Dále je možno nastavovat instituce s oprávněním replikací. Správa seznamu těchto institucí je prováděna samostatně pomocí nástrojů pro správu autentizace JAAS. 
   * změna pořadí zobrazení odkazovaných podčástí. Komponenta CoverFlow se seznamem podčástí je při aktivaci této funkce nahrazena seznamem (tabulkou)podčástí s ovládacími prvky, které umožňují přesun vybraného řádku v seznamu na jinou pozici. 
@@ -83,6 +89,9 @@ smazání objektu. Po potvrzení operace je objekt odstraněn z úložiště vč
   * Zvážit možnost editace obsahu datastreamu MODS a DC - pomocí externího editoru vyvíjeného v MZK Brno. Tento editor by zároveň řešil požadavek na kopii obsahu metadat z jednoho objektu do druhého.
   * U funkce přesunu položek je možno využít funkcionalitu Drag&Drop .
   * Každá změna objektu musí volat aktualizaci indexů.
+  * Verzování - u každého datastreamu je možno nastavit, zda má jeho bsah být verzován. Výchozí hodnota je vypnuto. 
+ * Jak řešit rekurzi přístupových práv? 
+ * Vyřešit roli subadministrátora s právem  editovat další oprávnění 
 
 
 =Statický export HTML=
