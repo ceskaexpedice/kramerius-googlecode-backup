@@ -17,6 +17,8 @@ Objekty, které obsahují binární stream IMG_FULL s obrázkem v plném rozliš
 
 Další rozšíření oproti POC je standardní datový stream POLICY, který obsahuje přístupová  práva ve formátu XACML - použit pouze u objektů s omezeným přístupem.
 
+Donátor bude řešen jako vazba v RELS-EXT na speciální FO-XML objekt, který bude obsahovat i další údaje o donátorovi.  Tento způsob umožňuje informace automaticky indexovat v RI a navíc je možno snáze přidávat nové donátory. Donátora je nutné extrahovat z pole creator  (změna v konverzním programu).
+
 =Rozšiřování modelu o nové typy dokumentů=
 Digitální objekty v systému Kramerius 4 tvoří obecnou stromovou strukturu s vazbami definovanými  pomocí RDF vazeb, které jsou potomky vazeb fedora:hasPart a fedora:isPartOf. 
 
