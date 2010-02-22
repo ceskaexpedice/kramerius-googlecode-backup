@@ -3,24 +3,27 @@
 <wiki:toc max_depth="1" />
 
 =Úvodní obrazovka=
+
 http://kramerius.googlecode.com/svn/wiki/UvodniStranka.png
 
 =Výsledky vyhledávání=
-===Popis požadavku:=== 
+
 http://kramerius.googlecode.com/svn/wiki/VysledkyVyhledavani.png
 
 
 =Zobrazení objektu=
-===Popis požadavku:===
+
 http://kramerius.googlecode.com/svn/wiki/ZobrazeniTitulu.png
 
-V této stránce je zobrazen libovolný objekt vybraný v seznamu na stránce výsledků vahledávání. Hlavní část stránky (vlevo) představuje náhled zvolené stránky ve velkém rozlišení. V pravém panelu je zobrazena struktura metadat celého dokumentu od nejvyšší úrovně (titul) až po nejnižší (stránky). Aktuální objekt, jehož metadata jsou zobrazena na dané úrovni, je možno vybrat z rozevírací nabídky v záhlaví príslučné úrovně. Výjimkou je nejnižší úroveň (jednotlivé stránky), jejichž seznam je zobrazen  v dolní části obrazovky v javascriptové komponentě typu Cover Flow (obdoba browseru přehrávače iTunes nebo správce souborů MacOS).  Obsah jednotlivých ikon v CoverFlow bude načten z datového streamu IMG_THUMB. 
+V této stránce je zobrazen libovolný objekt vybraný v seznamu na stránce výsledků vyhledávání. Hlavní část stránky (vlevo) představuje náhled zvolené stránky ve velkém rozlišení. 
+
+V pravém panelu je zobrazena struktura metadat celého dokumentu od nejvyšší úrovně (titul) až po nejnižší (stránky). Aktuální objekt, jehož metadata jsou zobrazena na dané úrovni, je možno vybrat z rozevírací nabídky v záhlaví příslušné úrovně. Výjimkou je nejnižší úroveň (jednotlivé stránky), jejichž seznam je zobrazen  v dolní části obrazovky v javascriptové komponentě typu Cover Flow (obdoba browseru přehrávače iTunes nebo správce souborů MacOS).  Obsah jednotlivých ikon v Cover Flow bude načten z datového streamu IMG_THUMB. 
+Obsah zobrazovaných metadat je pro každou úroveň konfigurovatelný pomocí XSLT šablony.
 
 Pokud objekt obsahuje více typů RDF vazeb na jedné úrovni (např. hasPage i hasInternalPart), budou odkazované objekty sdruženy do jednotlivých záložek podle typu vazby.
 
-===Poznámky k technickému řešení:===
-K zobrazení MODS bude použita XSLT transformace, je třeba navrhnout obecnou šablonu.
-Komponenta Coverflow bude vytvořena v GWT.
+U každé úrovně je k dispozici rozbalovací kontextové menu (tlačítko vpravo od záhlaví dané úrovně) s operacemi, které daný uživatel může pro tuto úroveň dokumentu spustit - např. export do PDF, zobrazení úplných bibliografických metadat, administrativní operace apod.
+
 
 =Volba jazykové verze=
 ===Popis požadavku:===
