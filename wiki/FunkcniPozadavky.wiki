@@ -1,9 +1,7 @@
+* [Uvod Úvod]
+
 * [Data Datový model]
 
 * [UI Zobrazení a vyhledávání]
 
 * [Administrace Administrace]
-
-Systém Kramerius4 navazuje na stávající verzi systému Kramerius verze 3.3.1, jako jádro systému je dle požadavků zadavatele použito open source úložiště Fedora (http://www.fedora-commons.org/). Systém vychází z řešení „Proof of Concept - využití repozitáře Fedora pro uložení digitálních objektů DTD Periodika a Monografie“ (http://digit.lib.cas.cz/index.php?cat=fedora), podporuje v něm navržený formát metadat a pro konverzi metadat ze stávajícího formátu bude využit konverzní nástroj vyvinutý také v rámci tohoto řešení. 
-
-Systém je založen na technologii Java JDK 1.6 a lze ho provozovat jako samostatnou webovou aplikaci v libovolném J2EE kontaineru (např. Apache Tomcat) nebo dle požadavku zadavatele v rámci portálového řešení vyhovujícímu specifikaci JSR 168 a JSR 286 (např. Liferay).
