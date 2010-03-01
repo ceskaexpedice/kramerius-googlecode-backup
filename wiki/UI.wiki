@@ -8,20 +8,20 @@ Oproti předchozí verzi, založené na procházení stromové struktury dat, je
 
 http://kramerius.googlecode.com/svn/wiki/UvodniStranka.png
 
-Pole pro zadání klíčových slov pro fulltextové vyhledání je v záhlaví stránky, hlavní panel obsahuje sadu vyhledávacích faset (abeceda titul, abeceda autor, typ dokumentu, jazyk) doplněnou o vertikální časovou osu (specializovaná faseta pro datum vydání). V dolní části stránky je prostor pro "upoutávky" na vybrané dokumenty, případně na obsah definovaný administrátorem.
+Pole pro zadání klíčových slov pro fulltextové vyhledání je v záhlaví stránky, hlavní panel obsahuje vyhledávací pole podle titulu a autora s našeptáváním hodnot obsažených v úložišti, dále sadu vyhledávacích faset ( typ dokumentu, dostupnost,  jazyk) doplněnou o vertikální časovou osu (specializovaná faseta pro datum vydání). V dolní části stránky je prostor pro "upoutávky" na vybrané dokumenty, případně na obsah definovaný administrátorem.
 
 =Výsledky vyhledávání=
 
 http://kramerius.googlecode.com/svn/wiki/VysledkyVyhledavani.png
 
-Po spuštění vyhledávání jsou výsledky zobrazeny ve stránkovaném seznamu, pro jehož jednotlivé položky je možno načíst více podrobností (kliknutím na rozevírací trojúhelník vlevo) nebo přejít do zobrazení celého záznamu. Uživatel má k dispozici i všechny ovládací prvky pro zadání nových vyhledávacích kritérií, stejně jako na úvodní stránce.
+Po spuštění vyhledávání jsou výsledky zobrazeny ve stránkovaném seznamu, jehož položky jsou seskupeny po jednotlivých titulech. Pro jednotlivé položky je možno načíst více podrobností (kliknutím na rozevírací trojúhelník vlevo) nebo přejít do zobrazení celého záznamu. Uživatel má k dispozici i všechny ovládací prvky pro zadání nových vyhledávacích kritérií, stejně jako na úvodní stránce.
 
 
 =Zobrazení objektu=
 
 http://kramerius.googlecode.com/svn/wiki/ZobrazeniTitulu.png
 
-V této stránce je zobrazen libovolný objekt vybraný v seznamu na stránce výsledků vyhledávání. Hlavní část stránky (vlevo) představuje náhled zvolené stránky ve velkém rozlišení. 
+V této stránce je zobrazen libovolný objekt vybraný v seznamu na stránce výsledků vyhledávání. Hlavní část stránky (vlevo) představuje náhled zvolené stránky ve velkém rozlišení. Pokud uživatel nemá právo zobrazit daný titul, je náhled nahrazen informací o možnosti objednání tištěného titulu. 
 
 V pravém panelu je zobrazena struktura metadat celého dokumentu od nejvyšší úrovně (titul) až po nejnižší (stránky). Aktuální objekt, jehož metadata jsou zobrazena na dané úrovni, je možno vybrat z rozevírací nabídky v záhlaví příslušné úrovně. Výjimkou je nejnižší úroveň (jednotlivé stránky), jejichž seznam je zobrazen  v dolní části obrazovky v javascriptové komponentě typu Cover Flow (obdoba browseru přehrávače iTunes nebo správce souborů MacOS).  Obsah jednotlivých ikon v Cover Flow bude načten z datového streamu IMG_THUMB. 
 Obsah zobrazovaných metadat je pro každou úroveň konfigurovatelný pomocí XSLT šablony.
@@ -30,6 +30,12 @@ Pokud objekt obsahuje více typů RDF vazeb na jedné úrovni (např. hasPage i 
 
 U každé úrovně je k dispozici rozbalovací kontextové menu (tlačítko vpravo od záhlaví dané úrovně) s operacemi, které daný uživatel může pro tuto úroveň dokumentu spustit - např. export do PDF, zobrazení úplných bibliografických metadat, administrativní operace apod.
 
+
+=Zobrazení stránky=
+
+http://kramerius.googlecode.com/svn/wiki/ZobrazeniStranky.png
+
+Po kliknutí na velký náhled v zobrazení titulu je obsah okna překryt zorazením příslušné stránky v plném rozlišení, s možností přechodu na následující nebo předchozí sránku a návratu do zobrazení struktury.
 
 =Volba jazykové verze=
 ===Popis požadavku:===
