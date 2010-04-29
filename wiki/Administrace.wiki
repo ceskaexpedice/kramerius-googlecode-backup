@@ -25,7 +25,9 @@ Pokud bude systém provozován jako samostatná webová aplikace, bude použito 
 Systém má umožnit správu seznamu administrátorů a jejich přístupových práv.
 
 ===Poznámky k technickému řešení:===
-Vzhledem k použití autentizačního mechanismu FESL / JAAS je správa uživatelů zcela nezávislá na systému Kramerius a bude prováděna nástroji pro správu příslušného aplikačního serveru nebo portálu. Systém JAAS je možno nakonfigurovat například pro napojení na LDAP apod.
+Vzhledem k použití autentizačního mechanismu FESL / JAAS je správa uživatelů zcela nezávislá na systému Kramerius a bude prováděna nástroji pro správu příslušného aplikačního serveru nebo portálu. Systém JAAS je možno nakonfigurovat například pro napojení na LDAP apod. Pro Tomcat vytvoříme GUI pro správu uživatelů v JDBC realmu. 
+
+Kramerius musí podporovat následující role: Import, Export, Replikace, Edit metadata, Správa viditelnosti, Správa uživatelů, Správa replikačních institucí, Správa replikačních práv, Hromadné úpravy.
 
 =Import=
 ===Popis požadavku:=== 
