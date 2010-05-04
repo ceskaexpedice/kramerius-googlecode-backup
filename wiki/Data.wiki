@@ -24,4 +24,322 @@ Digitální objekty v systému Kramerius 4 tvoří obecnou stromovou strukturu s
 
 Systém lze libovolně rozšiřovat o nové typy objektů přidáním příslušného objektu cmodel s povinnými datovými streamy DC, BIBLIO_MODS a RELS_EXT.   
 
-Paralelně s určením typu dokumentu pomocí RDF vazby na contents model je typ dokumentu uveden i v BIBLIO_MODS v elementu typeOfResource. Stávající implementace konvertoru zde vyplňuje hodnotu "text", bude změněno. TypeOfResource označuje typ dokumentu z bibliografického hlediska, nemusí být vždy identický s přiřazeným cmodelem.
+
+=Přehled obsahu streamů DC a RELS_EXT pro jednoltivé typy objektů=
+
+==monograph==
+
+RELS_EXT:
+  hasModel
+  
+  hasUnit
+
+  hasPage
+
+  hasIntCompPart
+
+  donator
+
+  contract (literal)
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  creator
+
+  publisher
+
+  contributor
+
+  identifier - uuid
+
+  identifier - contract
+
+  identifier - isbn / extid
+
+  identifier - handle
+
+  subject - ddc
+
+  subject - udc
+
+  description
+
+  date
+
+  type
+  
+  language
+
+  rights
+
+
+==monographUnit==
+
+RELS_EXT:
+  hasModel
+
+  hasPage
+
+  hasIntCompPart
+
+  contract (literal)
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  creator
+
+  publisher
+ 
+  contributor
+
+  identifier - uuid
+
+  identifier - contract
+
+  identifier - handle
+
+  type
+
+  rights
+
+IMG_FULL, IMG_THUMB, IMG_FULL_ADM, TEXT_OCR, TEXT_OCR_ADM
+
+
+==monograph internalpart==
+
+RELS_EXT: 
+  hasModel
+
+  isOnPage
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  creator
+
+  contributor
+
+  identifier - uuid
+
+  identifier - handle
+
+  type
+
+  rights
+
+
+==monograph page==
+
+RELS_EXT: 
+  hasModel
+
+  file (literal)
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  identifier - uuid
+
+  identifier - handle
+
+  type
+
+  rights
+
+IMG_FULL, IMG_THUMB, IMG_FULL_ADM, TEXT_OCR, TEXT_OCR_ADM
+
+
+==periodical==
+
+RELS_EXT:
+  hasModel
+
+  hasVolume
+
+  donator
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  creator
+  
+  publisher
+
+  contributor
+
+  identifier - uuid
+
+  identifier - issn
+
+  identifier - handle
+
+  subject - ddc
+
+  subject - udc
+
+  description
+
+  date
+
+  type
+
+  language
+
+  rights
+
+
+==periodicalvolume==
+
+RELS_EXT:
+  hasModel
+
+  hasItem
+
+  hasPage
+
+  hasIntCompPart
+
+  contract (literal)
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  creator
+
+  publisher
+
+  contributor
+
+  identifier - uuid
+
+  identifier - contract
+
+  identifier - handle
+
+  description
+
+  date
+
+  type
+
+  rights
+
+
+==periodicalitem==
+
+RELS_EXT:
+  hasModel
+
+  hasPage
+
+  hasIntCompPart
+
+  contract (literal)
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  creator
+
+  publisher
+
+  contributor
+
+  identifier - uuid
+
+  identifier - contract
+
+  identifier - handle
+
+  description
+
+  date
+
+  type
+ 
+  rights
+
+IMG_FULL, IMG_THUMB, IMG_FULL_ADM, TEXT_OCR, TEXT_OCR_ADM
+
+
+==periodical internalpart==
+
+RELS_EXT: 
+  hasModel
+
+  isOnPage
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  creator
+
+  contributor
+  
+  identifier - uuid
+
+  identifier - handle
+
+  type
+
+  rights
+
+
+==periodical page==
+
+RELS_EXT: 
+  hasModel
+
+  file (literal)
+
+  handle (literal)
+
+  policy (literal)
+
+DC:
+  title
+
+  identifier - uuid
+
+  identifier - handle
+
+  type
+
+  rights
+
+IMG_FULL, IMG_THUMB, IMG_FULL_ADM, TEXT_OCR, TEXT_OCR_ADM
+ 
