@@ -1,0 +1,22 @@
+#summary Menu administrátorských procesů
+
+==Long running processes manager==
+
+Otevře okno se seznam všech procesů, které kdy byly spuštěny, defaultně seřazené podle času spuštění sestupně, takže na první stránce vidíte nejčerstvější procesy. Kliknutím na hlavičku sloupce se podle něj  řadí. 
+Kliknutím na název procesu otevřete v samostatném okně detailní informace o jeho běhu. Defaultně to jsou systémové logy. Některé typy procesů ale mohou mít místo logů vlastní typ výstupu - to je případ procesu Replikace, kde je seznam úspěšně a neúspěšně importovaných titulů.
+
+==Import of monographs, Import of periodicals== 
+
+Spustí replikaci monografií nebo titulů, podle obsahu souboru monographs.txt nebo periodicals.txt . Umístění a názvy těchto souborů jsou definovány v souboru .kramerius4/migration.properties, tam je definován i pracovní adresář (musí existovat, je vyprázdněn před každým importem titulu nebo ročníku) a také údaje pro připojení ke starému krameriovi.
+
+==Document`s indexation== 
+
+Otevře seznam všech titulů pro indexaci,  vlevo můžete kliknout na typ monograph nebo periodical, vpravo se objeví příslušný seznam, kliknutím na titul spustíte jeho indexaci, po ukončení indexace je titul vyhledatelný v uživatelském GUI. Kliknutím na položku index vedle přepínače typů spustíte indexaci všech titulů daného typu
+
+==Enumerator==
+
+Připojí se k databázi starého krameria a do souborů monographs.txt a periodicals.txt vypíše její kompletní obsah (interní ID pro monografie, ISSN a ročník pro periodika - toto jsou údaje, se kterými umí pracovat replikační rozhraní K3). Vytvořené soubory můžete přejmenovat a rozdělit na menší kusy a řídit tak, po jakých  úsecích se bude replikovat příkazem Import.... Vždy se replikuje vše, co je v souboru monographs.txt, resp. periodicals.txt.
+
+==Replication rights== 
+
+Nastaví v K3 přístupová práva ke všem dokumentům pro replikační instituci, jejíž sigla je uvedena v migration.properties. Tento příkaz stačí spustit jen jednou před první replikací. Každé další spuštění už neudělá nic, jen si do logu bude stěžovat, že se mu do databáze nepodařilo zapsat duplicitní údaj.
