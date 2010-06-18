@@ -110,29 +110,28 @@ do tomcat-users.xml přidat uživatele s rolí krameriusAdmin:
 
 
 do context.xml přidat definici datasource: 
+{{{
 <Resource name="jdbc/kramerius4" auth="Container" type="javax.sql.DataSource"
         initialSize="3"
         maxActive="100" maxIdle="30" maxWait="10000"
         username=“fedoraAdmin” password=“fedoraAdmin” driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql://localhost/kramerius4"/>
-
+}}}
 
 do tomcat/lib překopírovat následující jary z webapps/fedora/WEB-INF/lib:
-carol
-commons-logging
-log4j
-postgres
+  * carol
+  * commons-logging
+  * log4j
+  * postgres
 
 
 do server.xml přidat URIEncoding:
-
+{{{
  <Connector port="8080" protocol="HTTP/1.1" 
                connectionTimeout="20000" URIEncoding="UTF-8"
                redirectPort="8443" />
-
+}}}
 
 Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kramerius4 je vytvořen adresář .kramerius4 a v něm prázdné soubory configuration.properties, indexer.properties a migration.properties. Popis viz [Konfigurace].
-
-
 
 
