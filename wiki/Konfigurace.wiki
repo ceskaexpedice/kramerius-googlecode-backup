@@ -32,6 +32,8 @@ accessPatterns=127.*
 ## max. number of pages in generated PDF documents
 generatePdfMaxRange=20
 
+## URL of the main K4 application, used for launching of external processes
+applicationUrl=${_fedoraTomcatHost}/search
 
 
 ## external configuration file name
