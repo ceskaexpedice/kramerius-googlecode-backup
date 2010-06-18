@@ -9,13 +9,13 @@
 Je vhodné K4 nainstalovat pod samosattným uživateslkým účtem, například kramerius4. 
 
 Nastavit potřebné systémové proměnné (předpokládáme instalaci Tomcatu a Fedory do domcáího adresáře uživatele kramerius4):
-
+{{{
 export JAVA_HOME=/usr/java/jre1.6.0_20
 export CATALINA_HOME=$HOME/tomcat
 export FEDORA_HOME=$HOME/fedora
 export JAVA_OPTS=" -Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr -XX:MaxPermSize=128m -Xms512m -Xmx1024m" 
 export PATH=$PATH:$FEDORA_HOME/server/bin:$FEDORA_HOME/client/bin:$CATALINA_HOME/bin:$JAVA_HOME/bin 
-
+}}}
 
 = Instalace fedory =
 
@@ -133,5 +133,3 @@ do server.xml přidat URIEncoding:
 }}}
 
 Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kramerius4 je vytvořen adresář .kramerius4 a v něm prázdné soubory configuration.properties, indexer.properties a migration.properties. Popis viz [Konfigurace].
-
-
