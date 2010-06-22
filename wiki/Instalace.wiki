@@ -87,7 +87,7 @@ Po instalaci fedory je třeba do souboru fedora.fcfg do sekce module: resource i
 }}}
 
 
-Přes administrátorské rozhraní fedory je třeba naimportovat FOXML objekty obsažené v SVN K4 v modulu installation/fedora (https://kramerius.googlecode.com/svn/trunk/installation/fedora)
+Přes administrátorské rozhraní fedory je třeba naimportovat FOXML objekty obsažené v SVN K4 v modulu installation/fedora (https://kramerius.googlecode.com/svn/trunk/installation/fedora). *Před importem je nutné provést konfiguraci [#Fedora_model OAI Fedora modelu].*
 
 = Instalace Apache SOLR =
 
@@ -133,3 +133,39 @@ do server.xml přidat URIEncoding:
 }}}
 
 Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kramerius4 je vytvořen adresář .kramerius4 a v něm prázdné soubory configuration.properties, indexer.properties a migration.properties. Popis viz [Konfigurace].
+
+= Instalace OAI =
+
+== Fedora model ==
+
+V `service_ESEDep.xml` a `model_repository.xml` (https://kramerius.googlecode.com/svn/trunk/installation/fedora) opravit všechny `FIXME`.
+
+== PostgreSQL ==
+
+Vytvořit uživatele `proai` a databázi `proai`.
+
+== Tomcat ==
+
+Do `tomcat/webapps` nakopírovat `oaiprovider.war` z SVN K4 (https://kramerius.googlecode.com/svn/trunk/installation/oai).
+
+Editovat `tomcat/webapps/oaiprovider/oaiprovider/WEB-INF/classes/proai.properties`.
+{{{
+# /tmp/proai obsahuje exportovaná data a nesmí být mazán bez úpravy proai databáze
+proai.cacheBaseDir = /tmp/proai/cache
+proai.sessionBaseDir = /tmp/proai/sessions
+proai.schemaDir = /tmp/proai/schemas
+
+# nahradit všechny odkazy 'localhost' skutečným serverem
+
+# v případě potřeby změnit přístupová jména a hesla podle skutečnosti
+proai.db.url = jdbc:postgresql://localhost/proai
+proai.db.username = proai
+proai.db.password = ********
+driver.fedora.user = fedoraAdmin
+driver.fedora.pass = ********
+driver.fedora.mpt.jdbc.user = fedoraAdmin
+driver.fedora.mpt.jdbc.password = ********
+
+# povolit export dat z Fedory
+proai.driverPollingEnabled = true
+}}}
