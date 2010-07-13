@@ -6,9 +6,9 @@
   * Apache Tomcat 6
   * Postgres 8, vytvořit uživatele fedoraAdmin a databáze fedora3 a kramerius4
 
-Je vhodné K4 nainstalovat pod samosattným uživateslkým účtem, například kramerius4. 
+Je vhodné K4 nainstalovat pod samostatným uživatelským účtem, například kramerius4. 
 
-Nastavit potřebné systémové proměnné (předpokládáme instalaci Tomcatu a Fedory do domcáího adresáře uživatele kramerius4):
+Nastavit potřebné systémové proměnné (předpokládáme instalaci Tomcatu a Fedory do domácího adresáře uživatele kramerius4):
 {{{
 export JAVA_HOME=/usr/java/jre1.6.0_20
 export CATALINA_HOME=$HOME/tomcat
@@ -75,7 +75,7 @@ Enable messaging : default (false)
 Deploy local services: default (true)
 }}}
 
-Po instalaci fedory je třeba do souboru fedora.fcfg do sekce module: resource index pridat nasledujici parametry:
+Po instalaci fedory je třeba do souboru fedora.fcfg do sekce module: resource index přidat následující parametry:
 
 {{{
  <param name="alias:kramerius" value="http://www.nsdl.org/ontologies/relationships#">
