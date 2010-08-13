@@ -282,7 +282,7 @@ Pro spuštení procesu se používá řídici servlet *lr*, který krom spuště
 ====Spuštění procesu==== 
 
 Spuštění procesu má nasledující syntaxi: 
-<application>/lr?action=start&def=<def_id_procesu>&params=<runtime_params>
+{{{<application>/lr?action=start&def=<def_id_procesu>&params=<runtime_params>}}}
 
  - start - parametr proces spustí případně naplánuje na spuštění. To se řídí aktualním počtem pravě bežících procesů. 
  - def - id procesu, který se má spustit.	
@@ -295,10 +295,11 @@ Spuštění procesu má nasledující syntaxi:
 
 {{{<server_host:port>/search/lr?action=start&def=replikator_periodicals}}} - Spustí replikaci periodik
 
-{{{http://localhost:8080/search/lr?action=start&def=reindex&out=text&params=fromKrameriusModel,<uuidObjektu>,<titulek_procesu>}}}
+{{{<server_host:port>/search/lr?action=start&def=reindex&out=text&params=fromKrameriusModel,<uuidObjektu>,<titulek_procesu>}}} - Reindexuje objekt s daným uuid. 
 
-- vymazani z fedory
-var url = "lr?action=start&def=delete&out=text&params="+pid+","+pidpath;
+{{{<server_host:port>/search/lr?action=start&def=delete&out=text&params=<uuidObjektu>,<cestaUUIDodKorene> }}} - Smaže objekt s daným uuid. Parametr cestaUUIDodOkrene reprezentuje seznam uuid objektů od kořenového objektu až po ten, který se má smazat. Jako oddělovač cesty je použitý znak */*. 
+
+
 
 - nastavit na public
 var url = "lr?action=start&def=setpublic&out=text&params="+pid;
