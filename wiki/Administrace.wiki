@@ -245,3 +245,8 @@ Kramerius umožňuje exportovat bibliografické informace v kontejnerovém form
 
 ===Poznámky k technickému řešení:===
 Tato funkcionalita je podporována prostřednictvím funkce exportu úložiště Fedora do formátu METS - viz funkční požadavek Export.
+
+
+=Dlouhotrvající procesy=
+
+
