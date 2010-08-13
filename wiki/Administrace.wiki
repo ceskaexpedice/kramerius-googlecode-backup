@@ -267,3 +267,9 @@ Všechny procesy jsou definovány ve speciálním xml souboru (který je uživat
 		...
 </process>
 }}}
+
+
+===Manipulace s procesy===
+
+Pro spuštení procesu se používá řídici servlet lr, který krom spuštění může ještě procesy vypínat, vypisovat případně měnit jméno. Syntaxe použití je následující:
+
