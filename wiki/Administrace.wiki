@@ -247,6 +247,9 @@ Kramerius umožňuje exportovat bibliografické informace v kontejnerovém form
 Tato funkcionalita je podporována prostřednictvím funkce exportu úložiště Fedora do formátu METS - viz funkční požadavek Export.
 
 
-=Dlouhotrvající procesy=
+=Procesy v systému Kramerius=
+Pro dlouho trvající akce má system kramerius definován termín dlouhotrvající procesy. Spouští se jako standardní systémové procesy a lze je spravovat systemovými prodstředky (ps, kill, top, apod.). Vždy se jedná o java programy. 
 
+===Definice procesu===
+Všechny procesy jsou definovány ve speciálním xml souboru (který je uživatelsky rozšiřitelný - uživatel může definovat vlastní procesy případně předefinovavat existující). V definicích procesu jsou všechny náležitosti potřebné ke spuštění. Ukázka definice procesu:
 
