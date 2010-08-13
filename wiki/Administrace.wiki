@@ -252,7 +252,7 @@ Pro dlouho trvající akce má system kramerius definován termín dlouhotrvají
 
 ===Definice procesu===
 Všechny procesy jsou definovány ve speciálním xml souboru (který je uživatelsky rozšiřitelný - uživatel může definovat vlastní procesy případně předefinovavat existující). V definicích procesu jsou všechny náležitosti potřebné ke spuštění. Ukázka definice procesu:
-
+{{{
 <process>
 		<!-- Identifikator procesu -->
 		<id>replikator_monographs</id>
@@ -266,3 +266,4 @@ Všechny procesy jsou definovány ve speciálním xml souboru (který je uživat
 		<parameters>monographs</parameters>
 		...
 </process>
+}}}
