@@ -277,3 +277,31 @@ Pro spuštení procesu se používá řídici servlet *lr*, který krom spuště
 
  * parametr definuje akci, která se má stát, 
  * parametr otherActionParams pak závisí na zvolené akci. 
+
+
+====Spuštění procesu==== 
+
+Spuštění procesu má nasledující syntaxi: 
+<application>/lr?action=start&def=<def_id_procesu>&params=<runtime_params>
+
+ - start - parametr proces spustí případně naplánuje na spuštění. To se řídí aktualním počtem pravě bežících procesů. 
+ - def - id procesu, který se má spustit.	
+ - params - tzv runtime parametry procesu. Před spuštěním se "slejou" parametry definované v xml souboru s runtime parametry do jednoho pole. To pak reprezentuje spouštěcí parametry procesu.
+
+
+====Spuštení vybraných procesů====
+ 
+{{{<server_host:port>/search/lr?action=start&def=replikator_monographs}}}  - Spustí replikaci monografií
+
+{{{<server_host:port>/search/lr?action=start&def=replikator_periodicals}}} - Spustí replikaci periodik
+
+{{{http://localhost:8080/search/lr?action=start&def=reindex&out=text&params=fromKrameriusModel,<uuidObjektu>,<titulek_procesu>}}}
+
+- vymazani z fedory
+var url = "lr?action=start&def=delete&out=text&params="+pid+","+pidpath;
+
+- nastavit na public
+var url = "lr?action=start&def=setpublic&out=text&params="+pid;
+
+- nastavit na private
+var url = "lr?action=start&def=setprivate&out=text&params="+pid;
