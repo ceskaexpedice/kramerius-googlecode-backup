@@ -292,10 +292,10 @@ Spuštění procesu má nasledující syntaxi:
 ====Spuštení vybraných procesů====
 
 =====Replikace monografií===== 
-{{{<server_host:port>/search/lr?action=start&def=replikator_monographs}}}  - Spustí replikaci monografií
+{{{<server_host:port>/search/lr?action=start&def=replikator_monographs}}}
 
 =====Replikace periodik===== 
-{{{<server_host:port>/search/lr?action=start&def=replikator_periodicals}}} - Spustí replikaci periodik
+{{{<server_host:port>/search/lr?action=start&def=replikator_periodicals}}} 
 
 =====Reindexace objektu===== 
 {{{<server_host:port>/search/lr?action=start&def=reindex&out=text&params=fromKrameriusModel,<uuidObjektu>,<titulek_procesu>}}} 
@@ -310,4 +310,3 @@ Spuštění procesu má nasledující syntaxi:
 =====Nastavení viditelnosti na private===== 
 {{{<server_host:port>/search/lr?action=start&def=setprivate&out=text&params=<uuidObjektu>}}}
 
-var url = "lr?action=start&def=setprivate&out=text&params="+pid;
