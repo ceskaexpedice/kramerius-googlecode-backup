@@ -273,7 +273,7 @@ Všechny procesy jsou definovány ve speciálním xml souboru (který je uživat
 
 Pro spuštení procesu se používá řídici servlet *lr*, který krom spuštění může ještě procesy vypínat, vypisovat případně měnit jméno. Syntaxe použití je následující:
 
-{{{<application>/lr?action=[start|stop|updateName][otherActionParams]}}}
+{{{<server_host:port>/search/lr?action=[start|stop|updateName][otherActionParams]}}}
 
  * parametr definuje akci, která se má stát, 
  * parametr otherActionParams pak závisí na zvolené akci. 
@@ -282,7 +282,7 @@ Pro spuštení procesu se používá řídici servlet *lr*, který krom spuště
 ====Spuštění procesu==== 
 
 Spuštění procesu má nasledující syntaxi: 
-{{{<application>/lr?action=start&def=<def_id_procesu>&params=<runtime_params>}}}
+{{{<server_host:port>/search/lr?action=start&def=<def_id_procesu>&params=<runtime_params>}}}
 
  * *start*  Parametr proces spustí případně naplánuje na spuštění. To se řídí aktualním počtem pravě bežících procesů. 
  * *def*  ID procesu, který se má spustit.	
