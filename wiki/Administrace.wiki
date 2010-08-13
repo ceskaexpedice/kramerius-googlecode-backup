@@ -315,4 +315,4 @@ Spuštění procesu má nasledující syntaxi:
 
 Syntaxe je následující: 
 {{{<application>/lr?action=stop&uuid=<uuidProcesu>}}} 
-  *uuidProcesu* je identifikator procesu přiřazovaný akcí start.
+  * *uuidProcesu* je identifikator procesu přiřazovaný akcí start.
