@@ -274,3 +274,6 @@ Všechny procesy jsou definovány ve speciálním xml souboru (který je uživat
 Pro spuštení procesu se používá řídici servlet *lr*, který krom spuštění může ještě procesy vypínat, vypisovat případně měnit jméno. Syntaxe použití je následující:
 
 {{{<application>/lr?action=[start|stop|updateName][otherActionParams]}}}
+
+ * parametr definuje akci, ktera se ma stat, 
+ * parametr otherActionParams pak zavisi na zvolene akci. 
