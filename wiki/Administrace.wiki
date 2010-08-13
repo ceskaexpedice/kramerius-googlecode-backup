@@ -310,3 +310,10 @@ Spuštění procesu má nasledující syntaxi:
 =====Nastavení viditelnosti na private===== 
 {{{<server_host:port>/search/lr?action=start&def=setprivate&out=text&params=<uuidObjektu>}}}
 
+
+====Zastavení procesu====
+
+Syntaxe je následující: 
+<application>/lr?action=stop&uuid=<uuidProcesu> 
+  *uuidProcesu* je identifikator procesu přiřazovaný akcí start.
+
