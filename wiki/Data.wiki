@@ -1,5 +1,4 @@
 #summary Datový model
-#sidebar FunkcniPozadavky
 <wiki:toc max_depth="1" />
 
 Kramerius 4 používá zobecněný datový model vycházející z návrhu společnosti Qbizm vytvořeném v rámci proof of concept převodu dat ze struktury Kramerius 3 do úložiště Fedora.  
