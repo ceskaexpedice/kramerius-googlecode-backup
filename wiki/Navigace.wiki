@@ -6,4 +6,6 @@
 
 * [Instalace Instalace]
 
+* [Konfigurace Konfigurace]
+
 * [Data Datový model]
