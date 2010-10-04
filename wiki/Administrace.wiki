@@ -227,9 +227,9 @@ Analogický odkaz do systému DODO je v systému kramerius v sekci monografie 
 Implementace bude převzata z verze Kramerius 3. Systémové číslo pro ALEPH by bylo možné ukládat do pole AlternateID
 
 
-=OAI-PHM=
+=OAI-PMH=
 ===Popis požadavku:===
-Aplikace zpřístupňuje metadata prostřednictvím protokolu OAI-PHM.
+Aplikace zpřístupňuje metadata prostřednictvím protokolu OAI-PMH.
 
 ===Poznámky k technickému řešení:===
 Implementováno prostřednictvím služby úložiště Fedora OAI Provider Service.
