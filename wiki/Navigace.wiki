@@ -1,7 +1,9 @@
 * [Uvod Úvod]
 
-* [Data Datový model]
-
 * [UI Zobrazení a vyhledávání]
 
-* [Administrace Administrace]
+* [MenuAdministrace Administrace]
+
+* [Instalace Instalace]
+
+* [Data Datový model]
