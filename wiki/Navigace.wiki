@@ -4,8 +4,6 @@
 
 * [MenuAdministrace Administrace]
 
-* [Instalace Instalace]
-
-* [Konfigurace Konfigurace]
+* [Instalace Instalace a konfigurace]
 
 * [Data Datový model]
