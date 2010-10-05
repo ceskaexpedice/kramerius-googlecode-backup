@@ -3,7 +3,7 @@
 =  Systémové komponenty =
 
   * JDK 1.6
-  * Apache Tomcat 6
+  * J2EE server nebo servlet kontejner (popsaná instalace předpokládá Apache Tomcat 6)
   * Postgres 8, vytvořit uživatele fedoraAdmin a databáze fedora3 a kramerius4
 
 Je vhodné K4 nainstalovat pod samostatným uživatelským účtem, například kramerius4. 
@@ -17,7 +17,9 @@ export JAVA_OPTS=" -Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr 
 export PATH=$PATH:$FEDORA_HOME/server/bin:$FEDORA_HOME/client/bin:$CATALINA_HOME/bin:$JAVA_HOME/bin 
 }}}
 
-= Instalace fedory =
+V produkčním prostředí je před J2EE server (Tomcat) vhodné předřadit webserver přístupný na portu 80.
+
+= Instalace Fedory =
 
 Nainstalujte repository Fedora 3.3 pomocí instalátoru fcrepo-installer-3.3.jar. Následuje výpis odpovědí na otázky instalátoru, volby odlišné od defaultních jsou označeny *****
 
@@ -86,7 +88,7 @@ Po instalaci fedory je třeba do souboru fedora.fcfg do sekce module: resource i
  </param>
 }}}
 
-
+Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat omezení přístupu  deny-apim-if-not-localhost.xml (ve složce data/fedora-xacml-policies/repository-policies). 
 Přes administrátorské rozhraní fedory je třeba naimportovat FOXML objekty obsažené v SVN K4 v modulu installation/fedora (https://kramerius.googlecode.com/svn/trunk/installation/fedora). *Před importem je nutné provést konfiguraci [#Fedora_model OAI Fedora modelu].*
 
 = Instalace Apache SOLR =
@@ -121,8 +123,8 @@ do context.xml přidat definici datasource:
 do tomcat/lib překopírovat následující jary z webapps/fedora/WEB-INF/lib:
   * carol
   * commons-logging
-  * log4j
-  * postgres
+  * log4j
+  * postgres
 
 
 do server.xml přidat URIEncoding:
