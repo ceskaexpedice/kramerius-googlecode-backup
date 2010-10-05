@@ -2,8 +2,8 @@
 
 * [UI Zobrazení a vyhledávání]
 
-* [MenuAdministrace Administrace]
-
 * [Instalace Instalace a konfigurace]
+
+* [MenuAdministrace Administrace]
 
 * [Data Datový model]
