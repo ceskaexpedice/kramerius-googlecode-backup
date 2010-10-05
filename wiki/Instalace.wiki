@@ -292,5 +292,5 @@ Přístup k administrátorským funkcím je kontrolován na úrovni aplikačníh
 Pro povolení přístupu ke všem administrátorským operacím je uživateli možno přiřadit roli krameriusAdmin.
 
 Pro řízení přístupu na úroveň jednotlivých administrátorských procesů je třeba uživateli přiřadit roli odpovídající identifikátoru příslušného procesu. K dispozici jsou následující role:
-  
-static_export_CD, reindex, replikator_monograph, replikator_periodicals, enumerator, replicationrights, setpublic, setprivate, delete, expor, convert, import
+
+static_export_CD, reindex, replikator_monograph, replikator_periodicals, enumerator, replicationrights, setpublic, setprivate, delete, export, convert, import
