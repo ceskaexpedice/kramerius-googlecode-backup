@@ -285,3 +285,12 @@ FOXMLFormat=info:fedora/fedora-system:FOXML-1.1
 # Jmeno externiho konfiguracniho souboru
 _ext_configuration_file_name=indexer.properties
 }}}
+
+=Přístupová práva uživatelů=
+Přístup k administrátorským funkcím je kontrolován na úrovni aplikačního serveru standardním mechanismem přiřazení potřebných rolí příslušným uživatelům. Správa uživatelských účtů a rolí je specifická pro použitý aplikační server, např. ve výchozí instalaci serveru Tomcat se provádí editací souboru tomcat-users.xml v adresáři conf.
+
+Pro povolení přístupu ke všem administrátorským operacím je uživateli možno přiřadit roli krameriusAdmin.
+
+Pro řízení přístupu na úroveň jednotlivých administrátorských procesů je třeba uživateli přiřadit roli odpovídající identifikátoru příslušného procesu. K dispozici jsou následující role:
+  
+static_export_CD, reindex, replikator_monograph, replikator_periodicals, enumerator, replicationrights, setpublic, setprivate, delete, expor, convert, import
