@@ -1,4 +1,4 @@
-#summary Zobrazení a vyhledávání
+#summary Uživatelské rozhraní
 <wiki:toc max_depth="1" />
 
 Oproti předchozí verzi, založené na procházení stromové struktury dat, je uživatelské rozhraní Kramerius 4 více orientováno na fulltextové vyhledávání dokumentů, doplněné o rychlý výběr skupin dokumentů pomocí faset a časové osy. Další změnou je způsob zobrazení vlastního obsahu vybraného dokumentu, kde je vždy vidět jeho celá struktura namísto "zanořování" do nižších úrovní dokumentu - uživatel má vždy k dispozici přehlednou informaci o celkovém kontextu.
@@ -64,4 +64,3 @@ Otevře okno se záznamem ve formátu Fedora METS pro vybraný dokument.
 
 ===Stáhnout originál===
 Uloží obrazová data stránky v plné velikosti v původím formátu, pokud to umožňují přístupová práva.
-
