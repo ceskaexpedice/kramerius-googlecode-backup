@@ -1,6 +1,6 @@
 * [Uvod Úvod]
 
-* [UI Zobrazení a vyhledávání]
+* [UI Uživatelské rozhraní]
 
 * [Instalace Instalace a konfigurace]
 
