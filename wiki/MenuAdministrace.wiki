@@ -1,11 +1,11 @@
 #summary Menu administrátorských procesů
 <wiki:toc max_depth="1" />
 
-Administrátorské úlohy může spouštět autentizovaný uživatel s příslušnou rolí. Operace prováděné na konkrétním dokumentu nebo jeho části se spouštějí z kontextové nabídky v příslušné záložce pravého panelu na obrazovce Zobrazení titulu. Obecné operace, nesouvisející s konkrétním titulem, se spouštějí z menu Administrace v záhlaví stránky. Všechny operace je také možno spustit zadáním URL s potřebnými parametry (popsáno v závěru tohoto dokumentu).
+Administrátorské úlohy může spouštět autentizovaný uživatel s příslušnou rolí. Operace prováděné na konkrétním dokumentu nebo jeho části se spouštějí z kontextové nabídky v příslušné záložce pravého panelu na obrazovce Zobrazení titulu. Obecné operace, nesouvisející s konkrétním titulem, se spouštějí z menu Administrace v záhlaví stránky. Všechny operace je také možno spustit zadáním URL s potřebnými parametry (popsáno v závěru tohoto dokumentu). Po spuštění procesu jak z menu nebo pomocí URL je pouze zobrazena informace o tom, že proces byl spuštěn, průběh a výsledky jeho zpracování je možné sledovat pomocí  příkazu Správa dlouhotrvajících procesů (viz níže)
 
 =Import dat=
 
-Data je možno importovat ze 3 zdrojů 
+Data je možno importovat ze 3 zdrojů: 
 
 == Automatický import z Krameria verze 3 přes replikační rozhraní == 
 
@@ -17,58 +17,60 @@ Před zahájením replikace je ještě třeba v Krameriovi 3 založit replikačn
 
 == Manuální import dokumentů ve formátu DTD Krameria 3 ==
 
-Příkaz Konverze a import
+Příkaz Konverze a import projde obsah serverového adresáře .kramerius4/convert (případně jiného adresáře definovaného v migration.properties) a jeho podadresářů, pokud obsahují data ve formátu DTD Kramerius3, překonvertuje je do formátu FOXML a naimportuje do Krameria 4.
 
 == Manuální import dokumentů ve formátu FOXML Krameria 4 ==
 
-Příkaz Import FOXML
+Příkaz Import FOXML projde obsah serverového adresáře .kramerius4/import (případně jiného adresáře definovaného v migration.properties) a jeho podadresářů a soubory ve formátu FOXML 1.1 naimportuje do Krameria 4. Tuto funkci je možné též použít pro manuální replikaci dat mezi dvěma instancemi systému K4.
 
 =Indexace dokumentů =
 
-== Indexace nových dokumentů ==
+Data naimportovaná do Krameria 4 jsou pouze uložena v úložišti Fedora. Aby je mohl Kramerius zpřístupnit uživatelům, musí se importované soubory indexovat pro vyhledávač SOLR. Indexací a případným odebíráním dokuemntů z indexu je tak možné řídit, jestli jsou dokumenty v úložišti zveřejněné.
  
+== Indexace nových dokumentů == 
 
-Příkaz Indexace dokumentů v menu administrace otevře seznam všech titulů pro indexaci,  vlevo můžete kliknout na typ monograph nebo periodical, vpravo se objeví příslušný seznam, kliknutím na titul spustíte jeho indexaci, po ukončení indexace je titul vyhledatelný v uživatelském GUI. Kliknutím na položku index vedle přepínače typů spustíte indexaci všech titulů daného typu
+Příkaz Indexace dokumentů v menu administrace otevře seznam všech titulů pro indexaci,  vlevo můžete kliknout na typ monograph nebo periodical, vpravo se objeví příslušný seznam, kliknutím na titul spustíte jeho indexaci, po ukončení indexace je titul vyhledatelný v uživatelském GUI. Tituly, které již jsou v indexu, jsou označeny zeleným zaškrtávátkem. Kliknutím na položku index vedle přepínače typů spustíte indexaci všech titulů daného typu
 
 
 == Reindexace existujících dokumentů ==
 
-Příkaz Reindexace v kontextové nabídce
+Příkaz Reindexace v kontextové nabídce dokumentu umožňuje opakovanou reindexaci daného dokumentu, například po změně v jeho datech. 
 
 == Odstranění dokumentu z indexu ==
 
-Příkaz Odstranit dokument z indexu v kontextové nabídce
+Příkaz Odstranit dokument z indexu v kontextové nabídce odstraní daný dokument z indexu SOLR a dokuemnt tak není veřejně přístupný a vyhledatelný v aplikaci Kramerius 4. Opětovné zveřejnění je možné příkazem Indexace dokumentů v menu administrace.
 
 == Odstranění dokumentu z indexu i úložiště ==
 
-Příkaz Odstranit dokument z fedory v kontextové nabídce
+Příkaz Odstranit dokument z fedory v kontextové nabídce odstraní daný dokuemnt z úložiště Fedora i z indexu SOLR.
 
 == Změna viditelnosti (přístupových práv) ==
 
-Příkaz Změna viditelnosti v kontextové nabídce
+Příkaz Změna viditelnosti v kontextové nabídce umožňuje měnit přístupová práva k dokumentu mezi stavy public a private a ovládat tak, jestli jsou plná obrazová data dokumentu přístupná i z počítačů mimo prostory knihovny. Seznam povolených IP adres je definován v souboru .kramerius4/configuration.properties.  
 
 = Export dokumentů =
 
 == Export PDF ==
 
-Příkaz Generování PDF v kontextové nabídce
+Příkaz Generování PDF v kontextové nabídce umožňuje vyexportovat podmnožinu vybraných stránek daného dokumentu do PDF souboru.
 
 == Export FOXML ==
 
-Příkaz Exportovat FOXML v kontextové nabídce
+Příkaz Exportovat FOXML v kontextové nabídce vyexportuje všechny soubory daného dokumentu ve formátu FOXML 1.1 do složky .kramerius4/export na serveru. 
 
 == Export METS ==
 
-Příkaz Záznam METS v kontextové nabídce
+Příkaz Záznam METS v kontextové nabídce zobrazí data daného dokumentu ve formátu METS v samosattném okně prohlížeče.
 
 
 =Procesy v systému Kramerius=
 Pro dlouho trvající akce má system kramerius definován termín dlouhotrvající procesy. Spouští se jako standardní systémové procesy a lze je spravovat systemovými prodstředky (ps, kill, top, apod.). Vždy se jedná o java programy. 
 
-==Long running processes manager==
+==Správa dlouhotrvajících procesů==
 
-Otevře okno se seznam všech procesů, které kdy byly spuštěny, defaultně seřazené podle času spuštění sestupně, takže na první stránce vidíte nejčerstvější procesy. Kliknutím na hlavičku sloupce se podle něj  řadí. 
-Kliknutím na název procesu otevřete v samostatném okně detailní informace o jeho běhu. Defaultně to jsou systémové logy. Některé typy procesů ale mohou mít místo logů vlastní typ výstupu - to je případ procesu Replikace, kde je seznam úspěšně a neúspěšně importovaných titulů.
+Příkaz Správa dlouhotrvajících procesů v menu administrace otevře okno se seznam všech procesů, které kdy byly spuštěny, defaultně seřazené podle času spuštění sestupně, takže na první stránce vidíte nejčerstvější procesy. Kliknutím na hlavičku sloupce se podle něj  řadí. 
+
+V posledním sloupci tabulky procesů jsou k dispozici kontextové operace. Kliknutím na příkaz Logs otevřete v samostatném okně detailní informace o jeho běhu (logy). Některé typy procesů ale mohou mít kromě  logů vlastní typ výstupu - to je případ procesu Replikace, kde je seznam úspěšně a neúspěšně importovaných titulů. Procesy ve stavu PLANNED nebo RUNNING je možno ukončit kliknutím na příkaz Kill v příslušném řádku.
 
 ===Definice procesu===
 Všechny procesy jsou definovány ve speciálním xml souboru (který je uživatelsky rozšiřitelný - uživatel může definovat vlastní procesy případně předefinovavat existující). V definicích procesu jsou všechny náležitosti potřebné ke spuštění. Ukázka definice procesu:
