@@ -17,11 +17,11 @@ Před zahájením replikace je ještě třeba v Krameriovi 3 založit replikačn
 
 == Manuální import dokumentů ve formátu DTD Krameria 3 ==
 
-Příkaz Konverze a import projde obsah serverového adresáře .kramerius4/convert (případně jiného adresáře definovaného v migration.properties) a jeho podadresářů, pokud obsahují data ve formátu DTD Kramerius3, překonvertuje je do formátu FOXML a naimportuje do Krameria 4.
+Příkaz Konverze a import projde obsah serverového adresáře .kramerius4/convert (případně jiného adresáře definovaného v migration.properties) a jeho podadresářů, pokud obsahují data ve formátu DTD Kramerius3, překonvertuje je do formátu FOXML a naimportuje do Krameria 4. Každý podadresář může obsahovat data (XML + obrázky + OCR) pro jeden titul.
 
 == Manuální import dokumentů ve formátu FOXML Krameria 4 ==
 
-Příkaz Import FOXML projde obsah serverového adresáře .kramerius4/import (případně jiného adresáře definovaného v migration.properties) a jeho podadresářů a soubory ve formátu FOXML 1.1 naimportuje do Krameria 4. Tuto funkci je možné též použít pro manuální replikaci dat mezi dvěma instancemi systému K4.
+Příkaz Import FOXML projde obsah serverového adresáře .kramerius4/import (případně jiného adresáře definovaného v migration.properties) a jeho podadresářů a soubory ve formátu FOXML 1.1 naimportuje do Krameria 4. Tuto funkci je možné též použít pro manuální replikaci dat mezi dvěma instancemi systému K4 (data ze zdrojové instance jsou vyexportována příkazem Export FOXML).
 
 =Indexace dokumentů =
 
