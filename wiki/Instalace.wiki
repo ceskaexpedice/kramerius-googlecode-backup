@@ -232,17 +232,20 @@ scalingMethod=BICUBIC_STEPPED
 
 ## scaling method for full image servlet
 fullImage.scalingMethod=${scalingMethod}
-## whether scaling method should use better result (time expencive)
+
+## whether scaling method should produce better result (time expencive, more steps scale)
 fullImage.iterateScaling=true
 
 ## scaling method for thumb image servlet
 thumbImage.scalingMethod=${scalingMethod}
-## whether scaling method should use better result (time expencive)
+
+## whether scaling method should use better result (time expencive, more steps scale)
 thumbImage.iterateScaling=true
 
 ## scaling method for deepZoom servlet
 deepZoom.scalingMethod=${scalingMethod}
-## whether scaling method should use better result (time expencive)
+
+## whether scaling method should use better result (time expencive, more steps scale)
 deepZoom.iterateScaling=true
 
 ## Deep zoom cache directory
