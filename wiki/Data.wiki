@@ -27,6 +27,30 @@ Modely monograph a periodical jsou přiřazeny digitálním objektům, které tv
 
 ==RDF vazby==
 
+  hasModel (xmlns:fedora-model="info:fedora/fedora-system:def/model#")
+  
+  hasUnit (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#")
+
+  hasPage (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#")
+
+  hasVolume (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#")
+
+  hasItem (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#")
+
+  hasIntCompPart (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#")
+
+  isOnPage ()
+
+  hasDonator (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#") 
+
+  contract (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#") (literal)
+
+  handle (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#") (literal)
+
+  policy (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#") (literal)
+
+  itemId (xmlns:oai="http://www.openarchives.org/OAI/2.0/")
+
 =Identifikátor digitálních objektů=
 Každý digitální objekt systému Kramerius 4 má jednoznačný identifikátor UUID, generovaný stejným algoritmem, který byl použit v systému Kramerius 3 (tedy UUID version 1, viz [http://tools.ietf.org/html/rfc4122 RFC4122]), doplněný prefixem uuid:, například uuid:0eaa6730-9068-11dd-97de-000d606f5dc6
  
