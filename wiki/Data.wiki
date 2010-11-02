@@ -1,13 +1,35 @@
 #summary Datový model
 <wiki:toc max_depth="1" />
+Digitální objekty systému Kramerius 4 jsou uloženy v úložišti Fedora Commons ve formátu FOXML 1.1. Popis tohoto formátu je zde: [https://wiki.duraspace.org/display/FCR30/Introduction+to+FOXML].
 
-Kramerius 4 používá zobecněný datový model vycházející z návrhu společnosti Qbizm vytvořeném v rámci proof of concept převodu dat ze struktury Kramerius 3 do úložiště Fedora.  
+Kramerius 4 používá zobecněný datový model vycházející z návrhu společnosti Qbizm vytvořeném v rámci proof of concept převodu dat ze struktury Kramerius 3 do úložiště Fedora (dále POC). Dokumentace tohoto původního návrhu je k dispozici zde: [http://digit.lib.cas.cz/index.php?cat=fedora].
 
+=Hierarchie digitálních objektů=
+
+Dokumenty v původním formátu DTD Kramerius 3 mají hierarchickou stromovou strukturu (typicky monografie/svazek/stránka nebo periodikum/ročník/číslo/stránka). Úložiště Fedora není hierarchické. Každému uzlu původní stromové struktury odpovídá digitální objekt FOXML s příslušným content modelem, jednotlivé objekty jsou do stromové struktury propojeny pomocí RDF vazeb definovaných v datovém streamu RELS-EXT.
+
+==Content modely==
+
+Datová struktura, vycházející z formátu dat Kramerius 3, předpokládá následující content modely:
+
+  * monograph
+  * monographunit
+  * page
+  * internalpart
+  * periodical
+  * periodicalvolume
+  * periodicalitem
+
+Definiční soubory těchto modelů jsou součástí  [http://digit.lib.cas.cz/index.php?cat=fedora POC], aktuální verze jsou součástí balíčku installation v sekci downloads, případně v SVN.
+
+Modely monograph a periodical jsou přiřazeny digitálním objektům, které tvoří kořen stromové struktury jednotlivých dokumentů. Při případném rozšiřování datové struktury Kramerius4 o nové typy objektů je třeba pro každý nový typ definovat odpovídající content model a nový kořenový model přidat do seznamu kořenových modelů, definovaných konfiguračním parametrem fedora.topLevelModels (viz [Instalace])
+
+
+==RDF vazby==
 
 =Identifikátor digitálních objektů=
-Každý digitální objekt systému Kramerius 4 má jednoznačný identifikátor UUID, generovaný stejným algoritmem, který byl použit v systému Kramerius 3, doplněný prefixem uuid:
-
-_TODO:_ Je třeba vyjasnit požadavky na použití identifikátorů založených na SIGLA a číslech zakázek. Rovněž je třeba přesně specifikovat požadavky na funkcionalitu persistentních identifikátorů  handle. Tyto informace je možné uchovávat v poli AlternateIDs.  
+Každý digitální objekt systému Kramerius 4 má jednoznačný identifikátor UUID, generovaný stejným algoritmem, který byl použit v systému Kramerius 3 (tedy UUID version 1, viz [http://tools.ietf.org/html/rfc4122 RFC4122]), doplněný prefixem uuid:, například uuid:0eaa6730-9068-11dd-97de-000d606f5dc6
+ 
 
 =Datové streamy=
 Objekty používají datové streamy navržené v rámci POC, povinné streamy jsou DC, BIBLIO_MODS a RELS_EXT. 
@@ -24,7 +46,7 @@ Digitální objekty v systému Kramerius 4 tvoří obecnou stromovou strukturu s
 Systém lze libovolně rozšiřovat o nové typy objektů přidáním příslušného objektu cmodel s povinnými datovými streamy DC, BIBLIO_MODS a RELS_EXT.   
 
 
-=Přehled obsahu streamů DC a RELS_EXT pro jednoltivé typy objektů=
+=Přehled obsahu streamů DC a RELS_EXT pro jednotlivé typy objektů=
 
 ==monograph==
 
