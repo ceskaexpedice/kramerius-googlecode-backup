@@ -39,7 +39,7 @@ Modely monograph a periodical jsou přiřazeny digitálním objektům, které tv
 
   hasIntCompPart (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#")
 
-  isOnPage ()
+  isOnPage (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#")
 
   hasDonator (xmlns:kramerius="http://www.nsdl.org/ontologies/relationships#") 
 
