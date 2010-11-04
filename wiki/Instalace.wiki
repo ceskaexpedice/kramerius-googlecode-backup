@@ -218,7 +218,6 @@ generatePdfMaxRange=20
 ## URL of the main K4 application, used for launching of external processes
 applicationUrl=${_fedoraTomcatHost}/search
 
-
 ## number of active processes
 processQueue.activeProcess=1
 
@@ -229,23 +228,25 @@ processQueue.checkInterval=10000
 ## supported values: REPLICATE, AREA_AVERAGING, BILINEAR, BICUBIC, NEAREST_NEIGHBOR, BILINEAR_STEPPED, BICUBIC_STEPPED, NEAREST_NEIGHBOR_STEPPED
 scalingMethod=BICUBIC_STEPPED
 
-
 ## scaling method for full image servlet
+## deprecated property - will be removed
 fullImage.scalingMethod=${scalingMethod}
 
-## whether scaling method should produce better result (time expencive, more steps scale)
+## whether scaling method should use better result (time expencive)
+## deprected property - will be removed
 fullImage.iterateScaling=true
+
+## directory for full thumbs
+fullThumbnail.cacheDirectory=${sys:user.home}/.kramerius4/fullThumb
 
 ## scaling method for thumb image servlet
 thumbImage.scalingMethod=${scalingMethod}
-
-## whether scaling method should use better result (time expencive, more steps scale)
+## whether scaling method should use better result (time expencive)
 thumbImage.iterateScaling=true
 
 ## scaling method for deepZoom servlet
 deepZoom.scalingMethod=${scalingMethod}
-
-## whether scaling method should use better result (time expencive, more steps scale)
+## whether scaling method should use better result (time expencive)
 deepZoom.iterateScaling=true
 
 ## Deep zoom cache directory
@@ -254,12 +255,26 @@ deepZoom.cacheDirectory=${sys:user.home}/.kramerius4/deepZoom
 ## Deep zoom tile size
 deepZoom.tileSize=512
 
-## Deep zoom JPEG quality (1.0 is best, 0.0 is worst)
-deepZoom.jpegQuality=1.0
+## Deep zoom JPEG quality (1.0 is best, 0.0 is worst
+deepZoom.jpegQuality=0.9
 
+## How many steps over one tile (how big should be original 
+deepZoom.numberStepsOverTile=1
 
-## external configuration file name
+## Global flag for enabling deepZoom
+deepZoom.deepZoomEnabled=false
+
+## Deep zoom for one uuid (accepts all models - )
+#deepZoom.4308eb80-b03b-11dd-a0f6-000d606f5dc6.deepZoomEnabled=true
+
+## connection to fedora 3 
+fedora3.connectionURL=jdbc:postgresql://localhost/fedora3
+fedora3.connectionUser=${fedoraUser}
+fedora3.connectionPass=${fedoraPass}
+
+# Jmeno externiho konfiguracniho souboru
 _ext_configuration_file_name=configuration.properties
+
 }}}
 
 ==migration.properties==
