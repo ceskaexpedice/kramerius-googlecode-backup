@@ -123,6 +123,14 @@ do context.xml přidat definici datasource:
         maxActive="100" maxIdle="30" maxWait="10000"
         username="fedoraAdmin" password="fedoraAdmin" driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql://localhost/kramerius4"/>
+
+
+<Resource name="jdbc/fedora3" auth="Container" type="javax.sql.DataSource"
+        initialSize="3"
+        maxActive="100" maxIdle="30" maxWait="10000"
+        username="fedoraAdmin" password="fedoraAdmin" driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://localhost/fedora3"/>
+
 }}}
 
 do tomcat/lib překopírovat následující jary z webapps/fedora/WEB-INF/lib:
