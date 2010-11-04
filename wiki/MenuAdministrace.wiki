@@ -11,9 +11,28 @@ Data je možno importovat ze 3 zdrojů:
 
 Příkazy Import monografií nebo Import periodik spustí replikaci monografií nebo periodik, podle obsahu souboru monographs.txt nebo periodicals.txt . Umístění a názvy těchto souborů jsou definovány v souboru .kramerius4/migration.properties, tam je definován i pracovní adresář (defaultně replication - musí existovat, je vyprázdněn před každým importem titulu nebo ročníku) a také údaje pro připojení ke Krameriovi3.
 
-Seznam všech identifikátorů dokumentů obsažených v Krameriovi 3 můžete získat spuštěním příkazu K3 - seznam identifikátorů (proces Enumerator). Připojí se k databázi Krameria 3 a do souborů monographs.txt a periodicals.txt vypíše její kompletní obsah (interní ID pro monografie, ISSN a ročník pro periodika - toto jsou údaje, se kterými umí pracovat replikační rozhraní K3). Vytvořené soubory můžete přejmenovat a rozdělit na menší kusy a řídit tak, po jakých  úsecích se bude replikovat příkazem Import.... Vždy se replikuje vše, co je v souboru monographs.txt, resp. periodicals.txt.
+Před zahájením replikace je třeba v Krameriovi 3 založit replikační instituci, která bude použita pro replikaci a která je v Krameriovi 4 definována v konfiguračním souboru migration.properties. V Krameriovi 3 je také potřeba povolit přístup z IP adresy serveru Krameria4.
 
-Před zahájením replikace je ještě třeba v Krameriovi 3 založit replikační instituci, která bude použita pro replikaci a která je v Krameriovi 4 definována v konfiguračním souboru migration.properties. Všem dokumentům, které chcete z Krameria 3 replikovat, musíte také pro tuto rpelikační instituci nastavit potřebná replikační práva. Abyste tento krok nemuseli dělat ručně pro velké množství dokumentů, Kramerius 4 nabízí příkaz K3 - replikační práva, který v jedné dávce nastaví potřebná práva k replikaci pro všechny dokumenty. 
+Pro tuto replikační instituci si poznamenejte sigla, login a heslo a zadejte je v migration.properties do properties k3.replication.sigla, k3.replication.login a k3.replication.password. Heslo je třeba zadat tak, jak je interně uloženo v databázi K3, tedy jako hashcode. 
+
+Do property k3.replication.url v migration.properties zadejte URL replikačního rozhraní Krameria 3 ve tvaru http://...
+
+Některé informace, které jsou potřebné ke konverzi dat z Krameria 3 do Krameria 4, bohužel nejsou dostupné přes replikační rozhraní, ale musí se získávat přímo z databáze Krameria 3. V migration.properties tedy musíte nastavit přístupové údaje do databáze Krameria3 v properties:
+  k3.db.driver=org.postgresql.Driver
+
+  k3.db.url=jdbc:postgresql://...
+
+  k3.db.user=...
+
+  k3.db.password=...
+
+V konfiguraci databázového serveru Krameria 3 je také potřeba povolit vzdálený přístup z IP adresy serveru Krameria 4.
+
+Všem dokumentům, které chcete z Krameria 3 replikovat, musíte také pro tuto replikační instituci nastavit potřebná replikační práva. Abyste tento krok nemuseli dělat ručně v GUI Krameria 3 pro velké množství dokumentů, Kramerius 4 nabízí příkaz * K3 - replikační práva, * který v jedné dávce nastaví potřebná práva k replikaci pro všechny dokumenty. 
+
+
+Seznam všech identifikátorů dokumentů obsažených v Krameriovi 3 můžete získat spuštěním příkazu  * K3 - seznam identifikátorů * (proces Enumerator). Připojí se k databázi Krameria 3 a do souborů monographs.txt a periodicals.txt vypíše její kompletní obsah (interní ID pro monografie, ISSN a ročník pro periodika - toto jsou údaje, se kterými umí pracovat replikační rozhraní K3). Vytvořené soubory můžete přejmenovat a rozdělit na menší kusy a řídit tak, po jakých  úsecích se bude replikovat příkazem Import.... Vždy se replikuje vše, co je v souboru monographs.txt, resp. periodicals.txt.
+
 
 == Manuální import dokumentů ve formátu DTD Krameria 3 ==
 
