@@ -266,7 +266,7 @@ deepZoom.tileSize=512
 ## Deep zoom JPEG quality (1.0 is best, 0.0 is worst
 deepZoom.jpegQuality=0.9
 
-## How many steps over one tile (how big should be original 
+## How many steps over one tile  
 deepZoom.numberStepsOverTile=1
 
 ## Global flag for enabling deepZoom
