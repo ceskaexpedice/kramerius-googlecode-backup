@@ -275,7 +275,7 @@ deepZoom.deepZoomEnabled=false
 ## Deep zoom for one uuid (accepts all models - )
 #deepZoom.4308eb80-b03b-11dd-a0f6-000d606f5dc6.deepZoomEnabled=true
 
-## connection to fedora 3 
+## connection to fedora 3 - used by external processes - GenerateDeepZoomTiles, deleteGeneratedDeepZoomFiles and generateFullThumb
 fedora3.connectionURL=jdbc:postgresql://localhost/fedora3
 fedora3.connectionUser=${fedoraUser}
 fedora3.connectionPass=${fedoraPass}
