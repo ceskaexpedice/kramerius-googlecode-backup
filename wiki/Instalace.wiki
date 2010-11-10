@@ -146,6 +146,14 @@ do server.xml přidat URIEncoding:
                connectionTimeout="20000" URIEncoding="UTF-8"
                redirectPort="8443" />
 }}}
+a povolit jednotné přihlašování:
+{{{
+<Host name="localhost" ...>
+  ...
+  <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+  ...
+</Host>
+}}}
 
 Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kramerius4 je vytvořen adresář .kramerius4 a v něm prázdné soubory configuration.properties, indexer.properties a migration.properties. Popis viz [Konfigurace].
 
