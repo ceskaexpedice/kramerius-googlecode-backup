@@ -364,6 +364,20 @@ FOXMLFormat=info:fedora/fedora-system:FOXML-1.1
 _ext_configuration_file_name=indexer.properties
 }}}
 
+=Integrace s IIP serverem=
+IIPImage(http://iipimage.sourceforge.net) je server, který umožňuje podávat dlaždlice a zmenšeniny obrazků pro formáty JPEG2000 a TIFF a zároveň podporuje protokoly DeepZoom a IIP. 
+
+Kramerius je možné s tímto produktem integrovat. V tomto případě funguje kramerius jako prostředník, zmenšeniny obrázků a dlaždice dodavá image server.
+ 
+
+==Popis nastavení==
+Samotná integrace spočívá pouze v nastavení dvou vlastností.  První je fedoraDataFolderOnIIPServer. Ta má uzkazovat na adresář kde leží surová data fedory. Pokud se jedná o standardní instalaci, pak data leží v domovskem adresari fedory v podresari data.  (.../fedora/data).  IIP server je možné provozovat i na jiném počítači, pak se musí data zpřístupnit pomocí nějakeho mechanismu pro sdilení souboru (smbfs,nfs, apod..)
+ 
+Další vlastnost je adresa na které bězí server a skript realizujicí samotný IIPServer. Tato adresa zaleží na typu a konfiguraci serveru. Standardní url pro server lighttpd je  http://XX.XX.XX.XX/fcgi-bin/iipsrv.fcgi. 
+
+
+
+
 =Přístupová práva uživatelů=
 Přístup k administrátorským funkcím je kontrolován na úrovni aplikačního serveru standardním mechanismem přiřazení potřebných rolí příslušným uživatelům. Správa uživatelských účtů a rolí je specifická pro použitý aplikační server, např. ve výchozí instalaci serveru Tomcat se provádí editací souboru tomcat-users.xml v adresáři conf.
 
