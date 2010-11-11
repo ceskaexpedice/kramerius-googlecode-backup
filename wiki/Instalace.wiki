@@ -380,7 +380,7 @@ Kramerius je možné s tímto produktem integrovat. V tomto případě funguje k
 
 ==Popis nastavení==
 
-Samotná integrace spočívá pouze v nastavení dvou vlastností.  První je `fedoraDataFolderOnIIPServer`. Ta má uzkazovat na adresář kde leží surová data fedory. Pokud se jedná o standardní instalaci, pak data leží v domovskem adresari fedory v podresari data.  (..../fedora/data).  IIP server je možné provozovat i na jiném počítači, pak se musí data zpřístupnit pomocí nějakeho mechanismu pro sdilení souboru (smbfs,nfs, apod..)
+Samotná integrace spočívá pouze v nastavení dvou vlastností.  První je `fedoraDataFolderOnIIPServer`. Ta má uzkazovat na adresář kde leží surová data fedory. Pokud se jedná o standardní instalaci, pak data leží v domovském adresáři fedory v podresáři data.  (..../fedora/data).  IIP server je možné provozovat i na jiném počítači, pak se musí data zpřístupnit pomocí nějakého mechanismu pro sdilení souboru (smbfs,nfs, apod..)
 
  
 Další vlastnost je adresa na které bězí server a skript realizujicí samotný IIPServer: `UrlOfIIPserver`. Adresa zaleží na typu a konfiguraci serveru. U serveru lighttpd byva obvykla adresa http://XX.XX.XX.XX/fcgi-bin/iipsrv.fcgi
