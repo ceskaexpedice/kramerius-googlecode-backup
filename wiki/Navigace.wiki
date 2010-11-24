@@ -7,5 +7,3 @@
 * [MenuAdministrace Administrace]
 
 * [Data Datový model]
-
-* [Vyvoj Vývoj]
