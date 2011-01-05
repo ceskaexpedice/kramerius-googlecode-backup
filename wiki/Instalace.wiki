@@ -7,7 +7,7 @@ Před instalací aplikace Kramerius 4 je třeba nainstalovat následující komp
 
   * JDK 1.6
   * J2EE server nebo servlet kontejner (popsaná instalace předpokládá Apache Tomcat 6)
-  * Postgres 8, vytvořit uživatele fedoraAdmin a databáze fedora3 a kramerius4
+  * Postgres 8, vytvořit uživatele fedoraAdmin a pro něj databáze fedora3, kramerius4 a riTriples
 
 Operační systém může být libovolný, na kterém je možno tyto komponenty provozovat, vlastní aplikace Kramerius 4 žádné speciální požadavky na systém nemá. Hardware serveru musí být dimenzován na uvažované množství dat, doporučujeme minimálně dvojnásobnou velikost pevného disku, než je plánovaná velikost obrazových dat. Vzhledem k velké paměťové náročnosti práce s grafickými daty (náhledy stránek, zoomování) je třeba i při minimálním provozu aplikace alespoň 4GB RAM. 
 
@@ -92,6 +92,8 @@ Po instalaci fedory je třeba do souboru fedora.fcfg do sekce module: resource i
       <comment>Alias for OAI</comment>
  </param>
 }}}
+
+V téže sekci (resource index) je třeba změnit u parametru datastore hodnotu na localPostgresMPTTriplestore. V sekci localPostgresMPTTriplestore je třeba nastavit databázové heslo na heslo, které jste přiřadili uživateli fedoraAdmin. 
 
 Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat omezení přístupu  deny-apim-if-not-localhost.xml (ve složce data/fedora-xacml-policies/repository-policies). 
 Přes administrátorské rozhraní fedory je třeba naimportovat FOXML objekty obsažené v SVN K4 v modulu installation/fedora (https://kramerius.googlecode.com/svn/trunk/installation/fedora). *Před importem je nutné provést konfiguraci [#Fedora_model OAI Fedora modelu].*
