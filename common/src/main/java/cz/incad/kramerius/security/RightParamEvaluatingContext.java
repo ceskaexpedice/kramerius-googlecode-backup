@@ -16,7 +16,40 @@
  */
 package cz.incad.kramerius.security;
 
-public interface UserManager {
+import org.w3c.dom.Document;
 
-    public User validateUser(String loginName, String passwd);
+import cz.incad.kramerius.FedoraAccess;
+
+/**
+ * Implementation of this interface holds information 
+ * necessary for interpreting rule (current uuid, current user, fed 
+ * @author pavels
+ */
+public interface RightParamEvaluatingContext {
+
+    /**
+     * UUID of the object
+     * @return
+     */
+    public String getUUID();
+    
+    /**
+     * Returns path from leaf to root tree
+     * @return
+     */
+    public String[] getPathOfUUIDs();
+    
+    /**
+     * Current logged user
+     * @return
+     * @see AbstractUser
+     */
+    public AbstractUser getUser();
+    
+    /**
+     * Fedora access
+     * @return
+     */
+    public FedoraAccess getFedoraAccess();
+    
 }

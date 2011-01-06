@@ -16,7 +16,9 @@
  */
 package cz.incad.kramerius.security;
 
-public interface UserManager {
+import com.google.inject.Provider;
 
-    public User validateUser(String loginName, String passwd);
+public interface UserProvider extends Provider<AbstractUser>{
+
+    
 }

@@ -16,7 +16,10 @@
  */
 package cz.incad.kramerius.security;
 
-public interface UserManager {
+/**
+ * Represents group of users
+ * @author pavels
+ */
+public interface Group  extends AbstractUser {
 
-    public User validateUser(String loginName, String passwd);
 }

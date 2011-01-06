@@ -25,46 +25,31 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import cz.incad.kramerius.FedoraAccess;
-import cz.incad.kramerius.SolrAccess;
 import cz.incad.kramerius.security.AbstractUser;
-import cz.incad.kramerius.security.RightCriteriumContext;
+import cz.incad.kramerius.security.RightParamEvaluatingContext;
 import cz.incad.kramerius.security.User;
 import cz.incad.kramerius.utils.solr.SolrUtils;
 
-public class RightParamEvaluatingContextImpl implements RightCriteriumContext {
+public class RightParamEvaluatingContextImpl implements RightParamEvaluatingContext {
 
-    private String requestedUUID;
-    private String associatedUUID;
+    private String uuid;
     private User user;
     private FedoraAccess fedoraAccess;
-    private SolrAccess solrAccess;
     
-    private String remoteHost;
-    private String remoteAddr;    
-    
-    public RightParamEvaluatingContextImpl(String reqUUID, User user, FedoraAccess fedoraAccess, SolrAccess solrAccess, String remoteHost, String remoteAddr) {
+    public RightParamEvaluatingContextImpl(String uuid, User user, FedoraAccess fedoraAccess) {
         super();
-        this.requestedUUID = reqUUID;
+        this.uuid = uuid;
         this.user = user;
         this.fedoraAccess = fedoraAccess;
-        this.solrAccess = solrAccess;
-        this.remoteHost = remoteHost;
-        this.remoteAddr = remoteAddr;
     }
 
     @Override
-    public String getRequestedUUID() {
-        return this.requestedUUID;
-    }
-
-    
-    @Override
-    public String getAssociatedUUID() {
-        return this.associatedUUID;
+    public String getUUID() {
+        return this.uuid;
     }
 
     @Override
-    public User getUser() {
+    public AbstractUser getUser() {
         return this.user;
     }
 
@@ -73,34 +58,20 @@ public class RightParamEvaluatingContextImpl implements RightCriteriumContext {
         return this.fedoraAccess;
     }
 
-    
-    
-    @Override
-    public void setAssociatedUUID(String uuid) {
-        this.associatedUUID = uuid;
-    }
-
     @Override
     public String[] getPathOfUUIDs() {
         try {
-            Document solrData = this.solrAccess.getSolrDataDocumentByUUID(getRequestedUUID());
+            Document solrData = SolrUtils.getSolrData(getUUID());
             return SolrUtils.disectPidPath(solrData).split("/");
         } catch (IOException e) {
+            throw new IllegalStateException(e);
+        } catch (ParserConfigurationException e) {
+            throw new IllegalStateException(e);
+        } catch (SAXException e) {
             throw new IllegalStateException(e);
         } catch (XPathExpressionException e) {
             throw new IllegalStateException(e);
         }
     }
-
-    @Override
-    public String getRemoteHost() {
-        return this.remoteHost;
-    }
-
-    @Override
-    public String getRemoteAddr() {
-        return this.remoteAddr;
-    }
-
     
 }

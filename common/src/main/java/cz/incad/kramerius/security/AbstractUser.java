@@ -16,7 +16,15 @@
  */
 package cz.incad.kramerius.security;
 
-public interface UserManager {
+/**
+ * This interface represents abstract user
+ * @author pavels
+ */
+public interface AbstractUser {
 
-    public User validateUser(String loginName, String passwd);
+    /**
+     * Returns unique identfier of user
+     * @return
+     */
+    public int getId();
 }
