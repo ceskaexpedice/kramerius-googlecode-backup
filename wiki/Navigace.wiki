@@ -8,6 +8,6 @@
 
 * [Data Datový model]
 
-* [Zápisy z porad]
+* [ZapisyZPorad Zápisy z porad]
 
-* [Plánovaný rozvoj]
+* [PlanovanyRozvoj Plánovaný rozvoj]
