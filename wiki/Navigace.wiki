@@ -8,6 +8,7 @@
 
 * [Data Datový model]
 
-* [http://domain/page Zapisy z porad] 
+* [http://www.incad.cz/kramerius4/
+ Zapisy z porad] 
 
 * [PlanovanyRozvoj Plánovaný rozvoj]
