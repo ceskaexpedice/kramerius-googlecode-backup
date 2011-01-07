@@ -8,6 +8,6 @@
 
 * [Data Datový model]
 
-* [ZapisyZPorad Zápisy z porad]
+* [http://domain/page Zapisy z porad] 
 
 * [PlanovanyRozvoj Plánovaný rozvoj]
