@@ -1,1 +1,1 @@
-[http://domain/page label]zapis 
+[http://domain/page zapis] 
