@@ -9,8 +9,6 @@ import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 
-import cz.incad.Kramerius.security.GuiceSecurityModule;
-
 public class GuiceConfigBean extends GuiceServletContextListener {
 
 	public GuiceConfigBean() {
@@ -27,10 +25,7 @@ public class GuiceConfigBean extends GuiceServletContextListener {
 
 	@Override
 	protected Injector getInjector() {
-		Injector injector = Guice.createInjector(new BaseModule(), // base module
-		                                            new GuiceSecurityModule(), // security 
-		                                            new LongRunninProcessModul(), // for long running processes
-		                                            new ServletModule());
+		Injector injector = Guice.createInjector(new BaseModule(), new LongRunninProcessModul(), new ServletModule());
 	    return injector;
 	}
 }

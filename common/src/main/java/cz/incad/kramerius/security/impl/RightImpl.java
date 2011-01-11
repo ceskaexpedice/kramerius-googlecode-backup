@@ -18,21 +18,21 @@ package cz.incad.kramerius.security.impl;
 
 import cz.incad.kramerius.security.AbstractUser;
 import cz.incad.kramerius.security.Right;
-import cz.incad.kramerius.security.RightCriterium;
-import cz.incad.kramerius.security.RightCriteriumException;
-import cz.incad.kramerius.security.RightCriteriumContext;
-import cz.incad.kramerius.security.EvaluatingResult;
+import cz.incad.kramerius.security.RightParam;
+import cz.incad.kramerius.security.RightParamEvaluateContextException;
+import cz.incad.kramerius.security.RightParamEvaluatingContext;
 
 public class RightImpl implements Right {
     
-    private RightCriterium crit;
+    
+    private RightParam param;
     private String uuid;
     private String action;
     private AbstractUser user;
     
-    public RightImpl(RightCriterium crit, String uuid, String action, AbstractUser user) {
+    public RightImpl(RightParam param, String uuid, String action, AbstractUser user) {
         super();
-        this.crit = crit;
+        this.param = param;
         this.uuid = uuid;
         this.action = action;
         this.user = user;
@@ -48,13 +48,13 @@ public class RightImpl implements Right {
         return this.action;
     }
 
-    public void setParam(RightCriterium param) {
-        this.crit = param;
+    public void setParam(RightParam param) {
+        this.param = param;
     }
 
     @Override
-    public RightCriterium getCriterium() {
-        return this.crit;
+    public RightParam getParam() {
+        return this.param;
     }
 
     public AbstractUser getUser() {
@@ -63,21 +63,14 @@ public class RightImpl implements Right {
     
     
     @Override 
-    public synchronized EvaluatingResult evaluate(RightCriteriumContext ctx) throws RightCriteriumException {
-        if (this.crit != null){
-            this.crit.setEvaluateContext(ctx);
-            EvaluatingResult result = this.crit.evalute();
-            this.crit.setEvaluateContext(null);
-            return result;
-        // kdyz neni zadne kriterium, pak je akce povolena
-        } else return EvaluatingResult.TRUE;
+    public synchronized boolean evaluate(RightParamEvaluatingContext ctx) throws RightParamEvaluateContextException {
+        if (this.param != null){
+            this.param.setEvaluateContext(ctx);
+            boolean evaluted = this.param.evalute();
+            this.param.setEvaluateContext(null);
+            return evaluted;
+        } else return true;
     }
 
-    @Override
-    public String toString() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("["+this.uuid+"] "+this.crit!=null?this.crit.toString():"");
-        return buffer.toString();
-    }
 }
 

@@ -18,8 +18,6 @@ package cz.incad.kramerius.security;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -41,63 +39,55 @@ import com.google.inject.name.Names;
 
 import cz.incad.kramerius.AbstractGuiceTestCase;
 import cz.incad.kramerius.FedoraAccess;
-import cz.incad.kramerius.security.database.SecurityDatabaseUtils;
-import cz.incad.kramerius.security.impl.ClassRightCriterium;
+import cz.incad.kramerius.security.impl.ClassRightParam;
+import cz.incad.kramerius.security.impl.MovingWallRightParam;
 import cz.incad.kramerius.security.impl.RightImpl;
-import cz.incad.kramerius.security.impl.RightCriteriumContextFactoryImpl;
-import cz.incad.kramerius.security.impl.criteria.MovingWall;
+import cz.incad.kramerius.security.impl.RightParamEvaluatingContextFactoryImpl;
 import cz.incad.kramerius.utils.XMLUtils;
 
 public class MovingWallExample extends AbstractGuiceTestCase {
     
     @Test
-    public void testMovingWall() throws IOException, ParserConfigurationException, SAXException, RightCriteriumException {
+    public void testMovingWall() throws IOException, ParserConfigurationException, SAXException, RightParamEvaluateContextException {
         Injector injector = injector();
-        
-//        String command = SecurityDatabaseUtils.stGroup().getInstanceOf("findRight").toString();
-//        System.out.println(command);
-        
         FedoraAccess fedoraAccess = injector.getInstance(Key.get(FedoraAccess.class, Names.named("securedFedoraAccess")));
         RightsManager rman = injector.getInstance(RightsManager.class);
 
         Document dcPageDoc = XMLUtils.parseDocument(new ByteArrayInputStream(getDrobnustkyDC().getBytes()), true);
+        String uuid = "aaa-bbb-ccc";
+        String action = "thumbViewer";
         User user = createPavelStastny();
 
-        List<String> uuids = new ArrayList<String>() {{
-            add("uuid:page");
-            add("uuid:periodicalitem");
-            add("uuid:periodicalvolume");
-            add("uuid:peridodical");
-            add("uuid:repository");
-        }};
+        ClassRightParam param = new ClassRightParam(MovingWallRightParam.class);
+        RightImpl rightImpl = new RightImpl(param, uuid, action, user);
 
-        ClassRightCriterium crit = new ClassRightCriterium(MovingWall.class);
-        RightImpl rightImpl = new RightImpl(crit, uuids.get(0), "readPreview", user);
-        crit.setObjects(new Object[] {"1966"});
-        
-        EasyMock.expect(rman.findRights((String[]) uuids.toArray(new String[uuids.size()]), "readPreview", user)).andReturn(new Right[] {rightImpl});
+        EasyMock.expect(rman.findRight(uuid, action, user)).andReturn(rightImpl);
         EasyMock.replay(rman);
 
-        EasyMock.expect(fedoraAccess.getDC("uuid:page")).andReturn(dcPageDoc);
+        EasyMock.expect(fedoraAccess.getDC(uuid)).andReturn(dcPageDoc);
         EasyMock.replay(fedoraAccess);
         
         
-        RightCriteriumContext ctx = injector.getInstance(RightCriteriumContextFactory.class).create("uuid:page", user, "", "");
-        ctx.setAssociatedUUID(uuids.get(uuids.size() - 1));
-        EvaluatingResult result = rightImpl.evaluate(ctx);
-        System.out.println(result);
+        RightsManager expectedRMan = injector.getInstance(RightsManager.class);
+        Right foundRight = expectedRMan.findRight(uuid, action, user);
         
+        RightParamEvaluatingContext ctx = injector.getInstance(RightParamEvaluatingContextFactory.class).create(uuid, user);
         
-//        TestCase.assertNotNull(ctx.getFedoraAccess());
-//        TestCase.assertNotNull(ctx.getRequestedUUID());
-//        TestCase.assertNotNull(ctx.getUser());
-//        TestCase.assertNotNull(foundRight);
-        
+        TestCase.assertNotNull(ctx.getFedoraAccess());
+        TestCase.assertNotNull(ctx.getUUID());
+        TestCase.assertNotNull(ctx.getUser());
+        TestCase.assertNotNull(foundRight);
+
+        // evaluate rightParam
+        boolean evaluated = foundRight.evaluate(ctx);
+
+        TestCase.assertTrue(evaluated);
+    
     }
 
     @Override
     protected Injector injector() {
-        return Guice.createInjector(new MocksGuiceModule());
+        return Guice.createInjector(new SecurityGuiceModule());
     }
 
     
@@ -107,14 +97,6 @@ public class MovingWallExample extends AbstractGuiceTestCase {
             public int getId() {
                 return 222;
             }
-
-            
-            @Override
-            public Group[] getGroups() {
-                // TODO Auto-generated method stub
-                return null;
-            }
-
 
             @Override
             public String getFirstName() {
@@ -152,13 +134,6 @@ public class MovingWallExample extends AbstractGuiceTestCase {
                 return null;
             }
 
-            
-            @Override
-            public Group[] getGroups() {
-                // TODO Auto-generated method stub
-                return null;
-            }
-
             @Override
             public String getSurname() {
                 // TODO Auto-generated method stub
@@ -191,13 +166,6 @@ public class MovingWallExample extends AbstractGuiceTestCase {
 
             @Override
             public String getSurname() {
-                // TODO Auto-generated method stub
-                return null;
-            }
-
-            
-            @Override
-            public Group[] getGroups() {
                 // TODO Auto-generated method stub
                 return null;
             }

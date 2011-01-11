@@ -16,7 +16,26 @@
  */
 package cz.incad.kramerius.security;
 
-public interface UserManager {
+public class RightParamEvaluateContextException extends Exception {
 
-    public User validateUser(String loginName, String passwd);
+    public RightParamEvaluateContextException() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+    public RightParamEvaluateContextException(String message, Throwable cause) {
+        super(message, cause);
+        // TODO Auto-generated constructor stub
+    }
+
+    public RightParamEvaluateContextException(String message) {
+        super(message);
+        // TODO Auto-generated constructor stub
+    }
+
+    public RightParamEvaluateContextException(Throwable cause) {
+        super(cause);
+        // TODO Auto-generated constructor stub
+    }
+    
 }

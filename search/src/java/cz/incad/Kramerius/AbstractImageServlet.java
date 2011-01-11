@@ -156,6 +156,7 @@ public abstract class AbstractImageServlet extends GuiceServlet {
 	    }
 	}
 	
+	
 	protected boolean isIIPServerConfigured() {
 	    return !configuration.getUrlOfIIPServer().equals("");
 	}

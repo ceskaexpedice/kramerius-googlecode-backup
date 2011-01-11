@@ -16,7 +16,8 @@
  */
 package cz.incad.kramerius.security;
 
-public interface UserManager {
 
-    public User validateUser(String loginName, String passwd);
+public interface RightParamFactory {
+    
+    public RightParam create(int paramId, String qname, int type);
 }

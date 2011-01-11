@@ -28,10 +28,13 @@ import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 public class SecurityDatabaseUtils {
 
     static java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(SecurityDatabaseUtils.class.getName());
+    
 
     public static StringTemplateGroup stGroup() {
         InputStream is = SecurityDatabaseUtils.class.getResourceAsStream("database.stg");
         StringTemplateGroup grp = new StringTemplateGroup(new InputStreamReader(is), DefaultTemplateLexer.class);
         return grp;
     }
+
+    
 }

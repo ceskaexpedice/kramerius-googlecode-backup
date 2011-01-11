@@ -23,7 +23,6 @@ public class FedoraDatabaseUtils {
 	
 	public static List<String> getRelativeDataStreamPath(String uuid, Provider<Connection> provider) throws SQLException {
 		String dataStreamPath = getDataStreamPath(uuid, provider);
-		LOGGER.info("datastream path is '"+dataStreamPath+"'");
 		List<String> folderList = new ArrayList<String>();
         File currentFile = new File(dataStreamPath);
         while(!currentFile.getName().equals("data")) {
@@ -42,17 +41,15 @@ public class FedoraDatabaseUtils {
 	 */
     public static String getDataStreamPath(String uuid, Provider<Connection> provider) throws SQLException {
         String sql = "select * from datastreampaths where token like ? order by tokendbid ASC";
-        List<String> returnList = new JDBCQueryTemplate<String>(provider.get()){
+        List<String> returnList = new JDBCQueryTemplate<String>(provider){
             @Override
             public boolean handleRow(ResultSet rs, List<String> returnsList) throws SQLException {
                 String path = rs.getString("path");
-                LOGGER.info("path column in rs '"+path+"'");
                 returnsList.add(path);
                 return super.handleRow(rs, returnsList);
             }
             
-        }.executeQuery(sql, "uuid:"+uuid+"+IMG_FULL+%");
-        LOGGER.info("returning list is :"+returnList);
+        }.executeQuery(sql, "uuid:"+uuid+"+IMG_FULL%");
         return (returnList != null && !returnList.isEmpty()) ? returnList.get(0) : null;
     }	
 }
