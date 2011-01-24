@@ -92,21 +92,29 @@ Příkaz Správa dlouhotrvajících procesů v menu administrace otevře okno se
 V posledním sloupci tabulky procesů jsou k dispozici kontextové operace. Kliknutím na příkaz Logs otevřete v samostatném okně detailní informace o jeho běhu (logy). Některé typy procesů ale mohou mít kromě  logů vlastní typ výstupu - to je případ procesu Replikace, kde je seznam úspěšně a neúspěšně importovaných titulů. Procesy ve stavu PLANNED nebo RUNNING je možno ukončit kliknutím na příkaz Kill v příslušném řádku.
 
 ===Definice procesu===
-Všechny procesy jsou definovány ve speciálním xml souboru (který je uživatelsky rozšiřitelný - uživatel může definovat vlastní procesy případně předefinovavat existující). V definicích procesu jsou všechny náležitosti potřebné ke spuštění. Ukázka definice procesu:
+Všechny procesy jsou definovány v souboru lp.st, který je součástí distribučního war souboru. Obsah definičního souboru procesů najdete v úložišti SVN na této adrese: [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/processes/res/lp.st]  
+
+(Definice procesů jsou rozšiřitelné - administrátor může definovat vlastní procesy případně předefinovavat existující. K tomu slouží textový soubor {user_home}/.kramerius4/lp.xml. Jeho syntaxe je stejná, jako u "vestavěného" souboru lp.st. Pokud obsahuje definici procesu se stejným id, tato definice přepisuje odpovídající definici v lp.st). 
+
+V definicích procesu jsou všechny náležitosti potřebné ke spuštění. Ukázka definice procesu:
 {{{
-<process>
+<processes>
+        <process>
 		<!-- Identifikator procesu -->
 		<id>replikator_monographs</id>
 		<description> ... </description>
 		<mainClass>org.kramerius.Replicate</mainClass>
+                <!--soubor standardniho vystupu-->
 		<standardOs>lrOut</standardOs>
+                <!--soubor chyboveho vystupu-->
 		<errOs>lrErr</errOs>
 		<!-- Parametry predavane JVM -->		
 		<javaProcessParameters>-Xmx512m -Xms256m</javaProcessParameters>
 		<!-- Parametry predavane samotnemu procesu -->
 		<parameters>monographs</parameters>
 		...
-</process>
+        </process>
+</processes>
 }}}
 
 
