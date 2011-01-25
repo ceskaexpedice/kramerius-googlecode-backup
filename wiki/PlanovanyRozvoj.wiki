@@ -22,4 +22,4 @@
 
 * Tisk do fronty ze serveru
 
-Mezi další plány rozvoje patří například Doporučování
+Mezi další plány a návrhy rozvoje patří například Doporučování dokumentů, Zobrazení četnosti užití (počet zobrazení, exportu pdf), Zobrazit informace o aktivitě uživatelů (Dotazy, Počty)
