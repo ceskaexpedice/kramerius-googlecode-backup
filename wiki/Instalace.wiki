@@ -664,3 +664,56 @@ Pro povolení přístupu ke všem administrátorským operacím je uživateli mo
 Pro řízení přístupu na úroveň jednotlivých administrátorských procesů je třeba uživateli přiřadit roli odpovídající identifikátoru příslušného procesu. K dispozici jsou následující role:
 
 static_export_CD, reindex, replikator_monograph, replikator_periodicals, enumerator, replicationrights, setpublic, setprivate, delete, export, convert, import
+
+
+=Nová správa uživatelů=
+ 
+(dočasné poznámky)
+
+tomcat:
+do lib přidat security-core.jar
+povolit single sign on v server.xml <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+do conf/Catalina/localhost přidat soubory search.xml a rightseditor.xml s tímto obsahem
+{{{
+
+<Context>
+	<Realm className="org.apache.catalina.realm.JAASRealm"                 
+		appName="search"       
+		userClassNames="cz.incad.kramerius.security.jaas.K4UserPrincipal"       
+		roleClassNames="cz.incad.kramerius.security.jaas.K4RolePrincipal"
+		debug="99"/>
+</Context>
+
+}}}
+
+fedora
+
+do server/config/jaas.conf přidat:
+{{{
+search {
+ cz.incad.kramerius.security.jaas.K4LoginModule required debug=true;
+};
+
+
+rightseditor {
+ cz.incad.kramerius.security.jaas.K4LoginModule required debug=true;
+};
+
+}}}
+
+do .kramerius4 přidat mail.properties s obsahem:
+
+{{{
+mail.smtp.user=hudlibudli@gmail.com
+mail.smtp.pass=blablabla
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=465
+mail.smtp.starttls.enable=true
+mail.smtp.auth=true
+mail.smtp.socketFactory.port=465
+mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+mail.smtp.socketFactory.fallback=false
+}}}
+
+
+v databázi kramerius4 vytvořit tabulky pomocí skriptu initsecdb.sql (v projektu common)
