@@ -1,0 +1,25 @@
+group javascript; 
+
+dictionary(resourceBundle) ::=<<
+ var dictionary = {$resourceBundle.keys:{key|'$key$':'$resourceBundle.(key)$'};separator=","$ };
+>>
+
+
+levelModelsSelection(data) ::=<<
+var levelModelsSelection = new Array(); 
+$data.keys:{key| levelModelsSelection['$key$']='$data.(key)$'};separator=";"$;
+
+function setSelection(level, model, uuid) {
+	var oldUuid = levelModelsSelection[level+"_"+model];
+	levelModelsSelection[level+"_"+model]=uuid;
+	if (oldUuid != null) {
+		\$("._data_x_ipchecked").each(function(i, elm) {
+			var oldText = \$(elm).text();
+			if (oldText == oldUuid) {
+				\$(elm).text(uuid);
+			}
+		});
+	}
+}
+
+>>
