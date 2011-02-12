@@ -636,18 +636,38 @@ FOXMLFormat=info:fedora/fedora-system:FOXML-1.1
 _ext_configuration_file_name=indexer.properties
 }}}
 
-=Integrace s IIP serverem=
-IIPImage(http://iipimage.sourceforge.net) je server, který umožňuje podávat dlaždlice a zmenšeniny obrazků pro formáty JPEG2000 a TIFF a zároveň podporuje protokoly DeepZoom a IIP. 
+=Podpora protokolu deepZoom=
+Kromě standardního zobrazení obrázků má aplikace kramerius4 možnost prezentovat je pomocí prohlížečky seadragon(http://www.zoom.it). V tomto případě je zapotřebí krameria nakonfiguruovat. Jsou dvě možnosti: 
 
-Kramerius je možné s tímto produktem integrovat. V tomto případě funguje kramerius jako prostředník, zmenšeniny obrázků a dlaždice dodavá image server.
- 
+==1)Využít produkt IIP server (http://iipimage.sourceforge.net).==
 
-==Popis nastavení==
+Zde slouží kramerius jako prostředník. Klientské dotazy na jednotlivé dlaždice přeposílá IIP serveru a sám se stará pouze o autorizaci požadavku. Konfigurace adresy serveru pro dlaždice je uložena v metadatech ve streamu RELS-EXT. Konkrétně se jedná o  literál 
+<kramerius4:tiles-url>. Hodnotou literálu je přímo URL na zoomovaný obrázek. 
 
-Samotná integrace spočívá pouze v nastavení dvou vlastností.  První je `fedoraDataFolderOnIIPServer`. Ta má uzkazovat na adresář kde leží surová data fedory. Pokud se jedná o standardní instalaci, pak data leží v domovském adresáři fedory v podresáři data.  (..../fedora/data).  IIP server je možné provozovat i na jiném počítači, pak se musí data zpřístupnit pomocí nějakého mechanismu pro sdilení souboru (smbfs,nfs, apod..)
+Příklady definic v RELS-EXT:
 
- 
-Další vlastnost je adresa na které bězí server a skript realizujicí samotný IIPServer: `UrlOfIIPserver`. Adresa zaleží na typu a konfiguraci serveru. U serveru lighttpd byva obvykla adresa http://XX.XX.XX.XX/fcgi-bin/iipsrv.fcgi
+<kramerius4:tiles-url>http://192.168.1.1/fcgi-bin/iipsrv.fcgi?DeepZoom=/mzk03/001/042/654/2619265924.jp2</kramerius4:tiles>
+
+<kramerius4:tiles-url>http://imageserver.mzk.cz/mzk03/001/066/607/2619320306/1</kramerius4:tiles-url>
+
+Pokud je obrázek ve fedoře uložen jako "Managed Content Stream"  je potřeba do URL dopropagovat fyzickou adresu souboru. Kramerius 4 umožňuje získat relativní adresu streamu pomocí interpretované proměnné $internalstream$,která může být přímo součástí URL adresy. Adresa je raltivní vůči kořenovému adresáři fedory, kde fedora uchovává data. Standardně se tento kořenový adresář nachází <FEDORA_HOME>/data
+
+Příklad definice v RELS-EXT: 
+
+<kramerius4:tiles-url>http://192.168.1.1/fcgi-bin/iipsrv.fcgi?DeepZoom=/mnt/fedora_data_folder/$internalstream$</kramerius4:tiles-url>
+
+Pozn.: Předpokládá se, že IIP server má datový adresář fedory připojený jako /mnt/fedora_data_folder/
+
+
+==2) Systémem kramerius si vygenerovat soubory do interní cache.==
+V tomto případě je nutné mít v literálu kramerius4:tiles-url mít uvedenou konstantu 
+kramerius4://deepZoomCache. 
+
+Příklad:
+
+<kramerius4:tiles-url>kramerius4://deepZoomCache</kramerius4:tiles-url>
+
+Pozn. Je samozřejmě nutné cache naplnit a to akcí "Generování Deep Zoom Cache...".  
 
 
 ==Verze IIP serveru==
@@ -655,6 +675,8 @@ Další vlastnost je adresa na které bězí server a skript realizujicí samotn
 Standardní IIP server rozeznává typy souborů dle koncovky. Aby mohl podávat soubory, které nemají koncovky (např. datastreamy z fedory) bylo potřeba udělat zásah do serveru.  Pozměněnou verzi IIP serveru je možné najít zde: 
 
 http://iris.mzk.cz/iipimage.tar.bz2 
+
+
 
 =Přístupová práva uživatelů=
 Přístup k administrátorským funkcím je kontrolován na úrovni aplikačního serveru standardním mechanismem přiřazení potřebných rolí příslušným uživatelům. Správa uživatelských účtů a rolí je specifická pro použitý aplikační server, např. ve výchozí instalaci serveru Tomcat se provádí editací souboru tomcat-users.xml v adresáři conf.
