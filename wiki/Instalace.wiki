@@ -639,7 +639,7 @@ _ext_configuration_file_name=indexer.properties
 =Podpora protokolu deepZoom=
 Kromě standardního zobrazení obrázků má aplikace kramerius4 možnost prezentovat je pomocí prohlížečky seadragon(http://www.zoom.it). V tomto případě je zapotřebí krameria nakonfiguruovat. Jsou dvě možnosti: 
 
-==1)Využít produkt IIP server (http://iipimage.sourceforge.net).==
+ * Využít produkt IIP server (http://iipimage.sourceforge.net).
 
 Zde slouží kramerius jako prostředník. Klientské dotazy na jednotlivé dlaždice přeposílá IIP serveru a sám se stará pouze o autorizaci požadavku. Konfigurace adresy serveru pro dlaždice je uložena v metadatech ve streamu RELS-EXT. Konkrétně se jedná o  literál 
 <kramerius4:tiles-url>. Hodnotou literálu je přímo URL na zoomovaný obrázek. 
@@ -650,7 +650,7 @@ Příklady definic v RELS-EXT:
 
 <kramerius4:tiles-url>http://imageserver.mzk.cz/mzk03/001/066/607/2619320306/1</kramerius4:tiles-url>
 
-Pokud je obrázek ve fedoře uložen jako "Managed Content Stream"  je potřeba do URL dopropagovat fyzickou adresu souboru. Kramerius 4 umožňuje získat relativní adresu streamu pomocí interpretované proměnné $internalstream$,která může být přímo součástí URL adresy. Adresa je raltivní vůči kořenovému adresáři fedory, kde fedora uchovává data. Standardně se tento kořenový adresář nachází <FEDORA_HOME>/data
+Pokud je obrázek ve fedoře uložen jako "Managed Content Stream"  je potřeba do URL dopropagovat fyzickou adresu souboru. Kramerius 4 umožňuje získat relativní adresu streamu pomocí interpretované proměnné $internalstream$,která může být přímo součástí URL adresy. Adresa je raltivní vůči kořenovému adresáři fedory, kde fedora uchovává data. Standardně se tento kořenový adresář nachází $FEDORA_HOME$/data
 
 Příklad definice v RELS-EXT: 
 
@@ -659,7 +659,7 @@ Příklad definice v RELS-EXT:
 Pozn.: Předpokládá se, že IIP server má datový adresář fedory připojený jako /mnt/fedora_data_folder/
 
 
-==2) Systémem kramerius si vygenerovat soubory do interní cache.==
+ * Systémem kramerius si vygenerovat soubory do interní cache.
 V tomto případě je nutné mít v literálu kramerius4:tiles-url mít uvedenou konstantu 
 kramerius4://deepZoomCache. 
 
