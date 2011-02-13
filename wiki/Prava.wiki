@@ -77,9 +77,22 @@ Dodatečná podmínka umožňuje rozhodovat na základě dalších dodatečných
 až  při běhu programu (IP adresa, metadata objektu atd..).  Podmínka 
 může být definována třídou nebo skriptem. Výsledek vyhodnocení podmínky může mít tři stavy *ANO*, *NE* a *NEVÍM*, kde 
 třetí stav nevím se aplikuje v případě, že dodatečná podmínka není schopna rozhodnout a ponechává 
-rozhodnutí na na "vyšší instanci". 
+rozhodnutí na na "vyšší instanci".  To jaký stav rozhodne je plně dáno logikou podmínky.  
+Nejde konfiguračně předefinovat.
 
 Modelový příklad: 
 
 
 
+
+Obrázek je pořízen z administrátorského rozhraní krameria. Jsou na něm vidět nadefinovaná práva 
+pro objekt REPOSITORY a akci read. 
+
+První definice říká, že "jakýkoliv" objekt v repository může číst kdokoliv (skupina common_users) za 
+dodatečné podmínky, že přichází z adresy XXX.XXX.XXX.  Pokud uživatel nepřichází z této adresy, dodatečná 
+podmínka rozhodne stavem NEVIM. - Ponechá rozhodnutí na dalším právu. 
+
+Druhá definice je podobná té první, liší se dodatečnou podmínkou. Ta v tomto případě zkoumá metadata a příznak
+kramerius4:policy, který obsahuje informaci o veřejnosti resp. neveřejnosti dokumentu.
+
+  
