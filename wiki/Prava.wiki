@@ -16,6 +16,7 @@ Pokud je vazba bez dodatečné podmínky lze to interpretovat následovně:
 *Uživatel má právo provádět akci nad chráněným objektem.* 
 
 Pokud je zde ještě vazba na dodatečnou podmínku, lze to interpretovat jako:
+
  
 *Uživatel má právo provádět akci nad chráněným objektem ale pouze za určitých podmínek.* 
 
