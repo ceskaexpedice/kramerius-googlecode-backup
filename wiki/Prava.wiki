@@ -11,18 +11,18 @@ Dá se říct, že právo je vazba mezi uživatelem (a může se jednat o uživa
 
 Akce zde reprezentuje opraci, kterou uživatel provadí. Krameriem definované akce jsou následující: 
 
-  # read - Akce čti definuje operací číst data (obrazky).  Pokud má právo na tuto akci, objeví se uživatelí velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka. 
-  # import - Akce importuje data do fedory, uzivatel  spusti pres 
-  # convert
-  # replicationrights
-  # reindex - Akce reindexace.  Pokud ma uzivatel pravo na nasledujici akci, ma moznost reindexovat objekt reindexovat. Muze spoustet reindexaci z nabidky administratorskeho menu pridapne kontextoveho.  
-  # enumerator 
-  # replikator_periodicals
-  # replikator_monographs
-  # delete
-  # export - Akce pro 
-  # setprivate, setpublic
-  # administrate
-  # editor
-  # usersadmin  - Akce spoustet editor uzivatelu v superadmin modu. (viz dale) Pokud ma uzivatel pravo na nasledujici akci, objevi se v administratorskem menu nabidka 
-  # userssubadmin - Akce spoustet editor v subadmin modu. (viz dale). 
+  # *read* - Akce čti definuje operací číst data (obrazky).  Pokud má právo na tuto akci, objeví se uživatelí velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka. 
+  # *import* - Akce importuje data do fedory, uzivatel  spusti pres 
+  # *convert*
+  # *replicationrights*
+  # *reindex* - Akce reindexace.  Pokud ma uzivatel pravo na nasledujici akci, ma moznost reindexovat objekt reindexovat. Muze spoustet reindexaci z nabidky administratorskeho menu pridapne kontextoveho.  
+  # *enumerator* 
+  # *replikator_periodicals*
+  # *replikator_monographs*
+  # *delete*
+  # *export* - Akce pro 
+  # *setprivate, setpublic*
+  # *administrate*
+  # *editor*
+  # *usersadmin*  - Akce spoustet editor uzivatelu v superadmin modu. (viz dale) Pokud ma uzivatel pravo na nasledujici akci, objevi se v administratorskem menu nabidka 
+  # *userssubadmin* - Akce spoustet editor v subadmin modu. (viz dale). 
