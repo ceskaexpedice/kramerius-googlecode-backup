@@ -4,6 +4,9 @@
 
 Práva systému Kramerius 4  jsou na rozdíl od bibliografických dat ukládána v servisní databázi postgres, ve stejném tabulkovém prostoru jako například tabulky pro správu procesů. Datový model zobrazený formou UML diagramu tříd vypadá následovně:
 
+http://kramerius.googlecode.com/svn/wiki/rights/prava-wiki.png
+
+
 Dá se říct, že právo je vazba mezi uživatelem (a může se jednat o uživatele nebo skupinu), akcí a chráněným objektem. Celá vazba může být “obohacena” o dodatečnou podmínku a parametry dodatečné podmínky. 
 
 
