@@ -9,19 +9,29 @@ procesů. Datový model zobrazený formou UML diagramu tříd vypadá následovn
 http://kramerius.googlecode.com/svn/wiki/rights/prava-wiki.png
 
 Právo je v databází vyjádřeno jako  vazba mezi uživatelem (a může se jednat o uživatele nebo skupinu), akcí a 
-chráněným objektem. Vazba může být dál “obohacena” o dodatečnou podmínku a parametry dodatečné podmínky.  
+chráněným objektem. Vazba může být dál “obohacena” o dodatečnou podmínku a parametry dodatečné podmínky. 
+
+Pokud je vazba bez dodatečné podmínky lze to interpretovat následovně: 
+
+*Uživatel má právo provádět akci nad chráněným objektem.* 
+
+Pokud je zde ještě vazba na dodatečnou podmínku, lze to interpretovat jako:
+ 
+*Uživatel má právo provádět akci nad chráněným objektem ale pouze za určitých podmínek.* 
+
+Dále popíšu jednotlivé aktéry vazby.
 
 
 ==Akce==
 
 Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Krameriem definované akce jsou následující: 
 
-  # *read* - Akce čti definuje operaci číst data (obrázky).  
-        Pokud má uživatel práva tuto akci provádět, objeví se mu  velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka. 
-
-  # *import* - Operace importu dat do fedory. Pokud má uživatel právo importovat data, může spustit dlouhotrvající proces importu.  
-  # *reindex* - Akce reindexace.  Uživatel má právo spustit indexaci a to jak z administrátorského menu tak z kontextového. 
-
+  # *read* - Akce čti definuje operaci číst data (obrázky).
+  Pokud má uživatel práva tuto akci provádět, objeví se mu  velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka. 
+  # *import* - Operace importu dat do fedory. 
+  Pokud má uživatel právo importovat data, může spustit dlouhotrvající proces importu.  
+  # *reindex* - Akce reindexace.  
+  Uživatel má právo spustit indexaci a to jak z administrátorského menu tak z kontextového. 
   # *convert* - n
   # *replicationrights* - n
   # *enumerator* - n
@@ -32,9 +42,25 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
   # *setprivate, setpublic* - n
   # *administrate* - n
   # *editor*  - n
+  # *usersadmin*  - Akce spouštět editor uživatelů  v superadmin módu (viz dále). 
+  Uživatel může přes administrátorské menu spouštět editor uživatelů. 
+  # *userssubadmin* - Akce spouštět editor v subadmin modu. (viz dale). 
+  Uživatel může přes administrátorské menu spouštět editor uživatelů.
 
-  # *usersadmin*  - Akce spouštět editor uživatelů  v superadmin módu (viz dále). Užívatel může přes administrátorské menu spouštět editor uživatelů. 
-  # *userssubadmin* - Akce spouštět editor v subadmin modu. (viz dale). Užívatel může přes administrátorské menu spouštět editor uživatelů.
+
+
+==Uživatelé a skupiny==
+
+Uzivatel se kterým je akce svázána může mít podobu buď uživatele nebo skupiny uživatelů. 
+Pokud je právo definováno pro skupinu, zjišťuje se, zda přihlášený uživatel je příslušníkem 
+dané skupiny.  
+
+Vazba mezi uživatelem a skpinou je vazba typu M:N. Tedy uživatel může být současně příslušníkem více 
+skupin a zároveň skupina má více uživatelů.
+
+Kramerius definuje jednu speciální skupinu *"common_users"*. Ta reprezentuje všechny uživatele.
+
+==Chráněný objekt==
 
   
   
