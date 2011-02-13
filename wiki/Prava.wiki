@@ -75,7 +75,7 @@ Systém práv respektuje dědičnost a tedy právo definováno pro vyšší úro
 
 Dodatečná podmínka umožňuje rozhodovat na základě dalších dodatečných kritérií, které jsou známy 
 až  při běhu programu (IP adresa, metadata objektu atd..).  Podmínka 
-může být definována třídou nebo skriptem. Výsledek vyhodnocení podmínky může mít tři stavy ANO, NE a NEVÍM, kde 
+může být definována třídou nebo skriptem. Výsledek vyhodnocení podmínky může mít tři stavy *ANO*, *NE* a *NEVÍM*, kde 
 třetí stav nevím se aplikuje v případě, že dodatečná podmínka není schopna rozhodnout a ponechává 
 rozhodnutí na na "vyšší instanci". 
 
@@ -83,5 +83,3 @@ Modelový příklad:
 
 
 
-Podminka umoznuje mit tristavovou logiku ANO | NE | NEVIM. Kdy treti stav NEVIM deleguje rozhodovani na nadrazene pravo. (Bud drive definovane, neby vys ve fedora strukture, viz dedicnost).  Priklad: 
-  
