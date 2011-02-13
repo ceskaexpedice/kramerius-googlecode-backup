@@ -8,7 +8,7 @@ procesů. Datový model zobrazený formou UML diagramu tříd vypadá následovn
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-wiki.png
 
-Právo je v databází vyjádřeno jako  vazba mezi uživatelem (a může se jednat o uživatele nebo skupinu), akcí a 
+Právo je v databázi vyjádřeno jako  vazba mezi uživatelem (a může se jednat o uživatele nebo skupinu), akcí a 
 chráněným objektem. Vazba může být dál “obohacena” o dodatečnou podmínku a parametry dodatečné podmínky. 
 
 Pokud je vazba bez dodatečné podmínky lze to interpretovat následovně: 
@@ -60,7 +60,16 @@ skupin a zároveň skupina má více uživatelů.
 
 Kramerius definuje jednu speciální skupinu *"common_users"*. Ta reprezentuje všechny uživatele.
 
+
 ==Chráněný objekt==
 
+Chráněný objekt reprezentuje entitu, na kterou je akce aplikována. Většinou se jedná o součást repositáře 
+fedory (Monografie, Periodikum, Ročník, Výtisk, Stránka...) případně se může jednat o celý repositář. 
+
+Systém práv respektuje dědičnost a tedy právo definováno pro vyšší úroveň, platí  i pro úrovně nižší. 
+
   
+
+==Dodatečná podmínka==
+
   
