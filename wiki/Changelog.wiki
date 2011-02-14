@@ -24,7 +24,7 @@
 
   * Issue 26 - Lokalizace login dialogu
 
-  * Issue 25 - Odstraněn středník za autorem v seznamu monografií
+  * Issue 25 - Odstraněn středník za autorem v seznamu monografií
 
   * Sjednocen styl uživatelského rozhraní
 
@@ -36,10 +36,10 @@
 
   * Fulltextové vyhledávání v rámci vybraného dokumentu
 
-  * Issue 9 - Opraveny zjištěné problémy GUI v prohlížeči MSIE
+  * Issue 9 - Opraveny zjištěné problémy GUI v prohlížeči MSIE
 
   * Konvertor K3 -> K4 umožňuje využití externích odkazů v binárních datastreamech (file URL)
 
   * Generování velkých náhledů a jejich parametrizovaná velikost v konvertoru
 
-  * Integrován editor pořadí podřízených částí dokumentu  (tedy RDF vazeb a jejich pořadí v RELS-EXT) 
+  * Integrován editor pořadí podřízených částí dokumentu  (tedy RDF vazeb a jejich pořadí v RELS-EXT) 
