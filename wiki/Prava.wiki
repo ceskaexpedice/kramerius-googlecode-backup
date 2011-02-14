@@ -103,7 +103,4 @@ kramerius4:policy, který obsahuje informaci o veřejnosti resp. neveřejnosti d
  
 ===Řazení práv a priorita=== 
 
-Práva 
-Práva se řadí se standardně řadí dle konkrétnosti. Jak bylo řečeno výše, je zde uplatněn princip dědičnosti a práva jsou seřazena (a ve stejném pořadí interpretována) od konretního po obecný.   
-Práva se řádí 
   
