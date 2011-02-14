@@ -738,4 +738,8 @@ mail.smtp.socketFactory.fallback=false
 }}}
 
 
-v databázi kramerius4 vytvořit tabulky pomocí skriptu initsecdb.sql (v projektu common)
+Po prvnim spusteni aplikace se v databazi vytvori databazove tabulky s preddefinovanymi pravidly a implicitnim admin uzivatelem.  Nastaveni pravidel odpovida soucasnemu krameriovi a predefinovane jmeno a heslo admin uzivatele je: 
+
+krameriusAdmin 
+
+krameriusAdmin
