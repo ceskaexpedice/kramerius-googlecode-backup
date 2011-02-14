@@ -1,0 +1,26 @@
+#summary Popis instalace a nastavení K4
+<wiki:toc max_depth="1" />
+
+=Verze 4.2.1=
+
+* Issue 33 - v přehledu procesů je zaznamenáván uživatel spouštějící proces
+* Zlepšená podpora uživatelsky definované datové struktury
+      nová konfigurační property fedora.treePredicates, opravy v šablonách, kontextovém menu
+* Reindexace dokumentů rekursivně s ohledem na datum importu. Není potřeba reindexovat celý strom, jen tu větev, kde došlo k změně.
+* Možnost reindexace všech dokumentů s daným modelem nejvyší úrovně (např. všechny monografie)
+* Issue 15 - sjednoceno indexování a lokalizace položek ve facetu Typ dokumentu 
+* Issue 32 - pro spuštění procesu mimo GUI je třeba autentizace dle parametru v url
+* Issue 27 - Dialog pro změnu příznaku kramerius:policy obsahuje informaci o tom, jak je aktuálně nastavený  
+* Issue 30 - Prohlížečka Seadragon distribuována jako součást K4
+* Issue 31, Issue 17 - Změna definice procesů v lp.xml nevyžaduje restart aplikace, sjednocena konfigurace logování
+* Issue 26 - Lokalizace login dialogu
+* Issue 25 - Odstraněn středník za autorem v seznamu monografií
+* Sjednocen styl uživatelského rozhraní
+* Issue 29 - Nový systém správy uživatelů a přístupových práv
+* Issue 28 - Podpora pro obrazové soubory mimo úložiště Fedora (včetně IIP image serveru)
+* Podpora pro ALTO
+* Fulltextové vyhledávání v rámci vybraného dokumentu
+* Issue 9 - Opraveny zjištěné problémy GUI v prohlížeči MSIE
+* Konvertor K3 -> K4 umožňuje využití externích odkazů v binárních datastreamech (file URL)
+* Generování velkých náhledů a jejich parametrizovaná velikost v konvertoru
+* Integrován editor pořadí podřízených částí dokumentu  (tedy RDF vazeb a jejich pořadí v RELS-EXT) 
