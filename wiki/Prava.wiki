@@ -27,12 +27,9 @@ Dále popíšu jednotlivé aktéry vazby.
 
 Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Krameriem definované akce jsou následující: 
 
-  # *read* - Akce čti definuje operaci číst data (obrázky).
-  Pokud má uživatel práva tuto akci provádět, objeví se mu  velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka. 
-  # *import* - Operace importu dat do fedory. 
-  Pokud má uživatel právo importovat data, může spustit dlouhotrvající proces importu.  
-  # *reindex* - Akce reindexace.  
-  Uživatel má právo spustit indexaci a to jak z administrátorského menu tak z kontextového. 
+  # *read* - _Akce čti definuje operaci číst data (obrázky)._ Pokud má uživatel práva tuto akci provádět, objeví se mu  velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka. 
+  # *import* - _Operace importu dat do fedory._ Pokud má uživatel právo importovat data, může spustit dlouhotrvající proces importu.  
+  # *reindex* - _Akce reindexace._  Uživatel má právo spustit indexaci a to jak z administrátorského menu tak z kontextového. 
   # *convert* - n
   # *replicationrights* - n
   # *enumerator* - n
@@ -43,10 +40,8 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
   # *setprivate, setpublic* - n
   # *administrate* - n
   # *editor*  - n
-  # *usersadmin*  - Akce spouštět editor uživatelů  v superadmin módu (viz dále). 
-  Uživatel může přes administrátorské menu spouštět editor uživatelů. 
-  # *userssubadmin* - Akce spouštět editor v subadmin modu. (viz dale). 
-  Uživatel může přes administrátorské menu spouštět editor uživatelů.
+  # *usersadmin*  - _Akce spouštět editor uživatelů  v superadmin módu (viz dále)._ Uživatel může přes administrátorské menu spouštět editor uživatelů. 
+  # *userssubadmin* - _Akce spouštět editor v subadmin modu (viz dale)._  Uživatel může přes administrátorské menu spouštět editor uživatelů.
 
 
 
@@ -77,7 +72,7 @@ Dodatečná podmínka umožňuje rozhodovat na základě dalších dodatečných
 až  při běhu programu (IP adresa, metadata objektu atd..).  Podmínka 
 může být definována třídou nebo skriptem. Výsledek vyhodnocení podmínky může mít tři stavy *ANO*, *NE* a *NEVÍM*, kde 
 třetí stav nevím se aplikuje v případě, že dodatečná podmínka není schopna rozhodnout a ponechává 
-rozhodnutí na na "vyšší instanci".  ~To, jaký z těchto stavů bude vrácen je plně v režíi podmínky.~ 
+rozhodnutí na na "vyšší instanci".  ~~To, jaký z těchto stavů bude vrácen je plně v režíi podmínky.~~ 
 
 
 ===Modelový příklad:=== 
