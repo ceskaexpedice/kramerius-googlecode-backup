@@ -1,4 +1,4 @@
-#summary Popis instalace a nastavení K4
+#summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
 =Verze 4.2.1=
