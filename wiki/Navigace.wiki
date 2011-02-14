@@ -8,6 +8,8 @@
 
 * [Data Datový model]
 
+* [Changelog Přehled změn]
+
 * [http://www.incad.cz/kramerius4/ Zapisy z porad] 
 
 * [PlanovanyRozvoj Plánovaný rozvoj]
