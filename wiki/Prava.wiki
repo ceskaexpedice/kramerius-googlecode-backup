@@ -86,7 +86,7 @@ Obrázek je pořízen z administrátorského rozhraní krameria. Jsou na něm vi
 pro objekt REPOSITORY a akci read. 
 
 První definice říká, že "jakýkoliv" objekt v repository můžou číst všichni návštěvníci (skupina common_users) za 
-dodatečné podmínky, že přichází z adresy 89.102.63.195 a nebo 194.108.205.XXX.  Pokud uživatel nepřichází z této adresy, dodatečná 
+dodatečné podmínky, že přichází z adres 89.102.63.XXX a nebo 194.108.205.XXX.  Pokud uživatel nepřichází z této adresy, dodatečná 
 podmínka rozhodne stavem NEVIM. - Ponechá rozhodnutí na dalším právu.
 
 Druhá definice je podobná té první, liší se dodatečnou podmínkou. Ta v tomto případě zkoumá metadata a příznak
@@ -101,6 +101,9 @@ kramerius4:policy, který obsahuje informaci o veřejnosti resp. neveřejnosti d
  # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováne stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
  
  
+===Řazení práv a priorita=== 
 
-===Řazení práv=== 
+Práva 
+Práva se řadí se standardně řadí dle konkrétnosti. Jak bylo řečeno výše, je zde uplatněn princip dědičnosti a práva jsou seřazena (a ve stejném pořadí interpretována) od konretního po obecný.   
+Práva se řádí 
   
