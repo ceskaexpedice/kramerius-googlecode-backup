@@ -134,7 +134,7 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarpredplatitele.png
 Poslední příklad ukazuje způsob jak omezit přístup (např. k administátorským akcím) tím, že je umožníme spouštět jenom 
 ze nám známého rozsahu adres. 
 
-http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarexclupsieips.png  
+http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarexclupsiveips.png  
 
 
 
