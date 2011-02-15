@@ -37,7 +37,9 @@
   * Sjednocen styl uživatelského rozhraní
 
   * Issue 29 - Nový systém správy uživatelů a přístupových práv
-     Popis a způsob použití je v dokumentu [Prava], instalace v [Instalace#Přístupová_práva_uživatelů] 
+     Popis a způsob použití je v dokumentu [Prava], instalace v [Instalace#Přístupová práva uživatelů] 
+
+     Upozornění: Při přechodu ze starších verzí K4 do tomcat/lib nakopírujte jar s jdbc ovladačem pro postgresql, nejlépe z distribuce databáze PostgreSQL nebo z archivu search.war/WEB-INF/lib  - ovladač z distribuce fedora 3.3 patří k PostgreSQL 8.3 a s Krameriem 4.2 a novějším nefunguje.
 
   * Issue 28 - Podpora pro obrazové soubory mimo úložiště Fedora (včetně IIP image serveru)
     (zaveden nový literál v RELS-EXT, viz [Instalace])
