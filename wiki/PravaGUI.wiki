@@ -37,7 +37,7 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogeditaceprava.png
 
 Popis částí:
  # Informace o chráněném objektu a chráněné akci. 
- # Tlačítka pro aplikování práva na konkrétní osobu, skupinu nebo na všechny uživatele krameria (skupina common_users http://code.google.com/p/kramerius/wiki/Prava#Uživatelé_a_skupiny)
+ # Tlačítka pro aplikování práva na konkrétní osobu, skupinu nebo na všechny uživatele krameria (skupina *common_users* http://code.google.com/p/kramerius/wiki/Prava#Uživatelé_a_skupiny)
  # Dodatečná podmínka
  # Hodnoty dodatečné podmínky
  # Combobox umožňuje vybrat některou z již dříve definovaných hodnot 
