@@ -10,7 +10,7 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-adminmenu.png
 
 po spuštění nabídky kontextového menu se objeví dialog s výběrem akce, kterou chceme administrovat (http://code.google.com/p/kramerius/wiki/Prava#Akce).
 
-http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamacki.png
+http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
 Po výběru akce se dostaneme do již známého dialog aplikovatelných práv nad daným objektem. 
 
