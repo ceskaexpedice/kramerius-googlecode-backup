@@ -26,7 +26,7 @@
 
   * Issue 30 - Prohlížečka Seadragon distribuována jako součást K4
 
-  * Issue 31, Issue 17, Issue 15 - Změna definice procesů v lp.xml nevyžaduje restart aplikace, sjednocena konfigurace logování (všechno logování je přesměrováno na standardní logovací API JDK)
+  * Issue 31, Issue 17, Issue 16 - Změna definice procesů v lp.xml nevyžaduje restart aplikace, sjednocena konfigurace logování (všechno logování je přesměrováno na standardní logovací API JDK)
 
   * Issue 26 - Lokalizace login dialogu
 
