@@ -4,19 +4,27 @@
 
 Uživatelské rozhraní pro správu je součástí systému kramerius. Spouští se z administrátorského nebo kontextového menu. Z administrátorského menu můžeme administrovat celé repository, z kontextového pak konrétní titul, nebo jeho část.
 
-Pro administraci repository se spouští položku v menu "Globální akce..." 
+Pro administraci repository se spouští položku v menu *Globální akce...* 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-adminmenu.png
 
+v kontextovém menu pak položka *Zobrazení práv...*
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-ctxmenu.png
+
+
 po spuštění nabídky kontextového menu se objeví dialog s výběrem akce, kterou chceme administrovat (http://code.google.com/p/kramerius/wiki/Prava#Akce).
+
+Počet akcí se liší dle toho, kterou nabídku uživatel spouští. Dialog zobrazený po spuštění nabídky z admin. menu se objeví kompletní seznam, dialog spouštěný z kontextového menu 
+obsahuje jenom ty akce, které jsou aplikovatelené na jednotlivé objekty v repository.
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
-Po výběru akce se dostaneme do již známého dialog aplikovatelných práv nad daným objektem. 
+Po výběru akce se dostaneme do již známého dialog nadefinovaných  práv nad daným objektem (nebo některým z jeho předků). 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-anatomiedialoguprav.png
 
-Popis:
+Popis částí:
  * Tlačítko pro přidávání nového práva k objektu
  * Refresh
  * Tlačítka pro filtrování tabulky nastavených práv. Zobrazuje buď práva k všem uživatelům, všem skupinám nebo všem bez rozdílu.
@@ -24,3 +32,7 @@ Popis:
  * Tabulka všech práv (v závislosti na zvoleném filtru). Každý řádek obsahuje tlačítka pro editaci práva a jeho smazání.
 
 
+Při editaci 
+
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogeditaceprava.png
