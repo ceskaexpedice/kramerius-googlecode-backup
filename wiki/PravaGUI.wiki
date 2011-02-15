@@ -12,27 +12,32 @@ v kontextovém menu pak položka *Zobrazení práv...*
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-ctxmenu.png
 
-
 po spuštění nabídky kontextového menu se objeví dialog s výběrem akce, kterou chceme administrovat (http://code.google.com/p/kramerius/wiki/Prava#Akce).
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
 Počet akcí se liší dle toho, kterou nabídku uživatel spouští. Dialog zobrazený po spuštění nabídky z admin. menu se objeví kompletní seznam, dialog spouštěný z kontextového menu 
 obsahuje jenom ty akce, které jsou aplikovatelené na jednotlivé objekty v repository.
-
-http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
 Po výběru akce se dostaneme do již známého dialog nadefinovaných  práv nad daným objektem (nebo některým z jeho předků). 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-anatomiedialoguprav.png
 
 Popis částí:
- * Tlačítko pro přidávání nového práva k objektu
- * Refresh
- * Tlačítka pro filtrování tabulky nastavených práv. Zobrazuje buď práva k všem uživatelům, všem skupinám nebo všem bez rozdílu.
- * Combobox umožňuje filtrovat tabulku podle konkrétního uživatele nebo konkrétní skupiny. 
- * Tabulka všech práv (v závislosti na zvoleném filtru). Každý řádek obsahuje tlačítka pro editaci práva a jeho smazání.
+ # Tlačítko pro přidávání nového práva k objektu
+ # Refresh
+ # Tlačítka pro filtrování tabulky nastavených práv. Zobrazuje buď práva k všem uživatelům, všem skupinám nebo všem bez rozdílu.
+ # Combobox umožňuje filtrovat tabulku podle konkrétního uživatele nebo konkrétní skupiny. 
+ # Tabulka všech práv (v závislosti na zvoleném filtru). Každý řádek obsahuje tlačítka pro editaci práva a jeho smazání.
 
 
-Při editaci 
-
+Při editaci nebo vytáření nového práva se objeví poslední dialog. 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogeditaceprava.png
+
+Popis částí:
+ # Informace o chráněném objektu a chráněné akci. 
+ # Tlačítka pro aplikování práva na konkrétní osobu, skupinu nebo na všechny uživatele krameria (skupina common_users http://code.google.com/p/kramerius/wiki/Prava#Uživatelé_a_skupiny)
+ # Tlačítka pro filtrování tabulky nastavených práv. Zobrazuje buď práva k všem uživatelům, všem skupinám nebo všem bez rozdílu.
+ # Combobox umožňuje filtrovat tabulku podle konkrétního uživatele nebo konkrétní skupiny. 
+ # Tabulka všech práv (v závislosti na zvoleném filtru). Každý řádek obsahuje tlačítka pro editaci práva a jeho smazání.
