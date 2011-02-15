@@ -771,3 +771,20 @@ Po prvním spuštění aplikace se v databázi vytvoří databázové tabulky s 
 krameriusAdmin 
 
 krameriusAdmin
+
+=Editor pořadí částí dokumentu (RELS-EXT)=
+
+Editor se instaluje jako samostatná webová aplikace nakopírováním souboru editor.war do složky webapps v Tomcatu.
+
+Před spuštěním je potřeba mít nakonfigurován single-sign-on (viz Přístupová práva).
+
+Kramerius 4 umožňuje nahradit tento výchozí editor jiným editorem. To, který editor se spustí z kontextového menu v GUI K4, je určeno položkou editorUrl v configuration.properties:
+
+{{{
+editorUrl=${_fedoraTomcatHost}/editor
+}}}
+
+Volané url z kontextového menu má například takovýto tvar: 
+{{{
+http://localhost:8080/editor/?openIDs=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&locale=en
+}}}  
