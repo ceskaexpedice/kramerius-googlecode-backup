@@ -130,12 +130,13 @@ ročníku, kterého se toto právo dotýká. Zde není potřeba žádné dodate�
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarpredplatitele.png  
   
-===Exklusivní přistup dle IP address (administrátorské akce)===  
+===Exkluzivní přistup dle IP address (administrátorské akce)===  
 Poslední příklad ukazuje způsob jak omezit přístup (např. k administátorským akcím) tím, že je umožníme spouštět jenom 
 ze nám známého rozsahu adres. 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarexcluisveips.png
 
 
+[http://code.google.com/p/kramerius/wiki/PravaGUI Popis uživatelského rozhraní]
 
   
