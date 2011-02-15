@@ -1,13 +1,26 @@
-#summary One-sentence summary of this page.
+#Popis gui pro administraci prav.
 
-= Introduction =
+=GUI= 
 
-Add your content here.
+Uživatelské rozhraní pro správu je součástí systému kramerius. Spouští se z administrátorského nebo kontextového menu. Z administrátorského menu můžeme administrovat celé repository, z kontextového pak konrétní titul, nebo jeho část.
+
+Pro administraci repository se spouští položku v menu "Globální akce..." 
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-adminmenu.png
+
+po spuštění nabídky kontextového menu se objeví dialog s výběrem akce, kterou chceme administrovat (http://code.google.com/p/kramerius/wiki/Prava#Akce).
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamacki.png
+
+Po výběru akce se dostaneme do již známého dialog aplikovatelných práv nad daným objektem. 
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-anatomiedialoguprav.png
 
 
-= Details =
+1) Tlačítko pro přidávání nového práva k objektu
+2) Refresh
+3) Tlačítka pro filtrování tabulky nastavených práv. Zobrazuje buď práva k všem uživatelům, všem skupinám nebo všem bez rozdílu.
+4) Combobox umožňuje filtrovat tabulku podle konkrétního uživatele nebo konkrétní skupiny. 
+5) Tabulka všech práv (v závislosti na zvoleném filtru). Každý řádek obsahuje tlačítka pro editaci práva a jeho smazání.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
