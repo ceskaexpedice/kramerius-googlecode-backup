@@ -16,11 +16,11 @@ Po výběru akce se dostaneme do již známého dialog aplikovatelných práv na
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-anatomiedialoguprav.png
 
-
-1) Tlačítko pro přidávání nového práva k objektu
-2) Refresh
-3) Tlačítka pro filtrování tabulky nastavených práv. Zobrazuje buď práva k všem uživatelům, všem skupinám nebo všem bez rozdílu.
-4) Combobox umožňuje filtrovat tabulku podle konkrétního uživatele nebo konkrétní skupiny. 
-5) Tabulka všech práv (v závislosti na zvoleném filtru). Každý řádek obsahuje tlačítka pro editaci práva a jeho smazání.
+Popis:
+ * Tlačítko pro přidávání nového práva k objektu
+ * Refresh
+ * Tlačítka pro filtrování tabulky nastavených práv. Zobrazuje buď práva k všem uživatelům, všem skupinám nebo všem bez rozdílu.
+ * Combobox umožňuje filtrovat tabulku podle konkrétního uživatele nebo konkrétní skupiny. 
+ * Tabulka všech práv (v závislosti na zvoleném filtru). Každý řádek obsahuje tlačítka pro editaci práva a jeho smazání.
 
 
