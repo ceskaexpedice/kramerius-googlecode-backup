@@ -214,6 +214,11 @@ solrHost=${_fedoraTomcatHost}/solr
 ## list of top level content model names, comma separated
 fedora.topLevelModels=monograph,periodical
 
+fedora.predicatesPrefix=http://www.nsdl.org/ontologies/relationships#
+
+##list of rels-ext predicates to recursive export
+fedora.treePredicates=hasPage,hasPart,hasVolume,hasItem,hasUnit
+
 ## fedora access
 fedoraHost=${_fedoraTomcatHost}/fedora
 fedoraUser=fedoraAdmin
@@ -298,6 +303,9 @@ deepZoom.deepZoomEnabled=false
 ## URL of IIPSserver
 #UrlOfIIPserver=http://xxx.xxx.xxx.xxx/fcgi-bin/iipsrv.fcgi
 
+## Supported interface languages
+interface.languages=\u010Desky,cs,english,en
+
 ## connection to fedora 3 
 fedora3.connectionURL=jdbc:postgresql://localhost/fedora3
 fedora3.connectionUser=${fedoraUser}
@@ -306,7 +314,7 @@ fedora3.connectionPass=${fedoraPass}
 # Jmeno externiho konfiguracniho souboru
 _ext_configuration_file_name=configuration.properties
 
-#třída pro komunikaci s resource indexem (pro RI Mulgara slouží cz.incad.kramerius.resourceindex.MulgaraImpl)
+#class for communication with resource index (for RI Mulgara use cz.incad.kramerius.resourceindex.MulgaraImpl)
 resource.index.service.class=cz.incad.kramerius.resourceindex.MPTStoreService
 
 
@@ -562,7 +570,7 @@ k3.db.password=f8TasR
 # URL of Kramerius 3 (replication source)
 k3.replication.url=http://localhost:8080/kramerius/
 
-# replication institution 
+# replication institution (password is in the hash form)
 k3.replication.sigla=ABA002
 k3.replication.login=replication
 k3.replication.password=f29fabe637a472bf5222b12a0bc5df77
@@ -570,6 +578,8 @@ k3.replication.password=f29fabe637a472bf5222b12a0bc5df77
 # source directory for files for conversion and import (in Kramerius 3 format)
 convert.directory=${sys:user.home}/.kramerius4/convert
 
+# target directory for conversion
+convert.target.directory=${sys:user.home}/.kramerius4/convert-converted
 
 # source directory for files for direct import (in Kramerius 4 FOXML format)
 import.directory=${sys:user.home}/.kramerius4/import
@@ -582,6 +592,10 @@ export.directory=${sys:user.home}/.kramerius4/export
 # working directory for repliaction and conversion
 migration.directory=${sys:user.home}/.kramerius4/replication
 
+#target directory for replication and conversion
+migration.target.directory=${sys:user.home}/.kramerius4/replication-converted
+
+
 # list of periodicasl IDs to replicate
 migration.periodicals= ${sys:user.home}/.kramerius4/periodicals.txt
 
@@ -591,11 +605,25 @@ migration.monographs=${sys:user.home}/.kramerius4/monographs.txt
 # controls if convertor K3->K4 should generate IMG_PREVIEW
 convert.generatePreview=true
 
-# controls if convertor K3->K4 should embed binary streams (BASE64 encode)
-convert.embedBinaryStreams=true
+# size of the generated preview in pixels (maximum height or width)
+convert.previewSize=700
 
 # number of characters used as contractNumber in image file names (5 at NKP, 18 at KNAV)
 contractNo.length=5
+
+#convertor will create subfolder with contract name in the conversion target subfolder, the contents of the target directory is not deleted prior conversion batch  
+convert.useContractSubfolders=false
+
+# controls how convertor K3->K4 should embed binary streams ( encoded/referenced/external)
+convert.files=encoded
+# controls how convertor K3->K4 should embed preview streams ( encoded/referenced/external)
+convert.previews=encoded
+# controls how convertor K3->K4 should embed thumbnail streams ( encoded/referenced/external)
+convert.thumbnails=encoded
+
+
+#ingest and indexing phases of migration processes will be skipped
+ingest.skip=false
 
 # connection to fedora repository (replication target)
 ingest.url=${fedoraHost}
@@ -679,25 +707,24 @@ http://iris.mzk.cz/iipimage.tar.bz2
 
 
 =Přístupová práva uživatelů=
-Přístup k administrátorským funkcím je kontrolován na úrovni aplikačního serveru standardním mechanismem přiřazení potřebných rolí příslušným uživatelům. Správa uživatelských účtů a rolí je specifická pro použitý aplikační server, např. ve výchozí instalaci serveru Tomcat se provádí editací souboru tomcat-users.xml v adresáři conf.
 
-Pro povolení přístupu ke všem administrátorským operacím je uživateli možno přiřadit roli krameriusAdmin.
+Kramerius 4 používá od verze 4.2 nový systém správy uživatelů a přístupových práv. Jeho principy a administrace jsou popsány v dokumentu [Prava Správa uživatelů]
 
-Pro řízení přístupu na úroveň jednotlivých administrátorských procesů je třeba uživateli přiřadit roli odpovídající identifikátoru příslušného procesu. K dispozici jsou následující role:
+==Instalace==
 
-static_export_CD, reindex, replikator_monograph, replikator_periodicals, enumerator, replicationrights, setpublic, setprivate, delete, export, convert, import
+===tomcat===
 
-
-=Nová správa uživatelů=
- 
-(dočasné poznámky)
-
-tomcat:
 do lib přidat security-core.jar
-povolit single sign on v server.xml <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
-do conf/Catalina/localhost přidat soubory search.xml a rightseditor.xml s tímto obsahem
-{{{
+do webapps nainstalovat aplikaci rightseditor.war
+povolit single sign on v server.xml 
 
+{{{
+<Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+}}}
+
+do conf/Catalina/localhost přidat soubory search.xml a rightseditor.xml s tímto obsahem
+
+{{{
 <Context>
 	<Realm className="org.apache.catalina.realm.JAASRealm"                 
 		appName="search"       
@@ -705,10 +732,9 @@ do conf/Catalina/localhost přidat soubory search.xml a rightseditor.xml s tímt
 		roleClassNames="cz.incad.kramerius.security.jaas.K4RolePrincipal"
 		debug="99"/>
 </Context>
-
 }}}
 
-fedora
+===fedora===
 
 do server/config/jaas.conf přidat:
 {{{
@@ -720,8 +746,10 @@ search {
 rightseditor {
  cz.incad.kramerius.security.jaas.K4LoginModule required debug=true;
 };
-
 }}}
+
+
+===Kramerius4===
 
 do .kramerius4 přidat mail.properties s obsahem:
 
@@ -738,7 +766,7 @@ mail.smtp.socketFactory.fallback=false
 }}}
 
 
-Po prvnim spusteni aplikace se v databazi vytvori databazove tabulky s preddefinovanymi pravidly a implicitnim admin uzivatelem.  Nastaveni pravidel odpovida soucasnemu krameriovi a predefinovane jmeno a heslo admin uzivatele je: 
+Po prvním spuštění aplikace se v databázi vytvoří databázové tabulky s předdefinovanými pravidly a implicitnim admin uživatelem.  Nastaveni pravidel odpovídá dosavadním verzím K4 a předdefinované jméno a heslo admin uživatele je: 
 
 krameriusAdmin 
 
