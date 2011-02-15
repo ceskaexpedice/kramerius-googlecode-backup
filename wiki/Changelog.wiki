@@ -30,6 +30,8 @@
 
   * Issue 26 - Lokalizace login dialogu
 
+  * Issue 19 - Opraveno zobrazování neobvyklých struktur dokumentů
+
   * Issue 25 - Odstraněn středník za autorem v seznamu monografií
 
   * Sjednocen styl uživatelského rozhraní
