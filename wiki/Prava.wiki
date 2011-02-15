@@ -27,7 +27,7 @@ Dále popíšu jednotlivé aktéry vazby.
 
 Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Krameriem definované akce jsou následující: 
 
- # *read* - _Akce čti definuje operaci číst data (obrázky)._ Pokud má uživatel práva tuto akci provádět, objeví se mu  velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka. 
+ # *read* - _Akce čti definuje operaci číst data (obrázky). Pokud má uživatel práva tuto akci provádět, objeví se mu  velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka. 
  # *import* - _Operace importu dat do fedory._ Pokud má uživatel právo importovat data, může spustit dlouhotrvající proces importu.  
  # *reindex* - _Akce reindexace._  Uživatel má právo spustit indexaci a to jak z administrátorského menu tak z kontextového. 
  # *convert* - n
@@ -35,11 +35,12 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *enumerator* - n
  # *replikator_periodicals* - n
  # *replikator_monographs* - n
- # *delete* - n
- # *export* - n
- # *setprivate, setpublic* - n
- # *administrate* - n
- # *editor*  - n
+ # *delete* - _Akce definuje opraci mazání dat z repository nebo indexu._ Uživatel může  pomocí příslušné nabídky v kontextovém menu objekt smazat.
+ # *export* - _Akce definuje spuštění statického exportu._ Uživatel může provádět statický export do PDF. 
+ # *setprivate, setpublic* - _Akce definuje opraci změna příznaku veřejnosti nebo neveřejnosti dokumentu._  Uživatel může přes kontextové menu měnit příznak. 
+ # *administrate* - _Akce definuje opraci administraci práv k danému objektu._  Uživatel může měnit práva k danému objektu. Pokud je chráněný objekt celé repository 
+ objeví se příslušná položka v administrátorském menu v opačném případě se objeví položka pouze v menu kontextovém. 
+ # *editor*  - _Akce spouštět metadata editor._ Uživatel může spouštět metadata editor.
  # *usersadmin*  - _Akce spouštět editor uživatelů  v superadmin módu (viz dále)._ Uživatel může přes administrátorské menu spouštět editor uživatelů. 
  # *userssubadmin* - _Akce spouštět editor v subadmin modu (viz dale)._  Uživatel může přes administrátorské menu spouštět editor uživatelů.
 
@@ -63,7 +64,6 @@ Chráněný objekt reprezentuje entitu, na kterou je akce aplikována. Většino
 fedory (Monografie, Periodikum, Ročník, Výtisk, Stránka...) případně se může jednat o celý repositář. 
 
 Systém práv respektuje dědičnost a tedy právo definováno pro vyšší úroveň, platí  i pro úrovně nižší. 
-
   
 
 ==Dodatečná podmínka a parametry podmínky==
@@ -72,7 +72,7 @@ Dodatečná podmínka umožňuje rozhodovat na základě dalších dodatečných
 až  při běhu programu (IP adresa, metadata objektu atd..).  Podmínka 
 může být definována třídou nebo skriptem. Výsledek vyhodnocení podmínky může mít tři stavy *ANO*, *NE* a *NEVÍM*, kde 
 třetí stav nevím se aplikuje v případě, že dodatečná podmínka není schopna rozhodnout a ponechává 
-rozhodnutí na "vyšší instanci".  ~~To, jaký z těchto stavů bude vrácen je plně v režíi podmínky.~~ 
+rozhodnutí na "vyšší instanci".   
 
 Parametry podmínky jsou další potřebné informace pro vyhodnocení pomdmínky. Parametry jsou uživatelsky 
 definované.
@@ -101,6 +101,43 @@ kramerius4:policy, který obsahuje informaci o veřejnosti resp. neveřejnosti d
  # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováne stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
  
  
+ 
 ===Řazení práv a priorita=== 
+ -par slov  o priorite-
+  
+===Příklady nastavení krameria===
+V další části uvedu pár příkladů nastavení krameria. 
+
+====Standardní nastavení krameria====
+Původní koncept práv pro akci READ bral v potaz pouze dvě věci. Nastavený příznak viditelnosti v RELS-EXT, příznak kramerius4:policy a 
+konfigurační parametr accessPattern. viz http://code.google.com/p/kramerius/wiki/Instalace#configuration.properties
+
+Tato situace v konceptu nových práv byla popisována v modelovém příkladu. Viz 
+
+  
+===Pohyblivá zeď===
+Rohoduje na základě metadat a konfigurace roku, která je uvedena jako parametr dodatečné podmínky. Zde je zobrazaná tabulka práv pro 
+periodikum Tramp.  
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarmw.png  
+
+Z obrázku je patrno, že je podmínka pohyblivé zdi nastavena na dvou úrovních. Na celém repositáři kde je nastaven mezní rok 1910 a na 
+samotném titulu je podmínka předefinována na mezní rok 1920.
+ 
+
+===Předplatitelé===
+Podmínku předplatitelů určitého ročníku periodika lze vyjádřit jako vazbu speciálně definované skupiny uživatelů (PREDPLATITELE_1996) a 
+ročníku, kterého se toto právo dotýká. Zde není potřeba žádné dodatečné podmínky. 
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarpredplatitele.png  
+  
+===Exklusivní přistup dle IP address (administrátorské akce)===  
+Poslední příklad ukazuje způsob jak omezit přístup (např. k administátorským akcím) tím, že je umožníme spouštět jenom 
+ze nám známého rozsahu adres. 
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarexclupsieips.png  
+
+
+
 
   
