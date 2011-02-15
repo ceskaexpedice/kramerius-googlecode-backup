@@ -7,7 +7,7 @@ Před instalací aplikace Kramerius 4 je třeba nainstalovat následující komp
 
   * JDK 1.6
   * J2EE server nebo servlet kontejner (popsaná instalace předpokládá Apache Tomcat 6)
-  * Postgres 8, vytvořit uživatele fedoraAdmin a pro něj databáze fedora3, kramerius4 a riTriples
+  * Postgres 8.4, vytvořit uživatele fedoraAdmin a pro něj databáze fedora3, kramerius4 a riTriples
 
 Operační systém může být libovolný, na kterém je možno tyto komponenty provozovat, vlastní aplikace Kramerius 4 žádné speciální požadavky na systém nemá. Hardware serveru musí být dimenzován na uvažované množství dat, doporučujeme minimálně dvojnásobnou velikost pevného disku, než je plánovaná velikost obrazových dat. Vzhledem k velké paměťové náročnosti práce s grafickými daty (náhledy stránek, zoomování) je třeba i při minimálním provozu aplikace alespoň 4GB RAM. 
 
@@ -111,11 +111,6 @@ editovat solrconfig.xml - položka solr data home
 
 Do tomcat/webapps nakopírovat search.war
 
-do tomcat-users.xml přidat uživatele s rolí krameriusAdmin:
-{{{
- <role rolename="krameriusAdmin"/>
- <user username="kramerius" password="bflmpsvz" roles="krameriusAdmin"/> 
-}}}
 
 
 do context.xml přidat definici datasource: 
@@ -139,7 +134,8 @@ do tomcat/lib překopírovat následující jary z webapps/fedora/WEB-INF/lib:
   * carol
   * commons-logging
   * log4j
-  * postgres
+
+dále do tomcat/lib nakopírujte jar s jdbc ovladačem pro postgresql, nejlépe z distribuce databáze PostgreSQL nebo z archivu search.war/WEB-INF/lib  - ovladač z distribuce fedora 3.3 patří k PostgreSQL 8.3 a s Krameriem 4.2 a novějším nefunguje.
 
 
 do server.xml přidat URIEncoding:
