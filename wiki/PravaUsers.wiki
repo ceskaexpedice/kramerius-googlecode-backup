@@ -12,7 +12,6 @@ může editovat pouze jemu přiřazené uživatele resp. skupiny.
 http://kramerius.googlecode.com/svn/wiki/rights/userseditor.png
 
 Popis částí:
-
 # Přepínací menu, které umožňuje přípínání mezi správou uživatelů a skupin.
 # Datová tabulka.
 # Ovládací panel. 
@@ -23,7 +22,6 @@ Popis částí:
 http://kramerius.googlecode.com/svn/wiki/rights/userseditor-ovladacipanel.png
 
 Popis:
-
 # Navigační tlačítka. 
 # Tlačítka pro editaci.  Vytvoření nového záznamu, editaci existujícího, smazání existujícho, duplikování a refresh.
 # Vyhledávací pole. V uživatelích se vyhledáví dle přihlašovacího jména a ve skupinách dle jména skupiny
