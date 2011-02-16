@@ -1,13 +1,31 @@
-#summary One-sentence summary of this page.
+#Článek popisuje správu uživatelů v systému kramerius
 
-= Introduction =
+= Popis aplikace =
 
-Add your content here.
+Správa uživatelů je realizována samostatnou aplikací, která je spouštěna v krameriovi přes administrátorské menu 
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-spravauzitatelu.png
+
+Aplikace má dva různé módy, superadministrátorský, kde je možné vidět všechny uživatele i skupiny a administrovat je, subadministrátoský, kde přihlášený uživatel
+může editovat pouze jemu přiřazené uživatele resp. skupiny. 
+
+http://kramerius.googlecode.com/svn/wiki/rights/userseditor.png
+
+Popis částí:
+
+# Přepínací menu, které umožňuje přípínání mezi správou uživatelů a skupin.
+# Datová tabulka.
+# Ovládací panel. 
 
 
-= Details =
+== Ovládací panel ==
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+http://kramerius.googlecode.com/svn/wiki/rights/userseditor-ovladacipanel.png
+
+Popis:
+
+# Navigační tlačítka. 
+# Tlačítka pro editaci.  Vytvoření nového záznamu, editaci existujícího, smazání existujícho, duplikování a refresh.
+# Vyhledávací pole. V uživatelích se vyhledáví dle přihlašovacího jména a ve skupinách dle jména skupiny
+ 
+
