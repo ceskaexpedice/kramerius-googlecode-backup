@@ -4,7 +4,7 @@
 
 Správa uživatelů je realizována samostatnou aplikací, která je spouštěna v krameriovi přes administrátorské menu 
 
-http://kramerius.googlecode.com/svn/wiki/rights/prava-spravauzitatelu.png
+http://kramerius.googlecode.com/svn/wiki/rights/prava-spravauzivatelu.png
 
 Aplikace má dva různé módy, superadministrátorský, kde je možné vidět všechny uživatele i skupiny a administrovat je, subadministrátoský, kde přihlášený uživatel
 může editovat pouze jemu přiřazené uživatele resp. skupiny. 
