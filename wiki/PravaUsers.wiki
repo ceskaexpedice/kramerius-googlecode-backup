@@ -35,11 +35,8 @@ http://kramerius.googlecode.com/svn/wiki/rights/userseditor-userformular.png
 
 Popis:
  # Vstupní pole vlastností uživatele. 
- # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. 
- Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
- # Reference na skupinu, která daného uživatele administruje. 
- Pokud je reference prázdná, může uživatele měnit pouze superadmin, pokud je vyplněná, může ji spravovat příslušník 
- dané skupiny nebo superadmin. 
+ # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
+ # Reference na skupinu, která daného uživatele administruje. Pokud je reference prázdná, může uživatele měnit pouze superadmin, pokud je vyplněná, může ji spravovat příslušník dané skupiny nebo superadmin. 
  # Reference na skupiny do kterých uživatel patří.  
 
 
