@@ -6,8 +6,11 @@ Správa uživatelů je realizována samostatnou aplikací, která je spouštěna
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-spravauzivatelu.png
 
-Aplikace má dva různé módy, superadministrátorský, kde je možné vidět všechny uživatele i skupiny a administrovat je, subadministrátoský, kde přihlášený uživatel
+Aplikace má dva různé módy, *superadministrátorský*, kde je možné vidět všechny uživatele i skupiny a administrovat je, *subadministrátoský*, kde přihlášený uživatel
 může editovat pouze jemu přiřazené uživatele resp. skupiny. 
+
+
+
 
 http://kramerius.googlecode.com/svn/wiki/rights/userseditor.png
 
@@ -22,8 +25,26 @@ Popis částí:
 http://kramerius.googlecode.com/svn/wiki/rights/userseditor-ovladacipanel.png
 
 Popis:
- # Navigační tlačítka. 
+ # Navigační tlačítka. Posun na předchozí nebo následující záznam resp. na první nebo poslední.
  # Tlačítka pro editaci.  Vytvoření nového záznamu, editaci existujícího, smazání existujícho, duplikování a refresh.
- # Vyhledávací pole. V uživatelích se vyhledáví dle přihlašovacího jména a ve skupinách dle jména skupiny
+ # Vyhledávací pole. V uživatelích se vyhledává dle přihlašovacího jména a ve skupinách dle jména skupiny.
  
+== Editační dialog uživatele ==
 
+http://kramerius.googlecode.com/svn/wiki/rights/userseditor-userformular.png
+
+Popis:
+ # Vstupní pole vlastností uživatele. 
+ # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. 
+ Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
+ # Reference na skupinu, která daného uživatele administruje. 
+ Pokud je reference prázdná, může uživatele měnit pouze superadmin, pokud je vyplněná, může ji spravovat příslušník 
+ dané skupiny nebo superadmin. 
+ # Reference na skupiny do kterých uživatel patří.  
+
+
+Poznámka: Pokud se uživatel přihlásí jako subadministrátor nemůže měnit referenci na administrátorskou skupinu. 
+Jím vytvořený uživatel bude mít v referenci automaticky přiřazenou jeho administrátorskou skupinu.
+
+
+== Editační dialog skupiny  ==
