@@ -29,12 +29,12 @@ Popis:
  # Tlačítka pro editaci.  Vytvoření nového záznamu, editaci existujícího, smazání existujícho, duplikování a refresh.
  # Vyhledávací pole. V uživatelích se vyhledává dle přihlašovacího jména a ve skupinách dle jména skupiny.
  
-== Editační dialog uživatele ==
+== Editační a vytvářecí dialog uživatele ==
 
 http://kramerius.googlecode.com/svn/wiki/rights/userseditor-userformular.png
 
 Popis:
- # Vstupní pole vlastností uživatele. 
+ # Data uživatele. 
  # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
  # Reference na skupinu, která daného uživatele administruje. Pokud je reference prázdná, může uživatele měnit pouze superadmin, pokud je vyplněná, může ji spravovat příslušník dané skupiny nebo superadmin. 
  # Reference na skupiny do kterých uživatel patří.  
@@ -45,3 +45,12 @@ Jím vytvořený uživatel bude mít v referenci automaticky přiřazenou jeho a
 
 
 == Editační dialog skupiny  ==
+
+http://kramerius.googlecode.com/svn/wiki/rights/userseditor-groupformular.png
+
+Popis:
+ # Data uživatele. 
+ # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
+ # Reference na administrátorskou skupinu.
+ # Reference uživatele dané skupiny  
+
