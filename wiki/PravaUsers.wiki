@@ -49,7 +49,7 @@ Jím vytvořený uživatel bude mít v referenci automaticky přiřazenou jeho a
 http://kramerius.googlecode.com/svn/wiki/rights/userseditor-groupformular.png
 
 Popis:
- # Data uživatele. 
+ # Data skupiny. 
  # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
  # Reference na administrátorskou skupinu.
  # Reference uživatele dané skupiny  
