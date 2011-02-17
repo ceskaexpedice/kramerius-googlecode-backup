@@ -43,3 +43,7 @@ Popis částí:
  # Combobox umožňuje vybrat některou z již dříve definovaných hodnot 
  # Krátký popisek definovaných hodnot  
  # Prirota.  Mění se pouze pokud je potřeba mít pořadí práv jinak, než jak je implicitně řazeno.  
+
+ 
+ 
+[http://code.google.com/p/kramerius/wiki/PravaUsers Popis aplikace správa uživatelů] 
