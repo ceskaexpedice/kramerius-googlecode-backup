@@ -122,21 +122,22 @@ V definicích procesu jsou všechny náležitosti potřebné ke spuštění. Uk�
 
 Pro spuštení procesu se používá řídici servlet *lr*, který krom spuštění může ještě procesy vypínat, vypisovat případně měnit jméno. Syntaxe použití je následující:
 
-{{{<server_host:port>/search/lr?action=[start|stop|updateName][otherActionParams]}}}
+{{{<server_host:port>/search/lr?action=[start|stop|updateName][otherActionParams][authenticationParams]}}}
 
  * parametr definuje akci, která se má stát, 
  * parametr otherActionParams pak závisí na zvolené akci. 
-
+ * parametry authenticationParams definuje autentizační údaje (jméno a heslo). 
 
 ====Spuštění procesu==== 
 
 Spuštění procesu má nasledující syntaxi: 
-{{{<server_host:port>/search/lr?action=start&def=<def_id_procesu>&params=<runtime_params>}}}
+{{{<server_host:port>/search/lr?action=start&def=<def_id_procesu>&params=<runtime_params>&userName=***&pswd=***}}}
 
  * *start*  Parametr proces spustí případně naplánuje na spuštění. To se řídí aktualním počtem pravě bežících procesů. 
  * *def*  ID procesu, který se má spustit.	
  * *params* Tzv. runtime parametry procesu. Před spuštěním se "slejou" parametry definované v xml souboru s runtime parametry do jednoho pole. To pak reprezentuje spouštěcí parametry procesu.
-
+ * *userName* Uživatel pod kterým se porces spouští (Uživatel musí mít právo spouštět daný proces.) 
+ * *pswd* Heslo pro autentizaci uživatele.
 
 ====Spuštení vybraných procesů====
 
