@@ -141,27 +141,27 @@ Spuštění procesu má nasledující syntaxi:
 ====Spuštení vybraných procesů====
 
 =====Replikace monografií===== 
-{{{<server_host:port>/search/lr?action=start&def=replikator_monographs}}}
+{{{<server_host:port>/search/lr?action=start&def=replikator_monographs&userName=***&pswd=***}}}
 
 =====Replikace periodik===== 
-{{{<server_host:port>/search/lr?action=start&def=replikator_periodicals}}} 
+{{{<server_host:port>/search/lr?action=start&def=replikator_periodicals&userName=***&pswd=***}}} 
 
 =====Reindexace objektu===== 
-{{{<server_host:port>/search/lr?action=start&def=reindex&out=text&params=fromKrameriusModel,<uuidObjektu>,<titulek_procesu>}}} 
+{{{<server_host:port>/search/lr?action=start&def=reindex&out=text&params=fromKrameriusModel,<uuidObjektu>,<titulek_procesu>&userName=***&pswd=***}}} 
 
 =====Smazání objektu===== 
-{{{<server_host:port>/search/lr?action=start&def=delete&out=text&params=<uuidObjektu>,<cestaUUIDodKorene> }}} 
+{{{<server_host:port>/search/lr?action=start&def=delete&out=text&params=<uuidObjektu>,<cestaUUIDodKorene>&userName=***&pswd=*** }}} 
  * Parametr *cestaUUIDodOkrene* reprezentuje seznam uuid objektů od kořenového objektu až po ten, který se má smazat. Jako oddělovač cesty je použitý znak */*. 
 
 =====Nastavení viditelnosti na public===== 
-{{{<server_host:port>/search/lr?action=start&def=setpublic&out=text&params=<uuidObjektu>}}}
+{{{<server_host:port>/search/lr?action=start&def=setpublic&out=text&params=<uuidObjektu>&userName=***&pswd=***}}}
 
 =====Nastavení viditelnosti na private===== 
-{{{<server_host:port>/search/lr?action=start&def=setprivate&out=text&params=<uuidObjektu>}}}
+{{{<server_host:port>/search/lr?action=start&def=setprivate&out=text&params=<uuidObjektu>&userName=***&pswd=***}}}
 
 
 ====Zastavení procesu====
 
 Syntaxe je následující: 
-{{{<application>/lr?action=stop&uuid=<uuidProcesu>}}} 
+{{{<application>/lr?action=stop&uuid=<uuidProcesu>&userName=***&pswd=***}}} 
   * *uuidProcesu* je identifikator procesu přiřazovaný akcí start.
