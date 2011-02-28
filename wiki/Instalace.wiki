@@ -95,8 +95,11 @@ Po instalaci fedory je třeba do souboru fedora.fcfg do sekce module: resource i
 
 V téže sekci (resource index) je třeba změnit u parametru datastore hodnotu na localPostgresMPTTriplestore. V sekci localPostgresMPTTriplestore je třeba nastavit databázové heslo na heslo, které jste přiřadili uživateli fedoraAdmin. 
 
-Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat omezení přístupu  deny-apim-if-not-localhost.xml (ve složce data/fedora-xacml-policies/repository-policies). 
-Přes administrátorské rozhraní fedory je třeba naimportovat FOXML objekty obsažené v SVN K4 v modulu installation/fedora (https://kramerius.googlecode.com/svn/trunk/installation/fedora). *Před importem je nutné provést konfiguraci [#Fedora_model OAI Fedora modelu].*
+_(Poznámka: Kramerius 4 podporuje implementaci Resource index Mulgara i MPTtripleStore. To, která implementace bude použita, je určeno konfigurační property `resource.index.service.class` v souboru configuration.properties - viz níže. Výchozí hodnota této property je nastavena na MPTtripleStore, protože implementace Mulgara není v současné podobě použitelná se službou OAI provider. )_
+
+Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat omezení přístupu  deny-apim-if-not-localhost.xml (ve složce data/fedora-xacml-policies/repository-policies). Deaktivaci lze provést buď editací xacml pravidel v souboru nebo jeho prostým odstraněním. 
+
+Přes administrátorské rozhraní fedory je třeba naimportovat FOXML objekty obsažené v SVN K4 v modulu installation/fedora (https://kramerius.googlecode.com/svn/trunk/installation/fedora). *Pokud budete importovat i [#Fedora_model OAI Fedora model], je před jeho importem nutné provést konfiguraci .*
 
 = Instalace Apache SOLR =
 
