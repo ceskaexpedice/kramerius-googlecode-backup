@@ -82,7 +82,7 @@ Enable messaging : default (false)
 Deploy local services: default (true)
 }}}
 
-Po instalaci fedory je třeba do souboru fedora.fcfg do sekce module: resource index přidat následující parametry:
+Po instalaci fedory je třeba do souboru fedora/server/config/fedora.fcfg do sekce začínající <module role="fedora.server.resourceIndex.ResourceIndex" přidat následující parametry:
 
 {{{
  <param name="alias:kramerius" value="http://www.nsdl.org/ontologies/relationships#">
@@ -93,7 +93,7 @@ Po instalaci fedory je třeba do souboru fedora.fcfg do sekce module: resource i
  </param>
 }}}
 
-V téže sekci (resource index) je třeba změnit u parametru datastore hodnotu na localPostgresMPTTriplestore. V sekci localPostgresMPTTriplestore je třeba nastavit databázové heslo na heslo, které jste přiřadili uživateli fedoraAdmin. 
+V téže sekci (resource index) je třeba změnit u parametru datastore hodnotu na localPostgresMPTTriplestore. V odpovídající sekci localPostgresMPTTriplestore, kde je definován datasource pro MPTTriplesotre, je třeba nastavit databázové heslo na heslo, které jste přiřadili uživateli fedoraAdmin. 
 
 _(Poznámka: Kramerius 4 podporuje implementaci Resource index Mulgara i MPTtripleStore. To, která implementace bude použita, je určeno konfigurační property `resource.index.service.class` v souboru configuration.properties - viz níže. Výchozí hodnota této property je nastavena na MPTtripleStore, protože implementace Mulgara není v současné podobě použitelná se službou OAI provider. )_
 
@@ -158,41 +158,6 @@ a povolit jednotné přihlašování:
 
 Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kramerius4 je vytvořen adresář .kramerius4 a v něm prázdné soubory configuration.properties, indexer.properties a migration.properties. Popis viz [Konfigurace].
 
-= Instalace OAI =
-
-== Fedora model ==
-
-V `service_ESEDep.xml` a `model_repository.xml` (https://kramerius.googlecode.com/svn/trunk/installation/fedora) opravit všechny `FIXME`.
-
-== PostgreSQL ==
-
-Vytvořit uživatele `proai` a databázi `proai`.
-
-== Tomcat ==
-
-Do `tomcat/webapps` nakopírovat `oaiprovider.war` z SVN K4 (https://kramerius.googlecode.com/svn/trunk/installation/oai).
-
-Editovat `tomcat/webapps/oaiprovider/oaiprovider/WEB-INF/classes/proai.properties`.
-{{{
-# /tmp/proai obsahuje exportovaná data a nesmí být mazán bez úpravy proai databáze
-proai.cacheBaseDir = /tmp/proai/cache
-proai.sessionBaseDir = /tmp/proai/sessions
-proai.schemaDir = /tmp/proai/schemas
-
-# nahradit všechny odkazy 'localhost' skutečným serverem
-
-# v případě potřeby změnit přístupová jména a hesla podle skutečnosti
-proai.db.url = jdbc:postgresql://localhost/proai
-proai.db.username = proai
-proai.db.password = ********
-driver.fedora.user = fedoraAdmin
-driver.fedora.pass = ********
-driver.fedora.mpt.jdbc.user = fedoraAdmin
-driver.fedora.mpt.jdbc.password = ********
-
-# povolit export dat z Fedory
-proai.driverPollingEnabled = true
-}}}
 
 = Konfigurace =
 
@@ -790,3 +755,41 @@ Volané url z kontextového menu má například takovýto tvar:
 {{{
 http://localhost:8080/editor/?openIDs=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&locale=en
 }}}  
+
+
+
+= Instalace OAI =
+
+== Fedora model ==
+
+V `service_ESEDep.xml` a `model_repository.xml` (https://kramerius.googlecode.com/svn/trunk/installation/fedora) opravit všechny `FIXME`.
+
+== PostgreSQL ==
+
+Vytvořit uživatele `proai` a databázi `proai`.
+
+== Tomcat ==
+
+Do `tomcat/webapps` nakopírovat `oaiprovider.war` z SVN K4 (https://kramerius.googlecode.com/svn/trunk/installation/oai).
+
+Editovat `tomcat/webapps/oaiprovider/oaiprovider/WEB-INF/classes/proai.properties`.
+{{{
+# /tmp/proai obsahuje exportovaná data a nesmí být mazán bez úpravy proai databáze
+proai.cacheBaseDir = /tmp/proai/cache
+proai.sessionBaseDir = /tmp/proai/sessions
+proai.schemaDir = /tmp/proai/schemas
+
+# nahradit všechny odkazy 'localhost' skutečným serverem
+
+# v případě potřeby změnit přístupová jména a hesla podle skutečnosti
+proai.db.url = jdbc:postgresql://localhost/proai
+proai.db.username = proai
+proai.db.password = ********
+driver.fedora.user = fedoraAdmin
+driver.fedora.pass = ********
+driver.fedora.mpt.jdbc.user = fedoraAdmin
+driver.fedora.mpt.jdbc.password = ********
+
+# povolit export dat z Fedory
+proai.driverPollingEnabled = true
+}}}
