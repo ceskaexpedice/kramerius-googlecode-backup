@@ -6,6 +6,8 @@
 
 * [MenuAdministrace Administrace]
 
+* [Prava Správa uživatelů]
+
 * [Data Datový model]
 
 * [Changelog Přehled změn]
