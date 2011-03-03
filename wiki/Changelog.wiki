@@ -1,6 +1,10 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
+=Verze 4.2.3=
+
+_Poznámka:_ Při upgrade z verze 4.2.1 je třeba nahradit všechny 4 soubory z `Kramerius-4.2.3.zip` , ze souboru `installation-4.2.3.zip` stačí nahradit soubor `solr/conf/schema.xml`.
+
 =Verze 4.2.1=
 
   * Opravena chyba v nastavování přístupových práv bez parametru
