@@ -1,11 +1,28 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
-=Verze 4.2.3=
+=Verze 4.2.3 (2168)=
 
 _Poznámka:_ Při upgrade z verze 4.2.1 je třeba nahradit všechny 4 soubory z `Kramerius-4.2.3.zip` , ze souboru `installation-4.2.3.zip` stačí nahradit soubor `solr/conf/schema.xml`.
 
-=Verze 4.2.1=
+  * Issue 34
+  * Issue 35
+  * Issue 11
+  * Issue 39
+  * Issue 40
+  * Issue 36
+  * Issue 45
+  * Issue 44
+  * Issue 46
+  * Issue 38
+  * Issue 54
+  * Issue 51
+  * Issue 52
+  * Issue 53
+  * Issue 43
+
+
+=Verze 4.2.1 (2068)=
 
   * Opravena chyba v nastavování přístupových práv bez parametru
   * Upraven dialog pro generování PDF
