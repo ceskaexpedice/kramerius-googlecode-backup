@@ -5,21 +5,21 @@
 
 _Poznámka:_ Při upgrade z verze 4.2.1 je třeba nahradit všechny 4 soubory z `Kramerius-4.2.3.zip` , ze souboru `installation-4.2.3.zip` stačí nahradit soubor `solr/conf/schema.xml`.
 
-  * Issue 34
-  * Issue 35
-  * Issue 11
-  * Issue 39
-  * Issue 40
-  * Issue 36
-  * Issue 45
-  * Issue 44
-  * Issue 46
-  * Issue 38
-  * Issue 54
-  * Issue 51
-  * Issue 52
-  * Issue 53
-  * Issue 43
+  * Issue 34 - opraven email s generovaným heslem
+  * Issue 35 - opraveny chyby u záložky Informace
+  * Issue 11 - zachování URL po přihlášení
+  * Issue 39 - alternativní způsob předání parametrů procesům
+  * Issue 40 - podpora PDF v konvertoru K3->K4
+  * Issue 36 - proces importer prochází podadresáře v abecedním pořadí
+  * Issue 45 - opravena chyba ve zpracování persistentního URL (handle)
+  * Issue 44 - URL pro spouštění externích editorů je odvozeno z URL requestu, ne ze systémové property
+  * Issue 46 - předávání autentizačních údajů mezi kaskádovitě spouštěnými procesy
+  * Issue 38 - vylepšeno chování procesu pro generování cache deepZoom dlaždic
+  * Issue 54 - změna názvu parametru v URL pro volání externího editoru metadat
+  * Issue 51 - automatické zavírání kontextového menu
+  * Issue 52 - opraveno chování lišty pro stránkování ve výsledcích vyhledávání
+  * Issue 53 - opravena nefunkční tlačítka stránkování při zobrazení plné velikosti stran
+  * Issue 43 - opravena chyba zobrazování velkého náhledu v prohlížečích s jádrem Webkit
 
 
 =Verze 4.2.1 (2068)=
