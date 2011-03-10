@@ -13,7 +13,7 @@ Operační systém může být libovolný, na kterém je možno tyto komponenty 
 
 K4 je vhodné nainstalovat pod samostatným uživatelským účtem, například kramerius4. 
 
-Nastavit potřebné systémové proměnné (předpokládáme instalaci Tomcatu a Fedory do domácího adresáře uživatele kramerius4):
+Nastavit potřebné systémové proměnné (v uvedených příkladech konfigurace předpokládáme instalaci Tomcatu a Fedory do domácího adresáře uživatele kramerius4):
 {{{
 export JAVA_HOME=/usr/java/jre1.6.0_20
 export CATALINA_HOME=$HOME/tomcat
@@ -22,7 +22,9 @@ export JAVA_OPTS=" -Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr 
 export PATH=$PATH:$FEDORA_HOME/server/bin:$FEDORA_HOME/client/bin:$CATALINA_HOME/bin:$JAVA_HOME/bin 
 }}}
 
-V produkčním prostředí je před J2EE server (Tomcat) vhodné předřadit webserver přístupný na portu 80.
+V produkčním prostředí je před J2EE server (Tomcat) vhodné předřadit webserver přístupný na portu 80, například Apache s nakonfigurovanými moduly mod_proxy a mod_proxy_ajp.
+
+Každou komponentu systému Kramerius (tedy repository Fedora, vlastní aplikaci K4, indexer SOLR, databázi PostgreSQL)  je možné nainstalovat na samostatný server. Komponenty jsou provázány prostřednictvím URL v níže uvedených konfiguračních souborech. V případě distribuované instalace je tedy třeba uvedené příklady konfigurčních URL (localhost) nahradit adresami příslušných serverů. 
 
 = Instalace Fedory =
 
