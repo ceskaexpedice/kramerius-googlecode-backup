@@ -11,7 +11,7 @@ Data je možno importovat ze 3 zdrojů:
 
 Příkazy Import monografií nebo Import periodik spustí replikaci monografií nebo periodik. Import probíhá ve 3 fázích: Nejprve jsou data stažena přes replikační rozhraní K3 z původní instance K3 do pracovního adresáře na serveru K4. K4 je zde v roli replikačního klienta. V druhé fázi jsou XML soubory a obrázky v praocvním adresáři převedeny z formátu K3 do FOXML souborů K4, výsledné soubory jsou uloženy do dalšího pracovního adresáře na serveru K4. Ve třetí fázi je obsah tohoto pracovního adresáře naimportován do ůložiště Fedora K4.  
 
-===Nastavení replikačního rozhraní K3 a komuinkace K3-K4===
+===Nastavení replikačního rozhraní K3 a komunikace K3-K4===
 
 Podrobný popis replikačního rozhraní K3 najdete v dokumentaci K3, zde jsou jen shrnuty jednotlivé kroky.
  
