@@ -774,7 +774,7 @@ Vytvořit uživatele `proai` a databázi `proai`.
 
 Do `tomcat/webapps` nakopírovat `oaiprovider.war` z SVN K4 (https://kramerius.googlecode.com/svn/trunk/installation/oai).
 
-Editovat `tomcat/webapps/oaiprovider/oaiprovider/WEB-INF/classes/proai.properties`.
+Editovat `tomcat/webapps/oaiprovider/WEB-INF/classes/proai.properties`.
 {{{
 # /tmp/proai obsahuje exportovaná data a nesmí být mazán bez úpravy proai databáze
 proai.cacheBaseDir = /tmp/proai/cache
