@@ -17,7 +17,7 @@ Podrobný popis replikačního rozhraní K3 najdete v dokumentaci K3, zde jsou j
  
 Před zahájením replikace je třeba v Krameriovi 3 založit replikační instituci, která bude použita pro replikaci a která je v Krameriovi 4 definována v konfiguračním souboru migration.properties. V Krameriovi 3 je také potřeba povolit přístup z IP adresy serveru Krameria4.
 
-Pro tuto replikační instituci si poznamenejte sigla, login a heslo a zadejte je v migration.properties do properties `k3.replication.sigla`, `k3.replication.login` a `k3.replication.password`. *Heslo je třeba zadat tak, jak je interně uloženo v databázi K3, tedy jako hashcode*. 
+Pro tuto replikační instituci si poznamenejte sigla, login a heslo a zadejte je v migration.properties do properties `k3.replication.sigla`, `k3.replication.login` a `k3.replication.password`. Heslo je třeba zadat tak, jak je interně uloženo v databázi K3, tabulka institution, sloupec replicationoutpass. 
 
 Do property `k3.replication.url` v migration.properties zadejte URL replikačního rozhraní Krameria 3 ve tvaru http://...
 
