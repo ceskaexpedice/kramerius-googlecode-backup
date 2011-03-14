@@ -9,8 +9,12 @@ Data je možno importovat ze 3 zdrojů:
 
 == Automatický import z Krameria verze 3 přes replikační rozhraní == 
 
-Příkazy Import monografií nebo Import periodik spustí replikaci monografií nebo periodik, podle obsahu souboru monographs.txt nebo periodicals.txt . Umístění a názvy těchto souborů jsou definovány v souboru .kramerius4/migration.properties, tam je definován i pracovní adresář (defaultně replication - musí existovat, je vyprázdněn před každým importem titulu nebo ročníku) a také údaje pro připojení ke Krameriovi3.
+Příkazy Import monografií nebo Import periodik spustí replikaci monografií nebo periodik. Import probíhá ve 3 fázích: Nejprve jsou data stažena přes replikační rozhraní K3 z původní instance K3 do pracovního adresáře na serveru K4. K4 je zde v roli replikačního klienta. V druhé fázi jsou XML soubory a obrázky v praocvním adresáři převedeny z formátu K3 do FOXML souborů K4, výsledné soubory jsou uloženy do dalšího pracovního adresáře na serveru K4. Ve třetí fázi je obsah tohoto pracovního adresáře naimportován do ůložiště Fedora K4.  
 
+===Nastavení replikačního rozhraní K3 a kouminkace K3-K4===
+
+Podrobný popis replikačního rozhraní K3 najdete v dokumentaci K3, zde jsou jen shrnuty jednotlivé kroky.
+ 
 Před zahájením replikace je třeba v Krameriovi 3 založit replikační instituci, která bude použita pro replikaci a která je v Krameriovi 4 definována v konfiguračním souboru migration.properties. V Krameriovi 3 je také potřeba povolit přístup z IP adresy serveru Krameria4.
 
 Pro tuto replikační instituci si poznamenejte sigla, login a heslo a zadejte je v migration.properties do properties k3.replication.sigla, k3.replication.login a k3.replication.password. Heslo je třeba zadat tak, jak je interně uloženo v databázi K3, tedy jako hashcode. 
@@ -30,13 +34,39 @@ V konfiguraci databázového serveru Krameria 3 je také potřeba povolit vzdál
 
 Všem dokumentům, které chcete z Krameria 3 replikovat, musíte také pro tuto replikační instituci nastavit potřebná replikační práva. Abyste tento krok nemuseli dělat ručně v GUI Krameria 3 pro velké množství dokumentů, Kramerius 4 nabízí příkaz * K3 - replikační práva, * který v jedné dávce nastaví potřebná práva k replikaci pro všechny dokumenty. 
 
+===Určení titulů pro replikaci===
 
-Seznam všech identifikátorů dokumentů obsažených v Krameriovi 3 můžete získat spuštěním příkazu  * K3 - seznam identifikátorů * (proces Enumerator). Připojí se k databázi Krameria 3 a do souborů monographs.txt a periodicals.txt vypíše její kompletní obsah (interní ID pro monografie, ISSN a ročník pro periodika - toto jsou údaje, se kterými umí pracovat replikační rozhraní K3). Vytvořené soubory můžete přejmenovat a rozdělit na menší kusy a řídit tak, po jakých  úsecích se bude replikovat příkazem Import.... Vždy se replikuje vše, co je v souboru monographs.txt, resp. periodicals.txt.
+To, které dokumenty se budou z K3 replikovat, se řídí podle obsahu souborů monographs.txt nebo periodicals.txt . Umístění a názvy těchto souborů jsou definovány v souboru .kramerius4/migration.properties, property migration.periodicals a migration.monographs.
+Seznam všech identifikátorů dokumentů obsažených v Krameriovi 3 můžete získat spuštěním příkazu  * K3 - seznam identifikátorů * (proces Enumerator). Připojí se k databázi Krameria 3 a do souborů monographs.txt a periodicals.txt vypíše její kompletní obsah (interní ID pro monografie, ISSN a ročník pro periodika - toto jsou údaje, se kterými umí pracovat replikační rozhraní K3). Vytvořené soubory můžete přejmenovat a rozdělit na menší kusy a řídit tak, po jakých  úsecích se bude replikovat příkazem Import.... Vždy se replikuje vše, co je v souboru monographs.txt, resp. periodicals.txt. Importní proces čte tyto řídící soubory řádek po řádku, a pro každý řádek parsuje identifikátor dokumentu a postupně provede všechny 3 fáze importu. 
 
+===Nastavení pracovních adresářů===
+
+V souboru .kramerius4/migration.properties jsou definovány i pracovní adresáře.
+
+Property migration.directory (defaultně .kramerius4/replication) definuje adresář, do kterého jsou stahována data z K3 - adresář musí existovat a je vyprázdněn před každým importem titulu nebo ročníku)
+
+Property migration.target.directory určuje adresář, do kterého jsou ukládány soubory ve formátu FOXML K4, vytvořené ve fázi konverze dat z K3. Pokud je nastavena property convert.useContractSubfolders  na hodnotu true (defaultní hodnota je false), je pro každý zpracovávaný dokument z K3 v cílovém adresáři vytvořen podadresář s názvem odpovídajícím číslu zakázky uvedené v původním dokumentu. Cílový adresář v tomto případě není mazán a výsledně v něm vzniká datová struktura se všemi konvertovanými dokumenty ve formátu K4, rozdělená podle čísel zakázek.
+
+Pokud je property convert.useContractSubfolders false, podadresáře se nevytvářejí a obsah cílového adresáře je před každým dalším procesem konverze smazán.
+
+===Omezení importu pouze na fázi konverze===
+
+Nastavením property ingest.skip na hodnotu true je proces importu zastaven po skončení fáze konverze a neproběhne fáze importu do úložiště Fedora. Proces importu se tak vlastně stává procesem konverze. 
+
+
+===Kódování binárních datastreamů FOXML===
+
+Property convert.files, convert.previews a convert.thumbnails určují způsob kódování datastreamů IMG_FULL, IMG_PREVIEW a IMG_THUMB v konvertovaných FOXML souborech. 
+
+Výchozí hodnota encoded znamená, že příslušný stream je typu Managed (M) a jeho data jsou pro import zakódována v FOXML souboru pomocí  kódování base64.
+
+Hodnota referenced znamená, že stream je typu Managed(M) a jeho data jsou pro import odkazována pomocí file URL do výstupního adresáře konvertoru. Při importu jsou data zkopírována do úložiště Fedora.
+
+Hodnota external znamená, že stream je typu External (E) a jeho data  jsou odkazována pomocí file URL do výstupního adresáře konvertoru, kde tedy musí trvale zůstat.
 
 == Manuální import dokumentů ve formátu DTD Krameria 3 ==
 
-Příkaz Konverze a import projde obsah serverového adresáře .kramerius4/convert (případně jiného adresáře definovaného v migration.properties) a jeho podadresářů, pokud obsahují data ve formátu DTD Kramerius3, překonvertuje je do formátu FOXML a naimportuje do Krameria 4. Každý podadresář může obsahovat data (XML + obrázky + OCR) pro jeden titul.
+Příkaz Konverze a import je analogický s procesem Import periodik či monografií, je v něm ale vynechána první fáze. Namísto replikace dat z K3 proces projde obsah serverového adresáředefinovaného  a jeho podadresářů, pokud obsahují data ve formátu DTD Kramerius3, překonvertuje je do formátu FOXML a naimportuje do Krameria 4. Každý podadresář může obsahovat data (XML + obrázky + OCR) pro jeden titul.
 
 == Manuální import dokumentů ve formátu FOXML Krameria 4 ==
 
