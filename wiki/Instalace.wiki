@@ -718,6 +718,17 @@ rightseditor {
 do .kramerius4 přidat mail.properties s obsahem:
 
 {{{
+# Mail properties bez SSL
+mail.smtp.user=hudlibudli@gmail.com
+mail.smtp.pass=blablabla
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=25
+}}}
+
+nebo 
+
+{{{
+# Mail properties s podporou SSL
 mail.smtp.user=hudlibudli@gmail.com
 mail.smtp.pass=blablabla
 mail.smtp.host=smtp.gmail.com
