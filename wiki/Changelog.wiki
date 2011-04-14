@@ -1,6 +1,36 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
+=Pracovní verze (trunk)=
+
+  * Issue 57 - opraveno našeptávání u vyhledávání podle autora
+  * Issue 56 - vylepšeno sestavení nadpisu na úvodní stránce generovaného PDF
+  * Issue 60 - administrátorské procesy logují do stdout místo stderr
+  * Issue 22, Issue 76 - administrátorem editovatelný systém XSLT šablon pro zobrazení metadat. Defaultní XSLT šablony pro zobrazení MODS v jednotlivých částech stránek jsou definovány v adresářích `search/web/inc/details/xsl` a `search/web/inc/results/xsl`. Kteroukoli z šablon je možno nahradit vlastní, uloženou pod stejným názvem (bez cesty) v adresáři `~/.kramerius4/xsl`.
+  * Issue 74 - konvertor K3->K4 - podpora zdrojového a cílového souboru na různých filesystémech
+  * Issue 73 - konvertor K3->K4 ukládá foxml soubory do podadresáře xml (při konverzi do adresářů podle zakázek)
+  * Issue 47 - opravena chyba při automatickém spouštění indexace po mazání dokumentu
+  * Indexer - přidány nové akce: checkIntegrityByModel, checkIntegrityByDocument
+  * Issue 75, Issue 68 - opraveny nekozistence při navigaci stromem dokumentů pomocí pop-up menu v pravém panelu  
+  * Issue 80 - opravena chyba při mazání titulů s vícenásobnými vazbami
+  * Issue 61 - při generování PDF se nezadává požadovaný rozsah stran, ale jen počet stran od aktuálně vybrané. Odpadá tím problém s nejednoznačným číslováním stran.
+  * Issue 83 - opravena chyba v přesměrování při zadání persistentního URL dokumentu
+  * Issue 82 - při požadavku na zobrazení dokumentu s neexistujícím UUID je zobrazena úvodní stránka doplněná o chybovou zprávu 
+  * Issue 50 - podpora aktuální verze Fedory 3.4.2
+  * Odstraněna nutnost připojení k databázi fedora3. Z konfiguračního souboru Tomcat je možno odstranit příslušný datasource.
+  * Issue 69 - opravena chyba při zobrazování internalPart (K4 vyžadoval existenci streamu IMG_FULL)
+  * Issue 81 - konvertor K3->K4 při při konverzi do adresářů podle zakázek kopíruje i původní XML ve formátu K3. Řízeno příznakem `convert.copyOriginal=true` v migration.properties
+  * Issue 70 - konvertor K3->K4 při konverzi dokumentu s chybějícím obrázkovým souborem je konverze ukončena s výjimkou IllegalStateException. Původní chování (vytvořen FOXML objekt bez obrázku a konverze pokračuje) je možno nastavit pomocí property `convert.ignoreMissingFiles=true`.
+  * Issue 79 - konvertor K3->K4: opravy a optimalizace XSLT šablon pro datastream BIBLIO-MODS
+  * Issue 37 - při generování PDF je omezen počet současně zpracovávaných požadavků, při překročení může uživatel požadavek opakovat. Maximální počet požadavků je řízen položkou  `pdfQueue.activeProcess` v configuration.properties (výchozí hodnota 2).
+  * Issue 78 - opravena chyba při zapisování uživatele, který spustil proces, do přehledu procesů
+  * Licenční text, zobrazovaný u dokumentů s donátorem je přesunut z FOXML objektu s logem donátora do standardního souboru labels.properties. 
+  * Issue 86 - opravena chyba v detekci předčasného ukončení procesů
+  * Issue 85 - doplněna optimalizace indexu po smazání záznamu. Existující nekonzistence v indexech budou automaticky opraveny jakémkoli dalším mazání dokumentů, případně je lze vynutit okamžitě zadáním URL `http://localhost:8080/solr/update?stream.body=optimize`
+  * Issue 67 - editor pořadí stránek se otevírá v novém okně, odstraněn zpětný odkaz do K4 
+  * OAI - nový provider pro Registr digitalizace, optimalizace stávajícího provideru ESE. Při použití OAI je třeba nainstalovat příslušné disseminátory a aktuální verzi FOXML modelů z distribučního souboru installation.zip
+
+
 =Verze 4.2.3 (2168)=
 
 _Poznámka:_ Při upgrade z verze 4.2.1 je třeba nahradit všechny 4 soubory z `Kramerius-4.2.3.zip` , ze souboru `installation-4.2.3.zip` stačí nahradit soubor `solr/conf/schema.xml`.
