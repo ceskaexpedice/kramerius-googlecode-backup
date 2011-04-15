@@ -3,7 +3,7 @@
 
 =Pracovní verze (trunk)=
 
-=Verze 4.3.0 (build 2376)=
+=Verze 4.3.0 (r2376)=
 
   * Issue 57 - opraveno našeptávání u vyhledávání podle autora
   * Issue 56 - vylepšeno sestavení nadpisu na úvodní stránce generovaného PDF
