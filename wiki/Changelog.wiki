@@ -3,6 +3,8 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.3.0 (build 2376)=
+
   * Issue 57 - opraveno našeptávání u vyhledávání podle autora
   * Issue 56 - vylepšeno sestavení nadpisu na úvodní stránce generovaného PDF
   * Issue 60 - administrátorské procesy logují do stdout místo stderr
