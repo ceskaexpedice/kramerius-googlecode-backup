@@ -1,0 +1,46 @@
+group viewinfo;
+
+/* whole viewinfo tempalte */
+viewinfo(data, globalActions) ::=<<
+{
+        pdfMaxRange:$data.pdfMaxRange$,
+        previewStreamGenerated:$data.previewStreamGenerated$,
+        deepZoomGenerated:$data.deepZoomCacheGenerated$,
+        deepZoomCofigurationEnabled:$data.deepZoomCofigurationEnabled$,
+        
+        mimeType:'$data.mimeType$', 
+        hasAlto:$data.hasAlto$,
+        uuid:"$data.uuid$",
+        $if(data.canhandlecommongroup)$
+        canhandlecommongroup:$data.canhandlecommongroup$,
+        $endif$
+        pathOfUuids:[$data.pathOfUuids:{uuid| "$uuid$" };separator=","$],
+        imageServerConfigured:'$data.imageServerConfigured$', 
+        $rights(securedActionsMap=data.actions, globalActions=data.globalActions);separator=","$,                
+        $supportfunctions()$
+}
+>>
+            
+
+/* rights */
+rights(securedActionsMap, globalActions) ::=<<
+    rights: 
+    { 
+        $securedActionsMap.keys:{secaction |   $action(action=secaction,uuidMap=securedActionsMap.(secaction))$  };separator=",\n"$ 
+        $if(globalActions)$
+        ,
+        $globalActions:{secaction | "$secaction$":{"1":true} };separator=",\n"$
+        $endif$
+    }
+>>
+
+/* action's map */
+action(action, uuidMap) ::=<<
+    "$action$": { $uuidMap.keys:{uuid |  "$uuid$":$uuidMap.(uuid)$  };separator=","$ }
+>>
+
+/* some support functions */
+supportfunctions() ::=<<
+            isContentPDF:function() {return viewerOptions.mimeType=='application/pdf'},
+            isContentDJVU:function() {return viewerOptions.mimeType.indexOf('djvu')> 0 }
+>>
