@@ -158,7 +158,7 @@ a povolit jednotné přihlašování:
 </Host>
 }}}
 
-Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kramerius4 je vytvořen adresář .kramerius4 a v něm prázdné soubory configuration.properties, indexer.properties a migration.properties. Popis viz [Konfigurace].
+Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kramerius4 je vytvořen adresář .kramerius4 a v něm prázdné soubory configuration.properties, indexer.properties a migration.properties. Popis viz [Instalace#Konfigurace Konfigurace].
 
 
 = Konfigurace =
