@@ -3,6 +3,11 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.3.1 (r2385)=
+
+  * Opraveno chybné zobrazení stran uložených v  IIP image serveru.
+  * Úpravy v podpoře OAI (tag OAI:itemId nastavován konvertorem pro všechny modely, nový exportní formát drkramerius4 pro registr digitalizace)
+
 =Verze 4.3.0 (r2376)=
 
   * Issue 57 - opraveno našeptávání u vyhledávání podle autora
