@@ -137,8 +137,8 @@ do context.xml přidat definici datasource:
 
 do tomcat/lib překopírovat následující jary z webapps/fedora/WEB-INF/lib:
   * carol
-  * commons-logging
-  * log4j
+  * commons-logging  (pro fedoru 3.4 a novější již není třeba)
+  * log4j (pro fedoru 3.4 a novější již není třeba)
 
 dále do tomcat/lib nakopírujte jar s jdbc ovladačem pro postgresql, nejlépe z distribuce databáze PostgreSQL nebo z archivu search.war/WEB-INF/lib  - ovladač z distribuce fedora 3.3 patří k PostgreSQL 8.3 a s Krameriem 4.2 a novějším nefunguje.
 
