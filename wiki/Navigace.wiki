@@ -12,6 +12,6 @@
 
 * [Changelog Přehled změn]
 
-* [http://www.incad.cz/kramerius4/ Zapisy z porad] 
+* [http://www.incad.cz/kramerius4/ Zápisy z porad] 
 
 * [PlanovanyRozvoj Plánovaný rozvoj]
