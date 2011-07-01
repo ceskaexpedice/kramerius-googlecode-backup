@@ -9,7 +9,7 @@ Kramerius používá k popisu hierarchie několik vlastních [Data#RDF_vazby rel
 
 *Příklad 1:* stačilo načíst vazby objektu monografie a v případě vazeb hasPage nebylo nutné načítat objekty těchto potomků, protože se vědělo, že stránka už žádné nemá.
 
-*Příklad 2:* z načtených vazeb šlo určit typ (model) potomků aniž by se načítaly jejich objekty.
+*Příklad 2:* z načtených vazeb šlo určit typ (model) potomků, aniž by se načítaly jejich objekty.
 
 Nyní lze systém modelů volně rozšiřovat a s tím je nutné přidávat také nové relace. Kramerius proto musí na relace pohlížet obecně a není možné využít znalosti o dané vazbě. To systém komplikuje a hlavně to snižuje jeho výkonnost. Bude nutné vyřešit následující problémy.
 
@@ -20,10 +20,10 @@ Z toho vyplývá nemožnost validace dat při importu. Je vazba platná? Odkazuj
 
 Editor má problém s vytvářením nových objektů a vazeb. Není možné prezentovat nějaký seznam.
 
-_Lze řešit deklarací možných relací a jejich vtahu k modelům objektů. Přineslo by pouze složitější metamodel._
+Lze řešit deklarací možných relací a jejich vtahu k modelům objektů. Přineslo by pouze složitější metamodel.
 
 === Problém 2: rychlost načítání vazeb ===
-Stávající implementace průchodem FOXML dokumentů je značně neefektivní. Výpis hierarchie např. Lidových novin což je asi 280000 objektů zabere 2 h 10 min 31 s. 
+Stávající implementace průchodem FOXML dokumentů je značně neefektivní. Výpis hierarchie např. Lidových novin, což je asi 280000 objektů, zabere 2 h 10 min 31 s. 
 
 Při využití resource indexu, viz. níže, lze čas zkrátit na 6 min 15 s. Tento čas je pak ale lineárně závislý na počtu vazeb.
 
@@ -49,4 +49,4 @@ V případě NKP je situace mnohem jednodušší. Existující FOXML objekty neb
 Tato úprava bude nutná tak jako tak, protože editory nyní počítají s neměnnou množinou vazeb.
 
 == Nevýhody ==
-Při použití jediné vazby nebude běžným přečtením FOXML dokumentu předka zřejmé jakého typu jsou odkazované objekty potomků. To může ztížit ruční úpravu objektu uživatelem.
+Při použití jediné vazby nebude běžným přečtením FOXML dokumentu předka zřejmé, jakého typu jsou odkazované objekty potomků. To může ztížit ruční úpravu objektu uživatelem.
