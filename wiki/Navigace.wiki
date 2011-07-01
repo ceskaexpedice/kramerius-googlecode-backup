@@ -1,5 +1,7 @@
 * [Uvod Úvod]
 
+* [PlanovanyRozvoj Plánovaný rozvoj]
+
 * [UI Uživatelské rozhraní]
 
 * [Instalace Instalace a konfigurace]
@@ -12,6 +14,7 @@
 
 * [Changelog Přehled změn]
 
+* [OptimalizaceRelaci Optimalizace relací v Kramerius 4]  
+
 * [http://www.incad.cz/kramerius4/ Zápisy z porad] 
 
-* [PlanovanyRozvoj Plánovaný rozvoj]
