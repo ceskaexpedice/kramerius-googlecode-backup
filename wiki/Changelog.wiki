@@ -9,6 +9,7 @@
   * Issue 122 - Opravena chyba v zobrazování náhledů v editoru vazeb
   * Issue 118 - Opraven problém při konverzi externě referencovaných souborů
   * Issue 103 - Podpora e-knih (souborů pouze pro download)
+  * Issue 106 - Opravena chyba: Internet Explorer 9 - správa dlouhotrvajících procesů - aktualizace
   * Issue 116 - opravena chyba při rušení plánovaných procesů
   * Issue 115, 104 - Zlepšeno hlášení chyb v procesech
   * Issue 112 - oprava XSLT šablony pro OAI ESE
