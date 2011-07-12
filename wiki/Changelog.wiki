@@ -3,6 +3,7 @@
 
 =Pracovní verze (trunk)=
 
+  * Issue 141 - Zlepšené nastavení replikačních práv pro konvertor K3->K4
   * Issue 123 - XSL šablony pro transformaci MODS v konvertoru K3->K4 mohou být předefinovány v adresáři .kramerius4/xsl
   * Opravena reindexace po změně viditelnosti nebo smazání části dokumentu
   * Issue 135 -	Možnost nastavení výchozích přístupových práv replikovaných monografií (property convert.defaultRights)
