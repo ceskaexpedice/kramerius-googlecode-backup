@@ -3,6 +3,26 @@
 
 =Pracovní verze (trunk)=
 
+  * Opravena reindexace po změně viditelnosti nebo smazání části dokumentu
+  * Issue 135 -	Možnost nastavení výchozích přístupových práv replikovaných monografií (property convert.defaultRights)
+  * Issue 127 -	Podpora ALTO 1.4 a 2.0 v konvertoru K3->K4, indexaci i zobrazování
+  * Issue 122 - Opravena chyba v zobrazování náhledů v editoru vazeb
+  * Issue 118 - Opraven problém při konverzi externě referencovaných souborů
+  * Issue 103 - Podpora e-knih (souborů pouze pro download)
+  * Issue 116 - opravena chyba při rušení plánovaných procesů
+  * Issue 115, 104 - Zlepšeno hlášení chyb v procesech
+  * Issue 112 - oprava XSLT šablony pro OAI ESE
+  * Issue 49 - Uživatelsky definovatelné podmínky přístupových práv (skripty)
+  * Issue 99 - Přihlašovací dialog obsahuje konfigurovatelný text (konfigurační soubor logininfo, případně v jazykových mutacích logininfo_CZ_cs, logininfo_EN_en atd...)
+  * Issue 101 - Dílčí úpravy v XSLT šablonách MODS v konvertoru K3->K4
+  * Issue 100 - Odstraněna nefunkční položka "odkazy" v hlavičce stránky. Odkazy mohou  být uvedeny v záložce Informace 
+  * Issue 98 - Úpravy defaultních popisek prvků UI (podle schůze 18.4.)
+  * Issue 92 - Konfigurace počtu rozbalených položek v seznamu (property search.results.numOpenedRows=3)
+  * Issue 91 - Nová záložka na titulní stránce - Vybrané. Její obsah je definován seznamem uuid v property search.home.tab.custom.uuids.  Možnost konfigurovat pořadí záložek na titulní stránce (property search.home.tabs=custom,info,newest,mostDesirables)
+  * Issue 89 - konfigurovtelný počet výsledků vyhledávání na stránce (property search.results.rows=15)
+  * Sjednoceny servlety pro práci s obrázky
+  
+
 =Verze 4.3.1 (r2385)=
 
   * Opraveno chybné zobrazení stran uložených v  IIP image serveru.
