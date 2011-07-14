@@ -16,6 +16,7 @@
   * Issue 115, 104 - Zlepšeno hlášení chyb v procesech
   * Issue 112 - oprava XSLT šablony pro OAI ESE
   * Issue 49 - Uživatelsky definovatelné podmínky přístupových práv (skripty)
+  * Issue 94 - opraveny defaultní XSLT šablony pro metadata
   * Issue 99 - Přihlašovací dialog obsahuje konfigurovatelný text (konfigurační soubor logininfo, případně v jazykových mutacích logininfo_CZ_cs, logininfo_EN_en atd...)
   * Issue 101 - Dílčí úpravy v XSLT šablonách MODS v konvertoru K3->K4
   * Issue 100 - Odstraněna nefunkční položka "odkazy" v hlavičce stránky. Odkazy mohou  být uvedeny v záložce Informace 
