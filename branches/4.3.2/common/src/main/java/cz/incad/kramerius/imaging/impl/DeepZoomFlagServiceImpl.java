@@ -1,0 +1,149 @@
+/*
+ * Copyright (C) 2010 Pavel Stastny
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package cz.incad.kramerius.imaging.impl;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.fedora.api.FedoraAPIM;
+import org.fedora.api.RelationshipTuple;
+
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
+import cz.incad.kramerius.FedoraAccess;
+import cz.incad.kramerius.FedoraNamespaces;
+import cz.incad.kramerius.imaging.DeepZoomFlagService;
+import cz.incad.kramerius.impl.AbstractTreeNodeProcessorAdapter;
+
+public class DeepZoomFlagServiceImpl implements DeepZoomFlagService {
+
+    static java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(DeepZoomFlagServiceImpl.class.getName());
+    
+    @Inject
+    @Named("securedFedoraAccess")
+    FedoraAccess fedoraAccess;
+    
+    public void deleteFlagToUUID(final String uuid) throws IOException {
+        if (fedoraAccess.isImageFULLAvailable(uuid)) {
+            deleteFlagToUUIDInternal(uuid);
+        } else {
+ 
+            try {
+                fedoraAccess.processSubtree("uuid:"+uuid, new AbstractTreeNodeProcessorAdapter() {
+                    
+                    @Override
+                    public void processUuid(String pageUuid, int level) {
+                        deleteFlagToUUIDInternal(pageUuid);
+                    }
+
+                });
+                
+//                fedoraAccess.processRelsExt(uuid, new RelsExtHandler() {
+//                    @Override
+//                    public void handle(Element elm, FedoraRelationship relation, String relationshipName, int level) {
+//                        if (relation.name().startsWith("has")) {
+//                            try {
+//                         
+//                                String pid = elm.getAttributeNS(RDF_NAMESPACE_URI, "resource");
+//                                PIDParser pidParse = new PIDParser(pid);
+//                                pidParse.disseminationURI();
+//                                String pageUuid = pidParse.getObjectId();
+//
+//                                deleteFlagToUUIDInternal(pageUuid);
+//                            } catch (LexerException e) {
+//                                throw new RuntimeException(e);
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public boolean breakProcess() {
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean accept(FedoraRelationship relation, String relationShipName) {
+//                        return relation.name().startsWith("has");
+//                    }
+//                });
+            } catch (Exception e) {
+                if ((e.getCause() != null) && (e.getCause() instanceof IOException)) {
+                    throw (IOException)e.getCause();
+                } else throw new RuntimeException(e);
+            }
+        }
+        
+    }
+    
+    
+    @Override
+    public void setFlagToUUID(final String uuid, final String tilesUrl) throws IOException {
+        if (fedoraAccess.isImageFULLAvailable(uuid)) {
+            setFlagToUUIDInternal(uuid, tilesUrl);
+        } else {
+ 
+            try {
+                
+                
+                fedoraAccess.processSubtree("uuid:"+uuid, new AbstractTreeNodeProcessorAdapter() {
+
+                    
+                    @Override
+                    public void processUuid(String pageUuid, int level) {
+                        setFlagToUUIDInternal(pageUuid, tilesUrl);
+                    }
+
+                });
+                
+            } catch (Exception e) {
+                if ((e.getCause() != null) && (e.getCause() instanceof IOException)) {
+                    throw (IOException)e.getCause();
+                } else throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public void deleteFlagToUUIDInternal(String uuid) {
+        LOGGER.info("deleting uuid '"+uuid+"'");
+        FedoraAPIM apim = fedoraAccess.getAPIM();
+        String pid = "uuid:"+uuid;
+        String tilesUrlNS = FedoraNamespaces.KRAMERIUS_URI+"tiles-url";
+        List<RelationshipTuple> relationships = apim.getRelationships(pid, tilesUrlNS);
+        if (!relationships.isEmpty()) {
+            apim.purgeRelationship(pid, tilesUrlNS,relationships.get(0).getObject(), relationships.get(0).isIsLiteral(), relationships.get(0).getDatatype());
+        } else {
+            LOGGER.warning("no relation found");
+        }
+    }
+    
+    public void setFlagToUUIDInternal(String uuid, String tilesUrl) {
+        FedoraAPIM apim = fedoraAccess.getAPIM();
+        String pid = "uuid:"+uuid;
+        String tilesUrlNS = FedoraNamespaces.KRAMERIUS_URI+"tiles-url";
+        List<RelationshipTuple> relationships = apim.getRelationships(pid, tilesUrlNS);
+        if (relationships.isEmpty()) {
+            apim.addRelationship(pid, tilesUrlNS,tilesUrl, true, null);
+        } else {
+            if (!relationships.get(0).getObject().equals(tilesUrl)) {
+                apim.purgeRelationship(pid, tilesUrlNS, relationships.get(0).getObject(), relationships.get(0).isIsLiteral(), relationships.get(0).getDatatype());
+                apim.addRelationship(pid, tilesUrlNS,tilesUrl, true, null);
+            }
+        }
+    }
+}
