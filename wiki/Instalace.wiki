@@ -163,7 +163,7 @@ Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kr
 
 = Konfigurace =
 
-Konfigurační soubory K4 využívají rozšířené syntaxe properties podporované použitou knihovnou Apache commons-configuration.  Soubory jsou uspořádány ve dvoustupňové hierarchii: Základní sdílené properties jsou v souboru configuration.properties, jednotlivé plugin moduly externích procesů je pak rozšiřují ve svých konfiguračních souborech (např. migration.properties, indexer.properties).
+Konfigurační soubory K4 využívají rozšířené syntaxe properties podporované použitou knihovnou Apache commons-configuration.  Soubory jsou uspořádány ve dvoustupňové hierarchii: Základní sdílené properties jsou v souboru configuration.properties, jednotlivé plugin moduly externích procesů je pak rozšiřují ve svých konfiguračních souborech (např. migration.properties, indexer.properties). Konfigurační properties specifické pro GUI K4 jsou v souboru search.properties.
 
 Defaultní hodnoty properties (viz níže) jsou definovány uvnitř aplikačního archivu search.war. Hodnoty je možno předefinovat jejich uvedením ve stejně pojmenovaném souboru umístěném v adresáři $USER_HOME/.kramerius4. Tyto konfigurační soubory (prázdné) jsou vytvořeny automaticky při prvním spuštění K4, resp. příslušného externího procesu.
 
@@ -176,6 +176,7 @@ Defaultní hodnoty properties (viz níže) jsou definovány uvnitř aplikačníh
 _fedoraTomcatHost=http://localhost:8080
 indexerHost=${_fedoraTomcatHost}/fedoragsearch
 solrHost=${_fedoraTomcatHost}/solr
+FedoraResourceIndex= ${fedoraHost}/risearch
 
 ## list of top level content model names, comma separated
 fedora.topLevelModels=monograph,periodical
@@ -183,7 +184,7 @@ fedora.topLevelModels=monograph,periodical
 fedora.predicatesPrefix=http://www.nsdl.org/ontologies/relationships#
 
 ##list of rels-ext predicates to recursive export
-fedora.treePredicates=hasPage,hasPart,hasVolume,hasItem,hasUnit
+fedora.treePredicates=hasPage,hasPart,hasVolume,hasItem,hasUnit,hasIntCompPart,isOnPage
 
 ## fedora access
 fedoraHost=${_fedoraTomcatHost}/fedora
@@ -193,13 +194,20 @@ fedoraPass=fedoraAdmin
 ## thumbnail images
 scaledHeight=128
 
-
 ## max. number of pages in generated PDF documents
 generatePdfMaxRange=20
+
+## how many clients can start generating dynamic PDF documents
+pdfQueue.activeProcess=2
 
 ## URL of the main K4 application, used for launching of external processes
 applicationUrl=${_fedoraTomcatHost}/search
 
+## Kramerius Editor URL (relative to Kramerius base URL)
+editorUrl=/editor
+
+## Users editor URL (relative to Kramerius base URL)
+usersEditorUrl=/rightseditor
 
 ## number of active processes
 processQueue.activeProcess=1
@@ -232,7 +240,8 @@ deepZoom.scalingMethod=${scalingMethod}
 deepZoom.iterateScaling=true
 
 ## Deep zoom cache directory
-deepZoom.cacheDirectory=${sys:user.home}/.kramerius4/deepZoom
+deepZoom.cachedir=${sys:user.home}/.kramerius4/deepZoom
+
 
 ## Deep zoom tile size
 deepZoom.tileSize=512
@@ -240,11 +249,14 @@ deepZoom.tileSize=512
 ## Deep zoom JPEG quality (1.0 is best, 0.0 is worst
 deepZoom.jpegQuality=0.9
 
-## How many steps over one tile (how big should be original 
-deepZoom.numberStepsOverTile=1
+## How many steps over one tile 
+deepZoom.numberStepsOverTile=3
 
 ## Global flag for enabling deepZoom
 deepZoom.deepZoomEnabled=false
+
+## how big should be original
+deepZoom.originalScaleFactor=1.0
 
 ## Deep zoom for one uuid 
 #deepZoom.4308eb80-b03b-11dd-a0f6-000d606f5dc6.deepZoomEnabled=true
@@ -267,6 +279,11 @@ interface.languages=\u010Desky,cs,english,en
 fedora3.connectionURL=jdbc:postgresql://localhost/fedora3
 fedora3.connectionUser=${fedoraUser}
 fedora3.connectionPass=${fedoraPass}
+
+
+# target directory for files for direct export (in Kramerius 4 FOXML format)
+export.directory=${sys:user.home}/.kramerius4/export
+
 
 # Jmeno externiho konfiguracniho souboru
 _ext_configuration_file_name=configuration.properties
@@ -513,12 +530,33 @@ driver.fedora.mpt.db.prefix = t
 #driver.fedora.deleted = info:fedora/fedora-system:def/model#state
 }}}
 
+==search.properties==
+{{{
+
+_ext_configuration_file_name=search.properties
+
+#Seznam a poradi zalozek. Mozne hodnoty custom,info,newest,mostDesirables
+search.home.tabs=custom,info,newest,mostDesirables
+
+#Seznam pids (oddelene carkou) objektu, zobrazenych na zalozce custom
+search.home.tab.custom.uuids=uuid:4308eb80-b03b-11dd-a0f6-000d606f5dc6,uuid:5fe0b160-62d5-11dd-bdc7-000d606f5dc6,uuid:73531500-aa3b-11dd-8002-000d606f5dc6
+
+#Seznam zalozek v zobrazeni dokumentu mimo Nahled a Popis
+# nazev1,datastream1,nazev2,datastream2
+search.item.tabs=
+
+#Pocet vysledku na strance
+search.results.rows=20
+#Pocet rozbalenych polozek v seznamu vysledku
+search.results.numOpenedRows=20
+}}}
+
 ==migration.properties==
 {{{
 # mac address for uuid generator
 uuid.mac=00:1b:63:bd:97:ba
 
-# connection to Kramerius 3 postgres db (replication source) 
+# connection to Kramerius 3 postgres db (replication source)
 k3.db.driver=org.postgresql.Driver
 k3.db.url=jdbc:postgresql://localhost:5432/kramerius
 k3.db.user=kramerius
@@ -542,8 +580,6 @@ convert.target.directory=${sys:user.home}/.kramerius4/convert-converted
 import.directory=${sys:user.home}/.kramerius4/import
 
 
-# target directory for files for direct export (in Kramerius 4 FOXML format)
-export.directory=${sys:user.home}/.kramerius4/export
 
 
 # working directory for repliaction and conversion
@@ -568,8 +604,12 @@ convert.previewSize=700
 # number of characters used as contractNumber in image file names (5 at NKP, 18 at KNAV)
 contractNo.length=5
 
-#convertor will create subfolder with contract name in the conversion target subfolder, the contents of the target directory is not deleted prior conversion batch  
+#convertor will create subfolder with contract name in the conversion target subfolder, the contents of the target directory is not deleted prior conversion batch
 convert.useContractSubfolders=false
+
+#used only when convert.useContractSubfolders=true. The convertor will copy the the original K3 xml file to the target subfolder
+#and rename it to replication title ID (when called from Replicate process) or contract ID (when called from Convert process) with the .k3 extension
+convert.copyOriginal=false
 
 # controls how convertor K3->K4 should embed binary streams ( encoded/referenced/external)
 convert.files=encoded
@@ -578,6 +618,14 @@ convert.previews=encoded
 # controls how convertor K3->K4 should embed thumbnail streams ( encoded/referenced/external)
 convert.thumbnails=encoded
 
+#controls if original image should be converted to JPG (should be true if ALTO is used)
+convert.originalToJPG=false
+
+# if original K3 document references non-existing data file, conversion is terminated. If this property is set to true, only a warning is logged and conversion continues.
+convert.ignoreMissingFiles=false
+
+#default visibility of the imported documents
+convert.defaultRights=false
 
 #ingest and indexing phases of migration processes will be skipped
 ingest.skip=false
@@ -589,6 +637,7 @@ ingest.password=${fedoraPass}
 
 # external configuration file name
 _ext_configuration_file_name=migration.properties
+
 }}}
 
 
@@ -598,21 +647,11 @@ _ext_configuration_file_name=migration.properties
 IndexDir=${sys:user.home}/fedora/solr/data/index
 
 #sablona XSLT pro indexaci
-UpdateIndexDocXslt=KrameriusFoxmlToSolr
+#UpdateIndexDocXslt=KrameriusFoxmlToSolr
+UpdateIndexDocXslt=K4
 
 #URL solr
 IndexBase=${solrHost}
-
-# repository
-FedoraSoap= ${fedoraHost}/services
-FedoraResourceIndex= ${fedoraHost}/risearch
-FedoraUser= ${fedoraUser}
-FedoraPass= ${fedoraPass}
-FedoraVersion= 3.1
-RepositoryName=Kramerius
-
-#indexed MIME types
-MimeTypes= text/plain text/html application/pdf
 
 
 FOXMLFormat=info:fedora/fedora-system:FOXML-1.1
