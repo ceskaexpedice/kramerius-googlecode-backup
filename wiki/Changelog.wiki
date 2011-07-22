@@ -3,10 +3,11 @@
 
 =Pracovní verze (trunk)=
 
-=Verze 4.3.2 (r2620)=
+=Verze 4.3.3 (r2630)=
 
-Distribuční zip soubor je k dispozici v sekci  [http://code.google.com/p/kramerius/downloads/detail?name=Kramerius-4.3.2.zip Downloads] ,  při aktualizaci z předchozí verze nakopírujte soubory search.war, rightseditor.war a editor.war do adresáře tomcat/webapps. Soubor security-core.jar do adresáře tomcat/lib. Soubor schema.xml do adresáře fedora/solr/conf
+Distribuční zip soubor je k dispozici v sekci  [http://code.google.com/p/kramerius/downloads/detail?name=Kramerius-4.3.3.zip Downloads] ,  při aktualizaci z předchozí verze nakopírujte soubory search.war, rightseditor.war a editor.war do adresáře tomcat/webapps. Soubor security-core.jar do adresáře tomcat/lib. Soubor schema.xml do adresáře fedora/solr/conf
 
+  * Issue 146 - opravena chyba při zobrazení informace o private dokumentu
   * Issue 77 - podpora session timeout 
   * Issue 141 - Zlepšené nastavení replikačních práv pro konvertor K3->K4
   * Issue 123 - XSL šablony pro transformaci MODS v konvertoru K3->K4 mohou být předefinovány v adresáři .kramerius4/xsl
