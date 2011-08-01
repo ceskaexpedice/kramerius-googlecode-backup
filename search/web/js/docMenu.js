@@ -7,7 +7,7 @@ var changingTab = false;
 function selectRelItem(obj){
     if($(obj).hasClass("selected")) return;
     currentSelectedPage=0;
-    
+
     var divId = $(obj).parent().parent().attr('id');  // for example divId = tab3-page
     var level = parseInt(divId.substring(3, divId.indexOf("-")));
     var model = divId.substring(divId.indexOf("-")+1);
@@ -29,7 +29,7 @@ function toggleRelsList(obj, model){
         m = m.split("-")[1];
     }
     var tab = "#" + $(obj).parent().parent().parent().attr('id');
-    
+
     if($(tab + ">div>div[id=list-"+m+"]").is(":visible")){
         hideRelsList(tab.split("_")[1], m);
     }else{
@@ -71,7 +71,7 @@ function showRelsList(tab, m){
 function slideToThumb(uuid){
     if($('#img'+getMaxLevel()+'_' + uuid).length){
         var to = $('#img'+getMaxLevel()+'_' + uuid).offset().left - tvContainerLeft + $("#tv_container").attr("scrollLeft") - ($("#tv_container").width()/2) ;
-        
+
         var maxScroll = $("#tv_container").attr("scrollWidth") - $("#tv_container").width();
         var to2 = 0;
         if(maxScroll > 0){
@@ -87,23 +87,23 @@ function slideToThumb(uuid){
 function selectPage(uuid){
     hideAlto();
     var changeImage = currentSelectedPage != uuid;
-    // set thumb selection 
+    // set thumb selection
     $('.tv_image').parent().removeClass('tv_img_selected');
     currentSelectedPage = uuid;
-       
+
     canScroll = false;
     slideToThumb(uuid);
     activateThumbs();
-    
+
     $("#tabs_"+getMaxLevel()).attr('pid', currentSelectedPage);
     var mimeUrl = "djvu?uuid="+uuid+"&imageType=ask";
-        
+
     checkArrows();
-    
+
 
     //getViewInfo(uuid, showImage);
     getViewInfo(uuid, function(viewerOptions) {
-    	// initializing new object	
+    	// initializing new object
     	imageContainerObject = new ImageContainer(viewerOptions);
     	// display object
     	imageContainerObject.display();
@@ -114,7 +114,7 @@ function selectPage(uuid){
     	imageContainerObject = new ImageContainer(viewerOptions);
     	imageContainerObject.securityError();
     });
-    
+
     var maxLevel = getMaxLevel();
     $('#img'+getMaxLevel()+'_'+uuid).parent().toggleClass('tv_img_selected');
     if($('#img'+getMaxLevel()+'_' + uuid).length>0){
@@ -124,11 +124,12 @@ function selectPage(uuid){
     canScroll = true;
     // set selected page in menu
     changeSelectedItem(uuid);
-    
+
     //if(!$("#fullImageContainer").dialog("isOpen")){
-    if($("#centralContent").is(":visible")){    
+    if($("#centralContent").is(":visible")){
         var model = $('#tabs_'+maxLevel+'>div:visible').attr('id').split('-')[1];
         getExtendedModelMetadata(uuid, maxLevel, false, model);
+        updateCustomTabs(uuid);
     }
     setMainContentWidth();
 }
@@ -137,12 +138,12 @@ function getViewInfo(uuid, f, noImageF, securityErrorF){
     $.ajax({
         url:"viewInfo?uuid="+uuid,
         complete:function(req,textStatus) {
-              
+
             if ((req.status==200) || (req.status==304)) {
                 viewerOptions = eval('(' + req.responseText + ')');
                 viewerOptions.uuid = uuid;
                 viewerOptions.status=req.status;
-            	  
+
                 if ((viewerOptions.rights["read"][uuid]) && (viewerOptions.imgfull)) {
                     securedContent = false;
                     currentMime = req.responseText;
@@ -156,8 +157,8 @@ function getViewInfo(uuid, f, noImageF, securityErrorF){
                     securedContent = true;
                     if (securityErrorF) securityErrorF(viewerOptions);
                 }
-            	  
-                  
+
+
             //              } else if (req.status==403){
             //                  currentMime = "unknown";
             //                  securedContent = true;
@@ -167,7 +168,7 @@ function getViewInfo(uuid, f, noImageF, securityErrorF){
             //              } else {
             //                    alert("Jina Chyba");
             }
- 
+
         }
     });
 }
@@ -235,14 +236,14 @@ function selectItem(obj, level, model){
     $(obj).addClass('selected');
     var target = level+1;
     clearThumbsFromLevel(target);
-    
+
     var d1 = "#tabs_" + level;
     var pid = $(obj).attr("pid");
     $(d1).attr('pid', pid);
     $(d1 + ">div>div[id=info-"+model+"]").html($(obj).text());
     var img = d1 + ">ul>li.ui-tabs-selected>img";
     $('#imgBig').attr("src", "img/empty.gif");
-    
+
     //clear menu level
     var d2 = "#tabs_" + target;
     var p = "#tab" + level + "-" + model;
@@ -254,10 +255,10 @@ function selectItem(obj, level, model){
         }
         $(d2).remove();
     }
-    
+
     // get level content for the model
     getItemLevel(pid, target, p, true);
-    
+
 }
 
 function getItemLevel(pid, level, container, recursive, onlyrels, model){
@@ -275,7 +276,7 @@ function getItemLevel(pid, level, container, recursive, onlyrels, model){
                 var tabtempl = '<li><a href="#{href}">#{label}</a>'+
                 '<img width="12" src="img/empty.gif" class="op_list" onclick="toggleRelsList(this, \'#tabs_'+level+'\', \'#{href}\')" /><img width="12" src="img/lupa.png" class="searchInsideButton" alt="search" ' +
                 'onclick="showSearchInside('+level+', \''+model+'>\')" /></li>';
-                $("#tabs_" + level).tabs({ 
+                $("#tabs_" + level).tabs({
                     tabTemplate: tabtempl,
                     panelTemplate: '<div></div>',
                     show: function(event, ui){
@@ -301,8 +302,8 @@ function getItemLevel(pid, level, container, recursive, onlyrels, model){
             }
             getExtendedMetadata();
         }
-        
-        
+
+
     });
 }
 
@@ -329,7 +330,7 @@ function createTab(level, model){
 }
 
 function getChildModels(level, recursive){
-    
+
     var pid = $('#tabs_'+level).attr('pid');
     var url ="inc/details/getChildModels.jsp?pid="+pid;
     var model;
@@ -349,7 +350,7 @@ function getChildModels(level, recursive){
         }else{
             //var model = $('#tabs_'+level+'>div:visible').attr('id').split('-')[1];
             //getExtendedModelMetadata(pid, level, false, model);
-            
+
             getExtendedMetadata();
         }
     });
@@ -401,15 +402,15 @@ function getItemMenuOptions(pid, level, model){
             cmodel = modeli.substring(5);
         //alert(cmodel);
         }
-        
+
     //i--;
     }
-    
+
     var url ="inc/details/itemMenuOptions.jsp?pid="+lastpid+"&pid_path="+pid_path+"&path="+path;
     //if(level==4) alert(model);
     $.get(url, function(data){
         $("#tab"+level+"-"+model).prepend(data);
-        
+
     });
 }
 
@@ -418,7 +419,7 @@ function getFirstLevelMenu(pid, model){
     var url ="inc/details/itemMenuOptions.jsp?pid="+pid+"&pid_path="+pid+"&path="+model;
     $.get(url, function(data){
         $("#tab1-"+model+">div.relList").parent().prepend(data);
-        
+
     });
 }
 
@@ -449,7 +450,7 @@ function fillRels(pid, level, offset, model, recursive){
                 var target = level+1;
                 var uuid = $("#tab"+level+"-"+model+">div.relList>div.relItem:first").attr("pid");
                 getItemLevel(uuid, target, "#tab"+level+"-"+model, true, false);
-                
+
             //getNextLevel(level);
             } else{
                 changingTab=true;
@@ -489,7 +490,7 @@ function getRels(recursive){
  */
 function translate(level){
     var text;
-    
+
     $('#tabs_'+level+'>div>div>div.relItem>span.translate').each(function(index, o){
         text = $(o).html();
         if(typeof(dictionary[text])!= 'undefined'){
@@ -546,7 +547,7 @@ function addThumbs(level){
     if(level == getMaxLevel()){
         setTimeout('checkScrollPosition()', 100);
     }
-    
+
     //canScroll = true;
     setTimeout('activateThumbs()', 200);
 }
@@ -554,13 +555,13 @@ function addThumbs(level){
 
 /*
  * load thumb when becomes visible
- */  
+ */
 function activateThumbs(){
     checkThumbs();
     var level = getMaxLevel();
     var w = getTvContainerWidth();
     var leftBorder = getTvContainerLeft();
-    var rightBorder = leftBorder + w *2; 
+    var rightBorder = leftBorder + w *2;
     var l;
     var src;
     var i = 0;
@@ -569,33 +570,33 @@ function activateThumbs(){
         model = $( '#'+selectedListForFullImageShow ).attr("id").split("-")[1];
     }else{
         model = $( "#tabs_" + level+">div:visible" ).attr("id").split("-")[1];
-    } 
+    }
 
 
     $('#tv_container_row>td.inlevel_'+level+'.'+model+'>div>img.tv_img_inactive').each(function(){
         l = $(this).offset().left;
-        if( 
+        if(
             l + $(this).width() > leftBorder &&
             l < rightBorder)
             {
-        	
+
         	// XXX: Changed from thumb servlet to img servlet
             //src = 'thumb?outputFormat=RAW&uuid='+$(this).attr('id').split("_")[1];
             src = 'img?uuid='+$(this).attr('id').split("_")[1]+'&stream=IMG_THUMB&action=GETRAW';
-            
+
             $(this).attr('src', src);
             $(this).bind('load', function(){
                 $(this).removeClass('tv_img_inactive');
             });
-            
+
             i++;
         }
     });
 }
-    
+
 function updateThumbs(level){
     if(changingTab){
-        
+
         var maxLevel;
         if(level){
             maxLevel = level;
@@ -603,7 +604,7 @@ function updateThumbs(level){
             maxLevel = getMaxLevel();
         }
         var model = $( "#tabs_" + maxLevel+">div:visible" ).attr("id").split("-")[1];
-         
+
         $('.thumb').hide();
         $('.inlevel_'+maxLevel+'.'+model).show();
         if($('#img'+maxLevel+'_'+currentSelectedPage).is(':visible')){
@@ -617,7 +618,7 @@ function updateThumbs(level){
         checkArrows();
     }
 }
-    
+
 function addThumb(uuid, display, level, model){
     var div;
     var img = '<img id="img'+level+'_'+uuid+'" onload="onLoadThumb(this);" class="tv_image';
@@ -635,7 +636,7 @@ function addThumb(uuid, display, level, model){
     //}else{
     $('#tv').show();
 //}
-    
+
 }
 
 function tc(obj){
@@ -643,14 +644,14 @@ function tc(obj){
     pid = pid.split("_")[1];
     selectPage(pid);
 }
-    
+
 function clearThumbsFromLevel(startLevel){
     var maxlevel = 10;
     for(var level=startLevel;level<=maxlevel;level++){
         //totalThumbs = totalThumbs - $('#tv_container_row>td.inlevel_'+level).length;
         $('#tv_container_row>td.inlevel_'+level).remove();
     }
-        
+
 }
 function clearThumbs(){
     var level = getMaxLevel();
@@ -660,7 +661,7 @@ function clearThumbs(){
 
 /*
  *       find max active level in menu
- */       
+ */
 function getMaxLevel(){
     var maxLevel = 1;
     var id;
@@ -678,7 +679,7 @@ function getMaxLevel(){
 
 /*
  *       find max level in menu
- */       
+ */
 function getMaxLevelAbsolute(){
     var maxLevel = 1;
     var id;
@@ -695,10 +696,10 @@ function getMaxLevelAbsolute(){
 }
 
 /*
- *  Display next previous arrows 
+ *  Display next previous arrows
  */
 function checkArrows(){
-    var curMaxLevel = maxLevelForFullImageShow > -1 ? maxLevelForFullImageShow : getMaxLevel();	
+    var curMaxLevel = maxLevelForFullImageShow > -1 ? maxLevelForFullImageShow : getMaxLevel();
     var selImg = $('#img'+curMaxLevel+'_' + currentSelectedPage).parent().parent();
     var obj = selImg.prev();
     if($(obj).length>0){
@@ -715,10 +716,10 @@ function checkArrows(){
 }
 
 
-    
+
 var tvContainerWidth = 0;
 function setTvContainerWidth(){
-     
+
     tvContainerWidth = $(window).width() - 40;
     $("#tv_container").css("width", tvContainerWidth);
 }
@@ -726,7 +727,7 @@ function getTvContainerWidth() {
     if(tvContainerWidth==0){
         setTvContainerWidth();
     }
-    return tvContainerWidth;	
+    return tvContainerWidth;
 }
 
 var tvContainerLeft = 0;
@@ -734,15 +735,15 @@ function getTvContainerLeft() {
     if(tvContainerLeft){
         tvContainerLeft = $("#tv_container").offset().left;
     }
-    return tvContainerLeft;	
+    return tvContainerLeft;
 }
 
 function _checkDonator(pid){
     if(!pid) return;
     var url ="GetRelsExt?relation=donator&format=json&pid=uuid:"+pid;
     //var url ="inc/details/getItemForBrowse.jsp?pid="+pid+"&level=0&onlyrels=true&model=donator";
-    
-    
+
+
     $.getJSON(url, function(data){
         $.each(data.items, function(i,item){
             $.each(item, function(m,model2){
@@ -758,7 +759,7 @@ function _checkDonator(pid){
                     });
                 }
             });
-        }); 
+        });
     });
 }
 
@@ -773,25 +774,30 @@ function checkDonator(pid){
     });
 }
 
+
+var customTabs = [];
 function getExtendedMetadata(){
-    var model = $('#tabs_1>div').attr('id').split('-')[1];
-    var pid = $('#tabs_1').attr('pid');
-    getExtendedModelMetadata(pid, 1, true, model);
+   var model = $('#tabs_1>div').attr('id').split('-')[1];
+   var pid = $('#tabs_1').attr('pid');
+   getExtendedModelMetadata(pid, 1, true, model);
+
 }
 
 function getExtendedModelMetadata(pid, level, next, model){
-    var url = "inc/details/metadata.jsp?pid=" + pid + "&model=" + model + "&level=" + level;
-    $.get(url, function(data){
-        if($("#extendedMetadata div.level"+level).length==0){
-            $("#extendedMetadata div.level"+(level-1)).append('<div class="level'+level+'">'+data+'</div>');
-        }else{
-            $("#extendedMetadata div.level"+level).html(data);
-        }
-        if(next && level<getMaxLevel()){
-            var nextLevel = level + 1;
-            var model = $('#tabs_'+nextLevel+'>div:visible').attr('id').split('-')[1];
-            var pid = $('#tabs_'+nextLevel+'>div:visible').parent().attr('pid');
-            getExtendedModelMetadata(pid, nextLevel, next, model);
-        }
-    });
+
+   var url = "inc/details/metadata.jsp?pid=" + pid + "&model=" + model + "&level=" + level;
+
+   $.get(url, function(data){
+       if($("#extendedMetadata div.level"+level).length==0){
+           $("#extendedMetadata div.level"+(level-1)).append('<div class="level'+level+'">'+data+'</div>');
+       }else{
+           $("#extendedMetadata div.level"+level).html(data);
+       }
+       if(next && level<getMaxLevel()){
+           var nextLevel = level + 1;
+           var model = $('#tabs_'+nextLevel+'>div:visible').attr('id').split('-')[1];
+           var pid = $('#tabs_'+nextLevel+'>div:visible').parent().attr('pid');
+           getExtendedModelMetadata(pid, nextLevel, next, model);
+       }
+   });
 }

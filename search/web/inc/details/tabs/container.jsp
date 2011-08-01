@@ -33,10 +33,24 @@
         <c:if test="${fn:length(tab)>0}" >
         <div id="itemtab_${tab}" style="overflow:hidden;"></div>
         <script type="text/javascript">
-                $.get('inc/details/tabs/loadCustom.jsp?tab=${tab}&pid=${param.pid}', function(data){
-                   $('#itemtab_${tab}').html(data) ;
-                });
+		customTabs[customTabs.length] = '${tab}';
+                updateCustomTab('${tab}', '${param.pid}');
         </script>
         </c:if>
     </c:forEach>
 </div>
+<script type="text/javascript">
+                
+    function updateCustomTab(tab, pid){
+         $.get('inc/details/tabs/loadCustom.jsp?tab='+tab+'&pid=' + pid, function(data){
+            $('#itemtab_'+tab).html(data) ;
+        });
+    }
+   function updateCustomTabs(pid){
+
+       for(var i=0; i<customTabs.length; i++){
+	   updateCustomTab(customTabs[i], pid);
+       }
+    }
+
+</script>
