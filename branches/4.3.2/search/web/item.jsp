@@ -190,7 +190,15 @@
 
                                                     //$("#centralContent").tabs();
 
-                                                    $("#centralContent").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+                                                    $("#centralContent").tabs({
+                                                        show: function(event, ui){
+                                                            if($("#plainImageImg").is(":visible")){
+                                                                $("#alto").show();
+                                                            }else{
+                                                                $("#alto").hide();
+                                                            }
+                                                        }
+                                                    }).addClass('ui-tabs-vertical ui-helper-clearfix');
                                                     $("#centralContent li").removeClass('ui-corner-top').addClass('ui-corner-left');
                                                     //$('.vertical-text').mbFlipText(false);
 
