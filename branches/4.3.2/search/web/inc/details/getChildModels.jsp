@@ -35,11 +35,11 @@
     <c:param name="fq" >
         NOT(parent_pid:${param.pid}/@*)
     </c:param>
-    
+
 </c:url>
 
 <c:url var="xslPage" value="xsl/rightMenu.xsl" />
-<c:catch var="exceptions"> 
+<c:catch var="exceptions">
     <c:import url="${url}" var="xml" charEncoding="UTF-8" />
     <x:parse var="doc" xml="${xml}"  />
 </c:catch>
@@ -53,6 +53,6 @@
         <c:if test="${param.debug =='true'}"><c:out value="${url}" /></c:if>
         <% out.clear();%>[<x:if select="$doc/response/result/@numFound > 0" >
             <x:forEach varStatus="status" select="$doc/response/result/doc/str">
-                '<x:out select="."/>'<c:if test="${not status.last}">,</c:if>
+                "<x:out select="."/>"<c:if test="${not status.last}">,</c:if>
             </x:forEach>
         </x:if>]</c:otherwise></c:choose>
