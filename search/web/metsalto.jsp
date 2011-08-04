@@ -13,6 +13,10 @@
 <%@page import="cz.incad.kramerius.utils.conf.KConfiguration"%>
 <%@page import="cz.incad.kramerius.FedoraAccess"%>
 <%
+String q = request.getParameter("q").trim();
+if(q.length()<1 || q.equals("...")){
+        return;
+    }
             Injector ctxInj = (Injector) application.getAttribute(Injector.class.getName());
             KConfiguration kconfig = ctxInj.getProvider(KConfiguration.class).get();
             pageContext.setAttribute("kconfig", kconfig);
