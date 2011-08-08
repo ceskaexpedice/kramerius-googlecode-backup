@@ -12,6 +12,7 @@
 <%@page import="cz.incad.Kramerius.I18NServlet"%>
 <%@page import="cz.incad.kramerius.utils.conf.KConfiguration"%>
 <%@page import="cz.incad.kramerius.FedoraAccess"%>
+<%@page import="cz.incad.kramerius.utils.XMLUtils"%>
 <%
 String q = request.getParameter("q").trim();
 if(q.length()<1 || q.equals("...")){
@@ -25,7 +26,7 @@ if(q.length()<1 || q.equals("...")){
             pageContext.setAttribute("lctx", lctx);
             java.io.InputStream is = fedoraAccess.getDataStream("uuid:" + request.getParameter("uuid"), "ALTO");
 
-            int len;
+           /* int len;
     int size = 1024;
     byte[] buf;
 
@@ -48,7 +49,8 @@ if(q.length()<1 || q.equals("...")){
                 }
 
             }
-            String alto2 = (new String(buf, java.nio.charset.Charset.forName("UTF-8"))).trim();
+            String alto2 = (new String(buf, java.nio.charset.Charset.forName("UTF-8"))).trim();*/
+            org.w3c.dom.Document alto2 = XMLUtils.parseDocument(is);
 
             pageContext.setAttribute("xml", alto2);
 %>
