@@ -28,7 +28,13 @@ Parametry:
 
 = Interní a historické =
 
+==privateContent== 
 
+nepoužíván, nahradil ho viewInfoServlet
+
+==iip==
+
+podpora IIP protokolu, vznikl ještě před deepZoom servletem v době, kdy ještě nebyla vybrána prohlížečka.   - Mohlo by obživnout pokud by byla potřeba 
 
 
  
@@ -38,4 +44,3 @@ Parametry:
 
 
  
-
