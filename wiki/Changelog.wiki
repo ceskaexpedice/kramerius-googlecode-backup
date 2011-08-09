@@ -3,6 +3,12 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.3.4 (r2693)=
+
+  * Issue 153 - přidána možnost záložky se zobrazením obsahu streamu TEXT_OCR (aktivace pomocí search.properties, klíč search.item.tabs=text_ocr)
+  * Opraveno zobrazování rámečků pro data ALTO s českými řetězci
+  * Indexace dokumentů (z hlavního menu) vždy nejdříve smaže existující položky v indexu 
+
 =Verze 4.3.3 (r2630)=
 
 Distribuční zip soubor je k dispozici v sekci  [http://code.google.com/p/kramerius/downloads/detail?name=Kramerius-4.3.3.zip Downloads] ,  při aktualizaci z předchozí verze nakopírujte soubory search.war, rightseditor.war a editor.war do adresáře tomcat/webapps. Soubor security-core.jar do adresáře tomcat/lib. Soubor schema.xml do adresáře fedora/solr/conf
