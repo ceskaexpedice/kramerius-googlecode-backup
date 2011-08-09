@@ -9,8 +9,8 @@ Univerzální servlet, který zpřístupňuje obrázky (případně modifikovan�
 Parametry:
   * *uuid* - uuid dotazovaného objektu
   * *stream* - obrázkový stream (IMG_FULL, IMG_THUMB, případně i jiný) #
-  * *action* - specifikuje akci, která se má provádět.  Možné akce jsou:  
-    * *TRANSCODE* - vrací obrázek v jiném formátu.  Vyžaduje dodatečný parametr výstupního formátu.   Příklad: `img?uuid=0...&stream=IMG_FULL&action=TRANSCODE&outputFormat=JPEG`
+  * *action* - specifikuje akci, která se má provádět. Akce nelze v rámci jednoho volání kombinovat.  Možné akce jsou:  
+    * *TRANSCODE* - vrací obrázek v jiném formátu.  Vyžaduje dodatečný parametr výstupního formátu.   Příklad: `img?uuid=0...&stream=IMG_FULL&action=TRANSCODE&outputFormat=jpg`
     * *SCALE* - vrací zmenšeninu nebo zvětšeninu obrázku ve formátu JPG. Vyžaduje dodatečné parametry pro zmešení/zvětšení. Umožnuje měnit velikost dle výšky, šířky a dle procent.  Příklady: `img?uuid=0...&stream=IMG_FULL&action=SCALE&scaledHeight=128, img?uuid=0...&stream=IMG_FULL&action=SCALE&scaledWidth=450, img?uuid=0...&stream=IMG_FULL&action=SCALE&scaled=0.5` 
     * *GETRAW* - vrací surová data z požadovaného streamu. Nevyžaduje žádné dodatečné parametry. Příklad:  `img?uuid=0...&stream=IMG_FULL&action=GETRAW`
   * *outputFormat* - výstupní formát pro akci TRANSCODE. Podporovované výstupní parametry servletu: 
@@ -28,7 +28,14 @@ Parametry:
 
 = Interní a historické =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
+
+
+ 
+
+
+
+
+
+ 
+
