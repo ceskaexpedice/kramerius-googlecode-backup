@@ -98,7 +98,7 @@ public class SolrOperations {
             } else if ("optimize".equals(action)) {
                 optimize();
             } else if ("fromKrameriusModel".equals(action)) {
-                checkIntegrityByDocument(value);
+                deleteDocument(value);
                 if (!value.startsWith("uuid:")) {
                     value = "uuid:" + value;
                 }
@@ -136,7 +136,7 @@ public class SolrOperations {
         logger.log(Level.INFO, "insertTotal: {0}; updateTotal: {1}; deleteTotal: {2}; warnCount: {3}", new Object[]{insertTotal, updateTotal, deleteTotal, warnCount});
 
     }
-    
+
     private int getDocCount(){
         try {
             String urlStr = config.getString("solrHost") + "/select/?q=*:*&rows=0";
@@ -364,7 +364,7 @@ public class SolrOperations {
             pid = "uuid:" + pid;
         }
         logger.log(Level.FINE, "fromKrameriusModel: {0}", pid);
-        
+
         fedoraOperations.getFoxmlFromPid(pid);
         factory = XPathFactory.newInstance();
         xpath = factory.newXPath();
@@ -527,7 +527,7 @@ public class SolrOperations {
             }
         }
     }
-    
+
     private void customTransformations(StringBuffer sb, InputStream foxmlStream, HashMap<String, String> params) throws Exception{
         String dirname = Constants.WORKING_DIR + File.separator + "indexer" + File.separator + "xsl";
 
@@ -707,8 +707,8 @@ public class SolrOperations {
         }
     }
 
-   
-    
+
+
 
     private long indexDirSpace(File dir) {
         long ids = 0;
@@ -799,7 +799,7 @@ public class SolrOperations {
         int numHits = 200;
         String PID;
         String pid_path;
-        String urlStr = config.getString("solrHost") + "/select/?q=fedora.model:\"" + model + "\"&fl=PID,pid_path&start=" + 
+        String urlStr = config.getString("solrHost") + "/select/?q=fedora.model:\"" + model + "\"&fl=PID,pid_path&start=" +
                 offset + "&rows=" + numHits;
         factory = XPathFactory.newInstance();
         xpath = factory.newXPath();
