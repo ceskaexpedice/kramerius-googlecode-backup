@@ -39,35 +39,6 @@ Příklad:
 `i18n?action=bundle&name=labels&format=xml&lang=cs`   _špatné použití_
 
 
-2) fullImageServlet (třída cz.incad.Kramerius.FullImageServlet) -  Slouží k podávání obsahu streamu IMG_FULL, případně k manipulaci s ním (zvětšovnání, zmenšování, enkódování do jiného formátu, atd..). Používá se  při zjištění, zda je prvek zobrazitelný, při generování PDF dokumentů, při generování velkých náhledů a dlaždic.  
-
-Produkuje obrázky různých typů. 
-
-Použití: 
-
-fullImageServlet?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )] &[(scale=<percent> | scaledWidth=<scaledWidth> | scaledHeight=<scaledHeight>)] 
-
-fullImageServlet?uuid=<uuid>&outputFormat=RAW  - podá surová data ze streamu IMG_FULL
-fullImageServlet?uuid=<uuid>&outputFormat=JPEG&scaledHeight=128 - podá změnšeninu 
-
-
-Vyšlismy (něco co tam je a má to být jinde nebo to má být jinak):  
-	
-Servlet podává mime typ obrázku (jako text?):  fullImage?uuid=<uuid>&imageType
-Servlet  podává   obsah IMG_FULL jako soubor ke stažení :  	fullImageServlet?uuid=<uuid>&outputFormat=RAW&asFile
-
-
-3) thumb  (třída cz.incad.Kramerius.SmallThumbnailImageServlet) - Podává obsah streamu IMG_THUMB.  Podporuje stejné parametry jako předchozí servlet (až na vyšlismy). Slouží pro zobrazování kaleidoskopu, náhledů vyhledaných výsledků 
-
-Produkuje obrázky různých typů. 
-
-Použití: 
-
-thumb?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )] &[(scale=<percent> | scaledWidth=<scaledWidth> | scaledHeight=<scaledHeight>)] 
- 
-4)  fullThumb (třída cz.incad.Kramerius.FullThumbnailImageServlet) -  Podává obsah streamu IMG_PREVIEW. Narozdíl od predchozích nepodporuje zmenšování. 
-
-fullThumb?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )] 
 
 
 5)  pdf (třída cz.incad.Kramerius.GeneratePDFServlet) -  Generuje PDF soubor. Nic víc 
@@ -160,6 +131,44 @@ nepoužíván, nahradil ho viewInfoServlet
 
 podpora IIP protokolu, vznikl ještě před deepZoom servletem v době, kdy ještě nebyla vybrána prohlížečka.   - Mohlo by obživnout pokud by byla potřeba 
 
+==fullImageServlet== 
+
+třída cz.incad.Kramerius.FullImageServlet
+
+Slouží k podávání obsahu streamu IMG_FULL, případně k manipulaci s ním (zvětšovnání, zmenšování, enkódování do jiného formátu, atd..). Používá se  při zjištění, zda je prvek zobrazitelný, při generování PDF dokumentů, při generování velkých náhledů a dlaždic.  
+
+Produkuje obrázky různých typů. 
+
+Použití: 
+
+`fullImageServlet?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )] &[(scale=<percent> | scaledWidth=<scaledWidth> | scaledHeight=<scaledHeight>)]` 
+
+`fullImageServlet?uuid=<uuid>&outputFormat=RAW`  - podá surová data ze streamu IMG_FULL
+`fullImageServlet?uuid=<uuid>&outputFormat=JPEG&scaledHeight=128` - podá změnšeninu 
+	
+Servlet podává mime typ obrázku (jako text?):  `fullImage?uuid=<uuid>&imageType`
+Servlet  podává   obsah IMG_FULL jako soubor ke stažení :  	`fullImageServlet?uuid=<uuid>&outputFormat=RAW&asFile`
+
+
+==thumb==  
+
+třída cz.incad.Kramerius.SmallThumbnailImageServlet
+
+Podává obsah streamu IMG_THUMB.  Podporuje stejné parametry jako předchozí servlet. Slouží pro zobrazování kaleidoskopu, náhledů vyhledaných výsledků 
+
+Produkuje obrázky různých typů. 
+
+Použití: 
+
+`thumb?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )] &[(scale=<percent> | scaledWidth=<scaledWidth> | scaledHeight=<scaledHeight>)]` 
+ 
+==fullThumb== 
+
+třída cz.incad.Kramerius.FullThumbnailImageServlet
+
+Podává obsah streamu IMG_PREVIEW. Narozdíl od předchozích nepodporuje zmenšování. 
+
+`fullThumb?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )]` 
 
  
 
