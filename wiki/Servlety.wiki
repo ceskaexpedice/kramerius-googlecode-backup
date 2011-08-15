@@ -39,24 +39,28 @@ Příklad:
 `i18n?action=bundle&name=labels&format=xml&lang=cs`   _špatné použití_
 
 
+==pdf== 
 
+třída cz.incad.Kramerius.GeneratePDFServlet) 
 
-5)  pdf (třída cz.incad.Kramerius.GeneratePDFServlet) -  Generuje PDF soubor. Nic víc 
-
-Použití: 
-
-pdf?uuidFrom=<uuid> &uuidto=<uuid> &path=<uuid_path_to_root> 
-
-
-6)  StartupServlet (třída cz.incad.Kramerius.StartupServlet) -  Slouží k inicializaci aplikace. Spouští se při startu a provádí následující operace:
-Vytváří případně modifikuje tabulky pro security, procesy a oblibene.
-
-
-
-7) mets (třída cz.incad.Kramerius.METSServlet) -  Produkuje textovový soubor s obsahem METS. 
+Generuje PDF soubor. 
 
 Použití: 
-mets?pid=<pid>
+
+`pdf?uuidFrom=<uuid> &uuidto=<uuid> &path=<uuid_path_to_root>` 
+
+
+
+
+
+==mets== 
+
+třída cz.incad.Kramerius.METSServlet
+
+Produkuje textovový soubor s obsahem METS. 
+
+Použití: 
+`mets?pid=<pid>`
 
 
 8) mimetype (třída cz.incad.Kramerius.MimeTypeServlet) - Vrací mime type streamu IMG_FULL jako textový řetězec.
@@ -122,6 +126,14 @@ info:fedora/uuid:0eaa6730-9068-11dd-97de-000d606f5dc6/service:OAIExportDef/getDi
 
 
 = Interní a historické =
+
+==StartupServlet== 
+
+třída cz.incad.Kramerius.StartupServlet) 
+
+Slouží k inicializaci aplikace. Spouští se při startu a provádí následující operace:
+Vytváří případně modifikuje tabulky pro security, procesy a oblibene.
+
 
 ==privateContent== 
 
