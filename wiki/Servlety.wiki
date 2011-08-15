@@ -2,7 +2,7 @@
 
 <wiki:toc max_depth="2" />
 
-= Veřejné služby =
+=Veřejné služby=
 
 ==img==
 
@@ -126,11 +126,11 @@ nebo
 `info:fedora/uuid:0eaa6730-9068-11dd-97de-000d606f5dc6/service:OAIExportDef/getDigitizationRegistry`
 
 
-= Interní a historické =
+=Interní a historické=
 
-==StartupServlet== 
+==startupServlet== 
 
-třída cz.incad.Kramerius.StartupServlet) 
+třída cz.incad.Kramerius.StartupServlet 
 
 Slouží k inicializaci aplikace. Spouští se při startu a provádí následující operace:
 Vytváří případně modifikuje tabulky pro security, procesy a oblibene.
