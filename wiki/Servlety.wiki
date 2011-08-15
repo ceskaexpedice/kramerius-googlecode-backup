@@ -41,16 +41,13 @@ Příklad:
 
 ==pdf== 
 
-třída cz.incad.Kramerius.GeneratePDFServlet) 
+třída cz.incad.Kramerius.GeneratePDFServlet 
 
 Generuje PDF soubor. 
 
 Použití: 
 
 `pdf?uuidFrom=<uuid> &uuidto=<uuid> &path=<uuid_path_to_root>` 
-
-
-
 
 
 ==mets== 
@@ -63,66 +60,68 @@ Použití:
 `mets?pid=<pid>`
 
 
-8) mimetype (třída cz.incad.Kramerius.MimeTypeServlet) - Vrací mime type streamu IMG_FULL jako textový řetězec.
+==mimetype== 
+
+třída cz.incad.Kramerius.MimeTypeServlet
+
+Vrací mime type streamu IMG_FULL jako textový řetězec.
 
 Použití: 
-mimetype?uuid=<uuid>
+`mimetype?uuid=<uuid>`
 
-9) handle (třída cz.incad.Kramerius.HandleServlet) - Provádí redirect na základě uuid nebo handle. Handle je řetězec získavaný z K3. Adresa lze získat z kontextového menu “Persistentní adresa”.
+==handle== 
 
-Použití: 
-handle/uuid:8b0b25e0-49b7-11de-a45e-000d606f5dc6 
+třída cz.incad.Kramerius.HandleServlet
 
-10) titlePage (třída cz.incad.Kramerius.TitlePageServlet) - Prochází objekt rekurzivně dolů až nalezne stránku, která je v metadatech označena jako titulní. Pak na ni provede redirect.
-
-Použití: 
-titlePage?uuid=8b0b25e0-49b7-11de-a45e-000d606f5dc6 
-
-
-11) dsProxyServlet (třída cz.incad.Kramerius.ProxyDatastreamServlet) - Umožní získávat data z fedory.  Slouzi jako klasicky proxy servlet.
+Provádí redirect na základě uuid nebo handle. Handle je řetězec získavaný z K3. Adresa lze získat z kontextového menu “Persistentní adresa”.
 
 Použití: 
-dsProxyServlet?pid=uuid:8b0b25e0-49b7-11de-a45e-000d606f5dc6&dsname=DC 
+`handle/uuid:8b0b25e0-49b7-11de-a45e-000d606f5dc6` 
+
+==titlePage== 
+
+třída cz.incad.Kramerius.TitlePageServlet
+
+Prochází objekt rekurzivně dolů až nalezne stránku, která je v metadatech označena jako titulní. Pak na ni provede redirect.
+
+Použití: 
+`titlePage?uuid=8b0b25e0-49b7-11de-a45e-000d606f5dc6` 
 
 
-12) deepZoomServlet  (třída cz.incad.Kramerius.imaging.DeepZoomServlet) - Podpora protokolu deepZoom. 
+==dsProxyServlet== 
 
-Použití definuje protokol deepZoom -> nelze měnit.
+třída cz.incad.Kramerius.ProxyDatastreamServlet
 
-deepZoom/8b0b25e0-49b7-11de-a45e-000d606f5dc6/ - vrací DZI deskriptor
-deepZoom/4502faf0-4953-11de-9ddf-000d606f5dc6/_files/6/0_0.jpg - vrací jednu dlaždici
+Umožní získávat data z fedory.  Slouží jako klasický proxy servlet.
+
+Použití: 
+`dsProxyServlet?pid=uuid:8b0b25e0-49b7-11de-a45e-000d606f5dc6&dsname=DC` 
 
 
-13) viewInfoServlet  (třída cz.incad.Kramerius.ViewInfoServlet) - Středobod vesmíru pro zobrazovací část krameria. Shromažďuje všechny informace důležité pro výběr zobrazovacího prvku.  (DeepZoom prohlížečka, standardní obrázek, DJVU,..)  Dále informace o právu zobrazit a ostatních právech pro povolování či zakazování kontextového menu.
+==deepZoomServlet==  
 
-Produkuje json  objekt zpracovatelný javaskriptem.
+třída cz.incad.Kramerius.imaging.DeepZoomServlet
+
+Podpora protokolu deepZoom. Použití definuje protokol deepZoom -> nelze měnit.
+
+`deepZoom/8b0b25e0-49b7-11de-a45e-000d606f5dc6/` - vrací DZI deskriptor
+`deepZoom/4502faf0-4953-11de-9ddf-000d606f5dc6/_files/6/0_0.jpg` - vrací jednu dlaždici
+
+
+
+
+==oaiExport== 
+
+cz.incad.Kramerius.oai.OaiServlet
+
+Disseminátor obsahu fedora objektů v různých formátech určených pro OAI. V současnosti je implementován jediný formát drkramerius pro Registr digitalizace CZ.
 
 Použití:
+`oaiExport?pid=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&format=drkramerius` vrací XML pro pid
 
-viewInfo?uuid=4502faf0-4953-11de-9ddf-000d606f5dc6 - json informace o objektu
-
-
-14) rightsServlet  (cz.incad.Kramerius.security.RightsServlet) - Podpora pro UI práv, podává json objekty a html pro dialogy.  (seznamy práv pro objekt atd..)
-
-
-Neslouží k externímu použití
-
-15) usersServlet  (cz.incad.Kramerius.security.UsersServlet) - Podpora pro UI práv, podává json objekty a html pro dialogy (seznamy uživatelů - nápověda)
-
-
-Neslouží k externímu použití
-
-16) adminActionsServlet  (cz.incad.Kramerius.security.AdministratorsActions) - Podpora pro pro administrátorské akce, nyní pouze získání informace a změnu informace o viditelnosti.  Akce setPublic/setPrivate flag
-
-
-Neslouží k externímu použití
-
-17) oaiExport (cz.incad.Kramerius.oai.OaiServlet) - Diseminátor obsahu fedora objektů v různých formátech určených pro OAI. V současnosti je implementován jediný formát drkramerius pro Registr digitalizace CZ.
-
-Použití:
-oaiExport?pid=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&format=drkramerius vrací XML pro pid
 nebo
-info:fedora/uuid:0eaa6730-9068-11dd-97de-000d606f5dc6/service:OAIExportDef/getDigitizationRegistry
+
+`info:fedora/uuid:0eaa6730-9068-11dd-97de-000d606f5dc6/service:OAIExportDef/getDigitizationRegistry`
 
 
 = Interní a historické =
@@ -133,6 +132,39 @@ třída cz.incad.Kramerius.StartupServlet)
 
 Slouží k inicializaci aplikace. Spouští se při startu a provádí následující operace:
 Vytváří případně modifikuje tabulky pro security, procesy a oblibene.
+
+==viewInfoServlet==  
+
+třída cz.incad.Kramerius.ViewInfoServlet
+
+Středobod vesmíru pro zobrazovací část krameria. Shromažďuje všechny informace důležité pro výběr zobrazovacího prvku.  (DeepZoom prohlížečka, standardní obrázek, DJVU,..)  Dále informace o právu zobrazit a ostatních právech pro povolování či zakazování kontextového menu.
+
+Produkuje json  objekt zpracovatelný javascriptem.
+
+Použití:
+
+`viewInfo?uuid=4502faf0-4953-11de-9ddf-000d606f5dc6` - json informace o objektu
+
+
+==rightsServlet==  
+
+cz.incad.Kramerius.security.RightsServlet
+
+Podpora pro UI práv, podává json objekty a html pro dialogy.  (seznamy práv pro objekt atd..)
+
+
+==usersServlet==  
+
+cz.incad.Kramerius.security.UsersServlet
+
+Podpora pro UI práv, podává json objekty a html pro dialogy (seznamy uživatelů - nápověda)
+
+
+==adminActionsServlet==  
+
+cz.incad.Kramerius.security.AdministratorsActions
+
+Podpora pro pro administrátorské akce, nyní pouze získání informace a změnu informace o viditelnosti.  Akce setPublic/setPrivate flag
 
 
 ==privateContent== 
