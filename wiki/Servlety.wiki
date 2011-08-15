@@ -20,7 +20,23 @@ Parametry:
   * *scaledHeight, scaledWidth, scaled* - požadovaná velikost výstupního obrázku pro akci SCALE - viz příklady výše
 
  
+==i18n==
 
+třída  cz.incad.Kramerius.I18NServlet
+
+Servlet umožňující různými způsoby podávat resource bundly a lokalizované texty. Použivá se při XSLT transformaci (lokalizování textů - model, page, monograph, atd...), při lokalizaci dialogu pomocí ajaxu (login dialog), atd..   
+
+Produkuje bundle nebo text jako  xml a json.  
+
+Použití: 
+
+`i18n?action=(text | bundle)&name=<name_of_bundle|name_of_text>&format=(xml|json) [&lang=<lang>&country=<country>]`
+
+Pozn.: Parametry `lang=<language>&country=<country>` mohou měnit locale, které se použije pro podání textu či resourcebundle. Musí být uvedené oba parametry. Pokud nejsou, použije se locale svázaný s requestem a session v K4 (viz dokument O lokalizaci v K4).  
+
+Příklad: 
+`i18n?action=bundle&name=labels&format=xml&lang=cs&country=cz`   _správné použití_
+`i18n?action=bundle&name=labels&format=xml&lang=cs`   _špatné použití_
 
 
 
