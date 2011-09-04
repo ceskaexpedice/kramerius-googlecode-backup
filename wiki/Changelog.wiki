@@ -3,6 +3,13 @@
 
 =Pracovní verze (trunk)=
 
+  * Issue 166 - Podpora Fedory 3.5
+  * Issue 164 - Tisk do fronty na serveru
+  * Issue 145 - zlepšení indexace
+  * Issue 152 - Podpora dokumentů s více typy
+  * Issue 93 - Nová podoba pravého navigačního panelu
+  * Issue 113 - Opraven problém s vytvářením prázdných tabulek správy procesů
+
 =Verze 4.3.4 (r2693)=
 
   * Issue 153 - přidána možnost záložky se zobrazením obsahu streamu TEXT_OCR (aktivace pomocí search.properties, klíč search.item.tabs=text_ocr)
