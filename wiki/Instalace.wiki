@@ -1,84 +1,47 @@
 #summary Popis instalace a nastavení K4
 <wiki:toc max_depth="1" />
 
-=  Systémové komponenty =
-
-Před instalací aplikace Kramerius 4 je třeba nainstalovat následující komponenty:
+Před instalací aplikace Kramerius 4 je třeba nainstalovat následující systémové komponenty:
 
   * Java SE 6
   * J2EE server nebo servlet kontejner podporující specifikace Servlet 2.5 a JSP 2.1 nebo novější (popsaná ukázková instalace předpokládá použití Apache Tomcat 6)
-  * Postgres 8.4 nebo novější, vytvořit uživatele fedoraAdmin a pro něj databáze fedora3, kramerius4 a riTriples
+  * Postgres 8.4 nebo novější
+  * Fedora Commons 3.3, 3.4 nebo 3.5 
+
+Kramerius 4 nevyžaduje žádné specifické revize uvedených komponent, obecně je rozumné používat jejich pokud možno nejnovější aktualizace. Popis instalace a administrace těchto systémových komponent není součástí této dokumentace, předpokládáme, že administrátor aplikace Kramerius 4 ovládá instalaci a administraci výše uvedených komponent.
 
 Operační systém může být libovolný, na kterém je možno tyto komponenty provozovat, vlastní aplikace Kramerius 4 žádné speciální požadavky na systém nemá. Hardware serveru musí být dimenzován na uvažované množství dat, doporučujeme minimálně dvojnásobnou velikost pevného disku, než je plánovaná velikost obrazových dat. Vzhledem k velké paměťové náročnosti práce s grafickými daty (náhledy stránek, zoomování) je třeba i při minimálním provozu aplikace alespoň 4GB RAM. 
 
-K4 je vhodné nainstalovat pod samostatným uživatelským účtem, například kramerius4. 
-
-Nastavit potřebné systémové proměnné (v uvedených příkladech konfigurace předpokládáme instalaci Tomcatu a Fedory do domácího adresáře uživatele kramerius4):
-[PrikladKonfigurace#System_Variables příklad konfigurace systémových proměnných]
+K4 je vhodné nainstalovat pod samostatným uživatelským účtem, například kramerius4.
 
 V produkčním prostředí je před J2EE server (Tomcat) vhodné předřadit webserver přístupný na portu 80, například Apache s nakonfigurovanými moduly mod_proxy a mod_proxy_ajp.
 
-Každou komponentu systému Kramerius (tedy repository Fedora, vlastní aplikaci K4, indexer SOLR, databázi PostgreSQL)  je možné nainstalovat na samostatný server. Komponenty jsou provázány prostřednictvím URL v níže uvedených konfiguračních souborech. V případě distribuované instalace je tedy třeba uvedené příklady konfigurčních URL (localhost) nahradit adresami příslušných serverů. 
+Každou komponentu systému Kramerius (tedy repository Fedora, vlastní aplikaci K4, indexer SOLR, databázi PostgreSQL)  je možné nainstalovat na samostatný server.  
 
-= Instalace Fedory =
 
-Nainstalujte repository Fedora 3.3 pomocí instalátoru fcrepo-installer-3.3.jar. Následuje výpis odpovědí na otázky instalátoru, volby odlišné od defaultních jsou označeny *****
+V následujících odstavcích jsou uvedeny požadavky aplikace Kramerius 4 na specifickou konfiguraci systémových komponent, pokud možno i s odkazy na příklady konkrétních úprav příslušných konfiguračních souborů. Tyto příklady jsou uvedeny pouze pro ilustraci jedné z možných konfigurací, v případě distribuované instalace je třeba uvedené příklady konfiguračních URL (localhost) nahradit adresami příslušných serverů. 
 
-{{{
-Installation type: custom  ******
+=PostgreSQL=
 
-Fedora home: default (/usr/local/fedora)
+  * Vytvořit uživatele `fedoraAdmin` a pro něj databáze `fedora3`, `kramerius4` a (při použití implementace Fedora Resource Indexu MPTTripleStore) `riTriples`.
 
-admin password: fedoraAdmin  ******
+=Aplikační server=
 
-Fedora server: default (localhost)
+  * Nastavit systémovou proměnnou pro instalaci Fedora Commons( `FEDORA_HOME`).
+  * Nastavit dodatečné spouštěcí parametry pro aplikační server : `-Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr -XX:MaxPermSize=128m -Xms512m -Xmx1024m` 
 
-Fedora context: default (fedora)
 
-API-A authentication: default (false)
+[PrikladKonfigurace#System_Variables Příklad konfigurace systémových proměnných]
 
-SSL availability: default (true)
+(v uvedených příkladech konfigurace předpokládáme instalaci Tomcatu a Fedory do domácího adresáře uživatele kramerius4)
 
-API-A SSL required: default (false)
+= Fedora Commons =
 
-API-M SSL required: false ******
+Nainstalujte úložiště Fedora Commons podle jeho dokumentace.
 
-Servlet engine: existingTomcat  ********
+[PrikladKonfigurace#Fedora Příklad instalace Fedora Commons]
 
-Tomcat home directory: default  (CATALINA_HOME)
-
-Tomcat HTTP port: default (8080)
-
-Tomcat shutdown port: default (8005)
-
-Tomcat secure HTTP port: default (8443)
-
-Keystore file: included *****
-
-Database: postgresql   ******
-
-JDBC driver : default (included)
-
-Database username: fedoraAdmin
-
-Database password: fedoraAdmin
-
-Database URL: default (localhost/fedora3)
-
-JDBC driver: default 
-
-Enable FESL:  default  (false)
-
-Policy enforcement enabled: default (true)
-
-Enable resource index: true  *********
-
-Enable messaging : default (false)
-
-Deploy local services: default (true)
-}}}
-
-Po instalaci fedory je třeba do souboru fedora/server/config/fedora.fcfg do sekce začínající <module role="fedora.server.resourceIndex.ResourceIndex" přidat následující parametry:
+Po instalaci fedory je třeba do souboru $FEDORA_HOME/server/config/fedora.fcfg do sekce začínající <module role="fedora.server.resourceIndex.ResourceIndex" přidat následující parametry (definice aliasů pro XML namespace):
 
 {{{
  <param name="alias:kramerius" value="http://www.nsdl.org/ontologies/relationships#">
