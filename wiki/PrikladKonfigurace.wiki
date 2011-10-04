@@ -9,3 +9,61 @@ export FEDORA_HOME=$HOME/fedora
 export JAVA_OPTS=" -Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr -XX:MaxPermSize=128m -Xms512m -Xmx1024m" 
 export PATH=$PATH:$FEDORA_HOME/server/bin:$FEDORA_HOME/client/bin:$CATALINA_HOME/bin:$JAVA_HOME/bin 
 }}}
+
+=Fedora=
+
+Příklad výpisu odpovědí na otázky instalátoru fcrepo-installer-3.3.jar, volby odlišné od defaultních jsou označeny *****
+
+{{{
+Installation type: custom  ******
+
+Fedora home: default (/usr/local/fedora)
+
+admin password: fedoraAdmin  ******
+
+Fedora server: default (localhost)
+
+Fedora context: default (fedora)
+
+API-A authentication: default (false)
+
+SSL availability: default (true)
+
+API-A SSL required: default (false)
+
+API-M SSL required: false ******
+
+Servlet engine: existingTomcat  ********
+
+Tomcat home directory: default  (CATALINA_HOME)
+
+Tomcat HTTP port: default (8080)
+
+Tomcat shutdown port: default (8005)
+
+Tomcat secure HTTP port: default (8443)
+
+Keystore file: included *****
+
+Database: postgresql   ******
+
+JDBC driver : default (included)
+
+Database username: fedoraAdmin
+
+Database password: fedoraAdmin
+
+Database URL: default (localhost/fedora3)
+
+JDBC driver: default 
+
+Enable FESL:  default  (false)
+
+Policy enforcement enabled: default (true)
+
+Enable resource index: true  *********
+
+Enable messaging : default (false)
+
+Deploy local services: default (true)
+}}}
