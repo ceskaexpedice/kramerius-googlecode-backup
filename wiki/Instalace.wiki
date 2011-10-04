@@ -56,22 +56,21 @@ V téže sekci (resource index) je třeba změnit u parametru datastore hodnotu 
 
 _(Poznámka: Kramerius 4 podporuje implementaci Resource index Mulgara i MPTtripleStore. To, která implementace bude použita, je určeno konfigurační property `resource.index.service.class` v souboru configuration.properties - viz níže. Výchozí hodnota této property je nastavena na MPTtripleStore, protože implementace Mulgara není v současné podobě použitelná se službou OAI provider. )_
 
-Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat omezení přístupu  deny-apim-if-not-localhost.xml (ve složce data/fedora-xacml-policies/repository-policies). Deaktivaci lze provést buď editací xacml pravidel v souboru nebo jeho prostým odstraněním. 
+Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat omezení přístupu  deny-apim-if-not-localhost.xml (ve složce data/fedora-xacml-policies/repository-policies). Deaktivaci lze provést buď editací xacml pravidel v souboru nebo jeho prostým odstraněním. Použití xacml pravidel je popsáno v dokumentaci Fedora Commons.
 
-Přes administrátorské rozhraní fedory je třeba naimportovat FOXML objekty obsažené v SVN K4 v modulu installation/fedora (https://kramerius.googlecode.com/svn/trunk/installation/fedora). *Pokud budete importovat i [#Fedora_model OAI Fedora model], je před jeho importem nutné provést konfiguraci .*
+Přes administrátorské rozhraní Fedory je třeba naimportovat FOXML objekty obsažené v distribučním souboru  installation-*.zip, adresář fedora. *Pokud budete importovat i [#Fedora_model OAI Fedora model], je před jeho importem nutné provést konfiguraci .* Popis administrátorského rozhraní je součástí dokumentace Fedora Commons.
 
 = Instalace Apache SOLR =
 
-Do tomcat/webapps nakopírovat solr.war
+Na aplikační server nainstalovat aplikaci solr.war z distribučního souboru installation-*.zip.
 
-Do adresáře $FEDORA_HOME/solr nakopírovat obsah modulu z SVN K4 installation/solr
-(https://kramerius.googlecode.com/svn/trunk/installation/solr)
+Do adresáře $FEDORA_HOME/solr nakopírovat obsah adresáře solr  z distribučního souboru installation-*.zip.
 
-editovat solrconfig.xml - položka solr data home
+V adresáři  $FEDORA_HOME/solr/conf editovat soubor solrconfig.xml - položka solr data home
 
 = Instalace K4 =
 
-Do tomcat/webapps nakopírovat search.war
+Na aplikační server nainstalovat aplikace search.war, editor.war a rightseditor.war z distribučního souboru Kramerius-*.zip.
 
 
 
