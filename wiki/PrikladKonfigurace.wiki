@@ -1,6 +1,6 @@
 #summary Příklady částí konfiguračních souborů některých systémových komponent
 
-= Systémové proměnné =
+= SystemVariables =
 
 {{{
 export JAVA_HOME=/usr/java/jre1.6.0_20
@@ -9,4 +9,3 @@ export FEDORA_HOME=$HOME/fedora
 export JAVA_OPTS=" -Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr -XX:MaxPermSize=128m -Xms512m -Xmx1024m" 
 export PATH=$PATH:$FEDORA_HOME/server/bin:$FEDORA_HOME/client/bin:$CATALINA_HOME/bin:$JAVA_HOME/bin 
 }}}
-
