@@ -1,6 +1,6 @@
 #summary Příklady částí konfiguračních souborů některých systémových komponent
 
-= SystemVariables =
+=System Variables=
 
 {{{
 export JAVA_HOME=/usr/java/jre1.6.0_20
