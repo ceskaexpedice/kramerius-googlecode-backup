@@ -88,3 +88,14 @@ Do souboru `tomcat/conf/server.xml` přidat URIEncoding:
                connectionTimeout="20000" URIEncoding="UTF-8"
                redirectPort="8443" />
 }}}
+
+=SingleSignOn=
+
+V souboru `tomcat/conf/server.xml` povolit single sign-on:
+{{{
+<Host name="localhost" ...>
+  ...
+  <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+  ...
+</Host>
+}}}
