@@ -120,6 +120,9 @@ Defaultní hodnoty properties (viz níže) jsou definovány uvnitř aplikačníh
 Obsah defaultních hodnot jednotlivých konfiguračních souborů najdete zde:
 
   * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/res/configuration.properties configuration.properties]
+  * [http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/res/configuration.properties search.properties]
+  * [http://code.google.com/p/kramerius/source/browse/trunk/indexer/src/res/configuration.properties  indexer.properties]
+  * [http://code.google.com/p/kramerius/source/browse/trunk/import-cmdtool/src/main/java/res/configuration.properties  migration.properties]
 
 
 =Podpora protokolu deepZoom=
