@@ -108,7 +108,7 @@ V aplikačním serveru nastavte kódování URI na UTF-8  ([PrikladKonfigurace#U
 
 ==Single Sign-on==
 
-Pokud chcete pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`) používat jednotné přihlášení uživatele, nastavte tuto možnost v konfiguraci aplikačního serveru  ([PrikladKonfigurace#SingleSignOn příklad pro Tomcat])
+Pokud chcete pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`) používat jednotné přihlášení uživatele, nastavte tuto možnost v konfiguraci aplikačního serveru  ([PrikladKonfigurace#Single_Sign-on příklad pro Tomcat])
 
 
 = Konfigurace =
