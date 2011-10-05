@@ -93,11 +93,11 @@ Na aplikační server nainstalovat aplikace search.war, editor.war a rightsedito
 
 V aplikačním serveru nakonfigurujte JDBC datasource pro databázi `kramerius4` ( [PrikladKonfigurace#Konfigurace_datasource příklad pro Tomcat]). 
 
-Do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `tomcat/lib`) přidejte jar soubor s JDBC ovladačem pro PostgreSQL, který je součástí instalace vašeho databázového serveru.
+Do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `$CATALINA_HOME/lib`) přidejte jar soubor s JDBC ovladačem pro PostgreSQL, který je součástí instalace vašeho databázového serveru.
 
 ==Instalace sdílených knihoven==
 
-Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kterém je nainstalováno úložiště Fedora Commons, je třeba do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `tomcat/lib`) překopírovat následující knihovní soubory jar z aplikace fedora (v případě Tomcatu adresář `webapps/fedora/WEB-INF/lib`):
+Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kterém je nainstalováno úložiště Fedora Commons, je třeba do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `$CATALINA_HOME/lib`) překopírovat následující knihovní soubory jar z aplikace fedora (v případě Tomcatu adresář `$CATALINA_HOME/webapps/fedora/WEB-INF/lib`):
   * `carol`
   * `commons-logging`  (pro Fedora Commons 3.4 a novější již není třeba)
   * `log4j` (pro Fedora Commons 3.4 a novější již není třeba)
@@ -125,13 +125,12 @@ Obsah defaultních hodnot jednotlivých konfiguračních souborů najdete zde:
   * [http://code.google.com/p/kramerius/source/browse/trunk/import-cmdtool/src/main/java/res/configuration.properties  migration.properties]
 
 
-=Podpora protokolu deepZoom=
-Kromě standardního zobrazení obrázků má aplikace kramerius4 možnost prezentovat je pomocí prohlížečky seadragon(http://www.zoom.it). V tomto případě je zapotřebí krameria nakonfiguruovat. Jsou dvě možnosti: 
+=Podpora protokolu deepZoom (volitelné nastavení)=
+Kromě standardního zobrazení obrázků v jejich nativním formátu má aplikace Kramerius4 možnost prezentovat je pomocí integrované prohlížečky Seadragon (http://www.zoom.it). Prohlížečka Seadragon je aktivována pro konkrétní zobrazovaný digitální objekt (například stránku monografie), pokud jeho FOXML definice obsahuje v datastreamu RELS-EXT RDF literál `<kramerius4:tiles-url>`.  Je možno využít dvě alternativy: 
 
  * Využít produkt IIP server (http://iipimage.sourceforge.net).
 
-Zde slouží kramerius jako prostředník. Klientské dotazy na jednotlivé dlaždice přeposílá IIP serveru a sám se stará pouze o autorizaci požadavku. Konfigurace adresy serveru pro dlaždice je uložena v metadatech ve streamu RELS-EXT. Konkrétně se jedná o  literál 
-<kramerius4:tiles-url>. Hodnotou literálu je přímo URL na zoomovaný obrázek. 
+Zde slouží Kramerius jako prostředník. Klientské dotazy na jednotlivé dlaždice přeposílá IIP serveru a sám se stará pouze o autorizaci požadavku. Hodnotou literálu `<kramerius4:tiles-url>` je přímo URL na zoomovaný obrázek v IIP serveru. 
 
 Příklady definic v RELS-EXT:
 
@@ -139,7 +138,7 @@ Příklady definic v RELS-EXT:
 
 <kramerius4:tiles-url>http://imageserver.mzk.cz/mzk03/001/066/607/2619320306/1</kramerius4:tiles-url>
 
-Pokud je obrázek ve fedoře uložen jako "Managed Content Stream"  je potřeba do URL dopropagovat fyzickou adresu souboru. Kramerius 4 umožňuje získat relativní adresu streamu pomocí interpretované proměnné $internalstream$,která může být přímo součástí URL adresy. Adresa je raltivní vůči kořenovému adresáři fedory, kde fedora uchovává data. Standardně se tento kořenový adresář nachází $FEDORA_HOME$/data
+Pokud není obrázek spravován přímo IIP serverem, ale je uložen ve fedoře jako "Managed Content Stream", ze kterého si jej IIP server načítá, je potřeba do URL v <kramerius4:tiles-url> vložit fyzickou adresu souboru, která ale není v okamžiku vytváření importního FOXML souboru známa. Kramerius 4 umožňuje získat relativní adresu streamu pomocí interpretované proměnné $internalstream$,která může být přímo součástí URL adresy. Adresa je relativní vůči kořenovému adresáři fedory, kde fedora uchovává data. Standardně se tento kořenový adresář nachází $FEDORA_HOME/data
 
 Příklad definice v RELS-EXT: 
 
@@ -149,14 +148,15 @@ Pozn.: Předpokládá se, že IIP server má datový adresář fedory připojen�
 
 
  * Systémem kramerius si vygenerovat soubory do interní cache.
-V tomto případě je nutné mít v literálu kramerius4:tiles-url mít uvedenou konstantu 
-kramerius4://deepZoomCache. 
+
+Tato interní cache vlastně nahrazuje funkci externího image serveru. V tomto případě je nutné mít v literálu kramerius4:tiles-url mít uvedenou konstantu 
+`kramerius4://deepZoomCache`. 
 
 Příklad:
 
 <kramerius4:tiles-url>kramerius4://deepZoomCache</kramerius4:tiles-url>
 
-Pozn. Je samozřejmě nutné cache naplnit a to akcí "Generování Deep Zoom Cache...".  
+Pozn.: Je samozřejmě nejdříve nutné cache naplnit a to akcí "Generování Deep Zoom Cache..." v administrátorském menu aplikace Kramerius 4.  
 
 
 ==Verze IIP serveru==
