@@ -70,7 +70,7 @@ Deploy local services: default (true)
 
 =Konfigurace datasource=
 
-Do souboru `tomcat/conf/context.xml` přidat definici datasource: 
+Do souboru `$CATALINA_HOME/conf/context.xml` přidat definici datasource: 
 {{{
 <Resource name="jdbc/kramerius4" auth="Container" type="javax.sql.DataSource"
         initialSize="3"
@@ -82,7 +82,7 @@ Do souboru `tomcat/conf/context.xml` přidat definici datasource:
 
 =URIEncoding=
 
-Do souboru `tomcat/conf/server.xml` přidat URIEncoding:
+Do souboru `$CATALINA_HOME/conf/server.xml` přidat URIEncoding:
 {{{
  <Connector port="8080" protocol="HTTP/1.1" 
                connectionTimeout="20000" URIEncoding="UTF-8"
@@ -91,7 +91,7 @@ Do souboru `tomcat/conf/server.xml` přidat URIEncoding:
 
 =Single Sign-on=
 
-V souboru `tomcat/conf/server.xml` povolit single sign-on:
+V souboru `$CATALINA_HOME/conf/server.xml` povolit single sign-on:
 {{{
 <Host name="localhost" ...>
   ...
