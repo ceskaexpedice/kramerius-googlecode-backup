@@ -207,20 +207,13 @@ Standardní IIP server rozeznává typy souborů dle koncovky. Aby mohl podávat
 http://iris.mzk.cz/iipimage.tar.bz2 
 
 
+=Editor pořadí částí dokumentu (volitelné nastavení)=
 
-
-
-
-
-
-
-=Editor pořadí částí dokumentu (RELS-EXT)=
-
-Editor se instaluje jako samostatná webová aplikace nakopírováním souboru editor.war do složky webapps v Tomcatu.
+Editor se instaluje jako samostatná webová aplikace nainstalováním souboru editor.war na aplikační server (viz instalace K4).
 
 Před spuštěním je potřeba mít nakonfigurován single-sign-on (viz Přístupová práva).
 
-Kramerius 4 umožňuje nahradit tento výchozí editor jiným editorem. To, který editor se spustí z kontextového menu v GUI K4, je určeno položkou editorUrl v configuration.properties:
+Kramerius 4 umožňuje nahradit tento výchozí editor jiným editorem. To, který editor se spustí z kontextového menu v GUI K4, je určeno položkou editorUrl v souboru `~/.kramerius4/configuration.properties`:
 
 {{{
 editorUrl=${_fedoraTomcatHost}/editor
@@ -231,23 +224,23 @@ Volané url z kontextového menu má například takovýto tvar:
 http://localhost:8080/editor/?openIDs=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&locale=en
 }}}  
 
+Případný alternativní editor tedy musí být schopen zpracovat parametry z tohoto URL.
 
-
-= Instalace OAI =
+= Instalace OAI (volitelné nastavení)=
 
 == Fedora model ==
 
-V `service_ESEDep.xml` a `model_repository.xml` (https://kramerius.googlecode.com/svn/trunk/installation/fedora) opravit všechny `FIXME`.
+V  souborech `service_ESEDep.xml` a `model_repository.xml` v adresáři fedora z distribučního souboru installation-x.x.zip upravte všechna místa označená `FIXME` podle vaší konkrétní instalace. SOubory potom nainstalujte jako ostatní FOXML modely do úložiště Fedora Commons.
 
 == PostgreSQL ==
 
-Vytvořit uživatele `proai` a databázi `proai`.
+Vytvořte uživatele `proai` a databázi `proai`.
 
-== Tomcat ==
+== Aplikační server ==
 
-Do `tomcat/webapps` nakopírovat `oaiprovider.war` z SVN K4 (https://kramerius.googlecode.com/svn/trunk/installation/oai).
+Na aplikační server nainstalujte aplikaci `oaiprovider.war` z adresáře oai v distribučním souboru `installation-x.x.zip`. 
 
-Editovat `tomcat/webapps/oaiprovider/WEB-INF/classes/proai.properties`.
+V nainstalované aplikaci `oaiprovider` upravte soubor `proai.properties` (pro Tomcat je to soubor  `$CATALINA_HOME/webapps/oaiprovider/WEB-INF/classes/proai.properties`) :
 {{{
 # /tmp/proai obsahuje exportovaná data a nesmí být mazán bez úpravy proai databáze
 proai.cacheBaseDir = /tmp/proai/cache
@@ -256,7 +249,7 @@ proai.schemaDir = /tmp/proai/schemas
 
 # nahradit všechny odkazy 'localhost' skutečným serverem
 
-# v případě potřeby změnit přístupová jména a hesla podle skutečnosti
+# v případě potřeby změnit jdbc url, přístupová jména a hesla podle skutečnosti
 proai.db.url = jdbc:postgresql://localhost/proai
 proai.db.username = proai
 proai.db.password = ********
