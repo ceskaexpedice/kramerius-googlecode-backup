@@ -3,21 +3,23 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.4.0 (beta2)=
+
   * Issue 140 - Podpora Shibbolethu
   * Issue 166 - Podpora Fedory 3.5
   * Issue 164 - Tisk do fronty na serveru
   * Issue 145, 137, 108, 102 - Zlepšení indexace
   * Issue 142 - Vylepšeno zobrazení informací o procesech
   * Issue 152 - Podpora dokumentů s více typy
-  * Issue 93 - Nová podoba pravého navigačního panelu
-  * Issue 97 - Konfogurovatelné panely metadat
+  * Issue 93 - Nová podoba navigačního panelu
+  * Issue 97 - Konfigurovatelné panely metadat
   * Issue 90 - Automatické načítání další stránky výsledků při skrolování
   * Issue 88 - Opraveny chyba v chování posuvníku časové osy
   * Issue 18 - Změna zobrazování výsledků vyhledávání 
   * Issue 113 - Opraven problém s vytvářením prázdných tabulek správy procesů
   * Konvertor K3->K4 umožňuje automatickou konverzi obrázků v plném rozlišení do JPG (property convert.originalToJPG=true)
 
-=Verze 4.3.4 (r2693)=
+=Verze 4.3.5 (r2693)=
 
   * Issue 153 - přidána možnost záložky se zobrazením obsahu streamu TEXT_OCR (aktivace pomocí search.properties, klíč search.item.tabs=text_ocr)
   * Opraveno zobrazování rámečků pro data ALTO s českými řetězci
