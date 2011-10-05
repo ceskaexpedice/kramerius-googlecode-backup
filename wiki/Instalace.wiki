@@ -3,10 +3,10 @@
 
 Před instalací aplikace Kramerius 4 je třeba nainstalovat následující systémové komponenty:
 
-  * Java SE 6
-  * J2EE server nebo servlet kontejner podporující specifikace Servlet 2.5 a JSP 2.1 nebo novější (popsaná ukázková instalace předpokládá použití Apache Tomcat 6)
-  * Postgres 8.4 nebo novější
-  * Fedora Commons 3.3, 3.4 nebo 3.5 
+|| Java || JDK 1.6||
+|| Aplikační server|| podporující specifikace Servlet 2.5 a JSP 2.1 nebo novější (popsaná ukázková instalace předpokládá použití Apache Tomcat 6)||
+|| Databáze||Postgres 8.4 nebo novější||
+||Úložiště||Fedora Commons 3.3, 3.4 nebo 3.5|| 
 
 Kramerius 4 nevyžaduje žádné specifické revize uvedených komponent, obecně je rozumné používat jejich pokud možno nejnovější aktualizace. Popis instalace a administrace těchto systémových komponent není součástí této dokumentace, předpokládáme, že administrátor aplikace Kramerius 4 ovládá instalaci a administraci výše uvedených komponent.
 
@@ -19,13 +19,9 @@ V produkčním prostředí je před J2EE server (Tomcat) vhodné předřadit web
 Každou komponentu systému Kramerius (tedy repository Fedora, vlastní aplikaci K4, indexer SOLR, databázi PostgreSQL)  je možné nainstalovat na samostatný server.  
 
 
-V následujících odstavcích jsou uvedeny požadavky aplikace Kramerius 4 na specifickou konfiguraci systémových komponent, pokud možno i s odkazy na příklady konkrétních úprav příslušných konfiguračních souborů. Tyto příklady jsou uvedeny pouze pro ilustraci jedné z možných konfigurací, v případě distribuované instalace je třeba uvedené příklady konfiguračních URL (localhost) nahradit adresami příslušných serverů. 
+V následujících odstavcích jsou uvedeny požadavky aplikace Kramerius 4 na specifickou konfiguraci systémových komponent, pokud možno i s odkazy na příklady konkrétních úprav příslušných konfiguračních souborů. Tyto příklady jsou uvedeny pouze pro ilustraci jedné z možných konfigurací a nenahrazují dokumentaci k jednotlivým systémovým komponentám. V případě distribuované instalace je třeba uvedené příklady konfiguračních URL (localhost) nahradit adresami příslušných serverů. 
 
-=PostgreSQL=
-
-  * Vytvořit uživatele `fedoraAdmin` a pro něj databáze `fedora3`, `kramerius4` a (při použití implementace Fedora Resource Indexu MPTTripleStore) `riTriples`.
-
-=Aplikační server=
+=Operační systém=
 
   * Nastavit systémovou proměnnou pro instalaci Fedora Commons( `FEDORA_HOME`).
   * Nastavit dodatečné spouštěcí parametry pro aplikační server : `-Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr -XX:MaxPermSize=128m -Xms512m -Xmx1024m` 
@@ -35,13 +31,20 @@ V následujících odstavcích jsou uvedeny požadavky aplikace Kramerius 4 na s
 
 (v uvedených příkladech konfigurace předpokládáme instalaci Tomcatu a Fedory do domácího adresáře uživatele kramerius4)
 
+=PostgreSQL=
+
+  * Vytvořit uživatele `fedoraAdmin` a pro něj databáze `fedora3`, `kramerius4` a (při použití implementace Fedora Resource Indexu MPTTripleStore) `riTriples`.
+
+
 = Fedora Commons =
 
 Nainstalujte úložiště Fedora Commons podle jeho dokumentace.
 
 [PrikladKonfigurace#Fedora Příklad instalace Fedora Commons]
 
-Po instalaci fedory je třeba do souboru $FEDORA_HOME/server/config/fedora.fcfg do sekce začínající <module role="fedora.server.resourceIndex.ResourceIndex" přidat následující parametry (definice aliasů pro XML namespace):
+==Nastavení aliasů==
+
+Po instalaci fedory je třeba do souboru `$FEDORA_HOME/server/config/fedora.fcfg` do sekce začínající `<module role="fedora.server.resourceIndex.ResourceIndex" ` přidat následující parametry (definice aliasů pro XML namespace):
 
 {{{
  <param name="alias:kramerius" value="http://www.nsdl.org/ontologies/relationships#">
@@ -52,59 +55,59 @@ Po instalaci fedory je třeba do souboru $FEDORA_HOME/server/config/fedora.fcfg 
  </param>
 }}}
 
-V téže sekci (resource index) je třeba změnit u parametru datastore hodnotu na localPostgresMPTTriplestore. V odpovídající sekci localPostgresMPTTriplestore, kde je definován datasource pro MPTTriplesotre, je třeba nastavit databázové heslo na heslo, které jste přiřadili uživateli fedoraAdmin. 
+==Nastavení implementace resource indexu==
 
-_(Poznámka: Kramerius 4 podporuje implementaci Resource index Mulgara i MPTtripleStore. To, která implementace bude použita, je určeno konfigurační property `resource.index.service.class` v souboru configuration.properties - viz níže. Výchozí hodnota této property je nastavena na MPTtripleStore, protože implementace Mulgara není v současné podobě použitelná se službou OAI provider. )_
+Ve stejné sekci fedora.fcfg, jako pro nastavení aliasů (resource index) je třeba změnit u parametru `datastore` hodnotu na `localPostgresMPTTriplestore`. V odpovídající sekci localPostgresMPTTriplestore, kde je definován datasource pro MPTTriplesotre, je třeba nastavit databázové heslo na heslo, které jste přiřadili uživateli fedoraAdmin. 
 
-Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat omezení přístupu  deny-apim-if-not-localhost.xml (ve složce data/fedora-xacml-policies/repository-policies). Deaktivaci lze provést buď editací xacml pravidel v souboru nebo jeho prostým odstraněním. Použití xacml pravidel je popsáno v dokumentaci Fedora Commons.
+_(Poznámka: Kramerius 4 podporuje implementaci Resource index Mulgara i MPTtripleStore. To, která implementace bude použita, je určeno konfigurační property `resource.index.service.class` v souboru `configuration.properties` - viz níže. Výchozí hodnota této property je nastavena na MPTtripleStore, protože implementace Mulgara není v současné podobě použitelná se službou OAI provider. )_
 
-Přes administrátorské rozhraní Fedory je třeba naimportovat FOXML objekty obsažené v distribučním souboru  installation-*.zip, adresář fedora. *Pokud budete importovat i [#Fedora_model OAI Fedora model], je před jeho importem nutné provést konfiguraci .* Popis administrátorského rozhraní je součástí dokumentace Fedora Commons.
+==Nastavení přístupových práv==
+
+Aplikace Kramerius 4 má vlastní systém řízení přístupových práv a nevyužívá systém XACML pravidel Fedora Commons. Pokud nepotřebujete k úložišti přistupovat odjinud, než z aplikace Kramerius 4, je tedy nejjednodušší úložiště vůbec nezveřejňovat a systém pravidel XACML nevyužívat. Deaktivace autorizačního systému je popsána v dokumentaci Fedora Commons, jednou z možností je v souboru fedora.fcfg v sekci `<module role="org.fcrepo.server.security.Authorization"` nastavit parametr `<param name="ENFORCE-MODE" value="permit-all-requests"/>`.
+
+Jestliže z nějakého důvodu autorizační systém Fedora Commons potřebujete používat, je pravděpodobné, že narazíte na následující situace:
+
+  * Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat nebo upravit omezení přístupu ` deny-apim-if-not-localhost.xml`
+
+  * Při použití FOXML objektů s externě referencovaným obsahem datastreamů je třeba  deaktivovat nebo upravit pravidlo `deny-unallowed-file-resolution.xml`
+
+XACML pravidla jsou uložena ve složce `$FEDORA_HOME/data/fedora-xacml-policies/repository-policies`. Deaktivaci lze provést buď editací xacml pravidel v souboru nebo jeho prostým odstraněním. Editace xacml pravidel je popsána v dokumentaci úložiště Fedora Commons.
+
+==Import FOXML modelů==
+
+Přes administrátorské rozhraní Fedory je třeba naimportovat FOXML objekty obsažené v distribučním souboru  installation-x.x.zip, adresář `fedora`. _Pokud budete importovat i [#Fedora_model OAI Fedora model], je před jeho importem nutné provést konfiguraci ._ Popis administrátorského rozhraní je součástí dokumentace Fedora Commons.
 
 = Instalace Apache SOLR =
 
-Na aplikační server nainstalovat aplikaci solr.war z distribučního souboru installation-*.zip.
+Na aplikační server nainstalovat aplikaci `solr.war` z distribučního souboru installation-x.x.zip.
 
-Do adresáře $FEDORA_HOME/solr nakopírovat obsah adresáře solr  z distribučního souboru installation-*.zip.
+Do adresáře $FEDORA_HOME/solr nakopírovat obsah adresáře `solr`  z distribučního souboru installation-x.x.zip.
 
-V adresáři  $FEDORA_HOME/solr/conf editovat soubor solrconfig.xml - položka solr data home
+V adresáři  $FEDORA_HOME/solr/conf editovat soubor solrconfig.xml - položka `dataDir`
 
 = Instalace K4 =
 
-Na aplikační server nainstalovat aplikace search.war, editor.war a rightseditor.war z distribučního souboru Kramerius-*.zip.
+Na aplikační server nainstalovat aplikace search.war, editor.war a rightseditor.war z distribučního souboru Kramerius-x.x.zip.
+
+==Konfigurace datasource==
+
+V aplikačním serveru nakonfigurujte JDBC datasource pro databázi `kramerius4` ( [PrikladKonfigurace#Konfigurace_datasource příklad pro Tomcat]). 
+
+Do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `tomcat/lib`) přidejte jar soubor s JDBC ovladačem pro PostgreSQL, který je součástí instalace vašeho databázového serveru.
+
+==Instalace sdílených knihoven==
+
+Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kterém je nainstalováno úložiště Fedora Commons, je třeba do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `tomcat/lib`) překopírovat následující knihovní soubory jar z aplikace fedora (v případě Tomcatu adresář `webapps/fedora/WEB-INF/lib`):
+  * `carol`
+  * `commons-logging`  (pro Fedora Commons 3.4 a novější již není třeba)
+  * `log4j` (pro Fedora Commons 3.4 a novější již není třeba)
+
+==Nastavení kódování URI==
+
+V aplikačním serveru nastavte kódování URI na UTF-8  ([PrikladKonfigurace#URIEncoding příklad pro Tomcat])
 
 
 
-do context.xml přidat definici datasource: 
-{{{
-<Resource name="jdbc/kramerius4" auth="Container" type="javax.sql.DataSource"
-        initialSize="3"
-        maxActive="100" maxIdle="30" maxWait="10000"
-        username="fedoraAdmin" password="fedoraAdmin" driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://localhost/kramerius4"/>
-
-
-<Resource name="jdbc/fedora3" auth="Container" type="javax.sql.DataSource"
-        initialSize="3"
-        maxActive="100" maxIdle="30" maxWait="10000"
-        username="fedoraAdmin" password="fedoraAdmin" driverClassName="org.postgresql.Driver"
-        url="jdbc:postgresql://localhost/fedora3"/>
-
-}}}
-
-do tomcat/lib překopírovat následující jary z webapps/fedora/WEB-INF/lib:
-  * carol
-  * commons-logging  (pro fedoru 3.4 a novější již není třeba)
-  * log4j (pro fedoru 3.4 a novější již není třeba)
-
-dále do tomcat/lib nakopírujte jar s jdbc ovladačem pro postgresql, nejlépe z distribuce databáze PostgreSQL nebo z archivu search.war/WEB-INF/lib  - ovladač z distribuce fedora 3.3 patří k PostgreSQL 8.3 a s Krameriem 4.2 a novějším nefunguje.
-
-
-do server.xml přidat URIEncoding:
-{{{
- <Connector port="8080" protocol="HTTP/1.1" 
-               connectionTimeout="20000" URIEncoding="UTF-8"
-               redirectPort="8443" />
-}}}
 a povolit jednotné přihlašování:
 {{{
 <Host name="localhost" ...>
