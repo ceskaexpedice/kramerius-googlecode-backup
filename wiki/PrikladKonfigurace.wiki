@@ -67,3 +67,15 @@ Enable messaging : default (false)
 
 Deploy local services: default (true)
 }}}
+
+=Konfigurace datasource=
+
+Do souboru tomcat/conf/context.xml přidat definici datasource: 
+{{{
+<Resource name="jdbc/kramerius4" auth="Container" type="javax.sql.DataSource"
+        initialSize="3"
+        maxActive="100" maxIdle="30" maxWait="10000"
+        username="fedoraAdmin" password="fedoraAdmin" driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://localhost/kramerius4"/>
+
+}}}
