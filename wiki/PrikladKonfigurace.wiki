@@ -70,7 +70,7 @@ Deploy local services: default (true)
 
 =Konfigurace datasource=
 
-Do souboru tomcat/conf/context.xml přidat definici datasource: 
+Do souboru `tomcat/conf/context.xml` přidat definici datasource: 
 {{{
 <Resource name="jdbc/kramerius4" auth="Container" type="javax.sql.DataSource"
         initialSize="3"
@@ -78,4 +78,13 @@ Do souboru tomcat/conf/context.xml přidat definici datasource:
         username="fedoraAdmin" password="fedoraAdmin" driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql://localhost/kramerius4"/>
 
+}}}
+
+=URIEncoding=
+
+Do souboru `tomcat/conf/server.xml` přidat URIEncoding:
+{{{
+ <Connector port="8080" protocol="HTTP/1.1" 
+               connectionTimeout="20000" URIEncoding="UTF-8"
+               redirectPort="8443" />
 }}}
