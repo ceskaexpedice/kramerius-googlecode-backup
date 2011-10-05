@@ -89,7 +89,7 @@ Do souboru `tomcat/conf/server.xml` přidat URIEncoding:
                redirectPort="8443" />
 }}}
 
-=SingleSignOn=
+=Single Sign-on=
 
 V souboru `tomcat/conf/server.xml` povolit single sign-on:
 {{{
