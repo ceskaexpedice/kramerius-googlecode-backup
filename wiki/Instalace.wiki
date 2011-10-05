@@ -7,6 +7,7 @@ Před instalací aplikace Kramerius 4 je třeba nainstalovat následující syst
 || Aplikační server|| podporující specifikace Servlet 2.5 a JSP 2.1 nebo novější (popsaná ukázková instalace předpokládá použití Apache Tomcat 6)||
 || Databáze||Postgres 8.4 nebo novější||
 ||Úložiště||Fedora Commons 3.3, 3.4 nebo 3.5|| 
+||SMTP server||libovolný||
 
 Kramerius 4 nevyžaduje žádné specifické revize uvedených komponent, obecně je rozumné používat jejich pokud možno nejnovější aktualizace. Popis instalace a administrace těchto systémových komponent není součástí této dokumentace, předpokládáme, že administrátor aplikace Kramerius 4 ovládá instalaci a administraci výše uvedených komponent.
 
@@ -104,7 +105,9 @@ Do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `
 
 ==Instalace sdílených knihoven==
 
-Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kterém je nainstalováno úložiště Fedora Commons, je třeba do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `$CATALINA_HOME/lib`) překopírovat následující knihovní soubory jar z aplikace fedora (v případě Tomcatu adresář `$CATALINA_HOME/webapps/fedora/WEB-INF/lib`):
+Do adresáře sdílených knihoven  (v případě Tomcatu `$CATALINA_HOME/lib`) je třeba nainstalovat knihovnu `security-core.jar` z distribučního souboru Kramerius-x.x.zip.
+
+Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kterém je nainstalováno úložiště Fedora Commons, je třeba do adresáře sdílených knihoven aplikačního serveru překopírovat také následující knihovní soubory jar z aplikace fedora (v případě Tomcatu adresář `$CATALINA_HOME/webapps/fedora/WEB-INF/lib`):
   * `carol`
   * `commons-logging`  (pro Fedora Commons 3.4 a novější již není třeba)
   * `log4j` (pro Fedora Commons 3.4 a novější již není třeba)
@@ -113,11 +116,15 @@ Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kter
 
 V aplikačním serveru nastavte kódování URI na UTF-8  ([PrikladKonfigurace#URIEncoding příklad pro Tomcat])
 
-==Single Sign-on==
+==Autentizace a single sign-on==
 
-Pokud chcete pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`) používat jednotné přihlášení uživatele, aktivujte single sign-on v konfiguraci aplikačního serveru  a propojte autentizaci těchto modulů v konfiguraci  JAAS úložiště Fedora Commons ([PrikladKonfigurace#Single_Sign-on příklad pro Tomcat])
+Pro autentizaci a jednotné přihlášení uživatele pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`), aktivujte single sign-on v konfiguraci aplikačního serveru  a povolte autentizaci těchto modulů v konfiguraci  JAAS úložiště Fedora Commons ([PrikladKonfigurace#Single_Sign-on příklad pro Tomcat])
 
-Do adresáře sdílených knihoven  (v případě Tomcatu `$CATALINA_HOME/lib`) je třeba nainstalovat knihovnu `security-core.jar` z distribučního souboru Kramerius-x.x.zip.
+Po prvním spuštění aplikace se v databázi vytvoří databázové tabulky s předdefinovanými autorizačními pravidly a implicitnim administrátorským uživatelem.  Předdefinované jméno a heslo admin uživatele je: 
+
+`krameriusAdmin` 
+
+`krameriusAdmin`
 
 
 = Konfigurace =
@@ -132,6 +139,31 @@ Obsah defaultních hodnot jednotlivých konfiguračních souborů najdete zde:
   * [http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/res/configuration.properties search.properties]
   * [http://code.google.com/p/kramerius/source/browse/trunk/indexer/src/res/configuration.properties  indexer.properties]
   * [http://code.google.com/p/kramerius/source/browse/trunk/import-cmdtool/src/main/java/res/configuration.properties  migration.properties]
+
+Nově založenému uživateli je aplikací rightseditor přiděleno heslo a zasláno na email. Pro tuto funkci je třeba mít k dispozici SMTP server a do adresáře `~/.kramerius4` přidat soubor `mail.properties` s obsahem:
+
+{{{
+# Mail properties bez SSL
+mail.smtp.user=hudlibudli@gmail.com
+mail.smtp.pass=blablabla
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=25
+}}}
+
+nebo 
+
+{{{
+# Mail properties s podporou SSL
+mail.smtp.user=hudlibudli@gmail.com
+mail.smtp.pass=blablabla
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=465
+mail.smtp.starttls.enable=true
+mail.smtp.auth=true
+mail.smtp.socketFactory.port=465
+mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+mail.smtp.socketFactory.fallback=false
+}}}
 
 
 =Podpora protokolu deepZoom (volitelné nastavení)=
@@ -176,57 +208,11 @@ http://iris.mzk.cz/iipimage.tar.bz2
 
 
 
-=Přístupová práva uživatelů=
-
-Kramerius 4 používá od verze 4.2 nový systém správy uživatelů a přístupových práv. Jeho principy a administrace jsou popsány v dokumentu [Prava Správa uživatelů]
-
-==Instalace==
-
-===tomcat===
-
-do lib přidat security-core.jar
-do webapps nainstalovat aplikaci rightseditor.war
-povolit single sign on v server.xml 
-
-{{{
-<Valve className="org.apache.catalina.authenticator.SingleSignOn" />
-}}}
 
 
 
-===Kramerius4===
-
-do .kramerius4 přidat mail.properties s obsahem:
-
-{{{
-# Mail properties bez SSL
-mail.smtp.user=hudlibudli@gmail.com
-mail.smtp.pass=blablabla
-mail.smtp.host=smtp.gmail.com
-mail.smtp.port=25
-}}}
-
-nebo 
-
-{{{
-# Mail properties s podporou SSL
-mail.smtp.user=hudlibudli@gmail.com
-mail.smtp.pass=blablabla
-mail.smtp.host=smtp.gmail.com
-mail.smtp.port=465
-mail.smtp.starttls.enable=true
-mail.smtp.auth=true
-mail.smtp.socketFactory.port=465
-mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
-mail.smtp.socketFactory.fallback=false
-}}}
 
 
-Po prvním spuštění aplikace se v databázi vytvoří databázové tabulky s předdefinovanými pravidly a implicitnim admin uživatelem.  Nastaveni pravidel odpovídá dosavadním verzím K4 a předdefinované jméno a heslo admin uživatele je: 
-
-krameriusAdmin 
-
-krameriusAdmin
 
 =Editor pořadí částí dokumentu (RELS-EXT)=
 
