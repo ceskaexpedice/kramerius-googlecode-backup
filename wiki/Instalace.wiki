@@ -118,6 +118,9 @@ Po prvním spuštění aplikačního serveru s nainstalovanou aplikací Krameriu
 
 Defaultní hodnoty properties (viz níže) jsou definovány uvnitř aplikačního archivu search.war. Hodnoty je možno předefinovat jejich uvedením ve stejně pojmenovaném souboru umístěném v adresáři $USER_HOME/.kramerius4. Tyto konfigurační soubory (prázdné) jsou vytvořeny automaticky při prvním spuštění K4, resp. příslušného externího procesu.
 
+Obsah defaultních hodnot jednotlivých konfiguračních souborů najdete zde:
+
+  * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/res/configuration.properties configuration.properties]
 
 ==configuration.properties==
 {{{
