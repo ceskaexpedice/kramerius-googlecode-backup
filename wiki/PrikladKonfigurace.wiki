@@ -99,3 +99,30 @@ V souboru `$CATALINA_HOME/conf/server.xml` povolit single sign-on:
   ...
 </Host>
 }}}
+
+
+Do adresáře `$CATALINA_HOME/conf/Catalina/localhost` přidat soubory `search.xml` a `rightseditor.xml` s tímto obsahem
+
+{{{
+<Context>
+	<Realm className="org.apache.catalina.realm.JAASRealm"                 
+		appName="search"       
+		userClassNames="cz.incad.kramerius.security.jaas.K4UserPrincipal"       
+		roleClassNames="cz.incad.kramerius.security.jaas.K4RolePrincipal"
+		debug="99"/>
+</Context>
+}}}
+
+
+
+Do souboru  `$FEDORA_HOME/server/config/jaas.conf` přidat:
+{{{
+search {
+ cz.incad.kramerius.security.jaas.K4LoginModule required debug=true;
+};
+
+
+rightseditor {
+ cz.incad.kramerius.security.jaas.K4LoginModule required debug=true;
+};
+}}}
