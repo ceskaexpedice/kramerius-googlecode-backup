@@ -18,6 +18,13 @@ V produkčním prostředí je před J2EE server (Tomcat) vhodné předřadit web
 
 Každou komponentu systému Kramerius (tedy repository Fedora, vlastní aplikaci K4, indexer SOLR, databázi PostgreSQL)  je možné nainstalovat na samostatný server.  
 
+* Distribuční soubory *
+
+Distribuční soubory aplikace Kramerius 4 najdete v sekci Downloads. Aplikace je rozdělena do dvou archivních souborů (znaky x.x.x jsou samozřejmě nahrazeny konkrétním číslem verze):
+  * `installation-x.x.x.zip` obsahuje podpůrné soubory potřebné při prvotní instalaci K4, jejich obsah se mezi jednotlivými aktualizacemi K4 nemění
+  * `Kramerius-x.x.x.zip` obsahuje vlastní aplikaci K4, soubory z tohoto archivu je třeba instalovat jak při prvotní instalaci, tak při následných aktualizacích.
+
+_Poznámka: Distribuční soubory aktuální verze K4 jsou označeny jako `Featured`. K této verzi se vztahuje  i obsah dokumentace na wiki. Volbou `Search All Downloads` se dostanete k seznamu starších verzí K4, které jsou zároveň doplněny o archiv dokumentace v odpovídajícím souboru `Kramerius-doc-x.x.x.zip`._ 
 
 V následujících odstavcích jsou uvedeny požadavky aplikace Kramerius 4 na specifickou konfiguraci systémových komponent, pokud možno i s odkazy na příklady konkrétních úprav příslušných konfiguračních souborů. Tyto příklady jsou uvedeny pouze pro ilustraci jedné z možných konfigurací a nenahrazují dokumentaci k jednotlivým systémovým komponentám. V případě distribuované instalace je třeba uvedené příklady konfiguračních URL (localhost) nahradit adresami příslušných serverů. 
 
