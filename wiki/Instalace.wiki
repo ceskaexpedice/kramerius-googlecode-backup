@@ -106,23 +106,15 @@ Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kter
 
 V aplikačním serveru nastavte kódování URI na UTF-8  ([PrikladKonfigurace#URIEncoding příklad pro Tomcat])
 
+==Single Sign-on==
 
+Pokud chcete pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`) používat jednotné přihlášení uživatele, nastavte tuto možnost v konfiguraci aplikačního serveru  ([PrikladKonfigurace#SingleSignOn příklad pro Tomcat])
 
-a povolit jednotné přihlašování:
-{{{
-<Host name="localhost" ...>
-  ...
-  <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
-  ...
-</Host>
-}}}
-
-Spustit tomcat pod uživatelem kramerius4. V domovském adresáři uživatele kramerius4 je vytvořen adresář .kramerius4 a v něm prázdné soubory configuration.properties, indexer.properties a migration.properties. Popis viz [Instalace#Konfigurace Konfigurace].
 
 
 = Konfigurace =
 
-Konfigurační soubory K4 využívají rozšířené syntaxe properties podporované použitou knihovnou Apache commons-configuration.  Soubory jsou uspořádány ve dvoustupňové hierarchii: Základní sdílené properties jsou v souboru configuration.properties, jednotlivé plugin moduly externích procesů je pak rozšiřují ve svých konfiguračních souborech (např. migration.properties, indexer.properties). Konfigurační properties specifické pro GUI K4 jsou v souboru search.properties.
+Po prvním spuštění aplikačního serveru s nainstalovanou aplikací Kramerius 4 (pod systémovým uživatelem kramerius4) je v domovském adresáři uživatele kramerius4 vytvořen adresář `.kramerius4` a v něm prázdné soubory `configuration.properties`, `search.properties`, `indexer.properties` a `migration.properties`. Konfigurační soubory K4 využívají rozšířené syntaxe properties podporované použitou knihovnou Apache commons-configuration.  Soubory jsou uspořádány ve dvoustupňové hierarchii: Základní sdílené properties jsou v souboru configuration.properties, jednotlivé plugin moduly externích procesů je pak rozšiřují ve svých konfiguračních souborech (např. migration.properties, indexer.properties). Konfigurační properties specifické pro GUI K4 jsou v souboru search.properties.
 
 Defaultní hodnoty properties (viz níže) jsou definovány uvnitř aplikačního archivu search.war. Hodnoty je možno předefinovat jejich uvedením ve stejně pojmenovaném souboru umístěném v adresáři $USER_HOME/.kramerius4. Tyto konfigurační soubory (prázdné) jsou vytvořeny automaticky při prvním spuštění K4, resp. příslušného externího procesu.
 
