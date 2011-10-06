@@ -11,8 +11,8 @@ _Dokumentace na této stránce je organizována podle jednotlivých logicky souv
 ==Hlavní administrátorské menu==
 
   * Správa dlouhotrvajících procesů
-  * [Automatick%C3%BD_import_z_Krameria_verze_3_p%C5%99es_replika%C4%8Dn%C3%AD_rozhran%C3%AD Import monografií...]
-  * [Automatick%C3%BD_import_z_Krameria_verze_3_p%C5%99es_replika%C4%8Dn%C3%AD_rozhran%C3%AD Import periodik...]
+  * [#Automatick%C3%BD_import_z_Krameria_verze_3_p%C5%99es_replika%C4%8Dn%C3%AD_rozhran%C3%AD Import monografií...]
+  * [#Automatick%C3%BD_import_z_Krameria_verze_3_p%C5%99es_replika%C4%8Dn%C3%AD_rozhran%C3%AD Import periodik...]
   * Indexace dokumentů...
   * Globálni akce...
   * K3 - seznam identifikátorů...
