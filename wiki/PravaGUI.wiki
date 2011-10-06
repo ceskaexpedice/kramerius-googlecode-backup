@@ -8,9 +8,12 @@ Pro administraci repository se spouští položku v menu *Globální akce...*
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-adminmenu.png
 
-po spuštění nabídky kontextového menu se objeví dialog s výběrem akce, kterou chceme administrovat 
+po spuštění nabídky admin menu se objeví dialog s výběrem akce, kterou chceme administrovat.
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
+
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogprav.png
 
 
 
