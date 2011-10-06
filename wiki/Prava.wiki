@@ -44,18 +44,14 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *userssubadmin* - Akce spouštět editor v subadmin modu (viz dale).  _Uživatel může přes administrátorské menu spouštět editor uživatelů._
 
 
-==Uživatelské role ==
+==Uživatelské role==
+Každý přihlášený uživatel figuruje v jedné nebo více rolích. Vazby uživatele a role jsou definovány buď v editoru uživatelů (TODO:odkaz) a nebo mapujícím souborem. V případě uživatelů autentizujicích pomocí protokolu shibboleth (TODO:odkaz).
 
-Kramerius pro 
+Standardně K4 definuje následující role:
 
-Uzivatel se kterým je akce svázána může mít podobu buď uživatele nebo skupiny uživatelů. 
-Pokud je právo definováno pro skupinu, zjišťuje se, zda přihlášený uživatel je příslušníkem 
-dané skupiny.  
-
-Vazba mezi uživatelem a skpinou je vazba typu M:N. Tedy uživatel může být současně příslušníkem více 
-skupin a zároveň skupina má více uživatelů.
-
-Kramerius definuje jednu speciální skupinu *_common_users_*. Ta reprezentuje všechny uživatele.
+# *k4_admins* - Administrátorská role.  Standardně opravňuje ke všem administrátorským úkonům. 
+# *common_users* - Reprezentuje všechny uživatele. 
+ 
 
 
 ==Chráněný objekt==
