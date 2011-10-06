@@ -1,7 +1,7 @@
 #summary Menu administrátorských procesů
 <wiki:toc max_depth="1" />
 
-[#Indexace_dokumentů indexace]
+[#Indexace_dokument%C5%AF indexace]
 
 Administrátorské úlohy může spouštět autentizovaný uživatel s příslušnou rolí. Operace prováděné na konkrétním dokumentu nebo jeho části se spouštějí z kontextové nabídky v příslušné záložce pravého panelu na obrazovce Zobrazení titulu. Obecné operace, nesouvisející s konkrétním titulem, se spouštějí z menu Administrace v záhlaví stránky. Všechny operace je také možno spustit zadáním URL s potřebnými parametry (popsáno v závěru tohoto dokumentu). Po spuštění procesu jak z menu nebo pomocí URL je pouze zobrazena informace o tom, že proces byl spuštěn, průběh a výsledky jeho zpracování je možné sledovat pomocí  příkazu Správa dlouhotrvajících procesů (viz níže)
 
