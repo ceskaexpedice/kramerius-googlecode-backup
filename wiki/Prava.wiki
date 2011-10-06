@@ -49,8 +49,8 @@ Každý přihlášený uživatel figuruje v jedné nebo více rolích. Vazby už
 
 Standardně K4 definuje následující role:
 
-# *k4_admins* - Administrátorská role.  Standardně opravňuje ke všem administrátorským úkonům. 
-# *common_users* - Reprezentuje všechny uživatele. 
+ # *k4_admins* - Administrátorská role.  Standardně opravňuje ke všem administrátorským úkonům. 
+ # *common_users* - Reprezentuje všechny uživatele. 
  
 
 
