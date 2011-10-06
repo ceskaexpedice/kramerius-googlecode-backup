@@ -4,12 +4,20 @@
 =Pracovní verze (trunk)=
 
 =Verze 4.4.0 (beta2)=
-
+ 
+  * Issue 125 - Možnost zablokování uživatelského účtu
+  * Issue 174 - Opravena chybná konverze ISSN v Monograph/Series
+  * Issue 162 - Doplněn chybějící scrollbar v úvodních informacích
+  * Issue 147 - Doplněna lišta pro druhou úroveň dokumentů v seznamu vyhledaných
+  * Issue 130 - Opravena chyba v chování pásu náhledů
+  * Issue 107 - Položka Editor dostupná pro všechny úrovně objektů
+  * Issue 95 - Signalizace průběhu vyhledávání
+  * Issue 165 - Změněn způsob zadávání IP filteru v editoru práv
   * Issue 140 - Podpora Shibbolethu
   * Issue 166 - Podpora Fedory 3.5
   * Issue 164 - Tisk do fronty na serveru
-  * Issue 145, 137, 108, 102 - Zlepšení indexace
-  * Issue 142 - Vylepšeno zobrazení informací o procesech
+  * Issue 148, 145, 137, 120, 108, 102 - Zlepšení indexace
+  * Issue 142, 133, 155 - Vylepšeno zobrazení informací o procesech
   * Issue 152 - Podpora dokumentů s více typy
   * Issue 93 - Nová podoba navigačního panelu
   * Issue 97 - Konfigurovatelné panely metadat
