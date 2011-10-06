@@ -1,6 +1,8 @@
 #summary Menu administrátorských procesů
 <wiki:toc max_depth="1" />
 
+[#Indexace_dokumentů indexace]
+
 Administrátorské úlohy může spouštět autentizovaný uživatel s příslušnou rolí. Operace prováděné na konkrétním dokumentu nebo jeho části se spouštějí z kontextové nabídky v příslušné záložce pravého panelu na obrazovce Zobrazení titulu. Obecné operace, nesouvisející s konkrétním titulem, se spouštějí z menu Administrace v záhlaví stránky. Všechny operace je také možno spustit zadáním URL s potřebnými parametry (popsáno v závěru tohoto dokumentu). Po spuštění procesu jak z menu nebo pomocí URL je pouze zobrazena informace o tom, že proces byl spuštěn, průběh a výsledky jeho zpracování je možné sledovat pomocí  příkazu Správa dlouhotrvajících procesů (viz níže)
 
 =Import dat=
@@ -90,7 +92,7 @@ Příkaz *Konverze a import* je analogický s procesem Import periodik či monog
 
 Příkaz *Import FOXML* projde obsah serverového adresáře `.kramerius4/import` (případně jiného adresáře definovaného v `migration.properties`) a jeho podadresářů a soubory ve formátu FOXML 1.1 naimportuje do Krameria 4. Tuto funkci je možné též použít pro manuální replikaci dat mezi dvěma instancemi systému K4 (data ze zdrojové instance jsou vyexportována příkazem *Export FOXML*).
 
-=Indexace dokumentů =
+=Indexace dokumentů=
 
 Data naimportovaná do Krameria 4 jsou pouze uložena v úložišti Fedora. Aby je mohl Kramerius zpřístupnit uživatelům, musí se importované soubory indexovat pro vyhledávač SOLR. Indexací a případným odebíráním dokuemntů z indexu je tak možné řídit, jestli jsou dokumenty v úložišti zveřejněné.
  
