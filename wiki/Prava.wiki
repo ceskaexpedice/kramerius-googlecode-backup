@@ -30,7 +30,7 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *read* - Akce čti definuje operaci číst data (obrázky). _Pokud má uživatel práva tuto akci provádět, objeví se mu  velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka._
  # *import* - Operace importu dat do fedory. _Pokud má uživatel právo importovat data, může spustit dlouhotrvající proces importu._  
  # *reindex* - Akce reindexace. _Uživatel má právo spustit indexaci a to jak z administrátorského menu tak z kontextového._
- # *convert* - [MenuAdministrace#test]
+ # *convert* - [MenuAdministrace#Manu%C3%A1ln%C3%AD_import_dokument%C5%AF_ve_form%C3%A1tu_DTD_Krameria_3]
  # *replicationrights* - n
  # *enumerator* - n
  # *replikator_periodicals* - n
