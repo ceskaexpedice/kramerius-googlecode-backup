@@ -79,14 +79,9 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-scenardefault.png
 
 
 Obrázek je pořízen z administrátorského rozhraní krameria. Jsou na něm vidět nadefinovaná práva 
-pro objekt REPOSITORY a akci read. 
+pro objekt REPOSITORY a akci ČÍST - read. 
 
-První definice říká, že "jakýkoliv" objekt v repository můžou číst všichni návštěvníci (skupina common_users) za 
-dodatečné podmínky, že přichází z adres 89.102.63.XXX a nebo 194.108.205.XXX.  Pokud uživatel nepřichází z této adresy, dodatečná 
-podmínka rozhodne stavem NEVIM. - Ponechá rozhodnutí na dalším právu.
-
-Druhá definice je podobná té první, liší se dodatečnou podmínkou. Ta v tomto případě zkoumá metadata a příznak
-kramerius4:policy, který obsahuje informaci o veřejnosti resp. neveřejnosti dokumentu.
+První definice říká, že uživatelé role k4_admins mohou číst data z aplikace bez jakýchkoliv dalších podmínek. Druhá definice zaručuje právo čtení pro uživatele přicházející z adres 194.XXX.XXX.XXX nebo 84.XXX.XXX.XXX. Pokud tomu tak není (tedy uživatel nepatří do skupiny k4_admins ani nepřichází z daných adres) rohoduje poslední pravidlo, které zkoumá metadata dotazované objektu. Pokud je v metadatech uvedeno, že je objekt veřejný, povolí jeho zobrazení. V opačném případě zakáže.
 
 
 ===Krameriem definované dodatečné podmínky===
