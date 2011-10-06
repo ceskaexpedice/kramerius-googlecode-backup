@@ -94,8 +94,6 @@ pro objekt REPOSITORY a akci ČÍST - read.
  # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováne stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
  
   
-===Řazení práv a priorita=== 
- -par slov  o priorite-
   
 ===Příklady nastavení krameria===
 V další části uvedu pár příkladů nastavení krameria. 
