@@ -33,8 +33,8 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *convert* - [MenuAdministrace#Manu%C3%A1ln%C3%AD_import_dokument%C5%AF_ve_form%C3%A1tu_DTD_Krameria_3 Manuální import dokumentů ve formátu DTD Krameria 3]
  # *replicationrights* - n
  # *enumerator* - [MenuAdministrace#Ur%C4%8Den%C3%AD_titul%C5%AF_pro_replikaci Určení titulů pro replikaci]
- # *replikator_periodicals* - [MenuAdministrace#Import_dat]
- # *replikator_monographs* - [MenuAdministrace#Import_dat]
+ # *replikator_periodicals* - [MenuAdministrace#Import_dat Import dat]
+ # *replikator_monographs* - [MenuAdministrace#Import_dat Import dat]
  # *delete* - Akce definuje opraci mazání dat z repository nebo indexu. _Uživatel může  pomocí příslušné nabídky v kontextovém menu objekt smazat._
  # *export* - Akce definuje spuštění statického exportu. _Uživatel může provádět statický export do PDF._
  # *setprivate, setpublic* - Akce definuje opraci změna příznaku veřejnosti nebo neveřejnosti dokumentu.  _Uživatel může přes kontextové menu měnit příznak._ 
