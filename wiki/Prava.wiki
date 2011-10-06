@@ -46,7 +46,7 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
 
 ==Uživatelské role ==
 
-Kramerius pro de
+Kramerius pro 
 
 Uzivatel se kterým je akce svázána může mít podobu buď uživatele nebo skupiny uživatelů. 
 Pokud je právo definováno pro skupinu, zjišťuje se, zda přihlášený uživatel je příslušníkem 
