@@ -30,7 +30,7 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *read* - Akce čti definuje operaci číst data (obrázky). _Pokud má uživatel práva tuto akci provádět, objeví se mu  velký náhled, vygeneruje PDF nebo zobrazí deepZoom prohlížečka._
  # *import* - Operace importu dat do fedory. _Pokud má uživatel právo importovat data, může spustit dlouhotrvající proces importu._  
  # *reindex* - Akce reindexace. _Uživatel má právo spustit indexaci a to jak z administrátorského menu tak z kontextového._
- # *convert* - n
+ # *convert* - [MenuAdministrace#Manuální import dokumentů ve formátu DTD Krameria 3]
  # *replicationrights* - n
  # *enumerator* - n
  # *replikator_periodicals* - n
@@ -44,7 +44,9 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *userssubadmin* - Akce spouštět editor v subadmin modu (viz dale).  _Uživatel může přes administrátorské menu spouštět editor uživatelů._
 
 
-==Uživatelé a skupiny==
+==Uživatelské role ==
+
+Kramerius pro de
 
 Uzivatel se kterým je akce svázána může mít podobu buď uživatele nebo skupiny uživatelů. 
 Pokud je právo definováno pro skupinu, zjišťuje se, zda přihlášený uživatel je příslušníkem 
