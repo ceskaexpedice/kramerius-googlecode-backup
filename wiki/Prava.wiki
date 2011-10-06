@@ -106,7 +106,7 @@ periodikum Tramp.
 http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarmw.png  
 
 Z obrázku je patrno, že je podmínka pohyblivé zdi nastavena na dvou úrovních. Na celém repositáři kde je nastaven mezní rok 1910 a na 
-samotném titulu je podmínka předefinována na mezní rok 1920.
+samotném titulu je podmínka předefinována na mezní rok 1930.
  
 
 ===Předplatitelé===
