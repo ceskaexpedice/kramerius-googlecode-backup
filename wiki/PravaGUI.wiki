@@ -12,6 +12,7 @@ po spuštění nabídky admin menu se objeví dialog s výběrem akce, kterou ch
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
+Po výběru akce následuje administrační dialog práv k objektu.  
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogprav.png
 
