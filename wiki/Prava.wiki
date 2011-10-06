@@ -8,17 +8,17 @@ procesů. Datový model zobrazený formou UML diagramu tříd vypadá následovn
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-wiki-secversion.png
 
-Právo je v databázi vyjádřeno jako  vazba mezi uživatelem (a může se jednat o uživatele nebo skupinu), akcí a 
+Právo je v databázi vyjádřeno jako  vazba mezi rolí, akcí a 
 chráněným objektem. Vazba může být dál “obohacena” o dodatečnou podmínku a parametry dodatečné podmínky. 
 
 Pokud je vazba bez dodatečné podmínky lze to interpretovat následovně: 
 
-*Uživatel má právo provádět akci nad chráněným objektem.* 
+*Uživatel s danou rolí má právo provádět akci nad chráněným objektem.* 
 
 Pokud je zde ještě vazba na dodatečnou podmínku, lze to interpretovat jako:
 
  
-*Uživatel má právo provádět akci nad chráněným objektem ale pouze za určitých podmínek.* 
+*Uživatel s danou rolí má právo provádět akci nad chráněným objektem ale pouze za určitých podmínek.* 
 
 Dále popíšu jednotlivé aktéry vazby.
 
