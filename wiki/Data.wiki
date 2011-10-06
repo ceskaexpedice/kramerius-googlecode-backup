@@ -62,7 +62,23 @@ Modely monograph a periodical jsou přiřazeny digitálním objektům, které tv
 =Rozšiřování modelu o nové typy dokumentů=
 Digitální objekty v systému Kramerius 4 tvoří obecnou stromovou strukturu s vazbami definovanými  pomocí RDF vazeb, které jsou potomky vazeb fedora:hasPart a fedora:isPartOf. 
 
-Systém lze libovolně rozšiřovat o nové typy objektů přidáním příslušného objektu cmodel s povinnými datovými streamy DC, BIBLIO_MODS a RELS_EXT.   
+Systém lze libovolně rozšiřovat o nové typy objektů přidáním příslušného objektu cmodel s povinnými datovými streamy DC, BIBLIO_MODS a RELS_EXT.  
+
+=Zobrazení loga donátora=
+
+Ikona donátora se u titulu v K4 zobrazuje, pokud je v FOXML daného titulu v datastreamu `RELS-EXT` uvedena RDF vazba `kramerius:hasDonator`. V ukázkové monografii Drobnůstky, která je k dispozici v sekci Downloads na http://code.google.com/p/kramerius/downloads/detail?name=PrikladFOXML.zip, je následující RDF vazba:    
+
+{{{
+ <kramerius:hasDonator rdf:resource="info:fedora/donator:norway"/>   
+}}}
+
+Cílem této vazby je speciální FOXML objekt ( v tomto případě má PID `donator:norway`), ve kterém je v datastreamu `LOGO` uloženo logo příslušného donátora ve formátu JPG.
+Soubor s logem Norských fondů je součástí standardní distribuce K4, najdete jej v souboru `installation-x.x.x.zip` v adresáři fedora.
+
+Chcete-li tedy v K4 zobrazovat ikonu jiných sponzorů, musíte jen  vytvořit podle vzoru `donator:norway` vlastní FOXML soubor s logem sponzora, jeho PID nastavit  například na `donator:mujSponzor` , nainstalovat jej do úložiště Fedora a v titulech, u kterých se má toto logo zobrazovat, doplnit RDF vazbu `<kramerius:hasDonator rdf:resource="info:fedora/donator:mujSponzor"/>`
+
+_Poznámka - import z K3: 
+K3 takto obecně ikony donátora nepodporuje, obsahuje jen specifickou podporu pro případ Norských fondů, kde se jejich logo zobrazuje u titulů, které mají v poli CreatorSurname uveden text `***Donator NF***`. Konvertor K3->K4 pro takovéto tituly automaticky přidává do RELS-EXT zmiňovanou vazbu  `<kramerius:hasDonator rdf:resource="info:fedora/donator:norway"/>`. _
 
 
 =Přehled obsahu streamů DC a RELS_EXT pro jednotlivé typy objektů=
