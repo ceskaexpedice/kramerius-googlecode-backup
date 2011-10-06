@@ -81,8 +81,10 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-scenardefault.png
 Obrázek je pořízen z administrátorského rozhraní krameria. Jsou na něm vidět nadefinovaná práva 
 pro objekt REPOSITORY a akci ČÍST - read. 
 
-První definice říká, že uživatelé role k4_admins mohou číst data z aplikace bez jakýchkoliv dalších podmínek. Druhá definice zaručuje právo čtení pro uživatele přicházející z adres 194.XXX.XXX.XXX nebo 84.XXX.XXX.XXX. Pokud tomu tak není (tedy uživatel nepatří do skupiny k4_admins ani nepřichází z daných adres) rohoduje poslední pravidlo, které zkoumá metadata dotazované objektu. Pokud je v metadatech uvedeno, že je objekt veřejný, povolí jeho zobrazení. V opačném případě zakáže.
-
+ # První definice říká, že uživatelé role k4_admins mohou číst data z aplikace bez jakýchkoliv dalších podmínek. 
+ # Druhá definice zaručuje právo čtení pro uživatele přicházející z adres 194.XXX.XXX.XXX nebo 84.XXX.XXX.XXX. Jedná se o tzv. benevolentní filtr. Ten nerozhoduje záporně pouze rohodne stavem NEVIM, čímž předá řízení dalšímu pravidlu v pořadí.
+ # Poslední pravidlo rozhoduje na základě metadat. Pokud má dotazovaný objekt v metadatech řečeno, že je veřejný, povolí jeho zobrazení.  V opačném případě zobrazení dokumentu zakáže.
+ 
 
 ===Krameriem definované dodatečné podmínky===
 
@@ -91,8 +93,7 @@ První definice říká, že uživatelé role k4_admins mohou číst data z apli
  # *IP Filter benevolentní* - Benevolentní filter rozhodne stavy ANO nebo NEVIM. Zkoumá IP adresy návštěvníků. Jako parametry očekává regulární výrazy oddělěné středníkem. Pokud některá z IP adres vyhovuje některému z patternů zapsaném v parametrech práva,  vrací stav ANO, v opačném případě vrací stav NEVIM. 
  # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováne stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
  
- 
- 
+  
 ===Řazení práv a priorita=== 
  -par slov  o priorite-
   
