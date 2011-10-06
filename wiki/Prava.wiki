@@ -98,13 +98,6 @@ pro objekt REPOSITORY a akci ČÍST - read.
 ===Příklady nastavení krameria===
 V další části uvedu pár příkladů nastavení krameria. 
 
-====Standardní nastavení krameria====
-Původní koncept práv pro akci READ bral v potaz pouze dvě věci. Nastavený příznak viditelnosti v RELS-EXT, příznak kramerius4:policy a 
-konfigurační parametr accessPattern. viz http://code.google.com/p/kramerius/wiki/Instalace#configuration.properties
-
-Tato situace v konceptu nových práv byla popisována v modelovém příkladu. 
-Viz: http://code.google.com/p/kramerius/wiki/Prava#Modelový_příklad: 
-
   
 ===Pohyblivá zeď===
 Rohoduje na základě metadat a konfigurace roku, která je uvedena jako parametr dodatečné podmínky. Zde je zobrazaná tabulka práv pro 
