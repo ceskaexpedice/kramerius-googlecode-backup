@@ -14,18 +14,23 @@ po spuštění nabídky admin menu se objeví dialog s výběrem akce, kterou ch
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
-Po výběru akce následuje administrační dialog práv k objektu.  
+Po výběru akce následuje administrační dialog práv k objektu, kde jsou seřazena všechna práva tak, jak se budou interpretovat.   
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogprav.png
+ 
+Popis částí:
+ # Tlačítko pro přidání nového práva
+ # Tlačítka pro manipulaci. Rušení a editace existujícího. 
 
 
+==Administrace objektu pomocí kontextového menu==
 
-
-v kontextovém menu pak položka *Zobrazení práv...*
+Kontextové menu doznalo změn od poslední verze.  Nyní je možné pomocí něj administrovat více objektů. Nejdříve si uživatel musí zvolit objekty, se kterými chce pracovat a následně zavolat položku  *Zobrazení práv...*
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-ctxmenu.png
 
-po spuštění nabídky kontextového menu se objeví dialog s výběrem akce, kterou chceme administrovat (http://code.google.com/p/kramerius/wiki/Prava#Akce).
+po spuštění nabídky se objeví následující dialog:
+
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
