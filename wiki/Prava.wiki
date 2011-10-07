@@ -25,7 +25,7 @@ Pokud je zde ještě vazba na dodatečnou podmínku, lze to interpretovat jako:
 Dále popíšu jednotlivé aktéry vazby.
 
 
-==Akce==
+=Akce=
 
 Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Krameriem definované akce jsou následující: 
 
@@ -46,7 +46,7 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *userssubadmin* - Akce spouštět editor v subadmin modu (viz dale).  _Uživatel může přes administrátorské menu spouštět editor uživatelů._
 
 
-==Uživatelské role==
+=Uživatelské role=
 Každý přihlášený uživatel figuruje v jedné nebo více rolích. Vazby uživatele a role jsou definovány buď v editoru uživatelů (TODO:odkaz) a nebo mapujícím souborem. V případě uživatelů autentizujicích pomocí protokolu shibboleth (TODO:odkaz).
 
 Standardně K4 definuje následující role:
@@ -56,7 +56,7 @@ Standardně K4 definuje následující role:
  
 
 
-==Chráněný objekt==
+=Chráněný objekt=
 
 Chráněný objekt reprezentuje entitu, na kterou je akce aplikována. Většinou se jedná o součást repositáře 
 fedory (Monografie, Periodikum, Ročník, Výtisk, Stránka...) případně se může jednat o celý repositář. 
@@ -64,7 +64,7 @@ fedory (Monografie, Periodikum, Ročník, Výtisk, Stránka...) případně se m
 Systém práv respektuje dědičnost a tedy právo definováno pro vyšší úroveň, platí  i pro úrovně nižší. 
   
 
-==Dodatečná podmínka a parametry podmínky==
+=Dodatečná podmínka a parametry podmínky=
 
 Dodatečná podmínka umožňuje rozhodovat na základě dalších dodatečných kritérií, které jsou známy 
 až  při běhu programu (IP adresa, metadata objektu atd..).  Podmínka 
@@ -75,7 +75,7 @@ rozhodnutí na "vyšší instanci".
 Parametry podmínky jsou další potřebné informace pro vyhodnocení pomdmínky. Parametry jsou uživatelsky 
 definované.
 
-===Modelový příklad:=== 
+=Modelový příklad:= 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-scenardefault.png
 
@@ -88,7 +88,7 @@ pro objekt REPOSITORY a akci ČÍST - read.
  # Poslední pravidlo rozhoduje na základě metadat. Pokud má dotazovaný objekt v metadatech řečeno, že je veřejný, povolí jeho zobrazení.  V opačném případě zobrazení dokumentu zakáže.
  
 
-===Krameriem definované dodatečné podmínky===
+=Krameriem definované dodatečné podmínky=
 
  # *Pohyblivá zeď* - Podmínka rozhodne stavy ANO nebo NE. Zkoumá metadata dotazovaného objektu, konkrětně rok vydání a dle něj rozhodne. Jako parametr podmínka očekává mezní rok.       
  # *Příznak kramerius:policy* - Podmínka rozhodne stavy ANO nebo NE. Zkoumá metadata dotazovaného objektu a rozoduje se podle příznaku kramerius:policy. Pokud obsahuje literal policy:private, pak se jedná o neveřejný dokument, v opačném případě o veřejný.
@@ -97,11 +97,11 @@ pro objekt REPOSITORY a akci ČÍST - read.
  
   
   
-===Příklady nastavení krameria===
+=Příklady nastavení krameria=
 V další části uvedu pár příkladů nastavení krameria. 
 
   
-===Pohyblivá zeď===
+=Pohyblivá zeď=
 Rohoduje na základě metadat a konfigurace roku, která je uvedena jako parametr dodatečné podmínky. Zde je zobrazaná tabulka práv pro 
 periodikum Tramp.  
 
@@ -111,7 +111,7 @@ Z obrázku je patrno, že je podmínka pohyblivé zdi nastavena na dvou úrovní
 samotném titulu je podmínka předefinována na mezní rok 1930.
  
 
-===Předplatitelé===
+=Předplatitelé=
 Podmínku předplatitelů určitého ročníku periodika lze vyjádřit jako vazbu speciálně definované skupiny uživatelů (PREDPLATITELE_1996) a 
 ročníku, kterého se toto právo dotýká. Zde není potřeba žádné dodatečné podmínky. 
 
