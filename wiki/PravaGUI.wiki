@@ -31,6 +31,12 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-ctxmenu.png
 
 po spuštění nabídky se objeví následující dialog:
 
+http://kramerius.googlecode.com/svn/wiki/rights/prava-dialog-seznamobjektu.png
+
+Popis částí:
+ # Záložky. První obsahuje seznam vybraných objektů, ostatní pak chráněné akce
+ # Seznam vybraných objektů z kontextového menu 
+
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
