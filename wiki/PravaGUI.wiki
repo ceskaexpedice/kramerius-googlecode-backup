@@ -16,6 +16,7 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
 Po výběru akce následuje administrační dialog práv k objektu, kde jsou seřazena všechna práva tak, jak se budou interpretovat.   
 
+#labels dialogprav
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogprav.png
  
 Popis částí:
