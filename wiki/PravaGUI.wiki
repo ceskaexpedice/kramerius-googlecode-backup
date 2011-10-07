@@ -4,6 +4,8 @@
 
 Uživatelské rozhraní pro správu je součástí systému kramerius. Spouští se z administrátorského nebo kontextového menu. Z administrátorského menu můžeme administrovat celé repository, z kontextového pak konrétní titul, nebo jeho část.
 
+==Administrace objektu REPOSITORY==
+
 Pro administraci repository se spouští položku v menu *Globální akce...* 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-adminmenu.png
