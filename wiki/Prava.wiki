@@ -1,4 +1,6 @@
-#Článek popisující nový koncept práv systému kramerius.
+#summary Článek popisující nový koncept práv systému kramerius.
+<wiki:toc max_depth="1" />
+
 
 = Úvod =
 
