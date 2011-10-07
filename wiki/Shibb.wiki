@@ -39,7 +39,7 @@ Mapování je definováno souborem {{{~/.kramerius4/shibrules.txt}}}. Struktura 
 	
 	value = STRING | funcvalue // reprezentuje hodnotu, buď string nebo funkci
 
-	funcvalue = 'header' '(' STRING ')' | 'principal' '(' ')'  // buď vrítí přihlášeného uživatele nebo hodnotu z hlavičky.
+	funcvalue = 'header' '(' STRING ')' | 'principal' '(' ')'  // buď vrátí přihlášeného uživatele nebo hodnotu z hlavičky.
 
 }}}
 
