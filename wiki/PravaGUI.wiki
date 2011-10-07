@@ -50,15 +50,12 @@ Popis částí:
 Vytvoření nebo změna jednoho práva
 
 
-http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogeditaceprava.png
+http://kramerius.googlecode.com/svn/wiki/rights/prava-zmenaprava.png
 
 Popis částí:
- # Informace o chráněném objektu a chráněné akci. 
- # Tlačítka pro aplikování práva na konkrétní osobu, skupinu nebo na všechny uživatele krameria (skupina *common_users* http://code.google.com/p/kramerius/wiki/Prava#Uživatelé_a_skupiny)
- # Dodatečná podmínka
- # Hodnoty dodatečné podmínky
- # Combobox umožňuje vybrat některou z již dříve definovaných hodnot 
- # Krátký popisek definovaných hodnot  
+ # Výber role, ke které bude právo přiřazeno 
+ # Výběr dodatečná podmínky 
+ # Hodnoty podmínky. První záložka slouží pro vytváření nové hodnoty, druhá pro výběr již použité.
  # Prirota.  Mění se pouze pokud je potřeba mít pořadí práv jinak, než jak je implicitně řazeno.  
 
  
