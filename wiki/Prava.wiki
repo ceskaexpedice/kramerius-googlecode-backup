@@ -1,4 +1,4 @@
-#summary Článek popisující nový koncept práv systému kramerius.
+#summary Článek popisující koncept práv systému kramerius.
 
 
 = Úvod =
