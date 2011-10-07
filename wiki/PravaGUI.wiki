@@ -46,7 +46,7 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-dialog-seznamprav.png
 
 Popis částí:
  # Tlačítka pro editaci práv nad celým výběrem. Vytvoření, editace, rušění a poslední tlačítko je refresh.
- # Sekce pro manipulaci práv nad jedním vybraným objektem. Funkce v dialogu jsou stejné jako u [#prava-dialogprav]
+ # Sekce pro manipulaci práv nad jedním vybraným objektem. Funkce v dialogu jsou stejné jako u [prava-dialogprav]
 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
