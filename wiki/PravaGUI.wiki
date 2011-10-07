@@ -38,7 +38,7 @@ Popis částí:
  # Záložky. První obsahuje seznam vybraných objektů, ostatní pak chráněné akce
  # Seznam vybraných objektů z kontextového menu 
 
-Změna práva na objektu vypadá následovně:
+Změna pravidel na objektu vypadá následovně:
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialog-seznamprav.png
 
@@ -47,24 +47,8 @@ Popis částí:
  # Sekce pro manipulaci práv nad jedním vybraným objektem. Funkce v dialogu jsou stejné jako u [#prava-dialogprav dialogu práv]
 
 
-http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
+Vytvoření nebo změna jednoho práva
 
-Počet akcí se liší dle toho, kterou nabídku uživatel spouští. Dialog zobrazený po spuštění nabídky z admin. menu se objeví kompletní seznam, dialog spouštěný z kontextového menu 
-obsahuje jenom ty akce, které jsou aplikovatelené na jednotlivé objekty v repository.
-
-Po výběru akce se dostaneme do již známého dialog nadefinovaných  práv nad daným objektem (nebo některým z jeho předků). 
-
-http://kramerius.googlecode.com/svn/wiki/rights/prava-anatomiedialoguprav.png
-
-Popis částí:
- # Tlačítko pro přidávání nového práva k objektu
- # Refresh
- # Tlačítka pro filtrování tabulky nastavených práv. Zobrazuje buď práva k všem uživatelům, všem skupinám nebo všem bez rozdílu.
- # Combobox umožňuje filtrovat tabulku podle konkrétního uživatele nebo konkrétní skupiny. 
- # Tabulka všech práv (v závislosti na zvoleném filtru). Každý řádek obsahuje tlačítka pro editaci práva a jeho smazání.
-
-
-Při editaci nebo vytáření nového práva se objeví poslední dialog. 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogeditaceprava.png
 
