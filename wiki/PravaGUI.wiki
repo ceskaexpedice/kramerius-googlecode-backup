@@ -37,6 +37,9 @@ Popis částí:
  # Záložky. První obsahuje seznam vybraných objektů, ostatní pak chráněné akce
  # Seznam vybraných objektů z kontextového menu 
 
+Změna práva na objektu vypadá následovně:
+http://kramerius.googlecode.com/svn/wiki/rights/prava-dialog-seznamprav.png
+
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
