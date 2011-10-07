@@ -17,7 +17,7 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-seznamakci.png
 
 Po výběru akce následuje administrační dialog práv k objektu, kde jsou seřazena všechna práva tak, jak se budou interpretovat.   
 
-["prava-dialogprav"]
+[prava-dialogprav]
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialogprav.png
  
 Popis částí:
@@ -39,7 +39,6 @@ Popis částí:
  # Záložky. První obsahuje seznam vybraných objektů, ostatní pak chráněné akce
  # Seznam vybraných objektů z kontextového menu 
 
-<a name="prava-dialog-seznamprav"></a>
 Změna práva na objektu vypadá následovně:
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialog-seznamprav.png
