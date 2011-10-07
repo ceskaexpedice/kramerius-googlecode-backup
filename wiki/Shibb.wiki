@@ -7,10 +7,10 @@ Aplikaci kramerius je možné integrovat s autentizačním systémem Shibboleth.
 Článek předpokládá, že čtenář má zkušenosti s konfigurací webového serveru apache, servlet kontejneru tomcat, služby shibboleth service provider . 
 Důležité odkazy: 
 
- *http://shibboleth.net/downloads/service-provider/
- *https://wiki.shibboleth.net/confluence/display/SHIB2/Installation+and+Configuration
- *http://httpd.apache.org/docs/trunk/
-http://tomcat.apache.org/tomcat-7.0-doc/index.html
+ * http://shibboleth.net/downloads/service-provider/
+ * https://wiki.shibboleth.net/confluence/display/SHIB2/Installation+and+Configuration
+ * http://httpd.apache.org/docs/trunk/
+ * http://tomcat.apache.org/tomcat-7.0-doc/index.html
 
 
 = Nastavení aplikace =
