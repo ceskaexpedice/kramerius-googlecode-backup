@@ -1,6 +1,6 @@
-#Popis gui pro administraci prav.
+#summary Popis gui pro administraci prav.
 
-<a name="gui"></a>
+
 =GUI= 
 
 Uživatelské rozhraní pro správu je součástí systému kramerius. Spouští se z administrátorského nebo kontextového menu. Z administrátorského menu můžeme administrovat celé repository, z kontextového pak konrétní titul, nebo jeho část.
@@ -39,6 +39,7 @@ Popis částí:
  # Záložky. První obsahuje seznam vybraných objektů, ostatní pak chráněné akce
  # Seznam vybraných objektů z kontextového menu 
 
+<a name="prava-dialog-seznamprav"></a>
 Změna práva na objektu vypadá následovně:
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-dialog-seznamprav.png
