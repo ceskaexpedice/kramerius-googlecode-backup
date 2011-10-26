@@ -33,8 +33,10 @@ Mapování je definováno souborem {{{~/.kramerius4/shibrules.txt}}}. Struktura 
 	body = '{'  (command | matchrule) * '}'
 	command= userassoc | roleassoc
 
-	userassoc = 'user' '(' STRING ',' value ')'  // asociuje vlastnost
-	uzivateli - jmeno prijmeni
+	userassoc = 'user' '(' userattr ',' value ')'  // asociuje vlastnost
+        userattr = '"' userattrval '"'
+        userattrval = firstname|surname
+
 	roleassoc = 'role' '(' STRING ')' // asociuje roli
 	
 	value = STRING | funcvalue // reprezentuje hodnotu, buď string nebo funkci
