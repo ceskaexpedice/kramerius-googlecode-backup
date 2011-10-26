@@ -34,8 +34,8 @@ Mapování je definováno souborem {{{~/.kramerius4/shibrules.txt}}}. Struktura 
 	command= userassoc | roleassoc
 
 	userassoc = 'user' '(' userattr ',' value ')'  // asociuje vlastnost
-        userattr = '"' userattrval '"'
-        userattrval = firstname|surname
+        userattr = '"' userattrval '"'  
+        userattrval = firstname|surname //vycet vlastnosti - jmeno, prijmeni
 
 	roleassoc = 'role' '(' STRING ')' // asociuje roli
 	
