@@ -72,3 +72,12 @@ match((principal(),"happy") {
 }
 
 }}}
+
+
+===Poznámky k sémantice===
+
+====Pravidlo match====
+
+Řídí se podmínkou definovanou v závorkách. Pokud je podmínka splněna, provádí se kód v těle pravidla. Při vykonávání se provedou všechna pravidla mapovacího souboru pro která platí, že podmínka je rovna {{{ true }}}
+
+====Přiřazení vlastnosti uživateli (příkaz {{{user}}})====
