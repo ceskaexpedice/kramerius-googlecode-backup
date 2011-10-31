@@ -8,7 +8,7 @@
 
 * [MenuAdministrace Administrace]
 
-* [Prava Správa uživatelů]
+* [Prava Práva]
 
 * [Shibb Shibboleth]
 
