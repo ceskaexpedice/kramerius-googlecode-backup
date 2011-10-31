@@ -10,8 +10,6 @@
 
 * [Prava Práva]
 
-* [RozsireniPrav Rozšíření systému práv na datastreamy]
-
 * [Shibb Shibboleth]
 
 * [Data Datový model]
