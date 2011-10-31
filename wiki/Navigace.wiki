@@ -10,7 +10,7 @@
 
 * [Prava Práva]
 
-#* [RozsireniPrav Rozšíření systému práv na datastreamy]
+* [RozsireniPrav Rozšíření systému práv na datastreamy]
 
 * [Shibb Shibboleth]
 
