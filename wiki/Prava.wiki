@@ -64,12 +64,15 @@ Systém práv respektuje dědičnost a tedy právo definováno pro vyšší úro
 
 ===Dědičnost objektů===
 
-Jednotlivé objekty jsou spolu spojeny vazbami a vytváří strom. Systém práv respektuje dědičnost mezi objekty a právo, které je definované na vyšší úrovni je platné i pro úrovně nižší s tím, že interpretace jde vždy odspodu (od listů) až po vrchní objekt REPOSITORY. 
+Jednotlivé objekty jsou spolu spojeny vazbami a vytváří strom. Systém práv respektuje dědičnost mezi objekty a právo, které je definované na vyšší úrovni, je platné i pro úrovně nižší. Interpretace jde vždy odspodu (od listů) až po vrchní objekt REPOSITORY. 
 
 Příklad hierarchie: 
 
 http://kramerius.googlecode.com/svn/wiki/rights/fedora-obj-tree.png
   
+
+Tedy pro příklad, pokud má systém zkoumat zda má uživatel právo na čtení dat pro určitou stránku periodika, nejdřív zkoumá zda není právo nadefinováno přímo na stránce, pokud není (nebo je ale nemohlo rozhodnout), pak se přejde o úroveň výš a to opakuje dokud systém nerozhodne nebo neskončí na nejvyšším objektu.
+
 
 ==Dodatečná podmínka a parametry podmínky==
 
