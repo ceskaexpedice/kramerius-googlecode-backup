@@ -11,7 +11,9 @@ Pro správu rolí je nutné najet do administračního menu a zvolit položku Sp
 http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-roli-menu.png
 
 
-Po spuštění se objeví dialog.
+Po spuštění se objeví dialog správy rolí. Jsou zde vidět všechny role, na které má přihlášený uživatel práva. 
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-roli.png
 
 
 
