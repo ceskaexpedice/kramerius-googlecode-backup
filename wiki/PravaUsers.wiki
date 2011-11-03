@@ -1,4 +1,13 @@
-#Článek popisuje správu uživatelů v systému kramerius
+
+= Úvod = 
+
+Od verze 4.4.0 systém kramerius odděluje správu uživatelů a rolí. Důvodem je možnost autentizace uživatelů pomocí jiných mechanismů než poskytuje samotný kramerius, například protokolem Shibboleth http://shibboleth.net/. 
+
+
+= Správa rolí =
+
+
+
 
 = Popis aplikace =
 
@@ -53,4 +62,3 @@ Popis:
  # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
  # Reference na administrátorskou skupinu.
  # Reference uživatele dané skupiny  
-
