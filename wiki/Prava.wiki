@@ -68,6 +68,7 @@ Jednotlivé objekty jsou spolu spojeny vazbami a vytváří strom. Systém práv
 
 Příklad hierarchie: 
 
+http://kramerius.googlecode.com/svn/wiki/rights/fedora-obj-tree.png
   
 
 ==Dodatečná podmínka a parametry podmínky==
