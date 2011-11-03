@@ -1,4 +1,3 @@
-
 = Úvod = 
 
 Od verze 4.4.0 systém kramerius odděluje správu uživatelů a rolí. Důvodem je možnost autentizace uživatelů pomocí jiných mechanismů než poskytuje samotný kramerius, například protokolem Shibboleth http://shibboleth.net/. 
@@ -6,6 +5,13 @@ Od verze 4.4.0 systém kramerius odděluje správu uživatelů a rolí. Důvodem
 
 = Správa rolí =
 
+Pro správu rolí je nutné najet do administračního menu a zvolit položku Správa rolí ...
+
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-roli-menu.png
+
+
+Po spuštění se objeví dialog.
 
 
 
