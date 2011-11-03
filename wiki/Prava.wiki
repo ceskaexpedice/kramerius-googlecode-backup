@@ -46,7 +46,8 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
 
 
 =Uživatelské role=
-Každý přihlášený uživatel figuruje v jedné nebo více rolích. Vazby uživatele a role jsou definovány buď v editoru uživatelů (TODO:odkaz) a nebo mapujícím souborem. V případě uživatelů autentizujicích pomocí protokolu shibboleth (TODO:odkaz).
+
+Každý přihlášený uživatel figuruje v jedné nebo více rolích. Vazby uživatele a role jsou definovány buď v editoru uživatelů (TODO:odkaz) a nebo mapujícím souborem. V případě uživatelů autentizujicích pomocí protokolu shibboleth [Shibb#Nastavení_aplikace].
 
 Standardně K4 definuje následující role:
 
