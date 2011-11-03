@@ -60,8 +60,6 @@ Standardně K4 definuje následující role:
 Chráněný objekt reprezentuje entitu, na kterou je akce aplikována. Většinou se jedná o součást repositáře 
 fedory (Monografie, Periodikum, Ročník, Výtisk, Stránka...) případně se může jednat o celý repositář (objekt REPOSITORY). 
 
-Systém práv respektuje dědičnost a tedy právo definováno pro vyšší úroveň, platí  i pro úrovně nižší. 
-
 ===Dědičnost objektů===
 
 Jednotlivé objekty jsou spolu spojeny vazbami a vytváří strom. Systém práv respektuje dědičnost mezi objekty a právo, které je definované na vyšší úrovni, je platné i pro úrovně nižší. Interpretace jde vždy odspodu (od listů) až po vrchní objekt REPOSITORY. 
