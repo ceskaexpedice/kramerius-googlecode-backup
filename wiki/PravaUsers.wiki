@@ -17,7 +17,7 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-roli.png
 
 Ten obsahuje následující:
 
- # Tlačítka pro přidání nove role a obnovu obsahu.
+ # Tlačítka pro přidání nové role a obnovu obsahu.
  # Tabulku s rolemi. Každý řádek obsahuje název role, název administrátorské role a nakonec tlačítka pro manipulaci. Pokud je s rolí svázáno právo, nejde smazat a tlačítko je zašedlé. 
 
 
@@ -28,6 +28,7 @@ Uživatelé se nyní mohou autentizovat vůči databázi nebo pomocí shibboleth
 Pro interní účty je vyvinuta samostatná aplikace.
 
 == Spuštění aplikace ==
+
 Aplikace se spouští pres administrátorské menu. 
 
 
