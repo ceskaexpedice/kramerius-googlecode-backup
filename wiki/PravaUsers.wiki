@@ -31,7 +31,7 @@ Pro interní účty je vyvinuta samostatná aplikace.
 Aplikace se spouští pres administrátorské menu. 
 
 
-http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-uziv.png
+http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-uziv-menu.png
 
 
 Aplikace má dva různé módy, *superadministrátorský*, kde je možné vidět všechny uživatele i skupiny a administrovat je, *subadministrátoský*, kde přihlášený uživatel
