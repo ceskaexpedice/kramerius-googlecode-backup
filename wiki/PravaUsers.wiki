@@ -35,9 +35,7 @@ Aplikace se spouští pres administrátorské menu.
 http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-uziv-menu.png
 
 
-Aplikace má dva různé módy, *superadministrátorský*, kde je možné vidět všechny uživatele i skupiny a administrovat je, *subadministrátoský*, kde přihlášený uživatel
-může editovat pouze jemu přiřazené uživatele resp. skupiny. 
-
+Aplikace má dva různé módy, *superadministrátorský*, kde je možné vidět všechny uživatele a administrovat je, *subadministrátoský*, kde přihlášený uživatel může editovat pouze jemu přiřazené uživatele.
 
 
 
@@ -72,13 +70,3 @@ Popis:
 Poznámka: Pokud se uživatel přihlásí jako subadministrátor nemůže měnit referenci na administrátorskou skupinu. 
 Jím vytvořený uživatel bude mít v referenci automaticky přiřazenou jeho administrátorskou skupinu.
 
-
-== Editační dialog skupiny  ==
-
-http://kramerius.googlecode.com/svn/wiki/rights/userseditor-groupformular.png
-
-Popis:
- # Data skupiny. 
- # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
- # Reference na administrátorskou skupinu.
- # Reference uživatele dané skupiny  
