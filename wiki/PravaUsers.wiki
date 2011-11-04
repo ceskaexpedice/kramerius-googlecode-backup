@@ -42,7 +42,7 @@ Aplikace má dva různé módy, *superadministrátorský*, kde je možné vidět
 http://kramerius.googlecode.com/svn/wiki/rights/userseditor.png
 
 Popis částí:
- # Přepínací menu, které umožňuje přípínání mezi správou uživatelů a skupin.
+ # Přepínací menu.
  # Datová tabulka.
  # Ovládací panel. 
 
@@ -63,10 +63,9 @@ http://kramerius.googlecode.com/svn/wiki/rights/userseditor-userformular.png
 Popis:
  # Data uživatele. 
  # Tlačítka pro vygenerování nového hesla, které se následně pošle na email uživatele. Pokud se jedná o nově vytvářený záznam, je tlačítko zakázané a email se posílá automaticky po uložení záznamu.  
- # Reference na skupinu, která daného uživatele administruje. Pokud je reference prázdná, může uživatele měnit pouze superadmin, pokud je vyplněná, může ji spravovat příslušník dané skupiny nebo superadmin. 
- # Reference na skupiny do kterých uživatel patří.  
+ # Reference na roli, která daného uživatele administruje. Pokud je reference prázdná, může uživatele měnit pouze superadmin, pokud je vyplněná, může ji spravovat příslušník dané role nebo superadmin. 
+ # Reference na role do kterých uživatel patří.  
 
 
-Poznámka: Pokud se uživatel přihlásí jako subadministrátor nemůže měnit referenci na administrátorskou skupinu. 
-Jím vytvořený uživatel bude mít v referenci automaticky přiřazenou jeho administrátorskou skupinu.
-
+Poznámka: Pokud se uživatel přihlásí jako subadministrátor nemůže měnit referenci na administrátorskou roli. 
+Jím vytvořený uživatel bude mít v referenci automaticky přiřazenou jeho administrátorskou roli.
