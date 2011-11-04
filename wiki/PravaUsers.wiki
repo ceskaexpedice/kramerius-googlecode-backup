@@ -15,13 +15,24 @@ Po spuštění se objeví dialog správy rolí. Jsou zde vidět všechny role, n
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-roli.png
 
+Ten obsahuje následující:
+
+ # Tlačítka pro přidání nove role a obnovu obsahu.
+ # Tabulku s rolemi. Každý řádek obsahuje název role, název administrátorské role a nakonec tlačítka pro manipulaci. Pokud je s rolí svázáno právo, nejde smazat a tlačítko je zašedlé. 
 
 
-= Popis aplikace =
+= Správa uživatelů =
 
-Správa uživatelů je realizována samostatnou aplikací, která je spouštěna v krameriovi přes administrátorské menu 
+Uživatelé se nyní mohou autentizovat vůči databázi nebo pomocí shibbolethu. Pro nastavení shibbolethích uživatelů klikněte [Shibb zde] 
 
-http://kramerius.googlecode.com/svn/wiki/rights/prava-spravauzivatelu.png
+Pro interní účty je vyvinuta samostatná aplikace.
+
+== Spuštění aplikace ==
+Aplikace se spouští pres administrátorské menu. 
+
+
+http://kramerius.googlecode.com/svn/wiki/rights/prava-editor-uziv.png
+
 
 Aplikace má dva různé módy, *superadministrátorský*, kde je možné vidět všechny uživatele i skupiny a administrovat je, *subadministrátoský*, kde přihlášený uživatel
 může editovat pouze jemu přiřazené uživatele resp. skupiny. 
