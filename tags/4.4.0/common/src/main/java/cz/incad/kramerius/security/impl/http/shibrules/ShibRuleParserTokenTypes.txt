@@ -1,0 +1,22 @@
+// $ANTLR 2.7.7 (2006-11-01): shibrules.g -> ShibRuleParserTokenTypes.txt$
+ShibRuleParser    // output token vocab name
+MATCH_KWD="match"=4
+L_BRACKET=5
+COMMA=6
+REGEXP_LITERAL=7
+R_BRACKET=8
+CURLYL_BRACKET=9
+CURLYR_BRACKET=10
+USER_KWD="user"=11
+STRING_LITERAL=12
+ROLE_KWD="role"=13
+HEADER_KWD="header"=14
+ATTRIBUTE_KWD="attribute"=15
+PRINCIPAL_KWD="principal"=16
+EQUAL=17
+IDENT=18
+SL_COMMENT=19
+ML_COMMENT=20
+REXP_OR_COMMENT=21
+NEWLINE=22
+WS=23
