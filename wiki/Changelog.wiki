@@ -4,7 +4,11 @@
 =Pracovní verze (trunk)=
 
 =Verze 4.4.0 (r3096)=
- 
+
+  * Issue 151 - Podpora Google Analytics - kód Web property ID stačí zadat do configuration.properties, klíč `google.analytics.code`
+  * Issue 181 - Náhrada za text "Tento dokument není veřejně přístupný" může být kromě property rightMsg umístěna do samostatného souboru ~/.kramerius4/texts/rightMsg_CZ_cs (resp. rightMsg_EN_en)
+  * Issue 186 - Doplněna možnost nastavování přístupových práv na úrovni jednotlivých datastreamů
+  * Issue 182 - Opravena chyba zavírání souborů cache v konvertoru K3->K4
   * Issue 125 - Možnost zablokování uživatelského účtu
   * Issue 174 - Opravena chybná konverze ISSN v Monograph/Series
   * Issue 162 - Doplněn chybějící scrollbar v úvodních informacích
@@ -13,7 +17,7 @@
   * Issue 107 - Položka Editor dostupná pro všechny úrovně objektů
   * Issue 95 - Signalizace průběhu vyhledávání
   * Issue 165 - Změněn způsob zadávání IP filteru v editoru práv
-  * Issue 140 - Podpora Shibbolethu
+  * Issue 140, Issue 183 - Podpora Shibbolethu
   * Issue 166 - Podpora Fedory 3.5
   * Issue 164 - Tisk do fronty na serveru
   * Issue 148, 145, 137, 120, 108, 102 - Zlepšení indexace
