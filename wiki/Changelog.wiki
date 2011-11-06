@@ -3,7 +3,7 @@
 
 =Pracovní verze (trunk)=
 
-=Verze 4.4.0 (beta2)=
+=Verze 4.4.0 (r3096)=
  
   * Issue 125 - Možnost zablokování uživatelského účtu
   * Issue 174 - Opravena chybná konverze ISSN v Monograph/Series
