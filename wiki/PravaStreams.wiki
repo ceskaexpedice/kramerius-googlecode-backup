@@ -10,9 +10,15 @@ potřeby autorizace přístupu na jednotlivé datastreamy (Issue 186) bylo nutn�
 
 == Chráněný objekt v db ==
 V původním konceptu je chráněný objekt určen jeho unikátním PIDem. Ten je definován přímo repositářem fedora viz https://wiki.duraspace.org/display/FEDORA34/Fedora+Identifiers.  V rozšíření je navíc přidán postfix streamu. Celý identifikátor chráněného objektu pak vypadá:
-{{{    PID "/" datastream. }}}
+{{{    
+    PID "/" datastream. 
+}}}
 Příklad: 
-{{{    uuid:4a7ec660-af36-11dd-a782-000d606f5dc6/TEXT-OCR - Identifikuje datastream TEXT-OCR na objektu uuid:4a7ec...}}}
+{{{
+
+    uuid:4a7ec660-af36-11dd-a782-000d606f5dc6/TEXT-OCR - Identifikuje datastream TEXT-OCR na objektu uuid:4a7ec...
+    
+}}}
 
 
 == Dědičnost mezi chráněnými objetky spefikující datastream ==
