@@ -8,7 +8,7 @@
 Systém práv, tak jak je naimplemetován, chápe jako základní chráněnou jednotku objekt. Může to být jakýkykoliv objekt. Stránka, monografie, periodikum, atd..  Pro 
 potřeby autorizace přístupu na jednotlivé datastreamy (Issue 186) bylo nutné v určitých případech jemněji chráněný objekt granulovat. Vzniklo rozšíření, které umožňuje chránit jednotlivé části objektu - jednotlivé streamy.
 
-== Chráněný objekt v db ==
+= Chráněný objekt v db =
 V původním konceptu je chráněný objekt určen jeho unikátním PIDem. Ten je definován přímo repositářem fedora viz https://wiki.duraspace.org/display/FEDORA34/Fedora+Identifiers.  V rozšíření je navíc přidán postfix streamu. Celý identifikátor chráněného objektu pak vypadá:
 {{{    
     PID "/" datastream. 
@@ -32,21 +32,21 @@ Pokud by například přišel požadavek na čtení dat ze streamu TEXT-OCR pro 
  # *REPOSITORY* - Zde se už zkoumá pouze samotný objekt REPOSITORY. 
 
 
-== Konfigurace ==
+= Konfigurace =
 Doplněné chování je extenze ke stávajícímu mechanismu. Aby začal systém K4 jednotlivé datastreamy chránit, musí být prvé řadě definovaná proměnná `securedstreams`.Ta by měla obsahovat výčet všech streamů u kterých je chtěno aby podléhaly autorizačnímu mechanismu. Jsou zde ale výjimky. 
 
-===Vždy chráněné streamy===
+==Vždy chráněné streamy==
  # *IMG_FULL*
  # *IMG_PREVIEW*
 
-===Vždy volné streamy===
+==Vždy volné streamy==
  # *DC*
  # *MODS*
  # *RELS-EXT*
 
 Všechny ostatní streamy mohou být uvedené v konfigurační položce. 
 
-==Nastavování práv a UI ==
+=Nastavování práv a UI =
 Samotné vytváření práv je realizováno přes kontextové menu. 
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-streamy-contextmenu.png
