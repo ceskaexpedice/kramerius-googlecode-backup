@@ -15,8 +15,8 @@ V původním konceptu je chráněný objekt určen jeho unikátním PIDem. Ten j
 }}}
 Příklad: 
 {{{
-    "uuid:4a7ec660-af36-11dd-a782-000d606f5dc6/TEXT-OCR" 
-}}} - Identifikuje datastream TEXT-OCR na objektu uuid:4a7ec...
+    "uuid:4a7ec660-af36-11dd-a782-000d606f5dc6/TEXT-OCR"  // Identifikuje datastream TEXT-OCR na objektu uuid:4a7ec...
+}}} 
 
 
 == Dědičnost mezi chráněnými objetky spefikující datastream ==
