@@ -27,9 +27,9 @@ http://kramerius.googlecode.com/svn/wiki/rights/fedora-obj-tree-streams.png
 
 Pokud by například přišel požadavek na čtení dat ze streamu TEXT-OCR pro objekt 1 (Stránka), mechanismus práv by prve zkoumal práva v následujícím pořadí:
 
-# *PID objektu(1 Stránka) / TEXT-OCR* - pokud by právo na objektu nebylo nadefinováno nebo by nemohlo rozhodnout, mechanismus by pokračoval krokem 2
-# *PID objektu(Zápisky z mrtvého...) / TEXT-OCR* - pokud by právo na objektu nebylo nadefinováno nebo by momohlo rozhodnout, systém by pokračoval krokem 3
-# *REPOSITORY* - Zde se už zkoumá pouze samotný objekt REPOSITORY. 
+ # *PID objektu(1 Stránka) / TEXT-OCR* - pokud by právo na objektu nebylo nadefinováno nebo by nemohlo rozhodnout, mechanismus by pokračoval krokem 2
+ # *PID objektu(Zápisky z mrtvého...) / TEXT-OCR* - pokud by právo na objektu nebylo nadefinováno nebo by momohlo rozhodnout, systém by pokračoval krokem 3
+ # *REPOSITORY* - Zde se už zkoumá pouze samotný objekt REPOSITORY. 
 
 
 == Konfigurace ==
