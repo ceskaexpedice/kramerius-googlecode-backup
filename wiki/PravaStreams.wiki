@@ -36,13 +36,13 @@ Pokud by například přišel požadavek na čtení dat ze streamu TEXT-OCR pro 
 Doplněné chování je extenze ke stávajícímu mechanismu. Aby začal systém K4 jednotlivé datastreamy chránit, musí být prvé řadě definovaná proměnná securedstreams. Ta by měla obsahovat výčet všech streamů u kterých je chtěno aby podléhaly autorizačnímu mechanismu. Jsou zde ale výjimky. 
 
 ===Vždy chráněné streamy===
-# *IMG_FULL*
-# *IMG_PREVIEW*
+ # *IMG_FULL*
+ # *IMG_PREVIEW*
 
 ===Vždy volné streamy===
-# *DC*
-# *MODS*
-# *RELS-EXT*
+ # *DC*
+ # *MODS*
+ # *RELS-EXT*
 
 Všechny ostatní streamy mohou být uvedené v konfigurační položce. 
 
@@ -55,5 +55,4 @@ Po spuštění položky kontextového menu se objeví dialog pro výběr streamu
 http://kramerius.googlecode.com/svn/wiki/rights/prava-streamy-dialog.png
 
 
-Po výběru streamu se dostaneme do [http://code.google.com/p/kramerius/wiki/PravaGUI#Administrace_objektu_pomoc%C3%AD_kontextov%C3%A9ho_menu
- klasického dialogu]  přiřazování, odebírání a editace práv s tím, že všechny operace se vztahují k vybranému streamu.
+Po výběru streamu se dostaneme do [http://code.google.com/p/kramerius/wiki/PravaGUI#Administrace_objektu_pomoc%C3%AD_kontextov%C3%A9ho_menu dialogu]  přiřazování, odebírání a editace práv s tím, že všechny operace se vztahují k vybranému streamu.
