@@ -1,7 +1,7 @@
 #summary One-sentence summary of this page.
 <wiki:toc max_depth="2" />
 
-= About =
+= O článku =
 Článek popisuje rozšíření systému práv o možnost zviditelnění technických a administrativních metadat pouze autorizovaným uživatelům. 
 
 = Popis =
@@ -33,7 +33,10 @@ Pokud by například přišel požadavek na čtení dat ze streamu TEXT-OCR pro 
 
 
 == Konfigurace ==
-Doplněné chování je extenze ke stávajícímu mechanismu. Aby začal systém K4 jednotlivé datastreamy chránit, musí být prvé řadě definovaná proměnná securedstreams. Ta by měla obsahovat výčet všech streamů u kterých je chtěno aby podléhaly autorizačnímu mechanismu. Jsou zde ale výjimky. 
+Doplněné chování je extenze ke stávajícímu mechanismu. Aby začal systém K4 jednotlivé datastreamy chránit, musí být prvé řadě definovaná proměnná 
+{{{
+securedstreams
+}}} . Ta by měla obsahovat výčet všech streamů u kterých je chtěno aby podléhaly autorizačnímu mechanismu. Jsou zde ale výjimky. 
 
 ===Vždy chráněné streamy===
  # *IMG_FULL*
