@@ -108,7 +108,7 @@ pro objekt REPOSITORY a akci ČÍST - read.
 =Řazení pravidel=
 
 Před rozhodováním, které pravidlo se uplatní, dochází nejdřív k jejich seřazení.  
-Řazení se řídí dvěma principy: Prioritizace a dědičnost. Prioritizaci může uživatel ovlivnit při vytváření či editaci pravidla, dědičnost je pak ur4ena strukturou dat. 
+Řazení se řídí dvěma principy: Prioritizace a dědičnost. Prioritizaci může uživatel ovlivnit při vytváření či editaci pravidla, dědičnost je pak určena strukturou dat. 
 
 Standardně se řazení před vykonáním provádí v následujících krocích:
 
