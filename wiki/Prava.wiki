@@ -112,9 +112,8 @@ Před rozhohodováním, které pravidlo se uplatní dochází nejdřív k jejich
 
 Standardně se řazení před vykonáním provádí v následujících krocích:
 
-1) Seřadí se všechna pravidla, která obsahují prioritu. (Priorita 1 má nenižší váhu, priorita 2 vyšší, atd..) 
-
-2) Seřadí se pravidla dle principu dědičnosti. (Pravidla blíž listu stromu má výšší váhu, směrem ke kořenu se pak váha snižuje)
+ # Seřadí se všechna pravidla, která obsahují prioritu. (Priorita 1 má nenižší váhu, priorita 2 vyšší, atd..) 
+ # Seřadí se pravidla dle principu dědičnosti. (Pravidla blíž listu stromu má výšší váhu, směrem ke kořenu se pak váha snižuje)
 
 V tomto pořadí je systém i vykonává. Pořadí vykonávání si může administrátor zkontrolovat v dialogu práv. Zde platí, čím výš je pravidlo tím dřív se aplikuje. 
 
