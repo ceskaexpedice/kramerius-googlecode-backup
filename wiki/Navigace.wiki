@@ -10,6 +10,8 @@
 
 * [Prava Práva]
 
+* [PravaStreams Rozšíření systému práv o podporu autorizace přístupu na jednotlivé streamy]
+
 * [Shibb Shibboleth]
 
 * [Data Datový model]
