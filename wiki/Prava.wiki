@@ -104,7 +104,27 @@ pro objekt REPOSITORY a akci ČÍST - read.
  # *IP Filter benevolentní* - Benevolentní filter rozhodne stavy ANO nebo NEVIM. Zkoumá IP adresy návštěvníků. Jako parametry očekává regulární výrazy oddělěné středníkem. Pokud některá z IP adres vyhovuje některému z patternů zapsaném v parametrech práva,  vrací stav ANO, v opačném případě vrací stav NEVIM. 
  # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováne stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
  
-  
+
+=Řazení pravidel=
+
+Před rozhohodováním, které pravidlo se uplatní dochází nejdřív k jejich seřazení.  
+Řazení se řídí dvěma principy: Prioritizace a dědičnost. Prioritizaci může uživatel ovlivnit při vytváření či editaci pravidla, dědičnost je pak dáno struturou dat. 
+
+Standardně se řazení před vykonáním provádí v následujících krocích:
+
+1) Seřadí se všechna pravidla, která obsahují prioritu. (Priorita 1 má nenižší váhu, priorita 2 vyšší, atd..) 
+
+2) Seřadí se pravidla dle principu dědičnosti. (Pravidla blíž listu stromu má výšší váhu, směrem ke kořenu se pak váha snižuje)
+
+V tomto pořadí je systém i vykonává. Pořadí vykonávání si může administrátor zkontrolovat v dialogu práv. Zde platí, čím výš je pravidlo tím dřív se aplikuje. 
+
+
+==Priorita pravidel==
+Priorita může nabývat hodnot 1 až max(int)=2-1, přitom platí, že čím větší priorita, tím  výš je pravidlo posunuto nahoru a tím dřív bude vykonáno. 
+Pokud se střetnou dvě pravidla se stejnou prioritou pak platí, že výš je to co bylo později vytvořeno.  
+
+Poznámka: Použití priority by se mělo využívat až v krajních případech, kdy z nějakého důvodu není vhodné aby systém reflektoval dědičnost. 
+
   
 =Příklady nastavení krameria=
 V další části uvedu pár příkladů nastavení krameria. 
@@ -134,5 +154,6 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarexcluisveips.png
 
 
 [http://code.google.com/p/kramerius/wiki/PravaGUI Popis uživatelského rozhraní]
+[http://code.google.com/p/kramerius/wiki/PravaStreams Rozšíření systému práv o podporu autorizace přístupu na jednotlivé streamy]
 
   
