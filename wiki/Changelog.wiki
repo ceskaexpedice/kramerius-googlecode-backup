@@ -3,6 +3,12 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.4.1 (r3127)=
+
+  * Issue 194 - Opravena chyba, kdy u některých titulů (obsahujících InternalParts) docházelo k chybnému řazení stránek. Chybné tituly je třeba po instalaci této verze znovu přeindexovat. 
+  * Issue 191, Issue 193 - opraveny nedostatky v datumových polích časové osy
+  * Issue 189 - změna pořadí priorit pravidel přístupových práv stejné úrovně
+
 =Verze 4.4.0 (r3096)=
 
   * Issue 151 - Podpora Google Analytics - kód Web property ID stačí zadat do configuration.properties, klíč `google.analytics.code`
