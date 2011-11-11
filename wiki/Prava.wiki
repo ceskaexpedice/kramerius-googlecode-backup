@@ -153,6 +153,5 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarexcluisveips.png
 
 
 [http://code.google.com/p/kramerius/wiki/PravaGUI Popis uživatelského rozhraní]
-[http://code.google.com/p/kramerius/wiki/PravaStreams Rozšíření systému práv o podporu autorizace přístupu na jednotlivé streamy]
 
   
