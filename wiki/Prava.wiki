@@ -100,14 +100,14 @@ pro objekt REPOSITORY a akci ČÍST - read.
 ==Krameriem definované dodatečné podmínky==
 
  # *Pohyblivá zeď* - Podmínka rozhodne stavy ANO nebo NE. Zkoumá metadata dotazovaného objektu, konkrětně rok vydání a dle něj rozhodne. Jako parametr podmínka očekává mezní rok.       
- # *Příznak kramerius:policy* - Podmínka rozhodne stavy ANO nebo NE. Zkoumá metadata dotazovaného objektu a rozoduje se podle příznaku kramerius:policy. Pokud obsahuje literal policy:private, pak se jedná o neveřejný dokument, v opačném případě o veřejný.
+ # *Příznak kramerius:policy* - Podmínka rozhodne stavy ANO nebo NE. Zkoumá metadata dotazovaného objektu a rozhoduje se podle příznaku kramerius:policy. Pokud obsahuje literal policy:private, pak se jedná o neveřejný dokument, v opačném případě o veřejný.
  # *IP Filter benevolentní* - Benevolentní filter rozhodne stavy ANO nebo NEVIM. Zkoumá IP adresy návštěvníků. Jako parametry očekává regulární výrazy oddělěné středníkem. Pokud některá z IP adres vyhovuje některému z patternů zapsaném v parametrech práva,  vrací stav ANO, v opačném případě vrací stav NEVIM. 
- # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováne stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
+ # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováné stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
  
 
 =Řazení pravidel=
 
-Před rozhohodováním, které pravidlo se uplatní dochází nejdřív k jejich seřazení.  
+Před rozhodováním, které pravidlo se uplatní, dochází nejdřív k jejich seřazení.  
 Řazení se řídí dvěma principy: Prioritizace a dědičnost. Prioritizaci může uživatel ovlivnit při vytváření či editaci pravidla, dědičnost je pak dáno struturou dat. 
 
 Standardně se řazení před vykonáním provádí v následujících krocích:
@@ -119,7 +119,7 @@ V tomto pořadí je systém i vykonává. Pořadí vykonávání si může admin
 
 
 ==Priorita pravidel==
-Priorita může nabývat hodnot 1 až max(int)=2-1, přitom platí, že čím větší priorita, tím  výš je pravidlo posunuto nahoru a tím dřív bude vykonáno. 
+Priorita může nabývat hodnot 1 až max(int)=2^32^-1, přitom platí, že čím větší priorita, tím  výš je pravidlo posunuto nahoru a tím dřív bude vykonáno. 
 Pokud se střetnou dvě pravidla se stejnou prioritou pak platí, že výš je to co bylo později vytvořeno.  
 
 Poznámka: Použití priority by se mělo využívat až v krajních případech, kdy z nějakého důvodu není vhodné aby systém reflektoval dědičnost. 
