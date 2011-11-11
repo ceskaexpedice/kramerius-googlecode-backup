@@ -119,8 +119,7 @@ Pořadí vykonávání si může administrátor zkontrolovat v dialogu práv. Zd
 
 
 ==Priorita pravidel==
-Priorita může nabývat hodnot 1 až max(int)=2^32^-1, přitom platí, že čím větší priorita, tím  výš je pravidlo posunuto nahoru a tím dřív bude vykonáno. 
-Pokud se střetnou dvě pravidla se stejnou prioritou pak platí, že výš je to co bylo později vytvořeno.  
+Priorita může nabývat hodnot 1 až max(int)=2^32^-1. Čím vyšší priorita, tím dřív se uplatní. Pokud se střetnou dvě pravidla se stejnou prioritou pak platí, že výš je to co bylo později vytvořeno.  
 
 Poznámka: Použití priority by se mělo využívat až v krajních případech, kdy z nějakého důvodu není vhodné aby systém reflektoval dědičnost. 
 
