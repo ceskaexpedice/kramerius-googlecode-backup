@@ -10,7 +10,7 @@
 
 * [Prava Práva]
 
-* [PravaStreams Rozšíření systému práv o podporu autorizace přístupu na jednotlivé streamy]
+* [PravaStreams Práva nad datastreamy]
 
 * [Shibb Shibboleth]
 
