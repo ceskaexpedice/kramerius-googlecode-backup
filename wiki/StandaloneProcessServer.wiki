@@ -1,4 +1,3 @@
-#summary Článek popisuje způsob, jak definovat infrastukturu pro dedikovaný procesní server a dedikovaný prezentační server 
 
 <wiki:toc max_depth="2" />
 
