@@ -19,7 +19,7 @@ Nejdřív uvedu nutné podmínky:
 ==Presentační server==
 Sloužil by pouze pro prezentaci výsledků. Uživatel by zde měl možnost se přihlásit do amdinistrátorského 
 rozhraní, měl možnost naplánovat nový proces (případně sadu procesů), nicméně instance instance by žádný proces
-fakticky nespouštěla. Toho by bylo docílené nastavením proměnné: 
+fakticky nespouštěla. Toho by bylo docíleno nastavením proměnné: 
 
 {{{
 processQueue.activeProcess=0
