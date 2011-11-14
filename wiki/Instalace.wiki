@@ -89,9 +89,11 @@ Přes administrátorské rozhraní Fedory je třeba naimportovat FOXML objekty o
 
 Na aplikační server nainstalovat aplikaci `solr.war` z distribučního souboru installation-x.x.zip.
 
-Do adresáře $FEDORA_HOME/solr nakopírovat obsah adresáře `solr`  z distribučního souboru installation-x.x.zip.
+Do adresáře $FEDORA_HOME/solr (nebo jinam podle vašich potřeb) nakopírovat obsah adresáře `solr`  z distribučního souboru installation-x.x.zip.
 
 V adresáři  $FEDORA_HOME/solr/conf editovat soubor solrconfig.xml - položka `dataDir`
+
+Nastavit systémovou property JDK `solr.solr.home` na cestu k adresáři s instalací solr (tedy obvykle $FEDORA_HOME/solr, pro Tomcat se nastavuje jako součást systémové proměnné `JAVA_OPTS`)
 
 = Instalace K4 =
 
@@ -118,7 +120,13 @@ V aplikačním serveru nastavte kódování URI na UTF-8  ([PrikladKonfigurace#U
 
 ==Autentizace a single sign-on==
 
-Pro autentizaci a jednotné přihlášení uživatele pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`), aktivujte single sign-on v konfiguraci aplikačního serveru  a povolte autentizaci těchto modulů v konfiguraci  JAAS úložiště Fedora Commons ([PrikladKonfigurace#Single_Sign-on příklad pro Tomcat])
+Pro autentizaci a jednotné přihlášení uživatele pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`), aktivujte single sign-on v konfiguraci aplikačního serveru. 
+
+Aplikace K4 využívá standardní autentizační mechanismus JAAS, (třída autentizačního modulu je `cz.incad.kramerius.security.jaas.K4LoginModule`, třída uživatele `cz.incad.kramerius.security.jaas.K4UserPrincipal`  a třída hesla `cz.incad.kramerius.security.jaas.K4RolePrincipal`  ).
+
+Pokud Kramerius 4 provozujete na stejném serevru, jako úložiště Fedora, povolte autentizaci těchto modulů v konfiguraci  JAAS úložiště Fedora Commons ([PrikladKonfigurace#Single_Sign-on příklad pro Tomcat])
+
+Pokud Kramerius4 provozujete na jiném serveru, než úložiště Fedora, nastavte výšeuvedené autentizační údaje podle dokumentace JAAS vašeho serveru. 
 
 Po prvním spuštění aplikace se v databázi vytvoří databázové tabulky s předdefinovanými autorizačními pravidly a implicitnim administrátorským uživatelem.  Předdefinované jméno a heslo admin uživatele je: 
 
