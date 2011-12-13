@@ -16,10 +16,10 @@
   * Issue 202 - odstraněna editovatelnost logů v přehledu procesů 
   * Issue 198 - doplněna a zobecněna dokumentace pro instalaci a konfiguraci SOLR a JAAS
   * Issue 178 - opravena šířka sloupců v dialogu nastavení práv
-  * Issue 177 - doplněny chybějící ... u položek v menu
+  * Issue 177 - doplněny chybějící ... u položek v menu
   * Issue 175 - opraven matoucí text u synchronizace indexů
   * Issue 176 - opraveny problémy s indexací některých typů PDF
-  * Issue 188 - zlepšena kompatibilita s různými typy prohlížečů
+  * Issue 188 - zlepšena kompatibilita s různými typy prohlížečů
   * Issue 196 - doplněny definice modelů z MZK
 
 =Verze 4.4.1 (r3127)=
