@@ -5,21 +5,26 @@
 
 =Verze 4.5.0beta1 (r3239)=
 
-  * podpora virtuálních sbírek
-  * aktualizována verze SOLR na 3.5 (nutno použít novou konfiguraci, schema.xml a přeindexovat)
-  * podpora uživatelských profilů
-  * možnost zaslání komentáře ke keonkrétnímu dokumentu administrátorovi
-  * podpora doporučování souvisejících dokumentů
-  * podpora generování PDF pro elektronické čtečky
+  * Issue 204 - podpora virtuálních sbírek
+  * Issue 226 - aktualizována verze SOLR na 3.5 (nutno použít novou konfiguraci, schema.xml a přeindexovat)
+  * Issue 200, Issue 229 - podpora uživatelských profilů
+  * Issue 231 - podpora RSS
+  * Issue 227 - podpora sociálních sítí
+  * Issue 228 - možnost zaslání komentáře ke konkrétnímu dokumentu administrátorovi
+  * Issue 209 - podpora doporučování souvisejících dokumentů
+  * Issue 230 - podpora generování PDF pro elektronické čtečky
   * Issue 206 - doplněna možnost autonomní registrace nových uživatelů
+  * Issue 183 - opraveno odhlašování ze Shibbolethu
   * Issue 214 - přejmenována položka menu Globální akce
+  * Issue 208 - nastaveny limity pro data v časové ose 
   * Issue 202 - odstraněna editovatelnost logů v přehledu procesů 
   * Issue 198 - doplněna a zobecněna dokumentace pro instalaci a konfiguraci SOLR a JAAS
   * Issue 178 - opravena šířka sloupců v dialogu nastavení práv
   * Issue 177 - doplněny chybějící ... u položek v menu
   * Issue 175 - opraven matoucí text u synchronizace indexů
   * Issue 176 - opraveny problémy s indexací některých typů PDF
-  * Issue 188 - zlepšena kompatibilita s různými typy prohlížečů
+  * Issue 167 - oprava problému při indexaci celého modelu
+  * Issue 188, Issue 179 - zlepšena kompatibilita s různými typy prohlížečů
   * Issue 196 - doplněny definice modelů z MZK
 
 =Verze 4.4.1 (r3127)=
