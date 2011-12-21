@@ -107,8 +107,7 @@ Do adresáře `$CATALINA_HOME/conf/Catalina/localhost` přidat soubory `search.x
 <Context>
 	<Realm className="org.apache.catalina.realm.JAASRealm"                 
 		appName="search"       
-		userClassNames="cz.incad.kramerius.security.jaas.K4UserPrincipal"       
-		roleClassNames="cz.incad.kramerius.security.jaas.K4RolePrincipal"
+				roleClassNames="cz.incad.kramerius.security.jaas.K4RolePrincipal"
 		debug="99"/>
 </Context>
 }}}
