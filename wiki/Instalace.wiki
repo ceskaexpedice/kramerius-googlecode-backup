@@ -122,7 +122,7 @@ V aplikačním serveru nastavte kódování URI na UTF-8  ([PrikladKonfigurace#U
 
 Pro autentizaci a jednotné přihlášení uživatele pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`), aktivujte single sign-on v konfiguraci aplikačního serveru. 
 
-Aplikace K4 využívá standardní autentizační mechanismus JAAS, (třída autentizačního modulu je `cz.incad.kramerius.security.jaas.K4LoginModule`, třída uživatele `cz.incad.kramerius.security.jaas.K4UserPrincipal`  a třída hesla `cz.incad.kramerius.security.jaas.K4RolePrincipal`  ).
+Aplikace K4 využívá standardní autentizační mechanismus JAAS, (třída autentizačního modulu je `cz.incad.kramerius.security.jaas.K4LoginModule`, třída uživatelské role je  `cz.incad.kramerius.security.jaas.K4RolePrincipal` ).
 
 Pokud Kramerius 4 provozujete na stejném serevru, jako úložiště Fedora, povolte autentizaci těchto modulů v konfiguraci  JAAS úložiště Fedora Commons ([PrikladKonfigurace#Single_Sign-on příklad pro Tomcat])
 
