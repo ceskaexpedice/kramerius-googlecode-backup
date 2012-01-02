@@ -9,12 +9,25 @@
 Univerzální servlet, který zpřístupňuje obrázky (případně modifikované).  
 
 Parametry:
+
   * *uuid* - uuid dotazovaného objektu
   * *stream* - obrázkový stream (IMG_FULL, IMG_THUMB, případně i jiný) #
-  * *action* - specifikuje akci, která se má provádět. Akce nelze v rámci jednoho volání kombinovat.  Možné akce jsou:  
-    * *TRANSCODE* - vrací obrázek v jiném formátu.  Vyžaduje dodatečný parametr výstupního formátu.   Příklad: `img?uuid=0...&stream=IMG_FULL&action=TRANSCODE&outputFormat=jpg`
+  * *action* - specifikuje akci, která se má provádět. Akce nelze v rámci jednoho volání kombinovat.  
+
+Možné akce jsou:  
+
+    * *TRANSCODE* - vrací obrázek v jiném formátu.  Vyžaduje dodatečný parametr výstupního formátu.   
+
+Příklad: 
+
+`img?uuid=0...&stream=IMG_FULL&action=TRANSCODE&outputFormat=jpg`
+
     * *SCALE* - vrací zmenšeninu nebo zvětšeninu obrázku ve formátu JPG. Vyžaduje dodatečné parametry pro zmešení/zvětšení. Umožnuje měnit velikost dle výšky, šířky a dle procent.  Příklady: `img?uuid=0...&stream=IMG_FULL&action=SCALE&scaledHeight=128, img?uuid=0...&stream=IMG_FULL&action=SCALE&scaledWidth=450, img?uuid=0...&stream=IMG_FULL&action=SCALE&scaled=0.5` 
-    * *GETRAW* - vrací surová data z požadovaného streamu. Nevyžaduje žádné dodatečné parametry. Příklad:  `img?uuid=0...&stream=IMG_FULL&action=GETRAW`
+
+    * *GETRAW* - vrací surová data z požadovaného streamu. Nevyžaduje žádné dodatečné parametry. 
+
+Příklad:  `img?uuid=0...&stream=IMG_FULL&action=GETRAW`
+
   * *outputFormat* - výstupní formát pro akci TRANSCODE. Podporovované výstupní parametry servletu: 
     * “outputFormat=jpg”  - JPEG format
     * “outputFormat=png”  - PNG format
@@ -37,6 +50,7 @@ Použití:
 Pozn.: Parametry `lang=<language>&country=<country>` mohou měnit locale, které se použije pro podání textu či resourcebundle. Musí být uvedené oba parametry. Pokud nejsou, použije se locale svázaný s requestem a session v K4 (viz dokument O lokalizaci v K4).  
 
 Příklad: 
+
 `i18n?action=bundle&name=labels&format=xml&lang=cs&country=cz`   _správné použití_
 `i18n?action=bundle&name=labels&format=xml&lang=cs`   _špatné použití_
 
@@ -59,6 +73,7 @@ třída `cz.incad.Kramerius.METSServlet`
 Produkuje textovový soubor s obsahem METS. 
 
 Použití: 
+
 `mets?pid=<pid>`
 
 
@@ -69,6 +84,7 @@ třída `cz.incad.Kramerius.MimeTypeServlet`
 Vrací mime type streamu IMG_FULL jako textový řetězec.
 
 Použití: 
+
 `mimetype?uuid=<uuid>`
 
 ==handle== 
@@ -78,7 +94,9 @@ třída `cz.incad.Kramerius.HandleServlet`
 Podpora funkce persistentního URL (tzv. handle). Provádí redirect na stránku zobrazující konkrétní dokument na základě parametru ve tvaru uuid tohoto dokumentu nebo handle. Handle je řetězec získávaný při konverzi dat z K3 (databázová tabulka `handle`) a je zapsán v datastreamu RELS-EXT jako literál v RDF vazbě `kramerius:handle`. Persistentní URL konkrétního dokumentu může uživatel získat z kontextového menu “Persistentní adresa”.
 
 Použití: 
+
 `handle/uuid:8b0b25e0-49b7-11de-a45e-000d606f5dc6`
+
 `handle/ABA001/12b34a` 
 
 ==titlePage== 
@@ -98,6 +116,7 @@ třída `cz.incad.Kramerius.ProxyDatastreamServlet`
 Umožní získávat data z fedory.  Slouží jako klasický proxy servlet.
 
 Použití: 
+
 `dsProxyServlet?pid=uuid:8b0b25e0-49b7-11de-a45e-000d606f5dc6&dsname=DC` 
 
 
@@ -108,6 +127,7 @@ třída `cz.incad.Kramerius.imaging.DeepZoomServlet`
 Podpora protokolu deepZoom. Použití definuje protokol deepZoom -> nelze měnit.
 
 `deepZoom/8b0b25e0-49b7-11de-a45e-000d606f5dc6/` - vrací DZI deskriptor
+
 `deepZoom/4502faf0-4953-11de-9ddf-000d606f5dc6/_files/6/0_0.jpg` - vrací jednu dlaždici
 
 
@@ -120,6 +140,7 @@ třída `cz.incad.Kramerius.oai.OaiServlet`
 Disseminátor obsahu fedora objektů v různých formátech určených pro OAI. V současnosti je implementován jediný formát drkramerius pro Registr digitalizace CZ.
 
 Použití:
+
 `oaiExport?pid=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&format=drkramerius` vrací XML pro pid
 
 nebo
@@ -134,7 +155,7 @@ nebo
 třída `cz.incad.Kramerius.StartupServlet` 
 
 Slouží k inicializaci aplikace. Spouští se při startu a provádí následující operace:
-Vytváří případně modifikuje tabulky pro security, procesy a oblibene.
+Vytváří, případně modifikuje tabulky pro security, procesy a oblíbené.
 
 ==viewInfoServlet==  
 
@@ -167,7 +188,9 @@ Podpora pro UI práv, podává json objekty a html pro dialogy (seznamy uživate
 
 třída `cz.incad.Kramerius.security.AdministratorsActions`
 
-Podpora pro pro administrátorské akce, nyní pouze získání informace a změnu informace o viditelnosti.  Akce setPublic/setPrivate flag
+Podpora pro pro administrátorské akce, nyní pouze získání informace a změnu informace o viditelnosti.  
+
+Akce setPublic/setPrivate flag
 
 
 ==privateContent== 
@@ -191,9 +214,11 @@ Použití:
 `fullImageServlet?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )] &[(scale=<percent> | scaledWidth=<scaledWidth> | scaledHeight=<scaledHeight>)]` 
 
 `fullImageServlet?uuid=<uuid>&outputFormat=RAW`  - podá surová data ze streamu IMG_FULL
+
 `fullImageServlet?uuid=<uuid>&outputFormat=JPEG&scaledHeight=128` - podá změnšeninu 
 	
 Servlet podává mime typ obrázku (jako text?):  `fullImage?uuid=<uuid>&imageType`
+
 Servlet  podává   obsah IMG_FULL jako soubor ke stažení :  	`fullImageServlet?uuid=<uuid>&outputFormat=RAW&asFile`
 
 
