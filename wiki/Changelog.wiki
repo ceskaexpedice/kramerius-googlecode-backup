@@ -35,7 +35,7 @@
 
 =Verze 4.4.0 (r3096)=
 
-  * Issue 151 - Podpora Google Analytics - kód Web property ID stačí zadat do configuration.properties, klíč `google.analytics.code`
+  * Issue 151 - Podpora Google Analytics - kód Web property ID stačí zadat do `search.properties`, klíč `googleanalytics.webpropertyid`
   * Issue 181 - Náhrada za text "Tento dokument není veřejně přístupný" může být kromě property rightMsg umístěna do samostatného souboru ~/.kramerius4/texts/rightMsg_CZ_cs (resp. rightMsg_EN_en)
   * Issue 186 - Doplněna možnost nastavování přístupových práv na úrovni jednotlivých datastreamů
   * Issue 182 - Opravena chyba zavírání souborů cache v konvertoru K3->K4
