@@ -230,4 +230,15 @@ Syntaxe je následující:
   * *uuidProcesu* je identifikator procesu přiřazovaný akcí start.
 
 =Editor pořadí částí dokumentu=
-Editor 
+
+Položka Editor v hlavním administrátorském menu otevře v samostatném okně prohlížeče aplikaci, umožňující přesouvání jednotlivých podčástí dokumentu v rámci dané úrovně (například změnu pořadí stránek), případně přesun jednotlivých podčástí mezi dokumenty (např. přesun čísla periodika mezi dvěma ročníky nebo sloučení dvou rozdělených ročníků do jednoho).
+
+Příkazem *Načíst* v pravém horním rohu okna editoru můžete otevřít požadovaný dokument (buď zadáním jeho PID nebo vyhledáním pomocí názvu či autora). Pokud byl editor otevřen z kontextové nabídky (namísto hlavního administrátorského menu), je v něm rovnou načten příslušný dokument.
+
+Načtený dokument je zobrazen v samostatné záložce v hlavní pracovní ploše editoru, pod touto záložkou je pak seznam jednotlivých podčástí daného dokumentu, rozdělený opět pod záložkami podle jednotlivých typů RDF vazeb.
+
+Pořadí částí v rámci daného dokumentu můžete změnit přesouváním ikonek jednotlivých částí na požadovanou pozici (metodou drag & drop). Po dokončení změn klikněte na příkaz Uložit  v pravém horním rohu okna, provedené změny budou uloženy do odpovídajích objektů FOXML a následně je automaticky spuštěna reindexace příslušného dokumentu. Po úspěšné reindexaci (průběh je možno kontrolovat v Správě procesů) a znovuotevření stránky příslušného dokumentu se změny projeví v aplikaci Kramerius4.
+
+Opakovaným použitím příkazu načíst můžete otevřít více dokuemntů současně. K přesouvání částí mezi různými dokumenty slouží v aplikaci Editor schránka (clipboard). Schránku otevřete stažením oddělovacího proužku na dolním okraji záhlaví okna editoru. Části dokumentů mezi různými dokumenty přesunete tak, že je nejprve přetáhnete ze zdrojového dokumentu do schránky, pak přejdete do cílového dokumentu (klepnutím na jeho záložku) a pak do něj na požadovanou pozici přesunete příslušný objekt ze schránky. Změny opět uložíte příkazem Uložit. 
+
+  
