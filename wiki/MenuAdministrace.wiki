@@ -228,3 +228,6 @@ Spuštění procesu má nasledující syntaxi:
 Syntaxe je následující: 
 {{{<application>/lr?action=stop&uuid=<uuidProcesu>&userName=***&pswd=***}}} 
   * *uuidProcesu* je identifikator procesu přiřazovaný akcí start.
+
+=Editor pořadí částí dokumentu=
+Editor 
