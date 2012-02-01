@@ -140,6 +140,7 @@ public class SecurityDatabaseInitializator {
     public static void createSecurityTables(Connection connection) throws SQLException, IOException {
         InputStream is = InitSecurityDatabaseMethodInterceptor.class.getResourceAsStream("res/initsecdb.sql");
         JDBCUpdateTemplate template = new JDBCUpdateTemplate(connection, false);
+        template.setUseReturningKeys(false);
         template.executeUpdate(IOUtils.readAsString(is, Charset.forName("UTF-8"), true));
     }
     
