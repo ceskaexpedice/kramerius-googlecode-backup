@@ -116,7 +116,7 @@ Příkaz *Odstranit dokument z fedory* v kontextové nabídce odstraní daný do
 
 == Změna viditelnosti (přístupových práv) ==
 
-Příkaz *Změna viditelnosti* v kontextové nabídce umožňuje měnit přístupová práva k dokumentu mezi stavy public a private a ovládat tak, jestli jsou plná obrazová data dokumentu přístupná i z počítačů mimo prostory knihovny. Seznam povolených IP adres je definován v souboru .kramerius4/configuration.properties.  
+Příkaz *Změna viditelnosti* v kontextové nabídce umožňuje měnit příznak `kramerius:policy` dokumentu a všech jeho podřízených částí mezi stavy public a private a ovládat tak, jestli jsou plná obrazová data dokumentu přístupná i z počítačů mimo prostory knihovny. Seznam povolených IP adres je definován v editoru práv v kritériu IP Filtr (viz [Prava Práva]) .  
 
 = Export dokumentů =
 
