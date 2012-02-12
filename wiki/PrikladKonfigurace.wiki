@@ -127,10 +127,11 @@ rightseditor {
 }}}
 
 
-=Konfigurace mail pripojení=
+=Konfigurace mail připojení=
 
-Konfigurace smtp klienta pro odesilani mailu se nachází v ~/.kramerius4/mail.properties. 
+Konfigurace smtp klienta pro odesílání mailu se nachází v ~/.kramerius4/mail.properties. 
 
+Příklad:
 {{{
 
 mail.smtp.user=xxx@gmail.com
@@ -146,4 +147,3 @@ mail.smtp.socketFactory.fallback=false
 }}}
 
 Odkaz všech možnáných vlastností nastavení http://www.websina.com/bugzero/kb/javamail-properties.html
-
