@@ -125,3 +125,25 @@ rightseditor {
  cz.incad.kramerius.security.jaas.K4LoginModule required debug=true;
 };
 }}}
+
+
+=Konfigurace mail pripojení=
+
+Konfigurace smtp klienta pro odesilani mailu se nachází v ~/.kramerius4/mail.properties. 
+
+{{{
+
+mail.smtp.user=xxx@gmail.com
+mail.smtp.pass=xxxx
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=465
+mail.smtp.starttls.enable=true
+mail.smtp.auth=true
+mail.smtp.socketFactory.port=465
+mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+mail.smtp.socketFactory.fallback=false
+
+}}}
+
+Odkaz všech možnáných vlastností nastavení http://www.websina.com/bugzero/kb/javamail-properties.html
+
