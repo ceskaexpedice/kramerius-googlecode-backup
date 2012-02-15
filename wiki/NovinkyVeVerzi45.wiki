@@ -5,9 +5,9 @@
 Od verze 4.5 přibyla možnost předddefinovat si uživatelské rozhraní a nastavené vlastnosti si uložit do tzv. uživatelského profilu.  
 Jedná se o následující: 
 
-*Preferovaná jazková mutace 
-*Preferované třídění 
-*Preferovaný počet sloupců ve výsledích hledání
+ * Preferovaná jazková mutace 
+ * Preferované třídění 
+ * Preferovaný počet sloupců ve výsledích hledání
 
 
 == Ukázka práce s profilem ==
