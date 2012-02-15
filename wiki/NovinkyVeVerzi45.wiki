@@ -50,3 +50,36 @@ Počet ukládáných výsledků je omezen konfigurační položkou:
 {{{
 usersprofile.searchhistory.maxitems=10
 }}}
+
+
+
+=Virtuální sbírky=
+Ve verzi 4.5 přibyla možnost vytvářet si vlastní virtuální sbírky. Jedná se o kolekce objektů v rámci existující infrastruktury. 
+
+Pozn: 
+Pro vytvoření nové kolekce je zapotřebí mít přidělena právo *virtualcollection_manage*. 
+Standardně se při instalaci verze 4.5 právo přidělí roli k4_admins.
+
+
+== Postup vytváření kolekce ==  
+
+Pro vytvoření nové kolekce zvolíme menu "Administrace virtuálních sbírek", objeví se dialog pro administraci. Zde  můžeme vytvořit novou virtuální sbírku. 
+Význam polí v dialogu je následující: 
+
+ * PID:  Pid virtuální sbírky. Kažkdá virtuální sbírka figuruje ve fedoře jako samostatný objekt a tudíž musí mít i svůj identifikátor, pid.
+ * LABEL: klíč k internacionalizaci popisku sbírky. 
+ * ČESKY: český název pro virtuální sbírku 
+ * ENGLISH: anglický název pro virtuální sbírku. 
+
+
+http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek.png
+
+Menu pro administraci
+
+http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek_dialog.png
+
+Administrační dialog
+
+== Přidání položky do kolekce == 
+
+Přidání do kolekce je pomocí kontextového menu. Obrázek kontextového menu.
