@@ -44,4 +44,9 @@ Položka menu
 http://kramerius.googlecode.com/svn/wiki/features_45/historiehledani_dialog.png
 
 Dialog hledaných výrazů. Obsahuje prostý odkaz a RSS. 
+
  
+Počet ukládáných výsledků je omezen konfigurační položkou: 
+{{{
+usersprofile.searchhistory.maxitems=10
+}}}
