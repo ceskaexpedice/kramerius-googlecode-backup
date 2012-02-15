@@ -55,11 +55,7 @@ usersprofile.searchhistory.maxitems=10
 
 
 =Virtuální sbírky=
-Ve verzi 4.5 přibyla možnost vytvářet si vlastní virtuální sbírky. Jedná se o kolekce objektů v rámci existující infrastruktury. 
-
-Pozn: 
-Pro vytvoření nové kolekce je zapotřebí mít přidělena právo *virtualcollection_manage*. 
-Standardně se při instalaci verze 4.5 právo přidělí roli k4_admins.
+Ve verzi 4.5 přibyla možnost vytvářet si vlastní virtuální sbírky. Jedná se o kolekce různých již ve fedoře existujících objektů. 
 
 
 == Postup vytváření kolekce ==  
@@ -82,6 +78,11 @@ Význam polí v dialogu je následující:
  * ČESKY: český název pro virtuální sbírku 
  * ENGLISH: anglický název pro virtuální sbírku. 
 
+===Poznámka=== 
+
+Pro vytvoření nové kolekce je zapotřebí mít přidělena právo *virtualcollection_manage*. 
+Standardně se při instalaci verze 4.5 právo přidělí roli k4_admins.
+
 
 == Přidání položky do kolekce == 
 
@@ -90,6 +91,7 @@ Přidání do kolekce je pomocí kontextového menu.
 http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek_zarazeni.png
 
 Obrázek kontextového menu.
+
 
 
 == Přepnutí do kolekce ==
@@ -117,4 +119,6 @@ Po registraci uživatele se odešle na jeho emailovou adresu mail, kde jsou uved
 == Nastavení mail.properties == 
 
 Pro odeslání mailu je zapotřebí nastavit adresu SMTP serveru. Využívá se stejné nestavení jako v případě edditoru uživatelů.
- 
+
+
+[Instalace#Konfigurace] 
