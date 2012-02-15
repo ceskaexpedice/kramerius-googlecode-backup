@@ -111,7 +111,7 @@ http://kramerius.googlecode.com/svn/wiki/features_45/registrace.png
 
 Tlačítko registrace
 
-http://kramerius.googlecode.com/svn/wiki/features_45/registrace_dialog.png
+http://kramerius.googlecode.com/svn/wiki/features_45/registrace-dialog.png
 
 Dialog pro nově registrované uživatele
 Po registraci uživatele se odešle na jeho emailovou adresu mail, kde jsou uvedeny základní údaje (Jméno, příjmení a přihlašovací jméno) a rovněž url na které je nutno kliknout, pokud má být uživatel aktivován.  Dokud nebude provedena aktivace, uživatel se nepřihlásí.  
