@@ -63,13 +63,7 @@ Standardně se při instalaci verze 4.5 právo přidělí roli k4_admins.
 
 == Postup vytváření kolekce ==  
 
-Pro vytvoření nové kolekce zvolíme menu "Administrace virtuálních sbírek", objeví se dialog pro administraci. Zde  můžeme vytvořit novou virtuální sbírku. 
-Význam polí v dialogu je následující: 
-
- * PID:  Pid virtuální sbírky. Kažkdá virtuální sbírka figuruje ve fedoře jako samostatný objekt a tudíž musí mít i svůj identifikátor, pid.
- * LABEL: klíč k internacionalizaci popisku sbírky. 
- * ČESKY: český název pro virtuální sbírku 
- * ENGLISH: anglický název pro virtuální sbírku. 
+Pro vytvoření nové kolekce zvolíme menu "*Administrace virtuálních sbírek*", objeví se dialog pro administraci. Zde  můžeme vytvořit novou virtuální sbírku. 
 
 
 http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek.png
@@ -80,6 +74,22 @@ http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek
 
 Administrační dialog
 
+Význam polí v dialogu je následující: 
+
+ * PID:  Pid virtuální sbírky. Kažkdá virtuální sbírka figuruje ve fedoře jako samostatný objekt a tudíž musí mít i svůj identifikátor, pid.
+ * LABEL: klíč k internacionalizaci popisku sbírky. 
+ * ČESKY: český název pro virtuální sbírku 
+ * ENGLISH: anglický název pro virtuální sbírku. 
+
+
 == Přidání položky do kolekce == 
 
-Přidání do kolekce je pomocí kontextového menu. Obrázek kontextového menu.
+Přidání do kolekce je pomocí kontextového menu. 
+
+Obrázek kontextového menu.
+
+
+== Přepnutí do kolekce ==
+Aktivování kolekce je pomocí záložky *Virtuální sbírky* kde se nachází seznam všech virtuálních sbírek. Kliknutím na danou virtuální sbírku se  
+
+ 
