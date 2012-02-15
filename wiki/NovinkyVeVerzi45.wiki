@@ -27,3 +27,21 @@ Volba položky
 http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu_dialog.png
 
 Dialog uložení profilu
+
+
+==Historie hledání==
+
+Do profilu se rovněž ukládá historie hledaných výrazů a to jak hledaných pomocí vyhledavacích polí (*Název*, *Autor*, *ISSN*, *atd..*) tak i pomocí facetů (*Typ dokumentu*, *Jazyk*, *Dostupnost*, *Autor*, *Hlavní název*) 
+
+Jednotlivé položky je možné si prohlídnout pomocí položky Historie hledání. 
+
+
+
+http://kramerius.googlecode.com/svn/wiki/features_45/historiehledani.png
+
+Položka menu
+
+http://kramerius.googlecode.com/svn/wiki/features_45/historiehledani_dialog.png
+
+Dialog hledaných výrazů. Obsahuje prostý odkaz a RSS. 
+ 
