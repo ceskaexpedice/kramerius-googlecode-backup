@@ -88,6 +88,7 @@ Význam polí v dialogu je následující:
 Přidání do kolekce je pomocí kontextového menu. 
 
 http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek_zarazeni.png
+
 Obrázek kontextového menu.
 
 
