@@ -18,6 +18,12 @@ Příklad:
 
 http://kramerius.googlecode.com/svn/wiki/features_45/cesky.png
 
+Nastavení jazkové mutace
+
 http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu.png
 
+Volba položky
+
 http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu_dialog.png
+
+Dialog uložení profilu
