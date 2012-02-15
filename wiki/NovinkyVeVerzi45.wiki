@@ -13,3 +13,11 @@ Jedná se o následující:
 == Ukázka práce s profilem ==
 
 Při přihlášení nastavíte danou vlastnost a poté v položce administrativního menu zvolíte funkci *Uložení profilu*
+
+Příklad:
+
+http://kramerius.googlecode.com/svn/wiki/features_45/cesky.png
+
+http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu.png
+
+http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu_dialog.png
