@@ -15,7 +15,7 @@ Jedná se o následující:
 
 Při přihlášení nastavíte danou vlastnost a poté v položce administrativního menu zvolíte funkci *Uložení profilu*
 
-Příklad:
+===Příklad===
 
 http://kramerius.googlecode.com/svn/wiki/features_45/cesky.png
 
@@ -93,6 +93,28 @@ Obrázek kontextového menu.
 
 
 == Přepnutí do kolekce ==
-Aktivování kolekce je pomocí záložky *Virtuální sbírky* kde se nachází seznam všech virtuálních sbírek. Kliknutím na danou virtuální sbírku se  
+Aktivování kolekce je pomocí záložky *Virtuální sbírky* kde se nachází seznam všech virtuálních sbírek. 
+Kliknutím na danou virtuální sbírku se sbírka aktivuje. 
 
+
+
+Deaktivace se provádí klikem na název sbírky vpravo nahoře.
+
+
+
+=Uživatelé=
+Ve verzi 4.5 přibyla možnost registrace nových uživatelů z internetu bez nutnosti zásahu administrátora. Uživatelé takto vytvoření mají specifickou roli "PUBLIC_USER" a práva stejná jako nepřihlášený uživatel.  Registrace je umožněna novým tlačítkem "*Registrovat*". Po zmáčknutí se objeví registrační dialog. 
+
+http://kramerius.googlecode.com/svn/wiki/features_45/registrace.png
+
+Tlačítko registrace
+
+http://kramerius.googlecode.com/svn/wiki/features_45/registrace_dialog.png
+
+Dialog pro nově registrované uživatele
+Po registraci uživatele se odešle na jeho emailovou adresu mail, kde jsou uvedeny základní údaje (Jméno, příjmení a přihlašovací jméno) a rovněž url na které je nutno kliknout, pokud má být uživatel aktivován.  Dokud nebude provedena aktivace, uživatel se nepřihlásí.  
+
+== Nastavení mail.properties == 
+
+Pro odeslání mailu je zapotřebí nastavit adresu SMTP serveru. Využívá se stejné nestavení jako v případě edditoru uživatelů.
  
