@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+=Profily=
+
+Od verze 4.5 přibyla možnost předddefinovat si uživatelské rozhraní a nastavené vlastnosti si uložit do tzv. uživatelského profilu.  
+Jedná se o následující: 
+
+* Preferovaná jazková mutace 
+* Preferované třídění 
+* Preferovaný počet sloupců ve výsledích hledání
+
+
+== Ukázka práce s profilem ==
+
+Při přihlášení nastavíte danou vlastnost a poté v položce administrativního menu zvolíte funkci *Uložení profilu*
