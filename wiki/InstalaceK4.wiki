@@ -2,16 +2,23 @@
 
 = Před instalací =
 
-Před samotnou instalací systému K4 je nutno mít nainstalováno následující:
-  * Databázový engine  *Postgres* ve verzi 9.0
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Před samotnou instalací systému K4 je nutno mít nainstalováno a nastaveno následující:
+  * Databázový stroj *Postgres* ve verzi 9.1.X nebo vyšší
+  * V databázi vytvořeného uživatele *fedoraAdmin* s heslem *fedoraAdmin* 
+  * Vytvořené databáze *riTriples*, *fedora3*, *kramerius4*.
+
+Poznámka: vlastníkem všech databází by měl být výše zmíněný uživatel *fedoraAdmin*.  
 
 
 
-= Details =
+= Instalace =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Samotná instalace je rozdělěna do tří kroků. 
+  * Rozbalení předpřipravené instalace do zvoleného adresáře
+  * Nastavení systémových proměnných 
+  * Import dat.
+
+== Rozbalení  ==
+Z adresy http://code.google.com/p/kramerius/downloads/list si stáněte soubor fedora_k4_instalation.zip a rozbalte do vámi zvoleného adresáře. 
+
+== Nastavení systémových proměnných  ==
