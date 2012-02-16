@@ -1,0 +1,17 @@
+#summary Článek popisuje postup instalace systému K4
+
+= Před instalací =
+
+Před samotnou instalací systému K4 je nutno mít nainstalováno následující:
+  * Databázový engine  *Postgres* ve verzi 9.0
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
