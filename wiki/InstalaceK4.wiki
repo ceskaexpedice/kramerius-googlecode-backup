@@ -19,6 +19,7 @@ Samotná instalace je rozdělěna do tří kroků.
   * Rozbalení předpřipravené instalace do zvoleného adresáře
   * Nastavení systémových proměnných 
   * Import dat.
+  * Nastavení mail.properites
 
 == Rozbalení  ==
 Z adresy http://code.google.com/p/kramerius/downloads/list si stáněte soubor fedora_k4_instalation.zip a rozbalte do vámi zvoleného adresáře. 
@@ -59,6 +60,12 @@ export CATALINA_HOME=$FEDORA_HOME/tomcat
 == Import dat  ==
 
 Pomocí administračního nástroje fedory ($FEDORA_HOME/client/bin/fedora-admin.sh) naimportovat data z adresáře *$FEDORA_HOME/import-data*.
+
+
+== Ověření instalace ==
+Posledním krokem je nastavení přístupu k SMTP serveru. Je potřeba vytvořit soubor mail.properties v adresáři ~/.kramerius4/ a definovat nastavení dle: 
+
+
 
 
 == Ověření instalace ==
