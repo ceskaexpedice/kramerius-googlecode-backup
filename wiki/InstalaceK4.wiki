@@ -56,11 +56,11 @@ export CATALINA_HOME=$FEDORA_HOME/tomcat
 
 == Import dat  ==
 
-Pomocí administračního nástroje fedory ($FEDORA_HOME/client/bin/fedora-admin.sh) naimportovat data z adresáře $FEDORA_HOME/import-data.
+Pomocí administračního nástroje fedory ($FEDORA_HOME/client/bin/fedora-admin.sh) naimportovat data z adresáře *$FEDORA_HOME/import-data*.
 
 
-
-
+== Ověření instalace ==
+Nyní by na stránce navigace měla být vidět jedna zaindexovaná monografie a 16 stránek a mělo by fungovat přihlášení uživatelem krameriusAdmin, krameriusAdmin.
 
 
 
