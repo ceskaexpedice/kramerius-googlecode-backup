@@ -125,7 +125,7 @@ Pro odeslání mailu je zapotřebí nastavit adresu SMTP serveru. Využívá se 
 [Instalace#Konfigurace] 
 
 
-=Tlačítka *I like it*, *Google plus*, *Tweet*=
+=Sociální sítě=
 
 V nové verzi je možnost mít u každého titulu tlačítka pro zveřejnění titulu na sociálních sítích. Jedná se zejména o Facebook, Google+ a Twitter. Polovelní nebo zakázání je řízeno konfiguračními položkami: 
 
