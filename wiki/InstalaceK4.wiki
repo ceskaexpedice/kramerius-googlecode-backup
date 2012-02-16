@@ -22,7 +22,7 @@ Samotná instalace je rozdělěna do čtyř kroků.
   * Nastavení mail.properites
 
 == Rozbalení  ==
-Z adresy http://code.google.com/p/kramerius/downloads/list si stáněte soubor fedora_k4_instalation.zip a rozbalte do vámi zvoleného adresáře. 
+Z adresy http://code.google.com/p/kramerius/downloads/list si stáněte soubor fedora_k4_instalation.tar.gz a rozbalte do vámi zvoleného adresáře. 
 
 Příklad: 
 
