@@ -21,4 +21,29 @@ Samotná instalace je rozdělěna do tří kroků.
 == Rozbalení  ==
 Z adresy http://code.google.com/p/kramerius/downloads/list si stáněte soubor fedora_k4_instalation.zip a rozbalte do vámi zvoleného adresáře. 
 
+Příklad: 
+
+{{{
+~/Programy/
+}}}
+
+Po rozbalení:
+
+{{{
+~/Programy/fedora/
+                 client/
+                 docs/
+                 install/
+                 pdp/
+                 server/
+                 solr/
+                 tomcat/
+}}}
+
+
 == Nastavení systémových proměnných  ==
+Nastavte systémové proměnné 
+$FEDORA_HOME resp %FEDORA_HOME% tak aby ukazovala do adresáře kde jste rozbalili fedora_k4_instalation.zip
+
+
+Příklad:
