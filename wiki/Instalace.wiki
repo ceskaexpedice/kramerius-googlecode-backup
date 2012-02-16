@@ -109,7 +109,6 @@ Do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `
 
 Do adresáře sdílených knihoven  (v případě Tomcatu `$CATALINA_HOME/lib`) je třeba nainstalovat knihovnu `security-core.jar` z distribučního souboru Kramerius-x.x.zip.
 
-Do adresáře sdílených knihoven  (v případě Tomcatu `$CATALINA_HOME/lib`) je třeba nainstalovat knihovnu `validation-api-1.0.0.GA.jar` z distribučního souboru installation-x.x.zip.
 
 Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kterém je nainstalováno úložiště Fedora Commons, je třeba do adresáře sdílených knihoven aplikačního serveru překopírovat také následující knihovní soubory jar z aplikace fedora (v případě Tomcatu adresář `$CATALINA_HOME/webapps/fedora/WEB-INF/lib`):
   * `carol`
