@@ -11,6 +11,7 @@ Před samotnou instalací systému K4 je nutno mít nainstalováno a nastaveno n
 
 Poznámka: vlastníkem všech databází by měl být výše zmíněný uživatel *fedoraAdmin*.  
 
+Dále je třeba mít nainstalován JDK verze 1.6 (Sun/Oracle) na počítači s minimálně 8GM RAM.
 
 
 = Instalace =
@@ -22,7 +23,7 @@ Samotná instalace je rozdělěna do čtyř kroků.
   * Nastavení mail.properites
 
 == Rozbalení  ==
-Z adresy http://code.google.com/p/kramerius/downloads/list si stáněte soubor fedora_k4_instalation.tar.gz a rozbalte do vámi zvoleného adresáře. 
+Z adresy, která bude upřesněna, si stáněte soubor fedora_k4_instalation.tar.gz a rozbalte do vámi zvoleného adresáře. 
 
 Příklad: 
 
