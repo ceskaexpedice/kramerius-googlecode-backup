@@ -48,6 +48,7 @@ Dialog hledaných výrazů. Obsahuje prostý odkaz a RSS.
 
  
 Počet ukládáných výsledků je omezen konfigurační položkou: 
+
 {{{
 usersprofile.searchhistory.maxitems=10
 }}}
@@ -122,3 +123,22 @@ Pro odeslání mailu je zapotřebí nastavit adresu SMTP serveru. Využívá se 
 
 
 [Instalace#Konfigurace] 
+
+
+=Tlačítka *I like it*, *Google plus*, *Tweet*=
+
+V nové verzi je možnost mít u každého titulu tlačítka pro zveřejnění titulu na sociálních sítích. Jedná se zejména o Facebook, Google+ a Twitter. Polovelní nebo zakázání je řízeno konfiguračními položkami: 
+
+{{{
+# Povoleni tlacitka I like it pro facebook
+facebook.likeit=false | true
+
+# Povoleni tlacitka Google plus
+googleplus.plus=false | true
+
+# Povoleni tlacitka Tweet pro sit twitter
+twitter.tweet=false | true
+}}}
+  
+  
+Pozn.: Pro správnou funkci tlačítek je nutno mít síť přístupnou z Internetu.
