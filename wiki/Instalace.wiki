@@ -11,7 +11,7 @@ Před instalací aplikace Kramerius 4 je třeba nainstalovat následující syst
 
 Kramerius 4 nevyžaduje žádné specifické revize uvedených komponent, obecně je rozumné používat jejich pokud možno nejnovější aktualizace. Popis instalace a administrace těchto systémových komponent není součástí této dokumentace, předpokládáme, že administrátor aplikace Kramerius 4 ovládá instalaci a administraci výše uvedených komponent.
 
-Operační systém může být libovolný, na kterém je možno tyto komponenty provozovat, vlastní aplikace Kramerius 4 žádné speciální požadavky na systém nemá. Hardware serveru musí být dimenzován na uvažované množství dat, doporučujeme minimálně dvojnásobnou velikost pevného disku, než je plánovaná velikost obrazových dat. Vzhledem k velké paměťové náročnosti práce s grafickými daty (náhledy stránek, zoomování) je třeba i při minimálním provozu aplikace alespoň 4GB RAM. 
+Operační systém může být libovolný, na kterém je možno tyto komponenty provozovat, vlastní aplikace Kramerius 4 žádné speciální požadavky na systém nemá. Hardware serveru musí být dimenzován na uvažované množství dat, doporučujeme minimálně dvojnásobnou velikost pevného disku, než je plánovaná velikost obrazových dat. Vzhledem k velké paměťové náročnosti práce s grafickými daty (náhledy stránek, zoomování) je třeba i při minimálním provozu aplikace alespoň 8GB RAM. 
 
 K4 je vhodné nainstalovat pod samostatným uživatelským účtem, například kramerius4.
 
