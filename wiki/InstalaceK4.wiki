@@ -60,7 +60,5 @@ Pomocí administračního nástroje fedory ($FEDORA_HOME/client/bin/fedora-admin
 
 
 == Ověření instalace ==
-Nyní by na stránce navigace měla být vidět jedna zaindexovaná monografie a 16 stránek a mělo by fungovat přihlášení uživatelem krameriusAdmin, krameriusAdmin.
-
-
+Nyní by na stránce navigace měla být vidět jedna zaindexovaná monografie a 16 stránek a mělo by fungovat přihlášení uživatelem *krameriusAdmin*.
 
