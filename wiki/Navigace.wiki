@@ -4,7 +4,9 @@
 
 * [UI Uživatelské rozhraní]
 
-* [Instalace Instalace a konfigurace]
+* [InstalaceK4 Instalace a konfigurace (instantní)]
+
+* [Instalace Instalace a konfigurace (postupná)]
 
 * [MenuAdministrace Administrace]
 
