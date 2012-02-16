@@ -1,4 +1,6 @@
-#summary Článek popisuje postup instalace systému K4
+#summary Článek popisuje postup instalace systému K4 z předpřipraveného distribučního souboru
+
+
 
 = Před instalací =
 
@@ -61,4 +63,3 @@ Pomocí administračního nástroje fedory ($FEDORA_HOME/client/bin/fedora-admin
 
 == Ověření instalace ==
 Nyní by na stránce navigace měla být vidět jedna zaindexovaná monografie a 16 stránek a mělo by fungovat přihlášení uživatelem *krameriusAdmin*.
-
