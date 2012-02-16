@@ -43,7 +43,7 @@ Po rozbalení:
 
 == Nastavení systémových proměnných  ==
 Nastavte systémové proměnné 
-*$FEDORA_HOME* resp *%FEDORA_HOME%* tak aby ukazovala do adresáře kde jste rozbalili *fedora_k4_instalation.zip*
+*$FEDORA_HOME* resp *%FEDORA_HOME%* tak aby ukazovala do adresáře, kde leží rozbalený *fedora_k4_instalation.zip*
 
 
 Příklad:
@@ -52,5 +52,3 @@ Příklad:
 export FEDORA_HOME=~/Programy/fedora/
 export CATALINA_HOME=$FEDORA_HOME/tomcat
 }}}
-
-
