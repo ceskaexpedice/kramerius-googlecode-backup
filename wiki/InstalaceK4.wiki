@@ -52,3 +52,15 @@ Příklad:
 export FEDORA_HOME=~/Programy/fedora/
 export CATALINA_HOME=$FEDORA_HOME/tomcat
 }}}
+
+
+== Import dat  ==
+
+Pomocí administračního nástroje fedory ($FEDORA_HOME/client/bin/fedora-admin.sh) naimportovat data z adresáře $FEDORA_HOME/import-data.
+
+
+
+
+
+
+
