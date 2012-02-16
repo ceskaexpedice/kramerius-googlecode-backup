@@ -1,6 +1,6 @@
 #summary Článek popisuje postup instalace systému K4 z předpřipraveného distribučního souboru
 
-
+Instalace z předpřipraveného distribučního souboru je určena pro testovací účely, případně pro malé jednoduché instalace systému Kramerius 4 (s maximálně desítkami titulů a minimálním provozem). Výhodou této instalace je minimální nutnost konfigurace jednotlivých komponent (většina nastvaení je předkonfigurována v rámci distribučního archivu). Pro provoz reálné aplikace s vyšší zátěží je ale vhodné nainstalovat systém K4 a jeho jednotlivé komponenty samostatně na více serverů, popis instalace a konfigurace jednotlivých komponent je uveden zde: [Instalace Instalace] 
 
 = Před instalací =
 
