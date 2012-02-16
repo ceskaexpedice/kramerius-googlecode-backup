@@ -3,7 +3,7 @@
 
 =Pracovní verze (trunk)=
 
-=Verze 4.5.0 (r3401)=
+=Verze 4.5.0 (r3415)=
 
 Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi45
 
