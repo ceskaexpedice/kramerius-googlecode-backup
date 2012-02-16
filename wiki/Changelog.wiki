@@ -3,7 +3,9 @@
 
 =Pracovní verze (trunk)=
 
-=Verze 4.5.0beta1 (r3239)=
+=Verze 4.5.0 (r3401)=
+
+Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi45
 
   * Issue 204 - podpora virtuálních sbírek
   * Issue 226 - aktualizována verze SOLR na 3.5 (nutno použít novou konfiguraci, schema.xml a přeindexovat)
