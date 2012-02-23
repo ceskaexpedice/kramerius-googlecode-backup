@@ -3,10 +3,24 @@
 
 =Pracovní verze (trunk)=
 
+  * Issue 234, Issue 235 - odstraněny problémy s autentizací single-sign-on
+  * Issue 269 - odstraněna konfigurační property indexerHost 
+
 =Verze 4.5.0 (r3415)=
 
 Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi45
 
+  * Issue 154 - zlepšena správa procesů
+  * Issue 257 - opraveno zobrazování výsledků replikace dat z K3 do K4
+  * Issue 258 - opravena chyba při vytváření sloupce DEACTIVATED v databázi uživatelských účtů
+  * Issue 268, Issue 225, Issue 247 - opraveny problémy při exportu PDF
+  * Issue 267 - položky v kontextovém menu, které přímo spouštějí akci, už nemají v názvu tři tečky
+  * Issue 237 - je zobrazována informace o úspěšné či neúspěšné aktivaci nového uživatele
+  * Issue 261 - opraven problém s indexací dokumentů, které obsahovaly v textu html entitu ampersand
+  * Issue 243 - opraveny problémy ve funkčnosti editoru pořadí částí dokumentů
+  * Issue 248 - odstraněno připojování k databázi Fedory při použití Imageserveru
+  * Issue 252 - proces Export FOXML do logu vypisuje adresář, do kterého jsou data exportována
+  * Issue 110, Issue 262 - opraveny chyby při zakládání a mazání uživatelského účtu
   * Issue 204 - podpora virtuálních sbírek
   * Issue 226 - aktualizována verze SOLR na 3.5 (nutno použít novou konfiguraci, schema.xml a přeindexovat)
   * Issue 200, Issue 229 - podpora uživatelských profilů
