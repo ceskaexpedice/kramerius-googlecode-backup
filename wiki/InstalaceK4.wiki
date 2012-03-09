@@ -57,6 +57,13 @@ export FEDORA_HOME=~/Programy/fedora/
 export CATALINA_HOME=$FEDORA_HOME/tomcat
 }}}
 
+Zkontrolujte také, že máte nastavenou systémovou proměnnou JAVA_HOME na adresář s instalací JDK.
+
+==Spuštění Tomcatu==
+
+V terminálu spuštěném v adresáři $FEDORA_HOME/tomcat zadejte příkaz bin/startup.sh (resp. bin\startup.bat na Windows).
+
+Nyní můžete ověřit správnost instalace úložiště Fedora  zadáním adresy `http://localhost:8080/fedora` v prohlížeči.
 
 == Import dat  ==
 
@@ -72,4 +79,7 @@ Posledním krokem je nastavení přístupu k SMTP serveru. Je potřeba vytvořit
 
 
 == Ověření instalace ==
+
+V prohlížeči zadejte adresu `http://localhost:8080/search`.
+
 Nyní by na stránce navigace měla být vidět jedna zaindexovaná monografie a 16 stránek a mělo by fungovat přihlášení uživatelem *krameriusAdmin*.
