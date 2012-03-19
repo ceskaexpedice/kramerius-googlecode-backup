@@ -1,6 +1,8 @@
 = Plánovaný rozvoj pro rok 2012 =
 
-Rozvojové úkoly na letošní rok se domlouvají v rámci realizační skupiny. Mezi odsohlasené aktivity patří:
+Rozvojové úkoly na letošní rok se domlouvají v rámci realizační skupiny. 
+
+Mezi navržené body patří:
 
 * Statistiky - modul, který bude sbírat a zpracovávat informace o úložišti a uživatelských přístpech
 
