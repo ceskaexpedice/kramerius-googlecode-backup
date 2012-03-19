@@ -2,8 +2,6 @@
 
 = ROZVOJ V ROCE 2011 =
 
-= Plánovaný rozvoj pro rok 2011 =
-
 * možnost zviditelnění technických a administrativních metadat pro autorizovaného uživatele - volání a zobrazování údajů z úložiště
 
 * možnost různých voleb pro zobrazení, např. podle novinek, podle místa vydání, podle MDT apod. - setřídění zánamů podle hodnot pole
