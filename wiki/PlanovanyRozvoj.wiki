@@ -1,3 +1,23 @@
+= Plánovaný rozvoj pro rok 2012 =
+
+Rozvojové úkoly na letošní rok se domlouvají v rámci realizační skupiny. Mezi odsohlasené aktivity patří:
+
+* statistiky - modul, který bude sbírat a zpracovávat informace o úložišti a uživatelských přístpech
+
+* Podpora multimedií v rámci úložišt a UI systému K4, se zaměřením na zvukové soubory
+
+* Správa procesů a API
+
+* Rozšíření editoru práv
+
+* Napojení na Vufind
+
+* Administrace
+
+* OAI Harvestr pro ČDK
+
+* ...
+
 = Plánovaný rozvoj pro rok 2011 =
 
 * možnost zviditelnění technických a administrativních metadat pro autorizovaného uživatele - volání a zobrazování údajů z úložiště
