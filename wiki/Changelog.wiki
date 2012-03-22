@@ -3,6 +3,18 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.5.1 (r3501)=
+
+  * Issue 291 - opraven problém s indexací dokumentů, jejichž čas modifikace neobsahuje milisekundy
+  * Issue 287 - po indexaci se místo optimize volá commit, pomocí boolean property indexer.isSoftCommit (default false) lze nastavit, jestli je použit hardCommit nebo softCommit
+  * Issue 278 - opraveny odkazy v RSS kanálech
+  * Issue 279 - řešen problém s místem pro obrázky z imageserveru
+  * Issue 201 - v editoru uživatelů lze mazat uživatele s přiřazenou rolí
+  * Issue 23 - při importu FOXML dokumentů jsou detekovány kořenové dokumenty a automaticky pro ně spuštěna indexace
+  * Issue 210 - sjednoceno pořadí tlačítek v přehledu procesů 
+  * Issue 212 - nezobrazuje se prázdné datum v přehledu procesů
+  * Issue 205 - pdf má v titulu uvedeno skutečné UUID namísto generického "img.pdf"
+  * Issue 272 - opraven problém při změně viditelnosti dokumentů
   * Issue 234, Issue 235 - odstraněny problémy s autentizací single-sign-on
   * Issue 269 - odstraněna konfigurační property indexerHost 
 
@@ -10,8 +22,10 @@
 
 Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi45
 
+  * Issue 283 - spouštění pokročilého vyhledávání
   * Issue 154 - zlepšena správa procesů
   * Issue 257 - opraveno zobrazování výsledků replikace dat z K3 do K4
+  * Issue 255 - opraven problém s omezeným místem pro obrázky z imageserveru 
   * Issue 258 - opravena chyba při vytváření sloupce DEACTIVATED v databázi uživatelských účtů
   * Issue 268, Issue 225, Issue 247 - opraveny problémy při exportu PDF
   * Issue 267 - položky v kontextovém menu, které přímo spouštějí akci, už nemají v názvu tři tečky
