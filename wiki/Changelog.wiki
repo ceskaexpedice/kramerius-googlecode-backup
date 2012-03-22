@@ -3,7 +3,7 @@
 
 =Pracovní verze (trunk)=
 
-=Verze 4.5.1 (r3501)=
+=Verze 4.5.1 (r3508)=
 
   * Issue 291 - opraven problém s indexací dokumentů, jejichž čas modifikace neobsahuje milisekundy
   * Issue 287 - po indexaci se místo optimize volá commit, pomocí boolean property indexer.isSoftCommit (default false) lze nastavit, jestli je použit hardCommit nebo softCommit
