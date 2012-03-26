@@ -43,9 +43,8 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *editor*  - Akce spouštět metadata editor. _Uživatel může spouštět metadata editor._
  # *usersadmin*  - Akce spouštět editor uživatelů  v superadmin módu (viz dále). _Uživatel může přes administrátorské menu spouštět editor uživatelů._ 
  # *userssubadmin* - Akce spouštět editor v subadmin modu (viz dale).  _Uživatel může přes administrátorské menu spouštět editor uživatelů._
-
+ # *edit_info_text* - Akce editace textu na úvodní stránce. _Uživatel může editovat text na úvodní stránce._
  # *virtualcollection_manage* - Akce správa virtuálních sbírek. _Uživatel může spravovat virtuální sbírky._
-
  # *display_admin_menu* - Akce zobrazení menu určeného pro administrátory. _Uživateli se zobrazí menu určené pro administrátory._
 
 
