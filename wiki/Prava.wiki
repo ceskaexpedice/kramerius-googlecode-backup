@@ -44,6 +44,11 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *usersadmin*  - Akce spouštět editor uživatelů  v superadmin módu (viz dále). _Uživatel může přes administrátorské menu spouštět editor uživatelů._ 
  # *userssubadmin* - Akce spouštět editor v subadmin modu (viz dale).  _Uživatel může přes administrátorské menu spouštět editor uživatelů._
 
+ # *virtualcollection_manage* - Akce definuje operaci správa virtuálních sbírek
+
+ # *display_admin_menu* - Akce zobrazení menu určeného pro administrátory
+
+
 
 =Uživatelské role=
 
