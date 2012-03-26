@@ -42,11 +42,10 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *administrate* - Akce definuje opraci administraci práv k danému objektu. _Uživatel může měnit práva k danému objektu. Pokud je chráněný objekt celé repository objeví se příslušná položka v administrátorském menu v opačném případě se objeví položka pouze v menu kontextovém._ 
  # *editor*  - Akce spouštět metadata editor. _Uživatel může spouštět metadata editor._
  # *usersadmin*  - Akce spouštět editor uživatelů  v superadmin módu (viz dále). _Uživatel může přes administrátorské menu spouštět editor uživatelů._ 
- # *userssubadmin* - Akce spouštět editor v subadmin modu (viz dale).  
+ # *userssubadmin* - Akce spouštět editor v subadmin modu (viz dale).  _Uživatel může přes administrátorské menu spouštět editor uživatelů._
  # *manage_lr_process* - Akce spravovat dlouhotrvajíci procesy.  _Uživatel může přes administrátorské menu spravovat dlouhotrvající procesy._
  # *export_k4_replications* - Akce replikace objektů z K4
  # *import_k4_replications* - Akce import objektů objektů do  K4
-_Uživatel může přes administrátorské menu spouštět editor uživatelů._
  # *edit_info_text* - Akce editace textu na úvodní stránce. _Uživatel  může editovat text na úvodní stránce._
  # *virtualcollection_manage* - Akce správa virtuálních sbírek. _Uživatel může spravovat virtuální sbírky._
  # *display_admin_menu* - Akce zobrazení menu určeného pro administrátory. _Uživateli se zobrazí menu určené pro administrátory._
