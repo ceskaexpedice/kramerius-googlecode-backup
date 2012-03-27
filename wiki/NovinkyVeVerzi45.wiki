@@ -142,3 +142,26 @@ twitter.tweet=false | true
   
   
 Pozn.: Pro správnou funkci tlačítek je nutno mít síť přístupnou z Internetu.
+
+
+
+= Tisk do tiskove fronty na serveru = 
+
+Verze 4.5 umožňuje tisknout tituly přímo do tiskové fronty na serveru. K tomuto slouží kontextové menu *Tisk...*. To se standardně zobrazuje pouze přihlášeným uživatelům. 
+
+http://kramerius.googlecode.com/svn/wiki/features_45/tiskfronta.png
+
+
+Po spuštění položky menu se zobrazí dialog podobný tomu, který se zobrazuje při generování PDF. Výsledkem je však tisk na serveru.  
+
+
+
+Tisk lze ovlivnit následujícími položkami v configuration.properties:
+{{{
+
+#Počet kopií k tisku
+print.copies = 1  
+
+#Jednostranný tisk, oboustranný tisk  s delším okrajem, oboustranný tisk s kratším okrajem
+print.sided = ONE_SIDE |  TWO_SIDED_LONG_EDGE |  TWO_SIDED_SHORT_EDGE
+}}}
