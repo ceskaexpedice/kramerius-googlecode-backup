@@ -147,14 +147,14 @@ Pozn.: Pro správnou funkci tlačítek je nutno mít síť přístupnou z Intern
 
 = Tisk do tiskove fronty na serveru = 
 
-Verze 4.5 umožňuje tisknout tituly přímo do tiskové fronty na serveru. K tomuto slouží kontextové menu *Tisk...*. To se standardně zobrazuje pouze přihlášeným uživatelům. 
+Verze 4.5 umožňuje tisknout tituly přímo do tiskové fronty na serveru. K tomuto slouží kontextové menu *Tisk...*. (Zobrazuje pouze přihlášeným uživatelům.) 
 
 http://kramerius.googlecode.com/svn/wiki/features_45/tiskfronta.png
 
 
 Po spuštění položky menu se zobrazí dialog podobný tomu, který se zobrazuje při generování PDF. Výsledkem je však tisk na serveru.  
 
-
+http://kramerius.googlecode.com/svn/wiki/features_45/tiskfronta-dialog.png
 
 Tisk lze ovlivnit následujícími položkami v configuration.properties:
 {{{
