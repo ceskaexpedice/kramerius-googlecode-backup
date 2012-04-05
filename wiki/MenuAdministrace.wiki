@@ -229,6 +229,22 @@ Syntaxe je následující:
 {{{<application>/lr?action=stop&uuid=<uuidProcesu>&userName=***&pswd=***}}} 
   * *uuidProcesu* je identifikator procesu přiřazovaný akcí start.
 
+
+====Stavy procesů====
+
+Spouštěné procesy mohou mít stavy, které vypovídají o fázi života procesu. Jedná se o stavy:
+ * *PLANNED* - Proces byl naplánován ke spuštění.
+ * *RUNNING* - Proces běží. Výpis běžících procesů (příkaz ps resp. tasklist) by měl proces zobrazit.
+ * *FINISHED* - Proces skončil bez chyb.
+ * *KILLED* - Proces byl zabit.
+ * *FAILED* - Proces skončil s chybami.
+
+Dále mohl proces v rámci svého života napánovat spuštění dětského podprocesu. Typickým případem je proces Import, který provede import dat a zároveň spustí indexaci. Pak takový proces změní stav na BATCH_STARTED.  Pokud některý z dětských procesů končí stavem FAILED, pak rodičovský přejde do stavu BATCH_FAILED.  Stav BATCH_FINISHED nastává v případě, kdy všechny dětské procesy jsou ve stavu FINISHED. 
+
+
+
+ 
+
 =Editor pořadí částí dokumentu=
 
 Položka Editor v hlavním administrátorském menu otevře v samostatném okně prohlížeče aplikaci, umožňující přesouvání jednotlivých podčástí dokumentu v rámci dané úrovně (například změnu pořadí stránek), případně přesun jednotlivých podčástí mezi dokumenty (např. přesun čísla periodika mezi dvěma ročníky nebo sloučení dvou rozdělených ročníků do jednoho).
