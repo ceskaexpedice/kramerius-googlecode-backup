@@ -106,7 +106,8 @@ pro objekt REPOSITORY a akci ČÍST - read.
 
 ==Krameriem definované dodatečné podmínky==
 
- # *Pohyblivá zeď* - Podmínka rozhodne stavy ANO nebo NE. Zkoumá metadata dotazovaného objektu, konkrětně rok vydání a dle něj rozhodne. Jako parametr podmínka očekává mezní rok.       
+ # *Pohyblivá zeď* - Podmínka rozhodne stavy ANO nebo NE. Zkoumá metadata dotazovaného objektu a nadřazených objektů. Jako parametr podmínka očekává počet let, po kterých musí být objekt chráněný. Z metadat vyčte rok vydání a porovná ho s vypočítaným datem (nyní - počet let z paremtru podmínky). 
+, konkrětně rok vydání a dle něj rozhodne. Jako parametr podmínka očekává mezní rok.       
  # *Příznak kramerius:policy* - Podmínka rozhodne stavy ANO nebo NE. Zkoumá metadata dotazovaného objektu a rozhoduje se podle příznaku kramerius:policy. Pokud obsahuje literal policy:private, pak se jedná o neveřejný dokument, v opačném případě o veřejný.
  # *IP Filter benevolentní* - Benevolentní filter rozhodne stavy ANO nebo NEVIM. Zkoumá IP adresy návštěvníků. Jako parametry očekává regulární výrazy oddělěné středníkem. Pokud některá z IP adres vyhovuje některému z patternů zapsaném v parametrech práva,  vrací stav ANO, v opačném případě vrací stav NEVIM. 
  # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováné stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
