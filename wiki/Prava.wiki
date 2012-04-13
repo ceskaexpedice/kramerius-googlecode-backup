@@ -142,8 +142,6 @@ http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarmw.png
 
 Z obrázku je patrno, že je podmínka pohyblivé zdi nastavena na dvou úrovních. Na celém repositáři, kde je nastaven počet let  70 a na samotném titulu,  kde je pak podmínka předefinována na hodnotu 110.
  
----
-Poznámky k implementaci. 
 
 ====Poznámky k implementaci====
 Pravidlo zkoumá stream BIBLIO_MODS hledá datum vydání. 
