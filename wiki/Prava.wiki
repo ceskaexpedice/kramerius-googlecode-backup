@@ -136,13 +136,12 @@ V další části uvedu pár příkladů nastavení krameria.
 
   
 ===Pohyblivá zeď===
-Rohoduje na základě metadat a konfigurace roku, která je uvedena jako parametr dodatečné podmínky. Zde je zobrazaná tabulka práv pro 
-periodikum Tramp.  
+Rohoduje na základě data vydaní a počtu let, po které má být dílo chráněno.  Datum vydání je přístupné v metadatech objektu (konkrétně BIBLIO_MODS), počet let, po které má být dílo chráněno je parametrem dodatečné podmínky.  Zde je zobrazaná tabulka práv pro 
+periodikum Dějiny a současnost.  
 
 http://kramerius.googlecode.com/svn/wiki/rights/prava-scenarmw.png  
 
-Z obrázku je patrno, že je podmínka pohyblivé zdi nastavena na dvou úrovních. Na celém repositáři kde je nastaven mezní rok 1910 a na 
-samotném titulu je podmínka předefinována na mezní rok 1930.
+Z obrázku je patrno, že je podmínka pohyblivé zdi nastavena na dvou úrovních. Na celém repositáři kde je nastaven počet let  70, na samotném titulu je pak podmínka předefinována na hodnotu 110.
  
 
 ===Předplatitelé===
