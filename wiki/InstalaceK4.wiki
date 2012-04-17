@@ -24,7 +24,7 @@ Samotná instalace je rozdělěna do čtyř kroků.
 
 == Rozbalení  ==
 Z adresy 
-http://194.108.215.227:8080/fedora_k4.5.1_installation_nindex.zip si stáněte soubor fedora_k4.5.1_installation_nindex.zip a rozbalte do vámi zvoleného adresáře. 
+http://dl.dropbox.com/u/9887614/fedora_k4.5.1_installation_nindex.zip si stáněte soubor fedora_k4.5.1_installation_nindex.zip a rozbalte do vámi zvoleného adresáře. 
 
 Příklad: 
 
