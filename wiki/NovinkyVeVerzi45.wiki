@@ -117,6 +117,11 @@ http://kramerius.googlecode.com/svn/wiki/features_45/registrace-dialog.png
 Dialog pro nově registrované uživatele
 Po registraci uživatele se odešle na jeho emailovou adresu mail, kde jsou uvedeny základní údaje (Jméno, příjmení a přihlašovací jméno) a rovněž url na které je nutno kliknout, pokud má být uživatel aktivován.  Dokud nebude provedena aktivace, uživatel se nepřihlásí.  
 
+Tlačítko registrace je možno skrýt vlastností *search.mainbuttons.showregistrationbutton* v souboru search.properties. 
+
+http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/res/configuration.properties
+
+
 == Nastavení mail.properties == 
 
 Pro odeslání mailu je zapotřebí nastavit adresu SMTP serveru. Využívá se stejné nestavení jako v případě edditoru uživatelů.
