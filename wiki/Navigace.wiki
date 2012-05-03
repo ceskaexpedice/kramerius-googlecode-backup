@@ -25,3 +25,5 @@
 * [OptimalizaceRelaci Optimalizace relací v Kramerius 4]  
 
 * [http://www.incad.cz/kramerius4/ Zápisy z porad] 
+
+* [Podpora Podpora systému Kramerius 4] 
