@@ -8,6 +8,3 @@ V současné době není implementována podpora uložení dat do databáze. Př
 Souborové systémy jsou schopny uložit dostatečný počet souborů a neměly by být omezujícím faktorem pro úložiště. Např. EXT4 je schopen uložit 4 miliardy souborů (http://cs.wikipedia.org/wiki/Ext4)
 
 
-=== Velikost úložiště ===
-
-???
