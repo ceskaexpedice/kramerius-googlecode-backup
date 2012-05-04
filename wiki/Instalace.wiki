@@ -149,6 +149,8 @@ Obsah defaultních hodnot jednotlivých konfiguračních souborů najdete zde:
   * [http://code.google.com/p/kramerius/source/browse/trunk/indexer/src/res/configuration.properties  indexer.properties]
   * [http://code.google.com/p/kramerius/source/browse/trunk/import-cmdtool/src/main/java/res/configuration.properties  migration.properties]
 
+  * [http://code.google.com/p/kramerius/source/browse/trunk/static-export/src/main/java/res/configuration.properties  static_export.properties]
+
 Nově založenému uživateli je aplikací rightseditor přiděleno heslo a zasláno na email. Pro tuto funkci je třeba mít k dispozici SMTP server a do adresáře `~/.kramerius4` přidat soubor `mail.properties` s obsahem:
 
 {{{
