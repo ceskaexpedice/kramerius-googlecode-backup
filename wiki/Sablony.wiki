@@ -1,29 +1,30 @@
-#summary Popis šablonovacího systému
+#summary Přehled šablonovacího systému
 
 
 ==Zobrazovací šablony==
 
-|| Název souboru || Cesta v jaru || Vstupní data || Použití ||
-|| alto.xsl || inc/details/xsl || datastream s alto informací || Zobrazení rámečku kolem vyhledávaného slova v náhledu ||
-|| autocomplete.xsl || inc/home/xsl || SOLR Terms Component response || Našeptávač ||
-|| da.xsl || inc/results/xsl || SOLR response xml || Časová osa ||
-|| dt.xsl || inc/home || SOLR response xml || Animace "Digitální knihovna obsahuje" na úvodní stránce || 
-|| extInfo.xsl || inc/results/xsl || SOLR response xml || Zobrazení informace o nadřazených objektech ve výsledcích vyhledávání ||
-|| facets.xsl || inc/results/xsl || SOLR response xml || Zobrazení facetu ve výsledcích vyhledávání ||
-|| facets_home.xsl || inc/home/xsl || SOLR response xml || Zobrazení záložky "Navigace" na úvodní stránce || 
-|| grouped_results.xsl || inc/results/xsl || SOLR response xml || Zobrazení centrální části výsledků vyhledávání ||
-|| indexer.xsl || inc/admin || SPARQL response xml || Zobrazení dokumentu v dialogu "indexace dokumentů" ||
-|| insearch.xsl || inc/details/xsl || [SOLR response xml] Zobrazení výsledků vyhledávaní uvnitř dokumentu
-|| mods.xsl || inc/details/xsl || BIBLIO-MODS xml || Zobrazení přehledu metadat dokumentu ||
-|| modsFull.xsl || inc/details/xsl || BIBLIO-MODS xml || Zobrazení metadat dokumentu ||
-|| not_grouped_results.xsl || inc/results/xsl || SOLR response xml || Zobrazení centrální části výsledků vyhledávání ||
-|| results_header.xsl || inc/results/xsl || SOLR response xml || Zobrazení lišty stránkování výsledků vyhledávání ||
-|| results_main_rss.xsl || inc/results/xsl || SOLR response xml || Zobrazení rss výsledků vyhledávání ||
-|| suggest.xsl || inc/details/xsl || SOLR response xml || Zobrazení výsledků vyhledávání souvisejících dokumentů ||
-|| treeNode.xsl || inc/details/xsl || SOLR response xml || Zobrazení stromu v detailu ||
-|| uncollapsed.xsl || inc/details/xsl || SOLR response xml || Zobrazení rozbalených výsledků ||
+|| *Název souboru* (v adresáři `~/.kramerius4/xsl)` || *Výchozí šablona* (v souboru `search.war`) || *Vstupní data* || *Použití* || 
+|| alto.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/alto.xsl /inc/details/xsl/alto.xsl] || datastream s ALTO informací || Zobrazení rámečku kolem vyhledávaného slova v náhledu ||
+|| autocomplete.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/home/xsl/autocomplete.xsl /inc/home/xsl/autocomplete.xsl] || SOLR Terms Component response || Našeptávač ||
+|| da.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/da.xsl /inc/results/xsl/da.xsl] || SOLR response xml || Časová osa ||
+|| dt.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/home/dt.xsl /inc/home/dt.xsl] || SOLR response xml || Animace "Digitální knihovna obsahuje" na úvodní stránce || 
+|| extInfo.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/extInfo.xsl /inc/results/xsl/extInfo.xsl] || SOLR response xml || Zobrazení informace o nadřazených objektech ve výsledcích vyhledávání ||
+|| facets.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/facets.xsl /inc/results/xsl/facets.xsl] || SOLR response xml || Zobrazení facetu ve výsledcích vyhledávání ||
+|| facets_home.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/home/xsl/facets_home.xsl /inc/home/xsl/facets_home.xsl] || SOLR response xml || Zobrazení záložky "Navigace" na úvodní stránce || 
+|| grouped_results.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/grouped_results.xsl /inc/results/xsl/grouped_results.xsl] || SOLR response xml || Zobrazení centrální části výsledků vyhledávání ||
+|| indexer.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/admin/indexer.xsl /inc/admin/indexer.xsl] || SPARQL response xml || Zobrazení dokumentu v dialogu "indexace dokumentů" ||
+|| insearch.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/insearch.xsl /inc/details/xsl/insearch.xsl] || SOLR response xml || Zobrazení výsledků vyhledávaní uvnitř dokumentu ||
+|| mods.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/mods.xsl /inc/details/xsl/mods.xsl] || BIBLIO-MODS xml || Zobrazení přehledu metadat dokumentu ||
+|| modsFull.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/modsFull.xsl /inc/details/xsl/modsFull.xsl] || BIBLIO-MODS xml || Zobrazení metadat dokumentu ||
+|| not_grouped_results.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/not_grouped_results.xsl /inc/results/xsl/not_grouped_results.xsl] || SOLR response xml || Zobrazení centrální části výsledků vyhledávání ||
+|| results_header.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/results_header.xsl /inc/results/xsl/results_header.xsl] || SOLR response xml || Zobrazení lišty stránkování výsledků vyhledávání ||
+|| results_main_rss.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/results_main_rss.xsl /inc/results/xsl/results_main_rss.xsl] || SOLR response xml || Zobrazení rss výsledků vyhledávání ||
+|| suggest.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/suggest.xsl /inc/details/xsl/suggest.xsl] || SOLR response xml || Zobrazení výsledků vyhledávání souvisejících dokumentů ||
+|| treeNode.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/treeNode.xsl /inc/details/xsl/treeNode.xsl] || SOLR response xml || Zobrazení stromu v detailu ||
+|| uncollapsed.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/uncollapsed.xsl /inc/details/xsl/uncollapsed.xsl] || SOLR response xml || Zobrazení rozbalených výsledků ||
 
 _SOLR response xml_: http://wiki.apache.org/solr/XMLResponseFormat
+
 _SOLR Terms Component response_: http://wiki.apache.org/solr/TermsComponent
 
 ==Indexovací šablona==
