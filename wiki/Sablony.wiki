@@ -29,86 +29,35 @@ _SOLR Terms Component response_: http://wiki.apache.org/solr/TermsComponent
 
 ==Indexovací šablona==
 
-        <field name="fedora.model" type="string" />
-        		select="substring(/foxml:digitalObject/foxml:datastream[@CONTROL_GROUP='X' and @ID='RELS-EXT']/foxml:datastreamVersion[last()]/foxml:xmlContent/rdf:RDF/rdf:Description/fedora-model:hasModel/@rdf:resource, 19)"
-        
-        
-        <field name="document_type" type="string" multiValued="true" />
-        		<xsl:for-each select="/foxml:digitalObject/foxml:datastream/foxml:datastreamVersion[last()]/foxml:xmlContent/oai_dc:dc/dc:type">
-        
-        
-        <field name="handle" type="string" />
-        		select="/foxml:digitalObject/foxml:datastream[@CONTROL_GROUP='X' and @ID='RELS-EXT']/foxml:datastreamVersion[last()]/foxml:xmlContent/rdf:RDF/rdf:Description/kramerius:handle/text()"
-        
-        <field name="status" type="string" />
-        		select="foxml:objectProperties/foxml:property[@NAME='info:fedora/fedora-system:def/model#state']/@VALUE"
-        
-        <field name="created_date" type="date" />
-        		select="foxml:objectProperties/foxml:property[@NAME='info:fedora/fedora-system:def/model#createdDate']/@VALUE"
-        
-        <field name="modified_date" type="date" />
-        		select="foxml:objectProperties/foxml:property[@NAME='info:fedora/fedora-system:def/view#lastModifiedDate']/@VALUE"
-        
-        <field name="datum_str" type="string" /> (extendedFields.java. Uses consecutively foxml up to root document)
-         	mods:part/mods:date/text() ||
-         	mods:originInfo[@transliteration='publisher']/mods:dateIssued/text() ||
-         	mods:originInfo/mods:dateIssued/text()
-        
-        
-        <field name="issn" type="string" />
-		     <xsl:value-of select="mods:identifier[@type='isbn']/text()"/>
-		     <xsl:value-of select="mods:identifier[@type='issn']/text()"/>
-            
-        <field name="mdt" type="string" />
-            <xsl:value-of select="mods:classification[@authority='udc']/text()"/>
-            
-        <field name="ddt" type="string" />            
-            <xsl:value-of select="mods:classification[@authority='ddc']/text()"/>
-            
-            
-        <field name="dostupnost" type="string" />
-        		select="substring(/foxml:digitalObject/foxml:datastream[@CONTROL_GROUP='X' and @ID='RELS-EXT']/foxml:datastreamVersion[last()]/foxml:xmlContent/rdf:RDF/rdf:Description/kramerius:policy, 8)"
-        		
-        <field name="keywords" type="string" multiValued="true"  />
-        <xsl:for-each select="mods:subject/mods:topic/text()">
-        
-        <field name="collection" type="string" multiValued="true"  />
-		     <xsl:for-each  select="$rels/rdf:isMemberOfCollection">
-		         <field name="collection" >
-		             <xsl:value-of select="substring-after(./@rdf:resource, 'info:fedora/')"/>
-		         </field>
-		     </xsl:for-each>  
-        
-        <field name="dc.title" type="text_fgs" />
-		        select="translate(normalize-space(/foxml:digitalObject/foxml:datastream/foxml:datastreamVersion[last()]/foxml:xmlContent/oai_dc:dc/dc:title/text()),'&#xA;','')"
-        
-        <field name="title_sort" type="string" />
-        
-        <field name="dc.creator" type="text_fgs" multiValued="true" />
-		     	<xsl:for-each select="foxml:datastream/foxml:datastreamVersion[last()]/foxml:xmlContent/oai_dc:dc/dc:creator">
-		         <field name="dc.creator" boost="1.5">
-		             <xsl:value-of select="text()"/>
-		         </field>
-		     </xsl:for-each>
-		     
-        <field name="language" type="string" multiValued="true"  />
-				<xsl:for-each select="mods:language/mods:languageTerm/text()">
-				  <field name="language">
-				      <xsl:value-of select="." />
-				  </field>
-				  </xsl:for-each>
-				  
-        <field name="dc.description" type="text_fgs" multiValued="true" />
-        
-        <field name="text_ocr" type="text_general" />
-        		/foxml:digitalObject/foxml:datastream[@ID='TEXT_OCR']/foxml:datastreamVersion[last()]
-        
-        <field name="details" type="string" multiValued="true"  />
-        		xpath per model. Used to show minimal data in tree
-        
-        <field name="img_full_mime" type="string" />
-        		/foxml:digitalObject/foxml:datastream[@ID='IMG_FULL']/foxml:datastreamVersion[last()]/@MIMETYPE"
-        
-        <field name="viewable" type="boolean" />
-        		<xsl:if test="/foxml:digitalObject/foxml:datastream[@ID='IMG_FULL']/foxml:datastreamVersion[last()]">
+Vstupem procesu indexace jsou jednotlivé objekty FOXML, na něž je aplikována indexační XSLT šablona, která data transformuje do tvaru definovaného v [http://code.google.com/p/kramerius/source/browse/trunk/installation/solr/conf/schema.xml konfiguračním schematu SOLR].
+
+Defaultní šablona je v knihovně indexer.jar uvnitř search.war, její obsah je [http://code.google.com/p/kramerius/source/browse/trunk/indexer/src/cz/incad/kramerius/indexer/res/K4.xslt zde]. 
+
+Šablonu je možno předefinovat souborem `K4.xslt` v  adresáři `~/.kramerius4/xsl` 
+
+Následující tabulka obsahuje přehled jednotlivých polí ze schematu SOLR a jejich mapování ve výchozí indexační šabloně:
+
+|| *Pole v `schema.xml`* || *Zdroj dat v FOXML* ||
+||  name="fedora.model" type="string"  || select="substring(/foxml:digitalObject/foxml:datastream[@CONTROL_GROUP='X' and @ID='RELS-EXT']/foxml:datastreamVersion[last()]/foxml:xmlContent/rdf:RDF/rdf:Description/fedora-model:hasModel/@rdf:resource, 19)" ||
+||  name="document_type" type="string" multiValued="true"  || `<`xsl:for-each select="/foxml:digitalObject/foxml:datastream/foxml:datastreamVersion[last()]/foxml:xmlContent/oai_dc:dc/dc:type"/`>` ||
+||  name="handle" type="string"  || select="/foxml:digitalObject/foxml:datastream[@CONTROL_GROUP='X' and @ID='RELS-EXT']/foxml:datastreamVersion[last()]/foxml:xmlContent/rdf:RDF/rdf:Description/kramerius:handle/text()" ||
+||  name="status" type="string"  || select="foxml:objectProperties/foxml:property[@NAME='info:fedora/fedora-system:def/model#state']/@VALUE" ||
+||  name="created_date" type="date"  || select="foxml:objectProperties/foxml:property[@NAME='info:fedora/fedora-system:def/model#createdDate']/@VALUE" ||
+||  name="modified_date" type="date"  || select="foxml:objectProperties/foxml:property[@NAME='info:fedora/fedora-system:def/view#lastModifiedDate']/@VALUE" ||
+||  name="datum_str" type="string"  || ExtendedFields.java. Prochází postupně nadřazené FOXML a vybírá hodnoty mods:part/mods:date/text() nebo mods:originInfo[@transliteration='publisher']/mods:dateIssued/text() nebo mods:originInfo/mods:dateIssued/text() ||
+||  name="issn" type="string"  || `<`xsl:value-of select="mods:identifier[@type='isbn']/text()"/`>` nebo `<`xsl:value-of select="mods:identifier[@type='issn']/text()"/`>` ||
+||  name="mdt" type="string"  || `<`xsl:value-of select="mods:classification[@authority='udc']/text()"/`>` ||
+||  name="ddt" type="string"  || `<`xsl:value-of select="mods:classification[@authority='ddc']/text()"/`>` ||
+||  name="dostupnost" type="string"  || select="substring(/foxml:digitalObject/foxml:datastream[@CONTROL_GROUP='X' and @ID='RELS-EXT']/foxml:datastreamVersion[last()]/foxml:xmlContent/rdf:RDF/rdf:Description/kramerius:policy, 8)" ||
+||  name="keywords" type="string" multiValued="true"   || `<`xsl:for-each select="mods:subject/mods:topic/text()"`>` ||
+||  name="collection" type="string" multiValued="true"   || `<`xsl:for-each  select="$rels/rdf:isMemberOfCollection"`>` `<`field name="collection" `>` `<`xsl:value-of select="substring-after(./@rdf:resource, 'info:fedora/')"/`>` `<`/field`>` `<`/xsl:for-each`>` ||  
+||  name="dc.title" type="text_fgs"  || select="translate(normalize-space(/foxml:digitalObject/foxml:datastream/foxml:datastreamVersion[last()]/foxml:xmlContent/oai_dc:dc/dc:title/text()),'&#xA;','')" ||
+||  name="title_sort" type="string"  ||   ||
+||  name="dc.creator" type="text_fgs" multiValued="true"  || `<`xsl:for-each select="foxml:datastream/foxml:datastreamVersion[last()]/foxml:xmlContent/oai_dc:dc/dc:creator"`>` `<`field name="dc.creator" boost="1.5"`>` `<`xsl:value-of select="text()"/`>` `<`/field`>` `<`/xsl:for-each`>` ||
+||  name="language" type="string" multiValued="true"   || `<`xsl:for-each select="mods:language/mods:languageTerm/text()"`>` `<`field name="language"`>` `<`xsl:value-of select="." /`>` `<`/field`>` `<`/xsl:for-each`>` ||
+||  name="dc.description" type="text_fgs" multiValued="true"  ||    ||
+||  name="text_ocr" type="text_general"  || /foxml:digitalObject/foxml:datastream[@ID='TEXT_OCR']/foxml:datastreamVersion[last()] ||
+||  name="details" type="string" multiValued="true"   || xpath per model. Used to show minimal data in tree ||
+||  name="img_full_mime" type="string"  || /foxml:digitalObject/foxml:datastream[@ID='IMG_FULL']/foxml:datastreamVersion[last()]/@MIMETYPE" ||
+||  name="viewable" type="boolean"  || `<`xsl:if test="/foxml:digitalObject/foxml:datastream[@ID='IMG_FULL']/foxml:datastreamVersion[last()]"/`>` ||
         
