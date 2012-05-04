@@ -21,7 +21,7 @@
 || results_main_rss.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/results_main_rss.xsl /inc/results/xsl/results_main_rss.xsl] || SOLR response xml || Zobrazení rss výsledků vyhledávání ||
 || suggest.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/suggest.xsl /inc/details/xsl/suggest.xsl] || SOLR response xml || Zobrazení výsledků vyhledávání souvisejících dokumentů ||
 || treeNode.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/treeNode.xsl /inc/details/xsl/treeNode.xsl] || SOLR response xml || Zobrazení stromu v detailu ||
-|| uncollapsed.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/uncollapsed.xsl /inc/details/xsl/uncollapsed.xsl] || SOLR response xml || Zobrazení rozbalených výsledků ||
+|| uncollapse.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/uncollapse.xsl /inc/results/xsl/uncollapse.xsl] || SOLR response xml || Zobrazení rozbalených výsledků ||
 
 _SOLR response xml_: http://wiki.apache.org/solr/XMLResponseFormat
 
