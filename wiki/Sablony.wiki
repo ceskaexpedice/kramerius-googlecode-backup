@@ -3,7 +3,7 @@
 
 ==Zobrazovací šablony==
 
-Obsah většiny částí GUI K4 je získáván z FOXML objektů nebo z výsledků dotazů do indexu SOLR a jejich transformací do požadovaného tvaru pomocí XSLT šablon. Výchozí šablony je možno přepsat umístěním vlastní šablony se stejným názvem jako výchozí šablona do adresáře  `~/.kramerius4/xsl`. 
+Obsah většiny částí uživatelského rozhraní K4 je získáván z FOXML objektů nebo z výsledků dotazů do indexu SOLR a jejich transformací do požadovaného tvaru pomocí XSLT šablon. Výchozí šablony je možno přepsat umístěním vlastní šablony se stejným názvem jako má výchozí šablona do adresáře  `~/.kramerius4/xsl`. 
 
 V následující tabulce je uveden přehled názvů všech použitých šablon, odkazů na jejich výchozí obsah, zdroj dat, na který jsou aplikovány a místo v GUI, ve kterém je použit jejich výstup.
 
@@ -13,11 +13,11 @@ _SOLR response xml_: http://wiki.apache.org/solr/XMLResponseFormat
 
 _SOLR Terms Component response_: http://wiki.apache.org/solr/TermsComponent
 
-Konkrétní obsah formátu SOLR K4 je určen konfiguračním souborem schema.xml a šablonou K4.xslt, jejich obsah je posán v sekci [Sablony#Indexovací_šablona]
+Konkrétní obsah formátu SOLR K4 je určen konfiguračním souborem schema.xml a šablonou K4.xslt, jejich obsah je posán níže v sekci Indexovací šablona.
 
 
 || *Název souboru* (v adresáři `~/.kramerius4/xsl)` || *Výchozí šablona* (v souboru `search.war`) || *Vstupní data* || *Použití* || 
-|| alto.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/alto.xsl /inc/details/xsl/alto.xsl] || datastream s ALTO informací || Zobrazení rámečku kolem vyhledávaného slova v náhledu ||
+|| alto.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/alto.xsl /inc/details/xsl/alto.xsl] || FOXML datastream  ALTO  || Zobrazení rámečku kolem vyhledávaného slova v náhledu ||
 || autocomplete.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/home/xsl/autocomplete.xsl /inc/home/xsl/autocomplete.xsl] || SOLR Terms Component response || Našeptávač ||
 || da.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/da.xsl /inc/results/xsl/da.xsl] || SOLR response xml || Časová osa ||
 || dt.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/home/dt.xsl /inc/home/dt.xsl] || SOLR response xml || Animace "Digitální knihovna obsahuje" na úvodní stránce || 
@@ -27,8 +27,8 @@ Konkrétní obsah formátu SOLR K4 je určen konfiguračním souborem schema.xml
 || grouped_results.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/grouped_results.xsl /inc/results/xsl/grouped_results.xsl] || SOLR response xml || Zobrazení centrální části výsledků vyhledávání ||
 || indexer.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/admin/indexer.xsl /inc/admin/indexer.xsl] || SPARQL response xml || Zobrazení dokumentu v dialogu "indexace dokumentů" ||
 || insearch.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/insearch.xsl /inc/details/xsl/insearch.xsl] || SOLR response xml || Zobrazení výsledků vyhledávaní uvnitř dokumentu ||
-|| mods.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/mods.xsl /inc/details/xsl/mods.xsl] || BIBLIO-MODS xml || Zobrazení přehledu metadat dokumentu ||
-|| modsFull.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/modsFull.xsl /inc/details/xsl/modsFull.xsl] || BIBLIO-MODS xml || Zobrazení metadat dokumentu ||
+|| mods.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/mods.xsl /inc/details/xsl/mods.xsl] || FOXML datastream BIBLIO-MODS  || Zobrazení přehledu metadat dokumentu ||
+|| modsFull.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/modsFull.xsl /inc/details/xsl/modsFull.xsl] || FOXML datastream BIBLIO-MODS || Zobrazení metadat dokumentu ||
 || not_grouped_results.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/not_grouped_results.xsl /inc/results/xsl/not_grouped_results.xsl] || SOLR response xml || Zobrazení centrální části výsledků vyhledávání ||
 || results_header.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/results_header.xsl /inc/results/xsl/results_header.xsl] || SOLR response xml || Zobrazení lišty stránkování výsledků vyhledávání ||
 || results_main_rss.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/results_main_rss.xsl /inc/results/xsl/results_main_rss.xsl] || SOLR response xml || Zobrazení rss výsledků vyhledávání ||
