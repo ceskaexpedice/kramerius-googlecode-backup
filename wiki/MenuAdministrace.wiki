@@ -85,13 +85,15 @@ Při použití hodnot external a referenced musí být výstupní adresář konv
 
 Nastavením vlastnosti `convert.originalToJPG=true` (výchozí hodnota je `false`) určíte, že při konverzi dat z K3 budou soubory převedeny z formátu DjVu, případně z formátů podporovaných knihovnou Java Advanced Imaging, do formátu JPG.
 
-== Manuální import dokumentů ve formátu DTD Krameria 3 ==
+== Import dokumentů ve formátu DTD Krameria 3 ==
 
 Příkaz *Konverze a import* je analogický s procesem Import periodik či monografií, je v něm ale vynechána první fáze. Namísto replikace dat z K3 proces projde obsah serverového adresáře definovaného v property `convert.directory`  a jeho podadresářů, pokud obsahují data ve formátu DTD Kramerius3, překonvertuje je do formátu FOXML a naimportuje do Krameria 4. Každý podadresář může obsahovat data (XML + obrázky + OCR) pro jeden titul.
 
-== Manuální import dokumentů ve formátu FOXML Krameria 4 ==
+== Import dokumentů ve formátu FOXML Krameria 4 ==
 
 Příkaz *Import FOXML* projde obsah serverového adresáře `.kramerius4/import` (případně jiného adresáře definovaného v `migration.properties`) a jeho podadresářů a soubory ve formátu FOXML 1.1 naimportuje do Krameria 4. Tuto funkci je možné též použít pro manuální replikaci dat mezi dvěma instancemi systému K4 (data ze zdrojové instance jsou vyexportována příkazem *Export FOXML*).
+
+Property `import.directory` specifikuje buď přímo adresář určený k importu nebo může odkazovat na textový soubor se seznamem adresářů k importu (na každém řádku jeden adresář). 
 
 =Indexace dokumentů=
 
