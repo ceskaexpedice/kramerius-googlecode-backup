@@ -190,7 +190,7 @@ Příklady definic v RELS-EXT:
 <kramerius4:tiles-url>http://imageserver.mzk.cz/mzk03/001/066/607/2619320306/1</kramerius4:tiles-url>
 </pre>
 
-Pokud není obrázek spravován přímo IIP serverem, ale je uložen ve fedoře jako "Managed Content Stream", ze kterého si jej IIP server načítá, je potřeba do URL v <kramerius4:tiles-url> vložit fyzickou adresu souboru, která ale není v okamžiku vytváření importního FOXML souboru známa. Kramerius 4 umožňuje získat relativní adresu streamu pomocí interpretované proměnné $internalstream$,která může být přímo součástí URL adresy. Adresa je relativní vůči kořenovému adresáři fedory, kde fedora uchovává data. Standardně se tento kořenový adresář nachází $FEDORA_HOME/data
+Pokud není obrázek spravován přímo IIP serverem, ale je uložen ve fedoře jako "Managed Content Stream", ze kterého si jej IIP server načítá, je potřeba do URL v <pre><kramerius4:tiles-url></pre> vložit fyzickou adresu souboru, která ale není v okamžiku vytváření importního FOXML souboru známa. Kramerius 4 umožňuje získat relativní adresu streamu pomocí interpretované proměnné $internalstream$,která může být přímo součástí URL adresy. Adresa je relativní vůči kořenovému adresáři fedory, kde fedora uchovává data. Standardně se tento kořenový adresář nachází $FEDORA_HOME/data
 
 Příklad definice v RELS-EXT: 
 
