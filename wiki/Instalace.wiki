@@ -185,15 +185,16 @@ Zde slouží Kramerius jako prostředník. Klientské dotazy na jednotlivé dla�
 
 Příklady definic v RELS-EXT:
 
-<kramerius4:tiles-url>http://192.168.1.1/fcgi-bin/iipsrv.fcgi?DeepZoom=/mzk03/001/042/654/2619265924.jp2</kramerius4:tiles>
+<pre><kramerius4:tiles-url>http://192.168.1.1/fcgi-bin/iipsrv.fcgi?DeepZoom=/mzk03/001/042/654/2619265924.jp2</kramerius4:tiles>
 
 <kramerius4:tiles-url>http://imageserver.mzk.cz/mzk03/001/066/607/2619320306/1</kramerius4:tiles-url>
+</pre>
 
 Pokud není obrázek spravován přímo IIP serverem, ale je uložen ve fedoře jako "Managed Content Stream", ze kterého si jej IIP server načítá, je potřeba do URL v <kramerius4:tiles-url> vložit fyzickou adresu souboru, která ale není v okamžiku vytváření importního FOXML souboru známa. Kramerius 4 umožňuje získat relativní adresu streamu pomocí interpretované proměnné $internalstream$,která může být přímo součástí URL adresy. Adresa je relativní vůči kořenovému adresáři fedory, kde fedora uchovává data. Standardně se tento kořenový adresář nachází $FEDORA_HOME/data
 
 Příklad definice v RELS-EXT: 
 
-<kramerius4:tiles-url>http://192.168.1.1/fcgi-bin/iipsrv.fcgi?DeepZoom=/mnt/fedora_data_folder/$internalstream$</kramerius4:tiles-url>
+<pre><kramerius4:tiles-url>http://192.168.1.1/fcgi-bin/iipsrv.fcgi?DeepZoom=/mnt/fedora_data_folder/$internalstream$</kramerius4:tiles-url></pre>
 
 Pozn.: Předpokládá se, že IIP server má datový adresář fedory připojený jako /mnt/fedora_data_folder/
 
@@ -205,7 +206,7 @@ Tato interní cache vlastně nahrazuje funkci externího image serveru. V tomto 
 
 Příklad:
 
-<kramerius4:tiles-url>kramerius4://deepZoomCache</kramerius4:tiles-url>
+<pre><kramerius4:tiles-url>kramerius4://deepZoomCache</kramerius4:tiles-url></pre>
 
 Pozn.: Je samozřejmě nejdříve nutné cache naplnit a to akcí "Generování Deep Zoom Cache..." v administrátorském menu aplikace Kramerius 4.  
 
