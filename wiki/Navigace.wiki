@@ -20,6 +20,8 @@
 
 * [Servlety Přehled servletů]
 
+* [Sablony Šablonovací systém]
+
 * [Changelog Přehled změn]
 
 * [OptimalizaceRelaci Optimalizace relací v Kramerius 4]  
