@@ -3,6 +3,19 @@
 
 ==Zobrazovací šablony==
 
+Obsah většiny částí GUI K4 je získáván z FOXML objektů nebo z výsledků dotazů do indexu SOLR a jejich transformací do požadovaného tvaru pomocí XSLT šablon. Výchozí šablony je možno přepsat umístěním vlastní šablony se stejným názvem jako výchozí šablona do adresáře  `~/.kramerius4/xsl`. 
+
+V následující tabulce je uveden přehled názvů všech použitých šablon, odkazů na jejich výchozí obsah, zdroj dat, na který jsou aplikovány a místo v GUI, ve kterém je použit jejich výstup.
+
+Zdrojem dat je buď XML obsah uvedeného datastreamu z FOXML objektu, jeho formát můžete najít v odpovídající veřejné specifikaci (MODS, ALTO). Pokud je vstupem dat výsledek dotazu do indexu SOLR,  jeho obecný tvar je pospán zde:
+
+_SOLR response xml_: http://wiki.apache.org/solr/XMLResponseFormat
+
+_SOLR Terms Component response_: http://wiki.apache.org/solr/TermsComponent
+
+Konkrétní obsah formátu SOLR K4 je určen konfiguračním souborem schema.xml a šablonou K4.xslt, jejich obsah je posán v sekci [Sablony#Indexovací_šablona]
+
+
 || *Název souboru* (v adresáři `~/.kramerius4/xsl)` || *Výchozí šablona* (v souboru `search.war`) || *Vstupní data* || *Použití* || 
 || alto.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/alto.xsl /inc/details/xsl/alto.xsl] || datastream s ALTO informací || Zobrazení rámečku kolem vyhledávaného slova v náhledu ||
 || autocomplete.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/home/xsl/autocomplete.xsl /inc/home/xsl/autocomplete.xsl] || SOLR Terms Component response || Našeptávač ||
@@ -23,9 +36,6 @@
 || treeNode.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/details/xsl/treeNode.xsl /inc/details/xsl/treeNode.xsl] || SOLR response xml || Zobrazení stromu v detailu ||
 || uncollapsed.xsl || [http://code.google.com/p/kramerius/source/browse/trunk/search/web/inc/results/xsl/uncollapsed.xsl /inc/results/xsl/uncollapsed.xsl] || SOLR response xml || Zobrazení rozbalených výsledků ||
 
-_SOLR response xml_: http://wiki.apache.org/solr/XMLResponseFormat
-
-_SOLR Terms Component response_: http://wiki.apache.org/solr/TermsComponent
 
 ==Indexovací šablona==
 
