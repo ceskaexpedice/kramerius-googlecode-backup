@@ -3,6 +3,16 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.5.2 (r3661)=
+
+  * Issue 149 - opraveno třídění písmen s diakritikou
+  * Issue 274 - doplněna dokumentace akcí v přístupových právech
+  * Issue 298 - název dc.title ve stromu a v zobrazení stránky doplněn o jméno modelu
+  * Issue 276 - odkazy pro sociální sítě a RSS změněny na persistentní URL
+  * Issue 295 - rozklikávání dávkových procesů v IE
+  * Issue 293 - kopírování z logu procesu
+  * Issue 294 - opraven problém při importu celé struktury FOXML dokumentů s externími referencemi
+
 =Verze 4.5.1 (r3508)=
 
   * Issue 291 - opraven problém s indexací dokumentů, jejichž čas modifikace neobsahuje milisekundy
