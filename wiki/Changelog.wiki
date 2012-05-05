@@ -5,6 +5,33 @@
 
 =Verze 4.5.2 (r3661)=
 
+  * Issue 271 - dokumentace doplněna o přehled šablon XSLT
+  * Issue 325 - doplněna podpora zobrazování metadat MODS podle nové specifikace NDK
+  * Issue 318 - opraven problém při replikaci dokumentů z K3, které měly mezery v názvech obrazových souborů
+  * Issue 324 - časová osa zpracuje i dokumenty s chybnými datumy (<1000)
+  * Issue 280 - upraveno zadávání stran pro generování PDF
+  * Issue 309 - opraveno zobrazení ukončených dávkových procesů
+  * Issue 311 - zjednodušeno vytváření virtuálních sbírek
+  * Issue 228 - opraveny nedostatky v emailu odesílaném nástrojem pro hlášení chyb
+  * Issue 313 - opravena chyba v kritériu přístupového práva Pohyblivá zeď
+  * Issue 306 - opraveno zobrazování výsledků replikace K3->K4
+  * Issue 264 - pořadí poduzlů ve stromu dokumentu důsledně odpovídá pořadí elementů v RELS-EXT
+  * Issue 251 - opraveno zobrazování počtu dokumentů s modely bez lokalizačního klíče
+  * Issue 246 - opraven problém s PDF dokumenty v NTK
+  * Issue 249 - opraveno chování "abeced" v seznamu titulů a autorů
+  * Issue 281, 222, 282 - rozvržení stránek (výška) reaguje na změnu velikosti okna a skrývání prvků 
+  * Issue 290 - opraveny pozice tlačítek Logy, Zastavit a Smazat v přehledu procesů 
+  * Issue 277, 292 - opraveno chybné zobrazování neúspěšných procesů indexace
+  * Issue 303 - opraveno ořezávání textů ve výsledcích replikace K3->K4
+  * Issue 300 - doplněn chybějící text při spouštění procesu změna viditelnosti
+  * Issue 301 - příkaz Tisk je nyní přístupný pouze pro autorizované uživatele
+  * Issue 211 - doplněno potvrzení pro tlačítka Zastavit a Smazat ve správě procesů
+  * Issue 273 - opravena chyba při zobrazování PDF
+  * Issue 288  - opraveno opakování poslední položky v seznamu autorů a titulů
+  * Issue 220, 289 - záložka Tituly obsahuje pouze názvy dokumentů nejvyšší úrovně 
+  * Issue 207, 263 - opravy časové osy
+  * Issue 172 - zobrazení jazyků u vícejazyčných dokumentů
+  * Issue 160 - zobrazeno datum u rozbalených výsledků vyhledávání
   * Issue 149 - opraveno třídění písmen s diakritikou
   * Issue 274 - doplněna dokumentace akcí v přístupových právech
   * Issue 298 - název dc.title ve stromu a v zobrazení stránky doplněn o jméno modelu
