@@ -19,11 +19,11 @@ Hlášení o chybách a požadavky na novou funkcionalitu zadávejte pomocí for
 
 Prosíme o stručnost, věcnost a správné zařazení.
 Typ
-•	Defect – chyba software
-•	Enhancement – požadavek na rozšíření
-•	Task – úkol bez zásahu do kódu nebo dokumentace
-•	Review – požadavek na revizi kódu
-•	Other – ostatní
+  * 	Defect – chyba software
+  * 	Enhancement – požadavek na rozšíření
+  * 	Task – úkol bez zásahu do kódu nebo dokumentace
+  * 	Review – požadavek na revizi kódu
+  * 	Other – ostatní
 
 Priorita
 •	Critical - pro požadavky vyžadující okamžitou reakci a vytvoření záplaty pro aktuální verzi 
