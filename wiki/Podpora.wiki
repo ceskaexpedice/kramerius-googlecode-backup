@@ -19,24 +19,24 @@ Hlášení o chybách a požadavky na novou funkcionalitu zadávejte pomocí for
 
 Prosíme o stručnost, věcnost a správné zařazení.
 
-Typ
+===Typ===
   * 	Defect – chyba software
   * 	Enhancement – požadavek na rozšíření
   * 	Task – úkol bez zásahu do kódu nebo dokumentace
   * 	Review – požadavek na revizi kódu
   * 	Other – ostatní
 
-Priorita
+===Priorita===
   * 	Critical - pro požadavky vyžadující okamžitou reakci a vytvoření záplaty pro aktuální verzi 
   * 	Medium - pro požadavky vyžadující řešení v nejbližší plánované verzi 
   * 	Low - pro požadavky, které snesou odklad do případné pozdější verze 
 
-Status
-  *   * 	Otevřený
+===Status===
+  *   *Otevřený*
   * 	New – výchozí stav po nahlášení
   * 	Accepted – problém reprodukován
   * 	Started – započata práce
-  *   * 	Uzavřený
+  *   *Uzavřený*
   * 	Fixed – opraveno, změna kódu
   * 	Verified
   * 	Invalid – není platným hlášením
