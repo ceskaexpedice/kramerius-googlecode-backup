@@ -32,12 +32,12 @@ Prosíme o stručnost, věcnost a správné zařazení.
   * 	Low - pro požadavky, které snesou odklad do případné pozdější verze 
 
 ===Status===
- *Otevřený*
+*otevřený*
 
   * 	New – výchozí stav po nahlášení
   * 	Accepted – problém reprodukován
   * 	Started – započata práce
- *Uzavřený*
+*uzavřený*
 
   * 	Fixed – opraveno, změna kódu
   * 	Verified
