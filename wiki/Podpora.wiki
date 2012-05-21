@@ -32,11 +32,11 @@ Prosíme o stručnost, věcnost a správné zařazení.
   * 	Low - pro požadavky, které snesou odklad do případné pozdější verze 
 
 ===Status===
-  *Otevřený*
+ * Otevřený*
   * 	New – výchozí stav po nahlášení
   * 	Accepted – problém reprodukován
   * 	Started – započata práce
-  *Uzavřený*
+ * Uzavřený*
   * 	Fixed – opraveno, změna kódu
   * 	Verified
   * 	Invalid – není platným hlášením
