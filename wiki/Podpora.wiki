@@ -32,17 +32,17 @@ Prosíme o stručnost, věcnost a správné zařazení.
   * 	Low - pro požadavky, které snesou odklad do případné pozdější verze 
 
 ===Status===
-  *   *Otevřený*
+  *Otevřený*
   * 	New – výchozí stav po nahlášení
   * 	Accepted – problém reprodukován
   * 	Started – započata práce
-  *   *Uzavřený*
+  *Uzavřený*
   * 	Fixed – opraveno, změna kódu
   * 	Verified
   * 	Invalid – není platným hlášením
   * 	Duplicate – již existuje
-  * 	WontFix – rozhodnuto, že se nebude opravovat
-  * 	OnHold – odloženo 
+  * 	Wontfix – rozhodnuto, že se nebude opravovat
+  * 	Onhold – odloženo 
   * 	Done - dokončeno
 
 Pole Status nastavte na New, pole Owner nevyplňujte.
