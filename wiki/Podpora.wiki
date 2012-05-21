@@ -1,7 +1,7 @@
 #summary One-sentence summary of this page.
 
 ==PODPORA SYSTÉMU K4==
-Systém Kramerius je OpenSource řešení. 
+Systém Kramerius je opensource řešení. 
 SW podporu poskytuje vývojový tým.
 Pro garantované termíny musí mít instituce uzavřenu samostatnou smlouvu o podpoře.
 
@@ -18,6 +18,7 @@ Správa a dohled instalovaného systému může být zajištěna na základě in
 Hlášení o chybách a požadavky na novou funkcionalitu zadávejte pomocí formuláře New Issue v sekci Issues. 
 
 Prosíme o stručnost, věcnost a správné zařazení.
+
 Typ
   * 	Defect – chyba software
   * 	Enhancement – požadavek na rozšíření
@@ -26,22 +27,23 @@ Typ
   * 	Other – ostatní
 
 Priorita
-•	Critical - pro požadavky vyžadující okamžitou reakci a vytvoření záplaty pro aktuální verzi 
-•	Medium - pro požadavky vyžadující řešení v nejbližší plánované verzi 
-•	Low - pro požadavky, které snesou odklad do případné pozdější verze 
+  * 	Critical - pro požadavky vyžadující okamžitou reakci a vytvoření záplaty pro aktuální verzi 
+  * 	Medium - pro požadavky vyžadující řešení v nejbližší plánované verzi 
+  * 	Low - pro požadavky, které snesou odklad do případné pozdější verze 
+
 Status
-•	Otevřený
-o	New – výchozí stav po nahlášení
-o	Accepted – problém reprodukován
-o	Started – započata práce
-•	Uzavřený
-o	Fixed – opraveno, změna kódu
-o	Verified
-o	Invalid – není platným hlášením
-o	Duplicate – již existuje
-o	WontFix – rozhodnuto, že se nebude opravovat
-o	OnHold – odloženo 
-o	Done - dokončeno
+  *   * 	Otevřený
+  * 	New – výchozí stav po nahlášení
+  * 	Accepted – problém reprodukován
+  * 	Started – započata práce
+  *   * 	Uzavřený
+  * 	Fixed – opraveno, změna kódu
+  * 	Verified
+  * 	Invalid – není platným hlášením
+  * 	Duplicate – již existuje
+  * 	WontFix – rozhodnuto, že se nebude opravovat
+  * 	OnHold – odloženo 
+  * 	Done - dokončeno
 
 Pole Status nastavte na New, pole Owner nevyplňujte.
 
