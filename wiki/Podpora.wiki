@@ -1,17 +1,18 @@
 #summary One-sentence summary of this page.
 
 ==PODPORA SYSTÉMU K4==
-Systém Kramerius je OpenSource řešení. SW podporu poskytuje vývojový tým.
+Systém Kramerius je OpenSource řešení. 
+SW podporu poskytuje vývojový tým.
 Pro garantované termíny musí mít instituce uzavřenu samostatnou smlouvu o podpoře.
 
 ==INSTALACE K4==
 Instalační postup a konfigurace systému jsou popsány na Wiki.
 
-Službu instalace lze také objednat na www.unidata.cz/system-kramerius 
-Distribuovanou instalaci u společnosti Incad, která zajišťuje vývoj K4 www.incad.cz 
+Službu instalace lze také objednat na [http://www.unidata.cz/system-kramerius] 
+Distribuovanou instalaci u společnosti Incad, která zajišťuje vývoj K4 [http://www.incad.cz]
 
 ==SPRÁVA SYSTÉMU K4==
-Správu a dohled systému lze domluvit individuálně.
+Správa a dohled instalovaného systému může být zajištěna na základě individuální dohody.[http://www.incad.cz]
 
 ==HLÁŠENÍ A OPRAVY CHYB==
 Hlášení o chybách a požadavky na novou funkcionalitu zadávejte pomocí formuláře New Issue v sekci Issues. 
@@ -46,6 +47,7 @@ Pole Status nastavte na New, pole Owner nevyplňujte.
 
 ==VÝVOJOVÉ PRÁCE==
 Úkoly pro dané období domlouvá realizační tým.
-V případě specifického požadavku, lze podmínky vývoje dohodnout individuálně. www.incad.cz 
+V případě specifického požadavku, lze podmínky vývoje dohodnout individuálně. 
 
-Přejímání kódu třetí strany, podlého schválení a revizi kódu. 
+Přejímání kódu třetí strany, podléhá schválení zařazení funkcinality realizační skupinou a revizi kódu programátory. 
+[http://www.incad.cz]
