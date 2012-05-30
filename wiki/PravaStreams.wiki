@@ -1,4 +1,3 @@
-#summary 
 <wiki:toc max_depth="2" />
 
 = O článku =
@@ -19,7 +18,7 @@ Příklad:
 }}} 
 
 
-== Dědičnost mezi chráněnými objetky spefikující datastream ==
+== Dědičnost mezi chráněnými objekty specifikující datastream ==
 Zde je situace o něco komplikovanější než tomu bylo u prostých objektů. Systém při posuzování nepostupuje po celých objektech ale po streamech u daných objektů v hierarchii až k objektu REPOSITORY. Situaci lépe ilustruje následující obrázek. 
 
 
