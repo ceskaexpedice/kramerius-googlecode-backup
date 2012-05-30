@@ -4,7 +4,7 @@
 Článek popisuje rozšíření systému práv o možnost zviditelnění technických a administrativních metadat pouze autorizovaným uživatelům. 
 
 = Popis =
-V systému práv je základní chráněnou jednotku objekt. Může to být jakýkykoliv objekt. Stránka, monografie, periodikum, atd..  Pro 
+V systému práv je základní chráněnou jednotku objekt. Může to být jakýkykoliv objekt: stránka, monografie, periodikum, atd..  Pro 
 potřeby autorizace přístupu na jednotlivé datastreamy (Issue 186) bylo nutné v určitých případech jemněji chráněný objekt granulovat. Vzniklo rozšíření, které umožňuje chránit jednotlivé části objektu - jednotlivé streamy.
 
 = Chráněný objekt v db =
