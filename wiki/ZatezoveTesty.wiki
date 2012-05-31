@@ -32,5 +32,6 @@ Po skončení testu budou všechny použité databáze, indexy a úložiště sm
   * vyhledání ze záložky Tituly: 1 s
   * vyhledání  fulltext "zlatá": 1 s
 
-Import ze samostatného procesu bez indexace: 1 dávka (635 objektů) cca 17 s. (37 obj/s)
-Import z dvou paralalně běžících procesů: 1 dávka(635 objektů) cca 25s (48 obj/s)
+2. Import ze samostatného procesu bez indexace: 1 dávka (635 objektů) cca 17 s. (37 obj/s)
+
+3. Import z dvou paralalně běžících procesů: 1 dávka(635 objektů) cca 25s (48 obj/s)
