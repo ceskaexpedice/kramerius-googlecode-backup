@@ -31,6 +31,7 @@ Po skončení testu budou všechny použité databáze, indexy a úložiště sm
   * otevření titulu : 2.5s
   * vyhledání ze záložky Tituly: 1 s
   * vyhledání  fulltext "zlatá": 1 s
+  * document indexation (browse model): 3s
 
 2. Import ze samostatného procesu bez indexace: 1 dávka (635 objektů) cca 17 s. (37 obj/s)
 
