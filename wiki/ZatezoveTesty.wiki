@@ -24,3 +24,10 @@ Záznamy budou multiplikovány  s rozdílným UUID pomocí skriptu a importován
 Po každé dávce importu bude provedena indexace a  ověřena odezva systému.
 V případě zpomalení odezvy bude příčina analyzována a navrženo řešení.
 Po skončení testu budou všechny použité databáze, indexy a úložiště smazány.
+
+==Měření==
+
+1. Počáteční stav (6350 objektů)
+  * otevření titulu : 2.5s
+  * vyhledání ze záložky Tituly: 1 s
+  * vyhledání  fulltext "zlatá": 1 s
