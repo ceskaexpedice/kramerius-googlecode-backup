@@ -1,13 +1,4 @@
-#summary One-sentence summary of this page.
+=Mailová konference= 
+pro administrátory systému Kramerius: kramerius@lib.cas.cz První příhlášení do konference: https://mail.lib.cas.cz/mailman/listinfo/kramerius
 
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Do mailové konference je možné posílat hlášení chyb, návrhy na vylepšení a vývoj i na přispění ke zdrojovému kódu Krameria. 
