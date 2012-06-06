@@ -1,13 +1,9 @@
-#summary One-sentence summary of this page.
+=Vývojový tým:=
 
-= Introduction =
+Vývojový tým tvoří zaměstnanci Knihovny AV ČR, Národní knihovny ČR a Moravské zemské knihovny v Brně. Technologickým partnerem je na základě výběrového řízení firma INCAD, s.r.o.
 
-Add your content here.
+Garantem současného vývoje je Knihovna Akademie věd ČR zastoupená ředitelem Ing. Martinem Lhotákem.
 
+Kontakt: Ing. Martin Lhoták, Knihovna AV ČR, v. v. i., Národní 3, 115 22 Praha 1
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+lhotak@knav.cz 
