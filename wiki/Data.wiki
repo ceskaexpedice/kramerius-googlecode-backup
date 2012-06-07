@@ -403,3 +403,7 @@ IMG_FULL, IMG_THUMB, IMG_FULL_ADM, TEXT_OCR, TEXT_OCR_ADM
 =Budoucí definice datových formátů=
 
 Od roku 2012 budou v platnosti nové standardy datových formátů pro digitalizaci, vyvíjené v NK. K dispozici jsou na této adrese: http://ndk.cz/digitalizace/nove-standardy-digitalizace-od-roku-2011/anl-zadani-verze-1.0
+
+=Optimalizace relací=
+
+V rámci dalšího vývoje K4 vznikl dokument [OptimalizaceRelaci Optimalizace relací v Kramerius 4]  
