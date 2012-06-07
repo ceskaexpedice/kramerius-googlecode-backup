@@ -5,3 +5,4 @@
 
 = Přehled modulů =
 
+http://kramerius.googlecode.com/svn/wiki/Modules.png
