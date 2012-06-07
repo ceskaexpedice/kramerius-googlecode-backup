@@ -2,7 +2,55 @@
 
 = Úvod =
 
+Kramerius 4 je standardní webová aplikace v jazyce Java odpovídající specifikacím Servlet API 2.4 a Java Server Pages 1.1. Aplikace je definována v hlavním modulu [http://code.google.com/p/kramerius/source/browse/#svn%2Ftrunk%2Fsearch  search].
 
 = Přehled modulů =
 
 http://kramerius.googlecode.com/svn/wiki/Modules.png
+
+Kromě hlavního modulu aplikace [http://code.google.com/p/kramerius/source/browse/#svn%2Ftrunk%2Fsearch  search] je systém Kramerius 4 tvořen následujícími moduly:
+
+=== Společné moduly===
+  
+  * common
+  * fedora-api
+  * security-core			
+
+=== Moduly administrátorských procesů===
+
+  * import
+  * import-mets		
+  * indexer			
+  * static-export
+
+Podpůrné moduly procesů import a import-mets:
+
+  * import-cmd-tool
+  * import-jaxb-dc		
+  * import-jaxb-mets
+  * import-jaxb-mods	
+  * import-jaxb-periodical	
+  * import-jaxb		
+
+
+=== Moduly externích administrátorských aplikací===
+
+  * editor
+  * rightseditor
+
+
+= Build a závislosti =
+
+Kramerius4 využívá standardní buildovací systém [http://maven.apache.org Maven]. Základní deskriptor [http://code.google.com/p/kramerius/source/browse/trunk/pom.xml POM] aplikace je v kořenovém adresáři projektu, slouží zároveň jako multi-module POM i parent POM pro jednotlivé moduly systému.
+
+Distribuční archiv search.war lze vytvořit příkazem `mvn install` v kořenovém adresáři projektu. Potřebné knihovny závislostí jsou automaticky staženy z centrálního úložiště systému Maven, s výjimkou následujících  knihoven:
+
+  * djvuframe-0.8.09
+  * javadjvu-0.8.09
+  * aplikator-1.0
+  * jai_core-1.1.3
+  * jai_imageio-1.1
+  * gwt-dnd-3.0.1
+  * gwt-servlet-2.0.0  
+
+Tyto knihovny je třeba před prvním buildem aplikace manuálně nainstalovat do lokálního úložiště maven. Soubory knihoven  jsou k dispozici v sekci Downloads.
