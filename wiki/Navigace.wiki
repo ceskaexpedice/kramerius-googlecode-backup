@@ -22,6 +22,8 @@
 
 * [Sablony Šablonovací systém]
 
+* [StrukturaAplikace Struktura aplikace (pro vývojáře)]
+
 * [Changelog Přehled změn]
 
 * [OptimalizaceRelaci Optimalizace relací v Kramerius 4]  
