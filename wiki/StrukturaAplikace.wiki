@@ -5,10 +5,10 @@
 Kramerius 4 je standardní webová aplikace v jazyce Java odpovídající specifikacím Servlet API 2.4 a Java Server Pages 1.1. Aplikace je definována v hlavním modulu [http://code.google.com/p/kramerius/source/browse/#svn%2Ftrunk%2Fsearch  search].
 
 *Způsob dokumentace projektu*
-  *Popis obecné struktury aplikace K4
-  *Popis jednotlivých modulů a informace o jejich účelu 
-  *Popis hlavních tříd, které mají dokumentované public API 
-  *Popis, jak postupovat, když bude někdo chtít přispívat do kódu
+  * Popis obecné struktury aplikace K4
+  * Popis jednotlivých modulů a informace o jejich účelu 
+  * Popis hlavních tříd, které mají dokumentované public API 
+  * Popis, jak postupovat, když bude někdo chtít přispívat do kódu
 
 = Přehled modulů =
 
