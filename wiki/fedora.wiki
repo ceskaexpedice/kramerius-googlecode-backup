@@ -10,4 +10,21 @@ Souborové systémy jsou schopny uložit dostatečný počet souborů a neměly 
 ==Probíhající zátěžové testy==
 
 V rámci dohody s NKČR probíhají od 6/2012 zátěžové testy. Účelem je ověřit schopnost systému pojmout 30 a 50 milionů objektů.
+
+
+===Postup===
+
+Zvolené tituly
+  * Monografie: Kniha zlatá (441 objektů)
+  * Periodikum: Jurendes Mahrischer Wanderer (1 ročník, 194 objektů)
+
+Test bude proveden na nově instalovaných virtuálních serverech v Klementinu (kdbkram1, kfedkram1 a ksolrkram1). 
+
+Záznamy budou multiplikovány  s rozdílným UUID pomocí skriptu a importovány v dávkách po 1600 multiplikacích (1 016 000 FOXML objektů). Multiplikované objekty budou sdílet stejné refernece na externí soubory s obrázky a OCR. Cílem testu je ověřit funkčnost Fedory a indexů, nikoli externího datového úložiště. 
+
+Po každé dávce importu bude provedena indexace a  ověřena odezva systému.
+V případě zpomalení odezvy bude příčina analyzována a navrženo řešení.
+Po skončení testu budou všechny použité databáze, indexy a úložiště smazány.
+
+
 Závěry budou zveřejněny zde.
