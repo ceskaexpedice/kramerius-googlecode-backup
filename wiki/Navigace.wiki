@@ -22,6 +22,8 @@
 
 * [StrukturaAplikace Struktura aplikace (pro vývojáře)]
 
+* [fedora Zátěžové testy]
+
 * [Changelog Přehled změn]
 
 * [PlanovanyRozvoj Plánovaný rozvoj]
