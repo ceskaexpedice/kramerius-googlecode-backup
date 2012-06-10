@@ -18,31 +18,41 @@ Kromě hlavního modulu aplikace [http://code.google.com/p/kramerius/source/brow
 
 === Společné moduly===
   
-  * common
-  * fedora-api
-  * security-core			
+  * common - služby sdílené jednotlivými moduly
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/FedoraAccess.java FedoraAccess] - přístup ke službám REST API fedora commons
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/SolrAccess.java  SolrAccess] - přístup ke službám indexu SOLR
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fdatabase database] - správa verzí databáze K4
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fimaging imaging] - podpora formátu DeepZoom
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fpdf pdf] - online generování PDF
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fprinting printing] - tisková fronta na serveru
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fprocesses processes] - API pro správu administrátorských procesů
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fsecurity security] - API pro správu přístupových práv
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fservice service] - ostatní sdílené služby
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fvirtualcollections virtualcollections] - podpora virtuálních sbírek
+  * fedora-api - mapování SOAP API-M fedora commons
+  * security-core - společné služby správy uživatelů a rolí			
 
 === Moduly administrátorských procesů===
 
-  * import
-  * import-mets		
-  * indexer			
-  * static-export
+  * import - třídy pro spouštění importních procesů z formátu K3 a FOXML
+  * import-mets - konvertor z nové specifikace formátu METS		
+  * indexer - proces indexace dokumentů v indexu SOLR			
+  * static-export - export dokumentů ve formátu PDF na CD a DVD
 
 Podpůrné moduly procesů import a import-mets:
 
-  * import-cmd-tool
-  * import-jaxb-dc		
-  * import-jaxb-mets
-  * import-jaxb-mods	
-  * import-jaxb-periodical	
-  * import-jaxb		
+  * import-cmd-tool - konvertor z formátu K3, generátor FOXML
+  * import-jaxb-dc - JAXB mapování schematu Dublin Core	
+  * import-jaxb-mets - JAXB mapování schematu METS
+  * import-jaxb-mods - JAXB mapování schematu MODS	
+  * import-jaxb-periodical - JAXB mapování schematu periodik Kramerius3 	
+  * import-jaxb	- JAXB mapování schematu monografií Kramerius3	
 
 
 === Moduly externích administrátorských aplikací===
 
-  * editor
-  * rightseditor
+  * editor - grafický editor pořadí součástí v datastreamu RELS-EXT 
+  * rightseditor - editor uživatelských účtů  využitelný při použití databázového security realmu pro aplikační servery bez vlastní správy uživatelů (Tomcat)
 
 
 = Build a závislosti =
