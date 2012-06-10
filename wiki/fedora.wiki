@@ -7,6 +7,6 @@ V současné době není implementována podpora uložení dat do databáze. Př
 
 Souborové systémy jsou schopny uložit dostatečný počet souborů a neměly by být omezujícím faktorem pro úložiště. Např. EXT4 je schopen uložit 4 miliardy souborů (http://cs.wikipedia.org/wiki/Ext4)
 
-
+*zátěžové testy*
 V rámci dohody s NKČR probíhají od 6/2012 zátěžové testy. Účelem je ověřit schopnost systému pojmout 30 a 50 milionů objektů.
-Závěry budou zveřejněny zde na GoogleCode Kramerius.
+Závěry budou zveřejněny zde.
