@@ -9,6 +9,25 @@
   * vyhledání  fulltext "zlatá": 1 s
   * document indexation (browse model): 3s
 
-2. Import ze samostatného procesu bez indexace: 1 dávka (635 objektů) cca 17 s. (37 obj/s)
+2. Import ze samostatného procesu bez indexace: 1 dávka (635 objektů) cca 17 s. (37 obj/s) - RI Mulgara
 
-3. Import z dvou paralalně běžících procesů: 1 dávka(635 objektů) cca 25s (48 obj/s)
+3. Import z dvou paralalně běžících procesů: 1 dávka(1270 objektů) cca 25s (50 obj/s) - RI Mulgara
+
+RI Mulgara při paralelním importu padá kvůli memory leaku, další memory leak se objevoval při použití s OAI providerem. Instalace překonfigurována na použití MPT triplestore. Import opakován:
+
+2a.  Import ze samostatného procesu bez indexace: 1 dávka (635 objektů) cca 30 s. (20 obj/s) - RI MPTStore
+
+3a. Import z dvou paralalně běžících procesů: 1 dávka(1270 objektů) cca 50s (25 obj/s) - RI MPTstore
+
+Při použití indexu MPT store tedy nedochází k memory leakům, ale paralelní import nepřináší prakticky žádné zrychlení a celkově je import téměř 2x pomalejší než při použití RI Mulgara.
+
+Import cca 1M objektů se zapnutým indexem MPT store trval cca 12 hodin.
+
+Rebuild RI MPT store s 1M objektů trval přibližně 20 hodin.
+
+4. Rychlost odezvy GUI při 1M objektů:
+  * otevření titulu: 3s
+  * vyhledání ze záložky Tituly: 1.5 s
+ * vyhledání  fulltext "zlatá": 1 s
+  * document indexation (browse model): 2.5s
+  
