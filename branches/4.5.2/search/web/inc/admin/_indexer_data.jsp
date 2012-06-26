@@ -34,7 +34,7 @@
 </c:if>
 <c:set var="order_dir" value="${param.sort_dir}" />
 <c:if test="${empty param.sort_dir}">
-    <c:set var="order_dir" value="asc" />
+    <c:set var="order_dir" value="desc" />
 </c:if>
 <%
     String[] models = kconfig.getPropertyList("fedora.topLevelModels");
@@ -176,6 +176,8 @@ function nextFedoraDocuments(){
     loadFedoraDocuments($('#top_models_select').val(), parseInt($('#indexer_offset').val())+rows);
 }
 function orderDocuments(field){
+    var sort_dir = $("#indexer_order_dir").val()=="asc"?"desc":"asc";
+    $("#indexer_order_dir").val(sort_dir);
     loadFedoraDocuments($('#top_models_select').val(), 0, field);
 }
 
@@ -201,7 +203,7 @@ function loadFedoraDocuments(model, offset, sort, rows){
     if(!model) model = $('#top_models_select').val();
     if(!rows) rows = $('#doc_rows').val();
     
-    var sort_dir = $("#indexer_order_dir").val()=="asc"?"desc":"asc";
+    var sort_dir = $("#indexer_order_dir").val()=="asc"?"asc":"desc";
     var url = "inc/admin/_indexer_data_model.jsp?model="+model+"&offset="+offset+"&sort=date&sort_dir="+sort_dir+"&rows="+rows;
     $("#indexer_data_model>tbody").html('<tr><td align="center" colspan="3" width="768"><img src="img/loading.gif" /></td></tr>');
     var diff = $("#indexer_browse_models.indexer_data_container").outerHeight(true)
