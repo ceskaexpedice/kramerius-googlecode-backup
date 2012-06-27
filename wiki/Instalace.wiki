@@ -272,3 +272,14 @@ driver.fedora.mpt.jdbc.password = ********
 # povolit export dat z Fedory
 proai.driverPollingEnabled = true
 }}}
+
+=Aktualizace na novou verzi K4=
+
+Při aktualizaci existující instalace K4 stačí na aplikační server nainstalovat nové verze souborů *.war (a případně sdílené knihovny securtiy-core.jar ) z distribučního balíčku `Kramerius-x.x.x.zip`. Konfiguraci systému a ostatních komponent z balíčku installation-x.x.x.zip není obvykle třeba měnit (pokud u konkrétní verze není uvedeno jinak).
+
+Postup instalace je závislý na konkrétním aplikačním serveru. Pro server Tomcat je vhodné postupovat takto:
+   
+  * vypněte Tomcat
+  * smažte rozbalené adresáře search, editor a rightseditor z adresáře tomcat/webapps a tomcat/work/Catalina/localhost
+  * do adresáře tomcat/webapps nakopírujte nové verze souborů search.war, editor.war a rightseditor.war., do adresáře tomcat/lib soubor security-core.jar   
+  * restartujte Tomcat
