@@ -4,7 +4,7 @@
 
 * [InstalaceK4 Instalace a konfigurace (předpřipravená)]
 
-* [Instalace Instalace a konfigurace (jednotlivé komponenty)]
+* [Instalace Instalace a konfigurace (jednotlivé komponenty), aktualizace]
 
 * [MenuAdministrace Administrace]
 
