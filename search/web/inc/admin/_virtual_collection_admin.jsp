@@ -10,15 +10,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="/WEB-INF/tlds/cmn.tld" prefix="view" %>
-<%@ taglib uri="/WEB-INF/tlds/securedContent.tld" prefix="scrd" %>
-
 <%@ page isELIgnored="false"%>
 <view:object name="cols" clz="cz.incad.Kramerius.views.virtualcollection.VirtualCollectionViewObject"></view:object>
 <view:object name="buttons" clz="cz.incad.Kramerius.views.inc.MenuButtonsViewObject"></view:object>
-
-<scrd:securedContent action="display_admin_menu" sendForbidden="true">
-
-
 <style type="text/css">
     #coll_table{
         width: 100%;
@@ -174,5 +168,3 @@
         });
     }
 </script>
-
-</scrd:securedContent>

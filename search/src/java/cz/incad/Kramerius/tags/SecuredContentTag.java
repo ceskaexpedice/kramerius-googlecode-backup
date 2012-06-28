@@ -43,7 +43,6 @@ public class SecuredContentTag extends BodyTagSupport {
     private String action;
     private String pid = SpecialObjects.REPOSITORY.getPid();
     private String stream = FedoraUtils.IMG_FULL_STREAM;
-    private String sendForbidden="false";
     
     @Inject
     private IsActionAllowed allowed;
@@ -88,14 +87,6 @@ public class SecuredContentTag extends BodyTagSupport {
         this.bodyContent = bodyContent;
     }
     
-
-    public String getSendForbidden() {
-        return sendForbidden;
-    }
-    
-    public void setSendForbidden(String sendForbidden) {
-        this.sendForbidden = sendForbidden;
-    }
     
     public SolrAccess getSolrAccess() {
         return solrAccess;
@@ -116,9 +107,7 @@ public class SecuredContentTag extends BodyTagSupport {
                 return EVAL_BODY_INCLUDE;
             } else {
                 // No response code
-                if (Boolean.parseBoolean(this.sendForbidden)) {
-                    ((HttpServletResponse)pageContext.getResponse()).setStatus(HttpServletResponse.SC_FORBIDDEN);
-                }
+                //((HttpServletResponse)pageContext.getResponse()).setStatus(HttpServletResponse.SC_FORBIDDEN);
                 return SKIP_BODY;
             }
         } catch (IOException e) {

@@ -31,6 +31,5 @@ public interface DefinitionManager {
 	 * @return
 	 */
 	public List<LRProcessDefinition> getLongRunningProcessDefinitions();
-
 	
 }

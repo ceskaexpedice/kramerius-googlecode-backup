@@ -17,5 +17,3 @@ function _k4Settings(){
 
 var k4Settings = new _k4Settings();
 
-
-

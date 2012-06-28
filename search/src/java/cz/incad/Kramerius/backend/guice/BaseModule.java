@@ -81,7 +81,6 @@ public class BaseModule extends AbstractModule {
         bind(VirtualCollection.class).toProvider(VirtualCollectionProvider.class);
         bind(RelationService.class).to(RelationServiceImpl.class).in(Scopes.SINGLETON);
         bind(GoogleAnalytics.class).to(GoogleAnalyticsImpl.class).in(Scopes.SINGLETON);
-        
     }
     
     

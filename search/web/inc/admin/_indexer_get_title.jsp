@@ -6,7 +6,7 @@
 <%@page import="cz.incad.kramerius.utils.conf.KConfiguration"%>
 <%@page import="cz.incad.kramerius.utils.DCUtils"%>
 <%@page import="cz.incad.kramerius.FedoraAccess"%>
-<scrd:securedContent action="reindex" sendForbidden="true">
+<scrd:securedContent action="reindex">
 <%
             Injector ctxInj = (Injector) application.getAttribute(Injector.class.getName());
             KConfiguration kconfig = ctxInj.getProvider(KConfiguration.class).get();

@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2012 Pavel Stastny
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package cz.incad.kramerius.processes.impl;
 
 import java.io.File;
@@ -24,8 +8,6 @@ import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -66,8 +48,6 @@ public abstract class AbstractLRProcessImpl implements LRProcess{
 	private boolean masterProcess;
 	
 	private List<String> parameters = new ArrayList<String>();
-	
-	private Properties parametersMapping = new Properties();
 	
 	public AbstractLRProcessImpl(
 			LRProcessDefinition definition,
@@ -114,10 +94,10 @@ public abstract class AbstractLRProcessImpl implements LRProcess{
 	}
 
 
-	public void planMe(Properties paramsMapping) {
+	public void planMe() {
 		this.state = States.PLANNED;
 		this.setPlannedTime(System.currentTimeMillis());
-		manager.registerLongRunningProcess(this, getLoggedUserKey(), paramsMapping);
+		manager.registerLongRunningProcess(this, getLoggedUserKey());
 	}
 	
 	
@@ -147,21 +127,11 @@ public abstract class AbstractLRProcessImpl implements LRProcess{
 			
 			command.add("-D"+ProcessStarter.SOUT_FILE+"="+standardStreamFile.getAbsolutePath());
 			command.add("-D"+ProcessStarter.SERR_FILE+"="+errStreamFile.getAbsolutePath());
-			
-			
-			Set<Object> keySet = this.parametersMapping.keySet();
-			for (Object key : keySet) {
-	            command.add("-D"+key+"="+this.parametersMapping.getProperty(key.toString()));
-            }
-			
 			command.add(ProcessStarter.class.getName());
-			
-			
 			List<String> params = this.definition.getParameters();
 			for (String par : params) {
 				command.add(par);
 			}
-
 			List<String> runtimeParams = this.getParameters();
 			for (String par : runtimeParams) {
 				command.add(par);
@@ -216,17 +186,7 @@ public abstract class AbstractLRProcessImpl implements LRProcess{
 	}
 
 
-	public Properties getParametersMapping() {
-        return parametersMapping;
-    }
-
-
-    public void setParametersMapping(Properties parametersMapping) {
-        this.parametersMapping = parametersMapping;
-    }
-
-
-    private File errorOutFile(File processWorkingDir) {
+	private File errorOutFile(File processWorkingDir) {
 		return new File(createFolderIfNotExists(processWorkingDir+File.separator+this.definition.getErrStreamFolder()),"sterr.err");
 	}
 

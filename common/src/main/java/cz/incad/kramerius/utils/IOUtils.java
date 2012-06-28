@@ -12,8 +12,6 @@ import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.logging.Level;
 
 import cz.incad.kramerius.pdf.impl.GeneratePDFServiceImpl;
@@ -27,7 +25,7 @@ public class IOUtils {
 	private IOUtils() {}
 	
 	/**
-	 * Kopirovani ze vstupniho proud do vystupniho
+	 * Kopirovani ze vstupniho proudo do vystupniho
 	 * @param is Vstupni proud
 	 * @param os Vystupni proud
 	 * @throws IOException
@@ -39,26 +37,6 @@ public class IOUtils {
 			os.write(buffer, 0, read);
 		}
 	}
-	
-
-	   /**
-     * Kopirovani ze vstupniho proud do vystupniho
-     * @param is Vstupni proud
-     * @param closeInput Zavrit vstupni proud
-     * @param os Vystupni proud
-     * @param closeOutput Zavrit vystupni proud
-     * @throws IOException
-     */
-    public static void copyStreams(InputStream is, boolean closeInput, OutputStream os, boolean closeOutput) throws IOException {
-        byte[] buffer = new byte[8192];
-        int read = -1;
-        while((read = is.read(buffer)) > 0) {
-            os.write(buffer, 0, read);
-        }
-        if (closeInput) is.close();
-        if (closeOutput) os.close();
-    }
-
 	
 	/**
 	 * Kopiruje a pocita digest
@@ -143,16 +121,6 @@ public class IOUtils {
             }
         }
     }
-    
-    public static void tryClose(InputStream is) {
-        try {
-            if (is != null) {is.close();
-            }
-        } catch (IOException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
-        }
-    }
-
 
     public static void copyBundledResources(Class caller, String[] texts, String prefix, File folder) throws FileNotFoundException,
     		IOException {
@@ -174,14 +142,14 @@ public class IOUtils {
     				try {
     					os.close();
     				} catch (Exception e) {
-    					LOGGER.log(Level.SEVERE, e.getMessage(), e);
+    					GeneratePDFServiceImpl.LOGGER.log(Level.SEVERE, e.getMessage(), e);
     				}
     			}
     			if (is != null) {
     				try {
     					is.close();
     				} catch(Exception e) {
-    					LOGGER.log(Level.SEVERE, e.getMessage(), e);
+    					GeneratePDFServiceImpl.LOGGER.log(Level.SEVERE, e.getMessage(), e);
     				}
     			}
     		}

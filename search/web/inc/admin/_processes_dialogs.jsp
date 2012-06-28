@@ -7,7 +7,7 @@
 <%@ page isELIgnored="false"%>
 
 
-<scrd:securedContent action="manage_lr_process" sendForbidden="true">
+<scrd:securedContent action="reindex">
 
 <!-- reindexace -->
 <div id="reindex_started" style="display:none;">

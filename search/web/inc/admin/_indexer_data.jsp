@@ -24,7 +24,7 @@
 
 <%@ page isELIgnored="false"%>
 
-<scrd:securedContent action="display_admin_menu" sendForbidden="true">
+<scrd:securedContent action="reindex">
 
 <fmt:setBundle basename="labels" />
 <fmt:setBundle basename="labels" var="bundleVar" />

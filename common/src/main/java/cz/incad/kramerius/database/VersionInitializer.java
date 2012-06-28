@@ -29,10 +29,6 @@ import cz.incad.kramerius.utils.DatabaseUtils;
 import cz.incad.kramerius.utils.IOUtils;
 import cz.incad.kramerius.utils.database.JDBCUpdateTemplate;
 
-/**
- * Initialize database model version tables
- * @author pavels
- */
 public class VersionInitializer {
 
     static java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(VersionInitializer.class.getName());

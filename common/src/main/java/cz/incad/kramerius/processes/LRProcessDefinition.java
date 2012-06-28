@@ -2,8 +2,6 @@ package cz.incad.kramerius.processes;
 
 import java.util.List;
 
-import cz.incad.kramerius.processes.template.ProcessInputTemplate;
-
 /**
  * This is process definition
  * @author pavels
@@ -32,9 +30,8 @@ public interface LRProcessDefinition {
 	 * Program parameters (main method parameters)
 	 * @return
 	 */
-    public List<String> getParameters();
-	
-	
+	public List<String> getParameters();
+
 	/**
 	 * Libraries for the processs
 	 * @return
@@ -75,21 +72,14 @@ public interface LRProcessDefinition {
 	 */
 	public String getStandardStreamFolder();
 
-
-	@Deprecated
-	public LRDefinitionAction getLogsAction();
+	
+   public LRDefinitionAction getLogsAction();
 
 	
 	/**
 	 * Actions defined over LR process
 	 * @return
 	 */
-	@Deprecated
 	public List<LRDefinitionAction> getActions();
 
-
-	public String getInputTemplateClass();
-
-
-	public boolean isInputTemplateDefined();
 }

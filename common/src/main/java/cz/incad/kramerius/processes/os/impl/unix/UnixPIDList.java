@@ -46,8 +46,6 @@ public class UnixPIDList extends PIDList {
 				data.add(line.trim());
 			}
 		}
-
-		IOUtils.tryClose(inputStream);
 		return data;
 	}
 }

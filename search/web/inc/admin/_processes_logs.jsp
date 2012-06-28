@@ -295,7 +295,7 @@ div.buttons {
 </style>
 </head>
 <body>
-<scrd:securedContent action="manage_lr_process" sendForbidden="true">
+<scrd:securedContent action="manage_lr_process">
  <div id="processes_log" align="center">
  <div class="header">
  <div class="title"><%=resBundleServ.getResourceBundle("labels", locale).getString("administrator.processes.logs.stdout")%>

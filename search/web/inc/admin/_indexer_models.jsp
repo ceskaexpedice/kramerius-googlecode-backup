@@ -16,7 +16,7 @@
 
 <%@ page isELIgnored="false"%>
 
-<scrd:securedContent action="reindex" sendForbidden="true">
+<scrd:securedContent action="reindex">
 
 <fmt:setBundle basename="labels" />
 <fmt:setBundle basename="labels" var="bundleVar" />

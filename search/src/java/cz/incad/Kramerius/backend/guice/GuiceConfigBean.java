@@ -12,8 +12,6 @@ import com.google.inject.name.Named;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 
-import cz.incad.Kramerius.exts.menu.context.guice.ContextMenuConfiguration;
-import cz.incad.Kramerius.exts.menu.main.guice.MainMenuConfiguration;
 import cz.incad.kramerius.Constants;
 import cz.incad.kramerius.database.guice.DatabaseVersionGuiceModule;
 import cz.incad.kramerius.document.guice.DocumentServiceModule;
@@ -57,15 +55,9 @@ public class GuiceConfigBean extends GuiceServletContextListener {
                 new GuiceSecurityHTTPModule(),
                 new LongRunningProcessModule(), // for long running processes
 
-                new PrintModule(), // printing
+                new PrintModule(),
                 new DatabaseVersionGuiceModule(), // db versions
-                
-                new MainMenuConfiguration(), // menu modules
-                new ContextMenuConfiguration(), // menu modules
-                
-                new ServletModule()
-                
-        );
+                new ServletModule());
 
         
         return injector;

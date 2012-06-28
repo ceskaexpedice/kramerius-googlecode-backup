@@ -86,10 +86,7 @@ public class MenuButtonsViewObject {
             links.add(itm);
         }
         return links;
-    
-    
     }
-
     
     public static class LanguageItem {
         

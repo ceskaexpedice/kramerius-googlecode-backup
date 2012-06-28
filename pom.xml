@@ -4,7 +4,7 @@
     <groupId>cz.incad.kramerius</groupId>
     <artifactId>kramerius</artifactId>
     <packaging>pom</packaging>
-    <version>4.6.0-SNAPSHOT</version>
+    <version>4.5.3</version>
     <!-- name>kramerius</name-->
 
 
@@ -105,7 +105,6 @@
         <module>import-jaxb-periodical</module>
         <module>import-jaxb-dc</module>
         <module>import-jaxb-mets</module>
-        <module>import-jaxb-alto</module>
         <module>import-jaxb-mods</module>
         <module>import-mets</module>
         <module>indexer</module>
