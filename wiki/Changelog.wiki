@@ -3,6 +3,13 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.5.3 (r3824)=
+
+  * Issue 341 - Konfigurovatelné spouštění indexeru z importních procesů. Indexer je po importu automaticky spuštěn, pokud booleovská property `ingest.startIndexer` v souboru migration.properties má hodnotu true (což je výchozí nastavení)
+  * Issue 342 - Oprava problému, kdy při indexaci některých rozsáhlých titulů docházelo k timeoutu spojení do databáze riTriples
+  * Issue 343 - Opraveno chybné stránkování v dialogu Indexace dokumentů
+  * Issue 352, Issue 368 - V některých konfiguracích K4 s předřazeným proxyserverem nebyly některé interní URL v K4 nastaveny správně, takže nebylo možné přepínat jazyk uživatelského rozhraní a v editoru pořadí částí nebyly vidět náhledy stran. 
+
 =Verze 4.5.2 (r3661)=
 
   * Issue 271 - dokumentace doplněna o přehled šablon XSLT
