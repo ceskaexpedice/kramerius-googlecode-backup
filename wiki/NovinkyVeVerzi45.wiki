@@ -153,6 +153,18 @@ twitter.tweet=false | true
 Pozn.: Pro správnou funkci tlačítek je nutno mít síť přístupnou z Internetu.
 
 
+= Oblíbené položky =
+
+Přihlášený uživatel může mít na úvodní stránce záložku oblíbených položek.  Přidání do oblíbených se děje pomocí kontextového menu. Viz obr.
+
+http://kramerius.googlecode.com/svn/wiki/features_45/addfavorites.png
+
+Odebrání z oblíbených je pomocí tlačítek v záložce oblíbené
+
+http://kramerius.googlecode.com/svn/wiki/features_45/removefavorites.png
+
+Pozn: Odebrání z oblíbených je dostupné až od verze 4.5.4  viz Issue 340
+
 
 = Tisk do tiskove fronty na serveru = 
 
