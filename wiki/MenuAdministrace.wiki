@@ -241,7 +241,9 @@ Spouštěné procesy mohou mít stavy, které vypovídají o fázi života proce
  * *KILLED* - Proces byl zabit.
  * *FAILED* - Proces skončil s chybami.
 
-Dále mohl proces v rámci svého života napánovat spuštění dětského podprocesu. Typickým případem je proces Import, který provede import dat a zároveň spustí indexaci. Pak takový proces změní stav na *BATCH_STARTED*.  Pokud některý z dětských procesů končí stavem FAILED, pak rodičovský přejde do stavu *BATCH_FAILED*.  Stav *BATCH_FINISHED* nastává v případě, kdy všechny dětské procesy jsou ve stavu FINISHED. 
+Dále mohl proces v rámci svého života naplánovat spuštění dětského podprocesu. Typickým případem je proces Import, který provede import dat a zároveň spustí indexaci. Pak takový proces změní stav na *BATCH_STARTED*.  Pokud některý z dětských procesů končí stavem FAILED, pak rodičovský přejde do stavu *BATCH_FAILED*.  Stav *BATCH_FINISHED* nastává v případě, kdy všechny dětské procesy jsou ve stavu FINISHED. 
+
+Poznámka: V případě, že server nemůže např. z důvodu nedostatku paměti spustit instanci JVM pro daný proces, nedojde ani k vytvoření adresáře s logy procesu a v rootu složky procesu se ale objeví soubor hs_err_pid*.log
 
 
 
