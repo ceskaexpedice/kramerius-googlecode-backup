@@ -33,4 +33,6 @@ Rebuild RI MPT store s 1M objektů trval přibližně 20 hodin.
 
 5. V průběhu importu po naimportování asi 6.5M objektů byl vyčerpán stávající diskový prostor pro databázi. FOXML objekty ve fedoře zabírají cca 50GB, odpovídající databáze riTriples 130GB. Prostor pro fedoru zvýšen cca na 600GB, pro postgres na cca 900GB. Resource index MPTstore se jeví jako vysoce neefektivní řešení, Mulgara nefunkční. Zkoumáme možnost použití implementace 4store.org.
 Rychlost importu na nové konfiguraci disků mírně vzrostla, 1 dávka (1270 objektů) nyní trvá cca 40s (původně 50s).
+
+6. K 29.7.2012 je naimportováno 35M objektů. Rychlost importu i odezva GUI K4 zůstává stejná, dotazy do MPT store se výrazně zpomalují, složitější dotaz spojující 3 RDF vazby trvá místo počátečních jednotek vteřin jednotky minut. Databáze MPTStore zabírá cca 850GB, úložiště Fedroa cca 300GB
   
