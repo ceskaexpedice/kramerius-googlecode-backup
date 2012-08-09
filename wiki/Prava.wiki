@@ -146,7 +146,7 @@ Z obrázku je patrno, že je podmínka pohyblivé zdi nastavena na dvou úrovní
 ====Poznámky k implementaci====
 Pravidlo zkoumá stream BIBLIO_MODS hledá datum v následujícíh elementech:
 
-#Element *originInfo* 
+ # Element *originInfo* 
 {{{
 <mods:originInfo>
    ...
@@ -154,7 +154,7 @@ Pravidlo zkoumá stream BIBLIO_MODS hledá datum v následujícíh elementech:
    <mods:dateIssued>1862</mods:dateIssued>
 </mods:originInfo>
 }}}
-#Element *originInfo* s atributem *publisher*  
+ # Element *originInfo* s atributem *publisher*  
 {{{
  <mods:originInfo transliteration="publisher">
    ...
@@ -162,13 +162,23 @@ Pravidlo zkoumá stream BIBLIO_MODS hledá datum v následujícíh elementech:
    <mods:dateIssued>1862</mods:dateIssued>
 </mods:originInfo>
 }}}
-#Element *part*   
+ # Element *part*   
 {{{
 <mods:part>
    ...
    ...
    <mods:date>1941</mods:date>
 </mods:part>
+}}}
+
+Očekávaný formát datumu může dle specifikace( http://www.ndk.cz/digitalizace/nove-standardy-digitalizace-od-roku-2011) být:
+{{{
+ RRRR                  specifikuje konkretni rok
+ RRRR - RRRR           specifikuje rozsah let
+ MM. RRRR              specifikuje konkretni mesic 
+ MM.-MM. RRRR          specifikuje rozsah mesicu
+ DD. MM. RRRR          specifikuje konkretni den mesic a rok
+ DD. - DD. MM. RRRR    specifikuje rozsah dni 
 }}}
 
 
