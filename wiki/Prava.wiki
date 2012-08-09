@@ -173,12 +173,12 @@ Pravidlo zkoumá stream BIBLIO_MODS hledá datum v následujícíh elementech:
 
 Očekávaný formát datumu může dle specifikace( http://www.ndk.cz/digitalizace/nove-standardy-digitalizace-od-roku-2011) být:
 {{{
- RRRR                  specifikuje konkretni rok
+ RRRR                  specifikuje konkretní rok
  RRRR - RRRR           specifikuje rozsah let
- MM. RRRR              specifikuje konkretni mesic 
- MM.-MM. RRRR          specifikuje rozsah mesicu
- DD. MM. RRRR          specifikuje konkretni den mesic a rok
- DD. - DD. MM. RRRR    specifikuje rozsah dni 
+ MM. RRRR              specifikuje konkretní měsíc 
+ MM.-MM. RRRR          specifikuje rozsah měsíců
+ DD. MM. RRRR          specifikuje konkretní den, měsíc a rok
+ DD. - DD. MM. RRRR    specifikuje rozsah dní 
 }}}
 
 
