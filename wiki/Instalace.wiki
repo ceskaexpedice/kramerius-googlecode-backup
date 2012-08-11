@@ -150,6 +150,10 @@ Obsah defaultních hodnot jednotlivých konfiguračních souborů najdete zde:
   * [http://code.google.com/p/kramerius/source/browse/trunk/import-cmdtool/src/main/java/res/configuration.properties  migration.properties]
   * [http://code.google.com/p/kramerius/source/browse/trunk/static-export/src/main/java/res/configuration.properties  static_export.properties]
 
+Texty jednotlivých součástí GUI K4 jsou lokalizovány pomocí standardního mechanismu resource bundle jazyka Java (viz např. [http://docs.oracle.com/javase/6/docs/api/java/util/ResourceBundle.html]), výchozí obsah lokalizačního souboru `labels.properties` je k dispozici zde: [http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/labels_cs.properties labels_cs.properties]
+
+Požadované změny je možno provádět přepsáním hodnoty příslušného klíče v souboru `~/.kramerius4/bundles/labels.properties`, resp. `~/.kramerius4/bundles/labels_cs.properties` .
+
 Nově založenému uživateli je aplikací rightseditor přiděleno heslo a zasláno na email. Pro tuto funkci je třeba mít k dispozici SMTP server a do adresáře `~/.kramerius4` přidat soubor `mail.properties` s obsahem:
 
 {{{
