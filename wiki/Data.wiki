@@ -16,9 +16,25 @@ Objekty používají datové streamy navržené v rámci POC, povinné streamy j
 
 Objekty, které obsahují binární stream IMG_FULL s obrázkem v plném rozlišení, jsou oproti POC rozšířeny o další binární stream IMG_THUMB s miniaturou obrázku (ve formátu JPG se šířkou 128 px) pro zobrazení v souhrnných přehledech a binární stream IMG_PREVIEW se zmenšeným náhledem obrázku (ve formátu JPG se šířkou 512 px)
 
+Pokud k obrázku stránky existuje OCR, musí být uložen v příslušném FOXML objektu v datastreamu TEXT-OCR (MIME type text/plain) v kódování UTF-8.
+
+Pokud k OCR existuje i dokument ALTO (verze 1 nebo 2), musí být uložen v tomtéž FOXML objektu v datastreamu ALTO (MIME type text/xml), rovněž v kódování UTF-8.
+
 Další rozšíření oproti POC je standardní datový stream POLICY, který obsahuje přístupová  práva ve formátu XACML - použit pouze u objektů s omezeným přístupem.
 
 Pokud pro digitální objekt existuje donátor, jehož logo má být zobrazeno spolu s titulem,  je uveden jako vazba v RELS-EXT na speciální FO-XML objekt, který obsahuje logo donátora v binárním datovém streamu LOGO.  Tento způsob umožňuje informace automaticky indexovat v RI a navíc je možno snáze přidávat nové donátory. Příklad FOXML objektu donátora (Norské fondy) je v balíčku installation v sekci downloads, soubor donator_norway.xml.
+
+V budoucích verzích K4 bude podporováno vyznačování vyšších logických částí (např. článků) na jejich podřízených stránkách, založené na informacích v datastreamech ALTO příslušných  stránek. FOXML objekt nadřízené části (článku) v tom případě bude obsahovat datastream "STRUCT_MAP" (MIME type text/xml, kódování UTF-8) s následujícím obsahem:
+
+{{{
+<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<parts>
+    <part type="TITLE/SUBTITLE/NORMAL_TEXT..." order="1/2/3..." alto="uuid:eed93968-e2ef-11e1-abbb-001b63bd97ba/ALTO" begin="TextBlock5" />
+    ... element part opakovat pro každou podřízenou stránku
+</parts>
+}}}
+
+Atributy elementu part jsou převzaty z odpovídajícího elementu div v logické struktuře METS dle nového standardu NKP pro digitalizaci (viz níže)
 
 
 =Hierarchie digitálních objektů=
