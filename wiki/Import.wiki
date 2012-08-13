@@ -1,4 +1,5 @@
 #summary konverze na novou verzi, část replikace
+#labels Deprecated
 = Návrh konverze =
 
 Pro konverzi dat K3->K4 bude použito replikační rozhraní obou systémů. Samotnou konverzi pravděpodobně provede pouze KNAV a NKP, ostatní knihovny po přechodu na K4 replikují od nich.
