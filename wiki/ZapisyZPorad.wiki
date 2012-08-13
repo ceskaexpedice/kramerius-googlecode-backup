@@ -1,1 +1,2 @@
+#labels Deprecated
 [http://domain/page zapis] 
