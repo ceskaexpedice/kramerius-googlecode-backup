@@ -112,23 +112,36 @@ pro objekt REPOSITORY a akci ČÍST - read.
  # *IP Filter skriktní*  - Podmínka má stejnou logiku jako ta předchozí  s tím, že rozhodováné stavy ANO nebo NE. Buď povolí přístup nebo zakáže.
  
 
+=Interpretace definovaných pravidel=
+
+Před rozhodováním, které pravidlo se uplatní, dochází nejdřív k jejich seřazení.  Poté se seřazená množina prochází a interpretuje. 
+
+Pořadí vykonávání si může administrátor zkontrolovat v dialogu práv. Zde platí, čím výš je pravidlo tím dřív se aplikuje.
+
+
 =Řazení pravidel=
 
-Před rozhodováním, které pravidlo se uplatní, dochází nejdřív k jejich seřazení.  
-Řazení se řídí dvěma principy: Prioritizace a dědičnost. Prioritizaci může uživatel ovlivnit při vytváření či editaci pravidla, dědičnost je pak určena strukturou dat. 
 
-Standardně se řazení před vykonáním provádí v následujících krocích:
+==Řazení pravidel==
 
- # Seřadí se všechna pravidla, která obsahují prioritu. (Priorita 1 má nenižší váhu, priorita 2 vyšší, atd..) 
- # Seřadí se pravidla dle principu dědičnosti. (Pravidla blíž listu stromu má výšší váhu, směrem ke kořenu se pak váha snižuje)
+Řazení pravidel se řídí dle následujících principů: 
 
-Pořadí vykonávání si může administrátor zkontrolovat v dialogu práv. Zde platí, čím výš je pravidlo tím dřív se aplikuje. 
+ # Dle priority
+ # Dle síly kritéria
+ # Dle dědičnosti
+ # Dle času přidání
 
 
-==Priorita pravidel==
-Priorita může nabývat hodnot 1 až max(int)=2^32^-1. Čím vyšší priorita, tím dřív se uplatní. Pokud se střetnou dvě pravidla se stejnou prioritou pak platí, že výš je to co bylo později vytvořeno.  
+První se seřadí práva bez jakýchkoliv podmínek. Ta by se měla přidělovat konkrétním rolím a měla by znamenat, že daná role má právo na objekt bez jakýchkoliv výhrad. 
 
-Poznámka: Použití priority by se mělo využívat až v krajních případech, kdy z nějakého důvodu není vhodné aby systém reflektoval dědičnost. 
+Dále se řadí dle priority pokud je větší nebo rovna 1. Platí, že čím vyšší, tím víc prioritizované pravidlo. Pravidlo s prioriotou nula by mělo odpovídat pravidlu s nezadanou prioritou. Pokud budou mít dvě pravidla stejnou prioritu pak platí, ze výš je to dříve zadavané (řazení dle času přidání).
+
+
+Následuje rozdělění dle úrovně kritéria. Kriteria jsou formálně rozdelena na úrovně MAX, NORMAL a MIN. Nejdříve se řadí kriteria v "přihrádce" MAX, poté NORMAL a nakonec MIN. V každé "příhrádce" se respektuje řazení dle dědičnosti (tzn. Pravidla blíž listu stromu má výšší váhu, směrem ke kořenu se pak váha snižuje)  a pokud jsou pravidla na stejné hierarchické úrovni, pak dle času přidání. 
+
+===Poznámka=== 
+V K4 jsou v úrovni MAX definovány pouze IP filtry, ostatní kritéria mají úroveň NORMAL. Tímto jsou reflektovány případy, kdy na nejvyšší úrovni repositáře (REPOSITORY) jsou definovaná adresy pro přístup (IP filtry) a na různých, nižších úrovních pak ostatní dodatečné podmínky (MovingWall, Příznak, atd..). IP filtry se budou zpracovávat dřív, než ostatní dodatečné podmínky i když jsou (ty dodatečné podmínky) definované na nižší konkrétnější úrovni.
+
 
   
 =Příklady nastavení krameria=
