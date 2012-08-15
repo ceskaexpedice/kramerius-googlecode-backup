@@ -121,9 +121,6 @@ Pořadí vykonávání si může administrátor zkontrolovat v dialogu práv. Zd
 
 =Řazení pravidel=
 
-
-==Řazení pravidel==
-
 Řazení pravidel se řídí dle následujících principů: 
 
  # Dle priority
