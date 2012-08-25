@@ -1,7 +1,7 @@
 #summary Popis zátěžových testů v NKP
 
 
-==Měření==
+==Průběžné informace z měření==
 ===Výchozí stav===
 1. Počáteční stav (6350 objektů)
   * otevření titulu : 2.5s
