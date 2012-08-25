@@ -2,13 +2,14 @@
 
 
 ==Měření==
-===Úvodní testy===
+===Výchozí stav===
 1. Počáteční stav (6350 objektů)
   * otevření titulu : 2.5s
   * vyhledání ze záložky Tituly: 1 s
   * vyhledání  fulltext "zlatá": 1 s
   * document indexation (browse model): 3s
 
+===Úvodní testy===
 2. Import ze samostatného procesu bez indexace: 1 dávka (635 objektů) cca 17 s. (37 obj/s) - RI Mulgara
 
 3. Import z dvou paralalně běžících procesů: 1 dávka(1270 objektů) cca 25s (50 obj/s) - RI Mulgara
