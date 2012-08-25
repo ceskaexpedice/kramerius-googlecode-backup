@@ -40,7 +40,9 @@ Resource index MPTstore se jeví jako neefektivní řešení, Mulgara nefunkčn�
 Rychlost importu na nové konfiguraci disků mírně vzrostla, 1 dávka (1270 objektů) nyní trvá cca 40s (původně 50s).
 
 ===Objem dat 35M===
-6. K 29.7.2012 je naimportováno 35M objektů. Rychlost importu i odezva GUI K4 zůstává stejná, dotazy do MPT store se výrazně zpomalují, složitější dotaz spojující 3 RDF vazby trvá místo počátečních jednotek vteřin jednotky minut. 
+6. K 29.7.2012 je naimportováno 35M objektů. 
+Rychlost importu i odezva GUI K4 zůstává stejná, dotazy do MPT store se výrazně zpomalují, složitější dotaz spojující 3 RDF vazby trvá místo počátečních jednotek vteřin jednotky minut. 
+Je třeba provézt opatření a tento typ dotazů nebude v K4 používán.
 Databáze MPTStore zabírá cca 850GB, úložiště Fedora cca 300GB
 
 ===Objem dat 40M===  
@@ -51,3 +53,6 @@ Po navýšení potřebné kapacity inodes na 100 000 000 byla dne 24.8.2012 spu�
 8. Současně s testem kapacity úložiště fedora a MPT store proběhne (původně nepožadovaný) test kapacity indexu SOLR. 
 Po indexaci 5M objektů byl vyčerpán dostupný diskový prostor na serveru KSOLRKRAM1, další tsty budou pokračovat po navýšení kapacity administrátory NKČR. 
 Stávající rychlost odezvy GUI závislá na indexu SOLR při 5M záznamech se neliší oproti rychlostem uvedeným v bodu 4 pro 1M záznamů. 
+
+===Závěry testů===
+Závěru testů a doporučení budou publikovány (pravděpodobně) během měsíce září 2012 
