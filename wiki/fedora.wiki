@@ -1,7 +1,7 @@
 #summary uložiště fedora
 === Problematika uložení velkého počtu záznamů ===
 
-Úložiště Fedora, které bylo zadavatelem zvoleno pro systém Kramerius4, je dostačující pro potřeby systému. 
+Úložiště Fedora (http://fedora-commons.org/), které bylo zadavatelem vývoje zvoleno pro systém Kramerius4, je dostačující pro současná nasazení systému. 
 Na internetu jsou dostupné informace o testech výkonu při uložení 14 milionů digitálních objektů a 750 milionů vazeb. Rychlost plnění dat se pohybovala kolem 10doc/s a výkon úložiště se při testech nesnižoval. (http://fedora.fiz-karlsruhe.de/docs/Wiki.jsp?page=Main).
 
 Souborové systémy jsou schopny uložit dostatečný počet souborů a neměly by být omezujícím faktorem pro úložiště. Např. EXT4 je schopen uložit 4 miliardy souborů (http://cs.wikipedia.org/wiki/Ext4)
