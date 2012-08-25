@@ -28,4 +28,4 @@ V případě zpomalení odezvy bude příčina analyzována a navrženo řešen�
 Po skončení testu budou všechny použité databáze, indexy a úložiště smazány.
 
 
-Výsledky měření jsou průběžně uváděny [ZatezoveTesty zde].
+Výsledky měření jsou průběžně uváděny [ZatezoveTesty ZDE].
