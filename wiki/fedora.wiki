@@ -1,28 +1,29 @@
 #summary uložiště fedora
 === Problematika uložení velkého počtu záznamů ===
 
-Úložiště Fedora je dostačující pro potřeby systému Kramerius 4. Na internetu jsou dostupné testy výkonu při uložení 14 milionů digitálních objektů a 750 milionů vazeb. Rychlost plnění dat se pohybovala kolem 10doc/s a výkon úložiště se při testech nesnižoval. (http://fedora.fiz-karlsruhe.de/docs/Wiki.jsp?page=Main).
-
-V současné době není implementována podpora uložení dat do databáze. Připravuje se obecné rozhraní Akubra, které je schopné ukládat do různých typů úložišť včetně DB, existuje zatím jen implementace pro souborový systém. Podporu databáze by bylo nutné naprogramovat.
+Úložiště Fedora, které bylo zadavatelem zvoleno pro systém Kramerius4, je dostačující pro potřeby systému. 
+Na internetu jsou dostupné informace o testech výkonu při uložení 14 milionů digitálních objektů a 750 milionů vazeb. Rychlost plnění dat se pohybovala kolem 10doc/s a výkon úložiště se při testech nesnižoval. (http://fedora.fiz-karlsruhe.de/docs/Wiki.jsp?page=Main).
 
 Souborové systémy jsou schopny uložit dostatečný počet souborů a neměly by být omezujícím faktorem pro úložiště. Např. EXT4 je schopen uložit 4 miliardy souborů (http://cs.wikipedia.org/wiki/Ext4)
 
+V současné době není implementována podpora uložení dat do databáze. Připravuje se obecné rozhraní Akubra, které je schopné ukládat do různých typů úložišť včetně DB, existuje zatím jen implementace pro souborový systém. Podporu databáze by bylo nutné naprogramovat.
+
 ==Probíhající zátěžové testy==
 
-V rámci dohody s NKČR probíhají od 6/2012 zátěžové testy. Účelem je ověřit schopnost systému pojmout 30 a 50 milionů objektů.
+V rámci požadavku a dohody s NKČR probíhají od 6/2012 zátěžové testy s cílem ověřit schopnost systému pojmout 30 a 60 milionů objektů.
 
 
 ===Postup===
 
-Zvolené tituly
+Pro ověření byly zvolené reálné tituly
   * Monografie: Kniha zlatá (441 objektů)
   * Periodikum: Jurendes Mahrischer Wanderer (1 ročník, 194 objektů)
 
-Test bude proveden na nově instalovaných virtuálních serverech v Klementinu (kdbkram1, kfedkram1 a ksolrkram1). 
+Test je prováděn na nově instalovaných virtuálních serverech NKČR v lokalitě Klementinum (kdbkram1, kfedkram1 a ksolrkram1). 
 
 Záznamy budou multiplikovány  s rozdílným UUID pomocí skriptu a importovány v dávkách po 1600 multiplikacích (1 016 000 FOXML objektů). Multiplikované objekty budou sdílet stejné refernece na externí soubory s obrázky a OCR. Cílem testu je ověřit funkčnost Fedory a indexů, nikoli externího datového úložiště. 
 
-Po každé dávce importu bude provedena indexace a  ověřena odezva systému.
+Po každé dávce importu bude provedena indexace a ověřena odezva systému.
 V případě zpomalení odezvy bude příčina analyzována a navrženo řešení.
 Po skončení testu budou všechny použité databáze, indexy a úložiště smazány.
 
