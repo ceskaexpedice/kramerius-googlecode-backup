@@ -2,8 +2,8 @@
 
 
 ==Měření==
-
-*1.* Počáteční stav (6350 objektů)
+===Úvodní testy===
+1. Počáteční stav (6350 objektů)
   * otevření titulu : 2.5s
   * vyhledání ze záložky Tituly: 1 s
   * vyhledání  fulltext "zlatá": 1 s
@@ -21,6 +21,7 @@ RI Mulgara při paralelním importu padá kvůli memory leaku, další memory le
 
 Při použití indexu MPT store tedy nedochází k memory leakům, ale paralelní import nepřináší prakticky žádné zrychlení a celkově je import téměř 2x pomalejší než při použití RI Mulgara.
 
+===Objem dat 1M===
 Import cca 1M objektů se zapnutým indexem MPT store trval cca 12 hodin.
 
 Rebuild RI MPT store s 1M objektů trval přibližně 20 hodin.
@@ -28,16 +29,24 @@ Rebuild RI MPT store s 1M objektů trval přibližně 20 hodin.
 4. Rychlost odezvy GUI při 1M objektů:
   * otevření titulu: 3s
   * vyhledání ze záložky Tituly: 1.5 s
- * vyhledání  fulltext "zlatá": 1 s
+  * vyhledání  fulltext "zlatá": 1 s
   * document indexation (browse model): 2.5s
 
-5. V průběhu importu po naimportování asi 6.5M objektů byl vyčerpán stávající diskový prostor pro databázi. FOXML objekty ve fedoře zabírají cca 50GB, odpovídající databáze riTriples 130GB. Prostor pro fedoru zvýšen cca na 600GB, pro postgres na cca 900GB. Resource index MPTstore se jeví jako vysoce neefektivní řešení, Mulgara nefunkční. Zkoumáme možnost použití implementace 4store.org.
+===Objem dat 6,5M===
+5. V průběhu importu po naimportování asi 6.5M objektů byl vyčerpán stávající diskový prostor pro databázi. FOXML objekty ve fedoře zabírají cca 50GB, odpovídající databáze riTriples 130GB. Prostor pro fedoru zvýšen cca na 600GB, pro postgres na cca 900GB. 
+Resource index MPTstore se jeví jako neefektivní řešení, Mulgara nefunkční. Bude zkoumána možnost vyžití implementace 4store.org.
+
 Rychlost importu na nové konfiguraci disků mírně vzrostla, 1 dávka (1270 objektů) nyní trvá cca 40s (původně 50s).
 
-6. K 29.7.2012 je naimportováno 35M objektů. Rychlost importu i odezva GUI K4 zůstává stejná, dotazy do MPT store se výrazně zpomalují, složitější dotaz spojující 3 RDF vazby trvá místo počátečních jednotek vteřin jednotky minut. Databáze MPTStore zabírá cca 850GB, úložiště Fedroa cca 300GB
-  
-7. 5.8.20012 po naimportování 40M objektů byly vyčerpány všechny inodes v datovém úložišti fedora. Po navýšení potřebné kapacity inodes na 100 000 000 byla dne 24.8.2012 spuštěna další dávka importu s cílem 48M importovaných objektů.
+===Objem dat 35M===
+6. K 29.7.2012 je naimportováno 35M objektů. Rychlost importu i odezva GUI K4 zůstává stejná, dotazy do MPT store se výrazně zpomalují, složitější dotaz spojující 3 RDF vazby trvá místo počátečních jednotek vteřin jednotky minut. 
+Databáze MPTStore zabírá cca 850GB, úložiště Fedora cca 300GB
 
-*8.* Současně s testem kapacity úložiště fedora a MPT store proběhne (původně nepožadovaný) test kapacity indexu SOLR. 
+===Objem dat 40M===  
+7. 5.8.20012 po naimportování 40M objektů byly vyčerpány všechny inodes v datovém úložišti fedora. 
+Po navýšení potřebné kapacity inodes na 100 000 000 byla dne 24.8.2012 spuštěna další dávka importu s cílem 48M importovaných objektů.
+
+===Test indexu SOLR===
+8. Současně s testem kapacity úložiště fedora a MPT store proběhne (původně nepožadovaný) test kapacity indexu SOLR. 
 Po indexaci 5M objektů byl vyčerpán dostupný diskový prostor na serveru KSOLRKRAM1, další tsty budou pokračovat po navýšení kapacity administrátory NKČR. 
 Stávající rychlost odezvy GUI závislá na indexu SOLR při 5M záznamech se neliší oproti rychlostem uvedeným v bodu 4 pro 1M záznamů. 
