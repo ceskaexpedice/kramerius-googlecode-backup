@@ -1,0 +1,36 @@
+#summary Poznámky ke stylu programování
+
+=Úvod=
+
+Tento dokument popisuje pravidla a konvence používané při vývoji systému Kramerius4 a jeho modulů. 
+
+Pravidla vycházejí z obecně uznávaných pravidel stylu programování v jazyce Java, která jsou k popsána například v těchto dokumentech :
+
+  * [http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html Java Code Conventions]
+
+  * [http://www.ambysoft.com/javaCodingStandards.html Ambysoft Coding Standards for Java]
+
+=Obecná pravidla=
+
+  # *Většinu pravidel v tomto dokumentu je možno porušit*, pokud to v konkrétním případě přispěje k čitelnosti kódu. Tento obecný dokument nemůže pokrýt všechny případy, se kterými se programátor může setkat.
+  # Používejte pokud možno anglické názvy tříd, metod, proměnných atd.
+  # Zdrojové soubory musí používat kódování *UTF-8*
+  # Nepoužívejte speciální znaky jako tabulátory a konce stránek
+  # Není nutno striktně dodržovat maximální délku řádků 80 znaků
+
+=Jmenné konvence=
+
+=Syntaxe=
+
+=Struktura a komentáře=
+
+==Struktura==
+
+==Whitespace==
+
+==Komentáře==
+
+=Logy a chybová hlášení=
+
+=Issues a správa verzí=
+
