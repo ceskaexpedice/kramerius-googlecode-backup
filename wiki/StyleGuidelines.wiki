@@ -56,24 +56,81 @@ openDvdPlayer();    // NE: openDVDPlayer();
 
 class Person
 {
-  private String name_; //NEPOUŽÍVAT
-  private String m_Surname //NEPOUŽÍVAT
-  ...
+    private String name_; //NEPOUŽÍVAT
+    private String m_Surname //NEPOUŽÍVAT
+    ...
 }
 interface ICollection{ //NEPOUŽÍVAT
-  ...
+    ...
 }
 }}}
 
   * Proměnné s širší viditelností by měly mít dlouhá popisná jména, lokální a dočasné proměnné naopak jména krátká, případně i zkratky.
 
-
-
-=Syntaxe=
-
 =Struktura a komentáře=
 
-==Struktura==
+==Struktura kódu==
+
+  * Základní odsazení řádků v bloku je 4 mezery.
+{{{
+for (i = 0; i < max; i++) {
+    a[i] = 0;
+}
+}}}
+
+
+  * Otevírací závorky bloků mají být na stejném řádku, jako klíčové slovo nebo název třídy, metody apod., ke které blok patří, tedy například:
+{{{
+while (!done) {
+    doSomething();
+    done = moreToDo();
+}
+
+class Rectangle extends Shape implements Cloneable, Serializable {
+    ...
+}
+}}}
+
+a nikoli
+
+{{{
+
+while (!done)
+{
+    doSomething();
+    done = moreToDo();
+}
+
+class Rectangle extends Shape
+    implements Cloneable, Serializable
+{
+    ...
+}
+}}}
+
+  * Příkazy if-else mají mít následující tvar:
+
+{{{
+if (condition) {
+    statements;
+} else if {
+    statements;
+} else {
+    statements;
+}
+}}}
+
+  * Těla příkazů if-else, for nebo while musí být uvedena ve složených závorkách, i když obsahují jediný příkaz
+{{{
+if (condition) {
+    statement;
+}
+
+while (condition) {
+    statement;
+}
+}}}
+
 
 ==Whitespace==
 
