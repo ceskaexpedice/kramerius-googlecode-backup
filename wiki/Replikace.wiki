@@ -1,0 +1,60 @@
+#summary Replikace
+<wiki:toc max_depth="1" />
+
+=Replikace K4=
+Od verze 4.6 je možno replikovat data mezi jednotlivými instancemi 
+K4 pomocí funkce replikace.   
+
+=Popis procesu=
+Proces je složen ze tří fází: 
+
+ * Příprava a získání deskriptoru pro replikace.
+ * Procházení jednotlivých titulů, získání FOXML dat a import do cílového uložistě.
+ * Naplánování indexeru pro zaindexování replikovaného.
+
+
+http://kramerius.googlecode.com/svn/wiki/features_46/K4replications.png
+
+
+Výše uvedený obrázek popisuje sekvenci operací při replikaci. 
+
+ *  Nejdříve (bod 1.) si replikační proces vyžádá replikační deskriptor. 
+    Pokud deskriptor dostane, uloží ho a pokusí parsovat. Tím končí fáze 1.
+
+ *  Potom (bod 2.) algoritmus prochází jednotlivé identifikátory objektů 
+    a pro každý získá FOXML objekt, ten importuje do cílového uložistě.  Po 
+    zpracování všech identifikátorů končí fáze 2.
+
+ *  Nakonec (bod 3.) proces naplánuje podproces indexace. Fáze 3.
+ 
+
+Výsledek procesu je možné (krom standardních výstupů) kontrolovat ve výstupní šabloně schované pod položkou . 
+
+http://kramerius.googlecode.com/svn/wiki/features_46/replication-template-item.png
+
+http://kramerius.googlecode.com/svn/wiki/features_46/replication-template.png
+
+
+V případě, že se ve fázi 2 nebo 3 objeví chyba, je možné celý proces restartovat. Tím se nastartuje nový proces, 
+který ovšem bude pokračovat až tam, kde předchozí skončil. Restart je možné provést z výstupní šablony.
+
+
+http://kramerius.googlecode.com/svn/wiki/features_46/replication-template-error.png
+
+
+=Nastavení práv=
+
+Pro replikace jsou definovány akce pro import a export:
+
+ * export_k4_replications
+ * import_k4_replications
+  
+==Akce export_k4_replications==
+Definuje možnost exportu deskriptoru a foxml souboru na straně poskytující data (exportujícího serveru). 
+Akci je možno definovat ja jakékoliv úrovni objektového stromu. Nastavení probíhá pomocí kontextového menu. 
+
+==Akce import_k4_replications==
+Akce operaci importu vyexportovaného foxml do cílového uložiště. Právo s touto akcí je možno definovat pouze na úrovni
+kořenového objektu REPOSITORY. 
+
+
