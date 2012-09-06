@@ -12,35 +12,24 @@ Proces je složen ze tří fází:
  * Procházení jednotlivých titulů, získání FOXML dat a import do cílového uložistě.
  * Naplánování indexeru pro zaindexování replikovaného.
 
-
 http://kramerius.googlecode.com/svn/wiki/features_46/K4replications.png
-
 
 Výše uvedený obrázek popisuje sekvenci operací při replikaci. 
 
- *  Nejdříve (bod 1.) si replikační proces vyžádá replikační deskriptor. 
-    Pokud deskriptor dostane, uloží ho a pokusí parsovat. Tím končí fáze 1.
-
- *  Potom (bod 2.) algoritmus prochází jednotlivé identifikátory objektů 
-    a pro každý získá FOXML objekt, ten importuje do cílového uložistě.  Po 
-    zpracování všech identifikátorů končí fáze 2.
-
+ *  Nejdříve (bod 1.) si replikační proces vyžádá replikační deskriptor.  Pokud deskriptor dostane, uloží ho a pokusí parsovat. Tím končí fáze 1.
+ *  Potom (bod 2.) algoritmus prochází jednotlivé identifikátory objektů a pro každý získá FOXML objekt, ten importuje do cílového uložistě.  Po zpracování všech identifikátorů končí fáze 2.
  *  Nakonec (bod 3.) proces naplánuje podproces indexace. Fáze 3.
  
-
 Výsledek procesu je možné (krom standardních výstupů) kontrolovat ve výstupní šabloně schované pod položkou . 
 
 http://kramerius.googlecode.com/svn/wiki/features_46/replication-template-item.png
 
 http://kramerius.googlecode.com/svn/wiki/features_46/replication-template.png
 
-
 V případě, že se ve fázi 2 nebo 3 objeví chyba, je možné celý proces restartovat. Tím se nastartuje nový proces, 
 který ovšem bude pokračovat až tam, kde předchozí skončil. Restart je možné provést z výstupní šablony.
 
-
 http://kramerius.googlecode.com/svn/wiki/features_46/replication-template-error.png
-
 
 =Nastavení práv=
 
