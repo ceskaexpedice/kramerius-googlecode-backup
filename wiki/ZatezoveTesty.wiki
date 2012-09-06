@@ -53,10 +53,15 @@ Po navýšení potřebné kapacity inodes na 100 000 000 byla dne 24.8.2012 spu�
 ====Objem dat 48M====
 8. 29.8.2012 naimportováno 48M objektů, spuštěna závěrečná dávka importu s cílem 60M. Rychlost importu i odezvy systému se nemění.
 
+====Objem dat 60M====
+9. 3.9.2012 naimportováno 60M objektů. Rychlost importu i odezvy systému se nezměnila.
+
 ===Test indexu SOLR===
 Současně s testem kapacity úložiště fedora a MPT store proběhne (původně nepožadovaný) test kapacity indexu SOLR. 
-Po indexaci 5M objektů byl vyčerpán dostupný diskový prostor na serveru KSOLRKRAM1, další tsty budou pokračovat po navýšení kapacity administrátory NKČR. 
+Po indexaci 5M objektů byl vyčerpán dostupný diskový prostor na serveru KSOLRKRAM1, další testy budou pokračovat po navýšení kapacity administrátory NKČR. 
 Stávající rychlost odezvy GUI závislá na indexu SOLR při 5M záznamech se neliší oproti rychlostem uvedeným v bodu 4 pro 1M záznamů. 
+
+Po zvýšení místa n adisku pro index SOLR byl vygenerován index s 60M záznamů. Počáteční rychlost odezvy při prvním pokusu o připojení k aplikaci se zvýšila na cca 20s, odezva na následující dotazy a navigace v systému po úplné inicializaci indexu a cache se pohybují pod 1s.
 
 ===Závěry testů===
 Závěru testů a doporučení budou publikovány (pravděpodobně) během měsíce září 2012 
