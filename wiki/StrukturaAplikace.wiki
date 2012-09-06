@@ -70,3 +70,7 @@ Distribuční archiv search.war lze vytvořit příkazem `mvn install` v kořeno
   * gwt-servlet-2.0.0  
 
 Tyto knihovny je třeba před prvním buildem aplikace manuálně nainstalovat do lokálního úložiště maven. Soubory knihoven  jsou k dispozici v sekci Downloads.
+
+= Programátorské konvence =
+
+Přehled programátorských konvencí, používaných při vývoji sytsému Kramerius 4, je na stránce wiki StyleGuidelines .
