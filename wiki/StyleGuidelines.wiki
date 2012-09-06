@@ -123,7 +123,7 @@ if (condition) {
 
   * Třídy, které tvoří součást veřejného API příslušné služby nebo modulu, mají mít všechny public a protected metody opatřeny komentáři pro javadoc.
 
-  * Komentáře by měly být v angličitině.
+  * Komentáře by měly být v angličtině.
 
 =Logy a chybová hlášení=
 
