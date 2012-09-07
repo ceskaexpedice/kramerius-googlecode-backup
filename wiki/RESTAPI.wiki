@@ -26,7 +26,7 @@ Správa procesů umožňuje základní operace
 ===Plánování nového procesu===
 Plánování procesu bez parametrů
 {{{
-    GET http://xxx.xxx.xxx.xxx/seach/api/plainStart/mock    
+    GET https://xxx.xxx.xxx.xxx/seach/api/plainStart/mock?userName=xxx&pswd=xxx    
 }}}
 
 Server odpoví JSON strukturou, která popisuje právě provedenou operaci. 
@@ -40,6 +40,44 @@ Server odpoví JSON strukturou, která popisuje právě provedenou operaci.
     "planned":"09/07/2012 07:04:45:952",
     "finished":"01/01/1970 01:00:00:000"
 }
+}}}
+Pokud se jedná o proces, který vyžaduje parametry, je možné je předat HTTP atributem params. 
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/plainStart/mock?params={first;second;third}    
+}}}
+Parametry je nutno předávat ve struktuře, která se dá nejlépe vystihnout následující zjednodušeným pravidlem
+{{{
+    params : '{' item ( ';' item)* '}'
+}}}
+V uvozujících složených závorkách jsou definovány jednotlivé parametry oddělené znakem ';'
+
+Server odpoví stejne jako v předchozím případě.
+
+===Zastavení procesu===
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/stop/9e3195af-a70b-4756-8af6-19a269eab064
+}}}
+Po úspěšném zastavení procesu server odpoví následovně
+{{{
+{
+    "uuid":"9e3195af-a70b-4756-8af6-19a269eab064",
+    "pid":"21155",
+    "def":"mock",
+    "state":"KILLED",
+    "batchState":"NO_BATCH",
+    "name":"Jmeno procesu mock..",
+    "started":"09/07/2012 07:24:35:066",
+    "planned":"09/07/2012 07:24:31:087",
+    "finished":"09/07/2012 07:41:07:928",
+    "userid":"krameriusAdmin",
+    "userFirstname":"kramerius",
+    "userSurname":"admin"
+}
+}}}
+
+===Získání informace o procesu===
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/desc/9e3195af-a70b-4756-8af6-19a269eab064
 }}}
 
 
