@@ -1,0 +1,46 @@
+#summary REST API
+<wiki:toc max_depth="1" />
+
+
+=REST API=
+Verze 4.6 přináší možnost využít RESTful API a to ve dvou oblastech:
+
+ * Správa procesů
+ * Replikace
+
+API je namapováno na kontext ../search/api/* a využívá autentizační mechanismus s K4, který umožňuje autentizaci pomocí 
+atributu  HTTP dotazu. Nutno podotknout, že je vhodné tuto autentizaci používat 
+pouze v kombinaci se zapnutým HTTPS protokolem. 
+
+
+==Správa procesů==
+Správa procesů umožňuje základní operace 
+
+ * Plánovat nový proces
+ * Získávat informace o procesu (Stav, čas spuštění, dávkový stav..) 
+ * Zastavit proces
+ * Smazat proces z procesní databáze
+ * Získat logy procesů
+ * Získávat filtrované a tříděné seznamy procesů
+
+===Plánování nového procesu===
+Plánování procesu bez parametrů
+{{{
+    GET http://xxx.xxx.xxx.xxx/seach/api/plainStart/mock    
+}}}
+
+Server odpoví JSON strukturou, která popisuje právě provedenou operaci. 
+{{{
+{
+    "uuid":"40834abb-d51d-44ed-92dc-651da734b14e",
+    "def":"mock",
+    "state":"PLANNED",
+    "batchState":"NO_BATCH",
+    "started":"01/01/1970 01:00:00:000",
+    "planned":"09/07/2012 07:04:45:952",
+    "finished":"01/01/1970 01:00:00:000"
+}
+}}}
+
+
+==Replikace==
