@@ -6,19 +6,22 @@ Od verze 4.6 je možno replikovat data mezi jednotlivými instancemi
 K4 pomocí funkce replikace.   
 
 =Popis procesu=
-Proces je složen ze tří fází: 
-
- * Příprava a získání deskriptoru pro replikace.
- * Procházení jednotlivých titulů, získání FOXML dat a import do cílového uložistě.
- * Naplánování indexeru pro zaindexování replikovaného.
+Proces umožňuje na základě znalosti persistentní adresy(handlu) a replikačního účtu replikovat data ze vzdáleného repositáře do repositáře cílového.
+Proces je složen ze tří fází které  nejlépe vystihuje následující diagram.
 
 http://kramerius.googlecode.com/svn/wiki/features_46/K4replications.png
 
-Výše uvedený obrázek popisuje sekvenci operací při replikaci. 
 
  *  Nejdříve (bod 1.) si replikační proces vyžádá replikační deskriptor.  Pokud deskriptor dostane, uloží ho a pokusí parsovat. Tím končí fáze 1.
  *  Potom (bod 2.) algoritmus prochází jednotlivé identifikátory objektů a pro každý získá FOXML objekt, ten importuje do cílového uložistě.  Po zpracování všech identifikátorů končí fáze 2.
  *  Nakonec (bod 3.) proces naplánuje podproces indexace. Fáze 3.
+
+
+
+=Gui= 
+Spouštění procesu se děje pomocí vstupního dialogu, kde je nutno vyplnit základní informace (K4 handle, replikační účet). 
+ 
+http://kramerius.googlecode.com/svn/wiki/features_46/replication-template-input.png
  
 Výsledek procesu je možné (krom standardních výstupů) kontrolovat ve výstupní šabloně schované pod položkou . 
 
@@ -45,5 +48,4 @@ Akci je možno definovat ja jakékoliv úrovni objektového stromu. Nastavení p
 ==Akce import_k4_replications==
 Akce operaci importu vyexportovaného foxml do cílového uložiště. Právo s touto akcí je možno definovat pouze na úrovni
 kořenového objektu REPOSITORY. 
-
 
