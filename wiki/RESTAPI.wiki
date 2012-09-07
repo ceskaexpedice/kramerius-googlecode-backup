@@ -93,6 +93,11 @@ Nejednodušší případ je prostý výpis procesů (bez použitého filtru)
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/list
 }}}
+Vypis je omezen maximálním počtem záznamů. Následující záznamy je možné získat atributem offset
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/list?offset=10
+}}}
+
 
 
 ==Replikace==
