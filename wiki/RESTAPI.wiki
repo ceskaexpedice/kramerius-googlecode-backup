@@ -91,6 +91,8 @@ Odpověd ze serveru bude bude JSON objekt obsahující pouze informaci o smazán
 }}}
 ===Výpis procesů===
 Nejednodušší případ je prostý výpis procesů (bez použitého filtru)
-
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/list
+}}}
 
 ==Replikace==
