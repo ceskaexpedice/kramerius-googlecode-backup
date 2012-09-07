@@ -8,9 +8,8 @@ Verze 4.6 přináší možnost využít RESTful API a to ve dvou oblastech:
  * Správa procesů
  * Replikace
 
-API je namapováno na kontext ../search/api/ a využívá autentizační mechanismus s K4, který umožňuje autentizaci pomocí 
-atributu  HTTP dotazu. Nutno podotknout, že je vhodné tuto autentizaci používat 
-pouze v kombinaci se zapnutým HTTPS protokolem. 
+API je namapováno na kontext ../search/api/ a využívá autentizační mechanismus systému K4, který umožňuje autentizaci pomocí 
+atributu  HTTP dotazu. Nutno podotknout, že je vhodné tuto autentizaci používat pouze v kombinaci se zapnutým HTTPS protokolem. 
 
 
 ==Správa procesů==
@@ -94,5 +93,6 @@ Nejednodušší případ je prostý výpis procesů (bez použitého filtru)
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/list
 }}}
+
 
 ==Replikace==
