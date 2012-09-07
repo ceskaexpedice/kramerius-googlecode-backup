@@ -51,7 +51,7 @@ Parametry je nutno předávat ve struktuře, která se dá nejlépe vystihnout n
 }}}
 V uvozujících složených závorkách jsou definovány jednotlivé parametry oddělené znakem ';'
 
-Server odpoví stejne jako v předchozím případě.
+Server odpoví stejně jako v předchozím případě.
 
 ===Zastavení procesu===
 {{{
@@ -79,6 +79,18 @@ Po úspěšném zastavení procesu server odpoví následovně
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/desc/9e3195af-a70b-4756-8af6-19a269eab064
 }}}
+Odpověd ze serveru bude podobná jako v předchozím případě.
+
+===Smazání procesu===
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/delete/9e3195af-a70b-4756-8af6-19a269eab064
+}}}
+Odpověd ze serveru bude bude JSON objekt obsahující pouze informaci o smazání daného procesu.
+{{{
+{"deleted":"9e3195af-a70b-4756-8af6-19a269eab064"}
+}}}
+===Výpis procesů===
+Nejednodušší případ je prostý výpis procesů (bez použitého filtru)
 
 
 ==Replikace==
