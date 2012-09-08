@@ -109,7 +109,7 @@ Atributem filter je možné data filtrovat. Pravidla pro filtr jde napsat násle
 Tečka v pravidlech reprezentuje jakýkoliv znak. Pravidlo *key* reprezentuje klíčovou položku z JSON objektu. Pravidlo *value* pak filtrovanou hodnotu. Znaky 
 `';',':', '|','\'` musí být uvozny escape sekvencí následujícím způsobem  `'\;', '\:', '\|', '\\'`.
  
-===Příklad filtru pro stav failed===
+===Příklad filtru pro stav FINISHED===
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/list?filter={{state='FINISHED'}} 
 }}}
