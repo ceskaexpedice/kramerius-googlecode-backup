@@ -100,8 +100,8 @@ Výpis je omezen maximálním počtem záznamů. Následující záznamy je mož
 }}}
 Atributem filter je možné data filtrovat. Pravidla pro filtr jde napsat následovně:
 {{{
-    filter : '{' filterval ( ';' filterval )* '}'
-    filterval : '{' key '=' value || value '=' key '}'
+    filter : '{' filtercond ( ';' filtercond )* '}'
+    filtercond : '{' key '=' value || value '=' key '}'
     key : .+                                   
     value : '.+'                               
 }}}
@@ -109,18 +109,33 @@ Atributem filter je možné data filtrovat. Pravidla pro filtr jde napsat násle
 Tečka v pravidlech reprezentuje jakýkoliv znak. Pravidlo *key* reprezentuje klíčovou položku z JSON objektu. Pravidlo *value* pak filtrovanou hodnotu. Znaky 
 `';',':', '|','\'` musí být uvozny escape sekvencí následujícím způsobem  `'\;', '\:', '\|', '\\'`.
  
-===Příklad filtru pro stav FINISHED===
+====Příklad filtru pro stav FINISHED====
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/list?filter={{state='FINISHED'}} 
 }}}
 
-===Filtrování procesu dle uuid===
+====Filtrování procesu dle uuid====
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/list?filter={{uuid='e8259955-fe77-4a83-8f5a-7fc1a2eb57f6'}} 
 }}}
 
+====Filtrování procesů dle data====
+{{{
+    http://xxx.xxx.xxx.xxx/search/api/processes/list?filter={{planned>'01/01/1970 01\:00\:00\:000'}}
+}}}
+
+{{{
+    http://xxx.xxx.xxx.xxx/search/api/processes/list?filter={{planned>'01/01/1970 01\:00\:00\:000'};{planned<'05/01/2012 01\:00\:00\:000'}}
+}}}
+
+Jednotlivé podmínky v dotazu jsou spojeny operátorem *AND*
 
 
-===Výstupy procesu===
+====Výstupy procesu====
+Výstup procesu jsou dostupné pomocí dotazu
+{{{
+    http://xxx.xxx.xxx.xxx/search/api/processes/logs/9e3195af-a70b-4756-8af6-19a269eab064
+}}}
+
 
 ==Replikace==
