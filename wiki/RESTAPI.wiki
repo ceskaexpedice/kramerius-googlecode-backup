@@ -169,9 +169,10 @@ Výstup procesu jsou dostupné pomocí dotazu
 }}}
 
 Odpověď vypadá následovně:
+
 {{{
 {"sout":"NS42LjIwMTIgMTA6MjI6NTQgY...","serr":""}
 }}}
-Klíč sout reprezentuje standardní výstup,klíč serr pak error výstup.
+Klíč sout reprezentuje standardní výstup zakódovaný do base64, klíč serr pak error výstup rovněž kódovaný do base64.
 
 ==Replikace==
