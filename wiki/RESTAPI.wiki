@@ -52,6 +52,7 @@ V uvozujících složených závorkách jsou definovány jednotlivé parametry o
 
 Server odpoví stejně jako v předchozím případě.
 
+
 ===Zastavení procesu===
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/stop/9e3195af-a70b-4756-8af6-19a269eab064
