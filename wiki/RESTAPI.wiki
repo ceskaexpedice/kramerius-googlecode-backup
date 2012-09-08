@@ -176,3 +176,76 @@ Odpověď vypadá následovně:
 Klíč sout reprezentuje standardní výstup zakódovaný do base64, klíč serr pak error výstup rovněž kódovaný do base64.
 
 ==Replikace==
+
+Rozhraní pro replikace umožňuje tři operace
+
+  * Získání seznamu všech objektů zahrnutých do replikace
+  * Získání deskriptoru objektu
+  * Získání FOXML dat
+  
+===Získání seznamu všech objektů zahrnutých do replikace===
+Pomocí dotazu   
+{{{
+    http://xxx.xxx.xxx.xxx/search/api/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/prepare
+}}}
+
+Vrací JSON pole obsahující nutné objekty k replikaci. Výstup vypadá následovně:
+{{{
+{
+    'pids':
+        [
+         'uuid:1a43499e-c953-11df-84b1-001b63bd97ba',
+         'uuid:1a587f4f-c953-11df-84b1-001b63bd97ba',
+         'uuid:1bc88a10-c953-11df-84b1-001b63bd97ba',
+         'uuid:1ca1ac01-c953-11df-84b1-001b63bd97ba',
+         'uuid:1d6941c2-c953-11df-84b1-001b63bd97ba',
+         'uuid:1e0ad8f3-c953-11df-84b1-001b63bd97ba',
+         'uuid:1ec37a94-c953-11df-84b1-001b63bd97ba',
+         'uuid:1f71bbf5-c953-11df-84b1-001b63bd97ba',
+         'uuid:20299a46-c953-11df-84b1-001b63bd97ba',
+         'uuid:20cf7737-c953-11df-84b1-001b63bd97ba',
+         'uuid:21788878-c953-11df-84b1-001b63bd97ba',
+         'uuid:221d05d9-c953-11df-84b1-001b63bd97ba',
+         'uuid:2309afca-c953-11df-84b1-001b63bd97ba',
+         'uuid:23c4744b-c953-11df-84b1-001b63bd97ba',
+         'uuid:2469b4fc-c953-11df-84b1-001b63bd97ba',
+         'uuid:250f43cd-c953-11df-84b1-001b63bd97ba',
+         'uuid:25c462fe-c953-11df-84b1-001b63bd97ba',
+         'uuid:2669f1cf-c953-11df-84b1-001b63bd97ba',
+         ....
+     ]
+}
+}}}
+
+===Získání deskriptoru objektu===
+Lze získat pomocí
+{{{
+    http://xxx.xxx.xxx.xxx/search/api/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/description
+}}}
+
+Vrací metadata popisující daný objekt. Příklad výstupu:
+{{{
+{
+    'identifiers':['uuid:1a43499e-c953-11df-84b1-001b63bd97ba','contract:00007'],
+     'publishers':['A. Hynek',''],
+     'creators':['Zola Émile'],
+     'title':'Nana',
+     'type':'monograph',
+     'date':'',
+     'handle':'http://vmkramerius:8080/search/handle/uuid:1a43499e-c953-11df-84b1-001b63bd97ba'
+}
+}}}
+
+===Získání FOXML objektu===
+Exportovaný FOXML objekt server poskytuje na základě dotazu 
+{{{
+    http://xxx.xxx.xxx.xxx/search/api/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/exportedFOXML
+}}}
+
+Výsledná data vypadají následovně: 
+{{{
+{'raw':'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGL....'} 
+}}}
+
+Kde hodnota raw v Base64 zakódovaná FOXML data.
+
