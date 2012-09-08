@@ -88,16 +88,39 @@ Odpověd ze serveru bude bude JSON objekt obsahující pouze informaci o smazán
 {{{
 {"deleted":"9e3195af-a70b-4756-8af6-19a269eab064"}
 }}}
+
 ===Výpis procesů===
-Nejednodušší případ je prostý výpis procesů (bez použitého filtru)
+Nejednodušší případ je prostý výpis procesů (bez použitého filtru).
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/list
 }}}
-Vypis je omezen maximálním počtem záznamů. Následující záznamy je možné získat atributem offset
+Výpis je omezen maximálním počtem záznamů. Následující záznamy je možné získat atributem offset.
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/list?offset=10
+    GET https://xxx.xxx.xxx.xxx/seach/api/list?offset=50
+}}}
+Atributem filter je možné data filtrovat. Pravidla pro filtr jde napsat následovně:
+{{{
+    filter : '{' filterval ( ';' filterval )* '}'
+    filterval : '{' key '=' value || value '=' key '}'
+    key : .+                                   
+    value : '.+'                               
+}}}
+
+Tečka v pravidlech reprezentuje jakýkoliv znak. Pravidlo *key* reprezentuje klíčovou položku z JSON objektu. Pravidlo *value* pak filtrovanou hodnotu. Znaky 
+`';',':', '|','\'` musí být uvozny escape sekvencí následujícím způsobem  `'\;', '\:', '\|', '\\'`.
+ 
+===Příklad filtru pro stav failed===
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/list?filter={{state='FINISHED'}} 
+}}}
+
+===Filtrování procesu dle uuid===
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/list?filter={{uuid='e8259955-fe77-4a83-8f5a-7fc1a2eb57f6'}} 
 }}}
 
 
+
+===Výstupy procesu===
 
 ==Replikace==
