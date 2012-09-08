@@ -94,6 +94,36 @@ Nejednodušší případ je prostý výpis procesů (bez použitého filtru).
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/list
 }}}
+
+Výstupem je pole json popisných objektů stejných jako v přechozích případech
+{{{
+
+[
+    {
+        "uuid":"90b8a07a-14f5-4817-a47f-16f2b88c2724",
+        "pid":"20227",
+        "def":"mock",
+        "state":"FINISHED",
+        "batchState":"NO_BATCH",
+        "name":"Jmeno procesu mock..",
+        "started":"02/07/2012 09:15:31:600",
+        "planned":"02/07/2012 09:15:23:570",
+        "finished":"01/01/1970 01:00:00:000",
+        "userid":"krameriusAdmin",
+        "userFirstname":"kramerius",
+        "userSurname":"admin"
+    },
+    {
+        "uuid":"ed38ac05-a90e-41b5-b922-31b7b7fa44e6",
+        "pid":"17900",
+        "def":"replikator_periodicals",
+        "state":"FINISHED",
+        "batchState":"NO_BATCH",
+        ...
+    }
+]
+}}}
+
 Výpis je omezen maximálním počtem záznamů. Následující záznamy je možné získat atributem offset.
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/list?offset=50
