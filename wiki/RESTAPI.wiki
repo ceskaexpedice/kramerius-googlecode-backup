@@ -168,5 +168,10 @@ Výstup procesu jsou dostupné pomocí dotazu
     http://xxx.xxx.xxx.xxx/search/api/processes/logs/9e3195af-a70b-4756-8af6-19a269eab064
 }}}
 
+Odpověď vypadá následovně:
+{{{
+{"sout":"NS42LjIwMTIgMTA6MjI6NTQgY...","serr":""}
+}}}
+Klíč sout reprezentuje standardní výstup,klíč serr pak error výstup.
 
 ==Replikace==
