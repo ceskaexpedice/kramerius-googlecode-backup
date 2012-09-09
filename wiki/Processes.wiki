@@ -50,7 +50,9 @@ public class TestSimpleProcess2 {
     
     
     @Process    
-    public static void process(@ParamName("user")String user, @ParamName("email")String email, @ParamName("serverFolder")File serverFolder) {
+    public static void process(@ParamName("user")String user, 
+                               @ParamName("email")String email, 
+                               @ParamName("serverFolder")File serverFolder) {
         ...
     }
 } 
@@ -88,5 +90,7 @@ anotací  `@ParamName`.
 
 ==Výstup, šablona ProcessOutputTemplate==
 Pokud je záhodno aby proces zobrazil výsledek jiným způsobem než standardně (tedy ve formě logu), je možno definovat výstupní šablonu. Ta je určena implementací
-rozhraní `ProcessOutputTemplate` z balíčku `cz.incad.kramerius.processes.def`. Výstupních šablon může být u procesu víc, zobrazení nabídky výstupních šablon je vidět 
-zde  [Replikace#Gui]
+rozhraní `ProcessOutputTemplate` z balíčku `cz.incad.kramerius.processes.def`. Výstupních šablon může být u procesu víc, zobrazení nabídky výstupních šablon a 
+a samotnou výstupní šablonu jsou vidět zde  [Replikace#Gui]
+
+
