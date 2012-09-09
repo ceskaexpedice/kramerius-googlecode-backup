@@ -111,7 +111,7 @@ procesu hodnotu null. Při posílání parametrů je nutno pro znaky  `';'|'\'|'
   
 
 ==Definování vlastní vstupní a výstupní šablony ==
-Vlastní implementace šablon, ať už vstupní nebo výstupní, spočívá hlavně na implementaci metod renderInput resp. renderOutput. Parameterem metod je výstupní proud 
+Vlastní implementace šablon, ať už vstupní nebo výstupní, spočívá hlavně na implementaci metod `renderInput` resp. `renderOutput`. Parameterem metod je výstupní proud 
 servletu java.io.Writer, který slouží pro standardní html výstup. Při generování je možno využít nějakého šablonovacího nástroje (freemarker, stringtemplate). V K4 je 
 standardně přítomen StringTemplate ve verzi 3.2.1.  
 
@@ -139,6 +139,18 @@ Zde je definovaný kontrakt, každá vstupní šablona musí definovat javascrip
 Poznámky: 
  # Metoda `.escapeChars` je definována na objektu String a je definována až krameriem a slouží pro opatření escape sekvencí v libovolném stringu. 
  # Snippet kódu  `processStarter("custom_process").start(url);` umožní naplánovat process `custom_process`.
+ 
    
+==Podprocesy==
+Každý proces může v rámci sebe naplánovat další samostatný proces, který se ve správci procesů jeví jako dětský proces. Toto se může uskutečnit 
+pomocí následujícího snippetu kódu 
+{{{
+    ProcessUtils.startProcess(processDefId, params);
+}}}
+Poznámky: 
+ # Parametr `processDefId` je identifikátor procesu z lp.xml resp. lp.st. 
+ # Parametr `params` je pole parametrů procesu. 
+ 
+ 
  
 
