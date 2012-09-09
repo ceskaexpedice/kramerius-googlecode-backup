@@ -56,7 +56,10 @@ public class TestSimpleProcess2 {
 } 
 }}}
 
-Anotace `@Process` určí metodu, kterou plánovač spustí, anotace `@ParamName` pak definuje formální jméno položky získané z formuláře od uživatele. 
-Pokud taková položka nebyla od uživatele získána, algoritmus zkoumá jestli není definována implicitní hodnota určená parametrem @DefaultParameterValue.
+Anotace `@Process` určí metodu, kterou plánovač spustí, anotace `@ParamName` definuje formální jméno položky získané z formuláře od uživatele. 
+Pokud taková položka nebyla od uživatele získána, algoritmus zkoumá jestli není definována implicitní hodnota určená parametrem `@DefaultParameterValue`. 
+Parametry metody musí být typu `java.lang.String` nebo typu, který má definovaný konstruktor s jedním parametrem typu `java.lang.String`. Příkladem může být
+`java.io.File`.
+
 
  
