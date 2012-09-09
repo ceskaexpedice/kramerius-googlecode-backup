@@ -65,7 +65,7 @@ Parametry metody musí být typu `java.lang.String` nebo typu, který má defino
 Pokud má proces definovanou tzv. vstupní šablonu, znamená to, že očekává pojmenované parametry, většinou získané od uživatele přes webové rozhraní. 
 Vstupní šablona určena implementací třídy `ProcessInputTemplate` z balíčku `cz.incad.kramerius.processes.template`.  Definice takového procesu v lp.xml  
 vypadá
-{{{
+<code language="xml">
 <processes>
     <process>
         <id>testsimpleprocess2</id>
@@ -78,7 +78,15 @@ vypadá
         </templates>
     </process>
 </processes>
-}}}
+</code>
 Server při dotazu na vstupní formulář instanciuje třídu `TestSimpleProcess2InputTemplate` a zavolá na ni metodu `renderInput`, která má na startosti 
 generování vstupního formuláře. Uživateli se formulář objeví v samostatném dialogu.  Příklad takového dialogu je vidět zde [Replikace#Gui].
- 
+
+==Implicitní šablona==
+Pro procesy je definována třída `DefaultTemplate` z balíčku  `cz.incad.kramerius.processes.def`. Ta umí vygenerovat formulář pro všechny anotované paramtery
+anotací  `@ParamName`.
+
+==Výstup, šablona ProcessOutputTemplate==
+Pokud je záhodno aby proces zobrazil výsledek jiným způsobem než standardně (tedy ve formě logu), je možno definovat výstupní šablonu. Ta je určena implementací
+rozhraní `ProcessOutputTemplate` z balíčku `cz.incad.kramerius.processes.def`. Výstupních šablon může být u procesu víc, zobrazení nabídky výstupních šablon je vidět 
+zde  [Replikace#Gui]
