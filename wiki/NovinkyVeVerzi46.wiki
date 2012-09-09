@@ -14,8 +14,8 @@ se seznamem všech parametrů s tlačítky pro přejmenování, smazání nebo e
 http://kramerius.googlecode.com/svn/wiki/features_46/rights-criterium-params-editor.png
 
 Zakázané tlačítko pro smazání parametrů znamená, že jsou použity v některém právu a je nejdříve 
-nutné učinit tyto parametry nepoužívanými. K tomu slouží tlačítko Editace práv. Po stisku se objeví standardní dialog pro editaci 
-práv, vybrané jsou pouze ty objekty, které mají nejaké právo svázané s daným parametrem. Stejně je tomu u chráněných akcí.  
+nutné učinit tyto parametry nepoužívanými. K tomu slouží tlačítko `Editace práv`. Po stisku se objeví standardní dialog pro editaci 
+práv (popisovaný například zde [PravaGUI]), vybrané jsou pouze ty objekty, které mají nejaké právo svázané s daným parametrem. Stejně je tomu u chráněných akcí.  
 
 
 =Parametrizace procesu=
