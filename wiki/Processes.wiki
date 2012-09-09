@@ -94,3 +94,51 @@ rozhraní `ProcessOutputTemplate` z balíčku `cz.incad.kramerius.processes.def`
 a samotnou výstupní šablonu jsou vidět zde  [Replikace#Gui]
 
 
+==Komunikační protokol==
+Naplánování procesu s uživatelským vstupem se děje ve dvou fázích.  Nejdříve si klient (browser) vyžádá vstupní formulář dotazem 
+{{{
+    GET http://xxx.xxx.xxx.xxx/seach/lr?action=form_get&def=<process_def_id>
+}}}
+
+Parametr `action` určuje operaci, `def` určuje identifikátor procesu ze souboru `lp.xml` resp. `lp.st`.
+
+Jako druhý krok musí klient (browser) poslat vyplněné hodnoty ud uživatele. To se dějě pomocí dotazu
+{{{
+    GET http://xxx.xxx.xxx.xxx/seach/lr?action=form_post&def=<process_def_id>&paramsMapping={firstParamName=firstParamVal, secondParamName=secondParamValue}
+}}}
+Zde je důležitý parametr paramsMapping, který obsahuje vyplněné položky od uživatele. Nemusí být přitomny všechny, pokud některý parametr není, bude mít ve spuštěném 
+procesu hodnotu null. Při posílání parametrů je nutno pro znaky  `';'|'\'|'{'|'}'|':'` použít jejich escape sekvence `'\;'|'\\'|'\{'|'\}'|'\:'`.  
+  
+
+==Definování vlastní vstupní a výstupní šablony ==
+Vlastní implementace šablon, ať už vstupní nebo výstupní, spočívá hlavně na implementaci metod renderInput resp. renderOutput. Parameterem metod je výstupní proud 
+servletu java.io.Writer, který slouží pro standardní html výstup. Při generování je možno využít nějakého šablonovacího nástroje (freemarker, stringtemplate). V K4 je 
+standardně přítomen StringTemplate ve verzi 3.2.1.  
+
+Při definici vlastní vstupní šablony je nutno myslet na to, že je zodopovědná za předání parametrů od uživatele a tedy i vlastní naplánování procesu. 
+Zde je definovaný kontrakt, každá vstupní šablona musí definovat javascriptovou metodu `window.onProcessFormSend`, kterou dialog před ukončením zavolá.
+{{{
+    <script language="JavaScript" type="text/javascript"> 
+    <!--    
+
+        window.onProcessFormSend = function() {
+            
+            var charsThatMustBeEscaped = [':',';','}','{'];
+
+            var firstValue = "Value from TextField 1".escapeChars(charsThatMustBeEscaped);
+            var secondValue = "Value from TextField 2".escapeChars(charsThatMustBeEscaped);
+            var thirdValue = "Value from TextField 2".escapeChars(charsThatMustBeEscaped);
+
+            var url = "lr?action=form_post&def=custom_process&paramsMapping={first="+firstValue+";second="+secondValue+";third="+thirdValue}&out=text";
+            processStarter("custom_process").start(url);
+        }
+    -->        
+    </script>
+}}}
+
+Poznámky: 
+ # Metoda `.escapeChars` je definována na objektu String a je definována až krameriem a slouží pro opatření escape sekvencí v libovolném stringu. 
+ # Snippet kódu  `processStarter("custom_process").start(url);` umožní naplánovat process `custom_process`.
+   
+ 
+
