@@ -54,7 +54,7 @@ Server odpoví stejně jako v předchozím případě.
 
 
 ===Plánování nového procesu s pojmenovanými parametry===
-Plánování procesu s pojmenovanými parametry viz [Processes#Procesy_s_uživatelským_vstupem]
+Plánování procesu s pojmenovanými parametry viz [Processes]
 {{{
     GET https://.../seach/api/parametrizedStart/testsimpleprocess2?paramsMapping={user=strycek;email=strycek@sit.net;serverFolder=/dev/null}    
 }}}
