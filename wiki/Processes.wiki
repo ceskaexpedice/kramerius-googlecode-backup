@@ -148,9 +148,8 @@ pomocí následujícího snippetu kódu
     ProcessUtils.startProcess(processDefId, params);
 }}}
 Poznámky: 
- # Parametr `processDefId` je identifikátor procesu z lp.xml resp. lp.st. 
+ # Parametr `processDefId` je identifikátor procesu z `lp.xml` resp. `lp.st`. 
  # Parametr `params` je pole parametrů procesu. 
- 
- 
+
  
 
