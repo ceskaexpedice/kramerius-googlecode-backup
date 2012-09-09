@@ -6,7 +6,7 @@ Od verze 4.6 je možno replikovat data mezi jednotlivými instancemi
 K4 pomocí funkce replikace.   
 
 =Popis procesu=
-Proces umožňuje na základě znalosti persistentní adresy(handlu) a replikačního účtu replikovat data ze vzdáleného repositáře do repositáře cílového.
+Proces umožňuje na základě znalosti persistentní adresy ( K4 handle ) a replikačního účtu replikovat data ze vzdáleného repositáře do repositáře cílového.
 Proces je složen ze tří fází které  nejlépe vystihuje následující diagram.
 
 http://kramerius.googlecode.com/svn/wiki/features_46/K4replications.png
@@ -20,14 +20,21 @@ http://kramerius.googlecode.com/svn/wiki/features_46/K4replications.png
 
 =Gui= 
 Spouštění procesu se děje pomocí vstupního dialogu, kde je nutno vyplnit základní informace (K4 handle, replikační účet). 
- 
+
+<a name="replication-template-input">replication-template-input</a> 
 http://kramerius.googlecode.com/svn/wiki/features_46/replication-template-input.png
  
+
 Výsledek procesu je možné (krom standardních výstupů) kontrolovat ve výstupní šabloně schované pod položkou . 
 
+
+<a name="replication-template-item">replication-template-item</a> 
 http://kramerius.googlecode.com/svn/wiki/features_46/replication-template-item.png
 
+
+<a name="replication-template">replication-template</a> 
 http://kramerius.googlecode.com/svn/wiki/features_46/replication-template.png
+
 
 V případě, že se ve fázi 2 nebo 3 objeví chyba, je možné celý proces restartovat. Tím se nastartuje nový proces, 
 který ovšem bude pokračovat až tam, kde předchozí skončil. Restart je možné provést z výstupní šablony.
