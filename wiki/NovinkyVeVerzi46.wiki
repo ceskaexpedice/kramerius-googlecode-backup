@@ -1,0 +1,26 @@
+#summary Novinky ve verzi 4.5
+<wiki:toc max_depth="1" />
+
+=Replikace K4=
+Byla přidána možnost replikace mezi systémy K4. Celý popis replikace je vidět zde [Replikace]
+
+=REST API=
+Bylo vytvořeno nové RESTful API nyní pokytující možnosti replikace nebo správu procesů [RESTAPI]. 
+
+=Rozšíření editace práv o správu parametrů=
+V hlavním menu přibyla položka pro editaci dodatečných podmínek. Po spuštění se objeví dialog 
+se seznamem všech parametrů s tlačítky pro přejmenování, smazání nebo editaci práv.  
+
+http://kramerius.googlecode.com/svn/wiki/features_46/rights-criterium-params-editor.png
+
+
+
+Smazat lze pouze nepoužité parametry. 
+Ty použité je nejdříve nutno 
+
+Použité je nejprve nutné zařídit to, aby
+
+
+=Parametrizace procesu=
+
+=Procesy - davkovy stav, zmeny v gui=
