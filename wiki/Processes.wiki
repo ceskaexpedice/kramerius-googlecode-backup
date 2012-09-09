@@ -1,10 +1,10 @@
 #summary Programers support documents
 <wiki:toc max_depth="1" />
 
-=O=
+=About=
 Článek popisuje možnosti definice procesů v systému K4.
 
-=Procesy=
+==Procesy==
 Procesy v systému K4 jsou definovány dvojí, jednodužší bez uživatelského vstupu a složitější, s možností definice spouštěných parametrů přes 
 webové rozhraní.
  
@@ -34,7 +34,7 @@ public class TestSimpleProcess {
 </processes>
 }}}
 
-Takto definovaný proces je možno rovnou spustit přes RESTful API nebo pomocí staršího přístupu, přes lr servlet. 
+Takto definovaný proces je možno rovnou spustit přes [RESTAPI] nebo pomocí staršího přístupu, přes lr servlet [MenuAdministrace#Manipulace_s_procesy]. 
 
 ==Procesy s uživatelským vstupem==
 Tato možnost byla přidána až v souvislosti s Issue 114 a je přítomna od verze 4.6. Spouštěná metoda je zde určena anotací 
@@ -61,5 +61,24 @@ Pokud taková položka nebyla od uživatele získána, algoritmus zkoumá jestli
 Parametry metody musí být typu `java.lang.String` nebo typu, který má definovaný konstruktor s jedním parametrem typu `java.lang.String`. Příkladem může být
 `java.io.File`.
 
-
+==Uživateslký vstup ProcessInputTemplate==
+Pokud má proces definovanou tzv. vstupní šablonu, znamená to, že očekává pojmenované parametry, většinou získané od uživatele přes webové rozhraní. 
+Vstupní šablona určena implementací třídy `ProcessInputTemplate` z balíčku `cz.incad.kramerius.processes.template`.  Definice takového procesu v lp.xml  
+vypadá
+{{{
+<processes>
+    <process>
+        <id>testsimpleprocess2</id>
+        <description>Testik process</description>
+        <mainClass>org.someorg.TestSimpleProcess2</mainClass>
+        <standardOs>lrOut</standardOs>
+        <errOs>lrErr</errOs>
+        <templates>
+            <input class="org.someorg.TestSimpleProcess2InputTemplate"></input>
+        </templates>
+    </process>
+</processes>
+}}}
+Server při dotazu na vstupní formulář instanciuje třídu `TestSimpleProcess2InputTemplate` a zavolá na ni metodu `renderInput`, která má na startosti 
+generování vstupního formuláře. Uživateli se formulář objeví v samostatném dialogu.  Příklad takového dialogu je vidět zde [Replikace#Gui].
  
