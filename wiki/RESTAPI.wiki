@@ -56,7 +56,7 @@ Server odpoví stejně jako v předchozím případě.
 ===Plánování nového procesu s pojmenovanými parametry===
 Plánování procesu s pojmenovanými parametry viz [Processes#Procesy_s_uživatelským_vstupem]
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/parametrizedStart/testsimpleprocess2?paramsMapping={user=strycek;email=strycek@sit.net;serverFolder=/dev/null}    
+    GET https://.../seach/api/parametrizedStart/testsimpleprocess2?paramsMapping={user=strycek;email=strycek@sit.net;serverFolder=/dev/null}    
 }}}
 Struktura definující mapování mezi formálním jménem parametru a jeho hodnotou je podobná té předchozí. Zjednodušeně lze napsat
 {{{
