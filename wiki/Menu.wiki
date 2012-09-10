@@ -23,30 +23,11 @@ Hlavní a kontextové menu jsou rozděleny na dvě části, administrátorskou a
 akcí  `display_admin_menu` viz [Prava#Akce].
  
 =Programová realizace menu=
-Každá položka menu je realizovaná vlastní třídou, která se stará o její vyrendrování v podobě html snippetu. Všechny položky musí implementovat rozhraní 
-`MenuItem` z balíčku `cz.incad.Kramerius.exts.menu`.
+Každá položka menu je realizovaná vlastní třídou, která se stará o její vyrendrování v podobě html snippetu. 
+Všechny položky musí implementovat rozhraní `[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/MenuItem.java MenuItem]` z balíčku `cz.incad.Kramerius.exts.menu`. 
 
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/MenuItem.java MenuItem]
-
-Jednotlivé položky jsou organozivány do logických částí menu, ty jsou reprezentovány rozhraním 
-
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/MenuPart.java MenuPart]
-
-S částí se skládá celé menu
- 
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/Menu.java Menu]
-
-Kontextové menu menu je reprezentováno třídami 
-
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/ContextMenu.java ContextMenu]
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/ContextMenuPart.java ContextMenuPart]
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/ContextMenuItem.java ContextMenuItem]
-
-Hlavní menu menu je reprezentováno třídami 
-
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/MainMenu.java MainMenu]
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/MainMenuPart.java MainMenuPart]
-[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/MainMenuItem.java MainMenuItem] 
+Pro položky z kontextového menu existuje značkovací rozrhaní `[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/ContextMenuItem.java ContextMenuItem]` 
+resp. `[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/AdminContextMenuItem.java AdminContextMenuItem]` pro položku z administrátorské části menu a `[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/PublicContextMenuItem.java PublicContextMenuItem]`
 
 
 
