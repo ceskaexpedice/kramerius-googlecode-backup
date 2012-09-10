@@ -19,11 +19,8 @@ Jednotlivé akce kontextového menu s aktuálním výběrem nějak operují.
 
 http://kramerius.googlecode.com/svn/wiki/features_46/context-menu.png
  
-
- obsahuje obecnně platné položky 
+Hlavní a kontextové menu jsou rozděleny na dvě části, administrátorskou a veřejnou. To, jestli se zobrazí administrační část daného menu je řízeno 
+akcí  `display_admin_menu` viz [Prava#Akce].
 
  
 
- kde Gl
-Procesy v systému K4 jsou definovány dvojí, jednodužší bez uživatelského vstupu a složitější, s možností definice spouštěných parametrů přes 
-webové rozhraní.
