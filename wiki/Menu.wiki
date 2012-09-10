@@ -2,7 +2,7 @@
 <wiki:toc max_depth="1" />
 
 =About=
-Článek popisuje možnosti přidání nebo potlačení položek menu v systému K4.
+Článek popisuje možnosti přidání nebo potlačení položek menu v systému K4. 
 
 ==Menu==
 Menu v systému K4 je možno rozdělit do dvou oblastí:  `Hlavní` a `kontextové`. 
@@ -33,7 +33,7 @@ pro položky veřejné.
 Podobné je tomu i u hlavního menu. Zde je společné rozrhaní [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/MainMenuItem.java MainMenuItem], administrační položky jsou reprezentovány
 [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/impl/adm/AdminMenuItem.java AdminMenuItem] a [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/impl/pub/PublicMainMenuItem.java PublicMainMenuItem] pro položky veřejné.
 
-Všechny položky jsou spojovány pomocí guice konfiguračního modulu pomocí techlonogie guice, metodou, která se v terminilogii guice nazývá multibinding.
+Všechny položky jsou spojovány konfiguračního modulem pomocí techlonogie guice, konkrétně metodou, která se v terminilogii guice nazývá multibinding.
 Vše nejlépe demonstruje následující kusy kódu.
 
 Definice položky
@@ -69,6 +69,9 @@ Zapojení položky do modulu
 
 
 =Přidání vlastní položky=
-Přidání vlastní položky spočívá pouze v implementaci správného rozhraní a vytvoření jednoho guice modulu. 
+Přidání vlastní položky spočívá pouze v implementaci správného rozhraní a vytvoření jednoho guice modulu a definici manifestu pro načtení modulu. 
+
+Bude doplněno. 
+
 
 
