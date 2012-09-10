@@ -36,7 +36,7 @@ http://kramerius.googlecode.com/svn/wiki/features_46/parametrized-import-browse.
 Položky Export do PDF DVD a Export do PDF CD byly sloučeny do jedné Expoport do PDF s tím, že po zobrazení se objeví dialog s volbou média a možnosti volby 
 výstupního adresáře.
 
-http://kramerius.googlecode.com/svn/wiki/features_46/prametrized-static-export.png
+http://kramerius.googlecode.com/svn/wiki/features_46/parametrized-static-export.png
 
 =Procesy - davkovy stav, zmeny v gui=
 V rámci 
