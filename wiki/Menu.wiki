@@ -1,0 +1,29 @@
+#summary Programers support documents
+<wiki:toc max_depth="1" />
+
+=About=
+Článek popisuje možnosti přidání nebo potlačení položek menu v systému K4.
+
+==Menu==
+Menu v systému K4 je možno rozdělit do dvou oblastí:  `Hlavní` a `kontextové`. 
+
+===Hlavní menu===
+Hlavní menu je "schované" pod tlačítkem `Více`, je dostupné odkudkoliv a obsahuje 
+akce, které nejsou závislé na aktuálním výběru.  
+
+http://kramerius.googlecode.com/svn/wiki/features_46/main-menu.png
+
+===Kontextové menu===
+Kontextové menu se zobrazí pouze v případech, kdy máme vybraný jeden nebo více titulů, tj. při zobrazení konkrétního titulu nebo při hledávání. 
+Jednotlivé akce kontextového menu s aktuálním výběrem nějak operují. 
+
+http://kramerius.googlecode.com/svn/wiki/features_46/context-menu.png
+ 
+
+ obsahuje obecnně platné položky 
+
+ 
+
+ kde Gl
+Procesy v systému K4 jsou definovány dvojí, jednodužší bez uživatelského vstupu a složitější, s možností definice spouštěných parametrů přes 
+webové rozhraní.
