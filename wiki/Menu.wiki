@@ -60,10 +60,11 @@ public class ProcessesDialog extends AbstractMainMenuItem implements AdminMenuIt
 Zapojení položky do modulu
 
 {{{
+        ...
         Multibinder<AdminMenuItem> adminItems
         = Multibinder.newSetBinder(binder(), AdminMenuItem.class);
         adminItems.addBinding().to(ProcessesDialog.class);
-        ....
+        ...
 }}}
  
 
