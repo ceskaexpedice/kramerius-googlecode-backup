@@ -27,11 +27,52 @@ Každá položka menu je realizovaná vlastní třídou, která se stará o jej�
 Všechny položky musí implementovat rozhraní [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/MenuItem.java MenuItem] z balíčku `cz.incad.Kramerius.exts.menu`. 
 
 Pro položky z kontextového menu existuje značkovací rozrhaní [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/ContextMenuItem.java ContextMenuItem] 
-resp. [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/AdminContextMenuItem.java AdminContextMenuItem] pro položku z administrátorské části menu a [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/PublicContextMenuItem.java PublicContextMenuItem].
+resp. [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/AdminContextMenuItem.java AdminContextMenuItem] pro položku z administrátorské části menu a [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/pub/PublicContextMenuItem.java PublicContextMenuItem] 
+pro položky veřejné.
+
+Podobné je tomu i u hlavního menu. Zde je společné rozrhaní [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/MainMenuItem.java MainMenuItem], administrační položky jsou reprezentovány
+[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/impl/adm/AdminMenuItem.java AdminMenuItem] a [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/main/impl/pub/PublicMainMenuItem.java PublicMainMenuItem] pro položky veřejné.
+
+Pro položky z kontextového menu existuje značkovací rozrhaní [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/ContextMenuItem.java ContextMenuItem] 
+resp. [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/AdminContextMenuItem.java AdminContextMenuItem] pro položku z administrátorské části menu a [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/PublicContextMenuItem.java PublicContextMenuItem] 
+pro položky veřejné.
+
+Všechny položky jsou spojovány pomocí guice konfiguračního modulu pomocí techlonogie guice, motedy, která se v terminilogii guice nazývá multibinding.
+Vše nejlépe demonstruje následující kusy kódu.
+
+Definice položky
+{{{
+/**
+ * Reprezentuje polozku menu pro spusteni dialogu procesu
+ */        
+public class ProcessesDialog extends AbstractMainMenuItem implements AdminMenuItem {
+
+    @Override
+    public boolean isRenderable() {
+        return hasUserAllowedAction(SecuredActions.MANAGE_LR_PROCESS.getFormalName());
+    }
+
+    @Override
+    public String getRenderedItem() throws IOException {
+        return renderMainMenuItem(
+            "javascript:processes.processes(); javascript:hideAdminMenu();",
+            "administrator.menu.dialogs.lrprocesses.title", false);
+    }
+}
+}}}
+
+Zapojení položky do modulu
+
+{{{
+        Multibinder<AdminMenuItem> adminItems
+        = Multibinder.newSetBinder(binder(), AdminMenuItem.class);
+        adminItems.addBinding().to(ProcessesDialog.class);
+        ....
+}}}
+ 
 
 
-
-=Pridani polozky do menu=
-
+=Přidání vlastní položky=
+Přidání vlastní položky spočívá pouze v implementaci správného rozhraní a vytvoření jednoho guice modulu. 
 
 
