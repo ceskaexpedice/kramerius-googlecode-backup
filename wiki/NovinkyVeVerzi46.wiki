@@ -30,7 +30,7 @@ adresáře pomocí stromové struktury.
 
 http://kramerius.googlecode.com/svn/wiki/features_46/parametrized-import.png
 
-http://kramerius.googlecode.com/svn/wiki/features_46/prametrized-import-browse.png
+http://kramerius.googlecode.com/svn/wiki/features_46/parametrized-import-browse.png
 
 ==Export PDF ==
 Položky Export do PDF DVD a Export do PDF CD byly sloučeny do jedné Expoport do PDF s tím, že po zobrazení se objeví dialog s volbou média a možnosti volby 
