@@ -24,10 +24,10 @@ akcí  `display_admin_menu` viz [Prava#Akce].
  
 =Programová realizace menu=
 Každá položka menu je realizovaná vlastní třídou, která se stará o její vyrendrování v podobě html snippetu. 
-Všechny položky musí implementovat rozhraní `[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/MenuItem.java MenuItem]` z balíčku `cz.incad.Kramerius.exts.menu`. 
+Všechny položky musí implementovat rozhraní [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/MenuItem.java MenuItem] z balíčku `cz.incad.Kramerius.exts.menu`. 
 
-Pro položky z kontextového menu existuje značkovací rozrhaní `[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/ContextMenuItem.java ContextMenuItem]` 
-resp. `[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/AdminContextMenuItem.java AdminContextMenuItem]` pro položku z administrátorské části menu a `[http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/PublicContextMenuItem.java PublicContextMenuItem]`
+Pro položky z kontextového menu existuje značkovací rozrhaní [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/ContextMenuItem.java ContextMenuItem] 
+resp. [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/AdminContextMenuItem.java AdminContextMenuItem] pro položku z administrátorské části menu a [http://kramerius.googlecode.com/svn/trunk/search/src/java/cz/incad/Kramerius/exts/menu/context/impl/adm/PublicContextMenuItem.java PublicContextMenuItem].
 
 
 
