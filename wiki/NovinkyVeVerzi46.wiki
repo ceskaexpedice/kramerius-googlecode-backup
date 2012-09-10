@@ -38,5 +38,12 @@ výstupního adresáře.
 
 http://kramerius.googlecode.com/svn/wiki/features_46/parametrized-static-export.png
 
-=Procesy - davkovy stav, zmeny v gui=
-V rámci 
+=Procesy - dávkový stav, změny=
+V rámci řešení Issue 331 byl přidán dávkový stav reprezentující stav spouštěné dávky, pokud nějaká je. 
+V tabulce je zobrazen jako samostatný sloupec. Dále byly přidány navigační tlačítka pro rychlý posun na 
+určité strany Issue 363, Stavy RUNNING a BATCH_STARTED jsou nyní zeleně, stav FAILED a BATCH_FAILED jsou červeně. 
+Přibyl sloupec informující o datu skončení procesu a v jeho tooltipu se objeví i jak dlouho proces běžel. 
+
+http://kramerius.googlecode.com/svn/wiki/features_46/processes.png
+
+
