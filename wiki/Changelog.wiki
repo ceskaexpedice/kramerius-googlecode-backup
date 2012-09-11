@@ -3,6 +3,10 @@
 
 =Pracovní verze (trunk)=
 
+=Verze 4.5.4 (r3908)=
+
+  * Issue 381 - Úprava vyhodnocování parametrů kritéria "Pohyblivá zeď" podle požadavků KNAV. 
+
 =Verze 4.5.3 (r3824)=
 
   * Issue 341 - Konfigurovatelné spouštění indexeru z importních procesů. Indexer je po importu automaticky spuštěn, pokud booleovská property `ingest.startIndexer` v souboru migration.properties má hodnotu true (což je výchozí nastavení)
