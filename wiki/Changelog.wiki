@@ -3,6 +3,36 @@
 
 =Pracovní verze (trunk)=
 
+Podrobný popis významných změn je na stránce NovinkyVeVerzi46
+ 
+  * Issue 215 - API pro plánování procesů
+  * Issue 364 - opraveny problémy s diakritikou v přístupových právech
+  * Issue 365 - doplněno potvrzování při mazání pravidel práv
+  * Issue 156 - doplněny všechny chybějící závislosti pro automatický build mavenem
+  * Issue 114 - replikace mezi systémy K4
+  * Issue 396 - v registračním formuláři označena povinná pole a doplněna CAPTCHA 
+  * Issue 354 - upraven proces statického exportu PDF
+  * Issue 245 - oprava drobných nedostatků v GUI
+  * Issue 348 - oprava textů pro správu obsahu virtuálních sbírek
+  * Issue 389 - doplněno hlídání přístupových práv k dlaždicím DeepZoom z imageserveru
+  * Issue 378 - úprava šablony pro zobrazení metadat
+  * Issue 384 - upraven log v procesu Import FOXML
+  * Issue 474 - doplněno ovládání zaškrtávacích políček v seznamu výsledků vyhledávání
+  * Issue 356 - opraveno zobrazování stránek na šířku
+  * Issue 370 - odstraněno zdvojování modelů v konvertoru METS
+  * Issue 386 - upraveny texty zobrazované při spouštění procesů
+  * Issue 380 - nastavení přístupových práv podle názvu domény
+  * Issue 327 - zobrazení hodnoty příznaku viditelnosti vybraných dokumentů
+  * Issue 334, Issue 336 - změna editace datumů v časové ose 
+  * Issue 362 - v tabulce procesů je doplněn čas ukončení, procesy s chybou označeny červeně
+  * Issue 347 - opravena chyba při expiraci session
+  * Issue 340 - odebrání Oblíbené položky
+  * Issue 363 - navigace ve stránkování procesů
+  * Issue 331 - vylepšena správa dávkových procesů
+  * Issue 329 - změna heapspace pro procesy
+  * Issue 217 - správa dodatečných podmínek v editoru práv
+  * Issue 305 - název verze K4 v nápovědě
+  * Issue 308 - informace o expiraci session
 =Verze 4.5.4 (r3908)=
 
   * Issue 381 - Úprava vyhodnocování parametrů kritéria "Pohyblivá zeď" podle požadavků KNAV. 
