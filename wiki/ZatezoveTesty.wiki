@@ -62,6 +62,3 @@ Po indexaci 5M objektů byl vyčerpán dostupný diskový prostor na serveru KSO
 Stávající rychlost odezvy GUI závislá na indexu SOLR při 5M záznamech se neliší oproti rychlostem uvedeným v bodu 4 pro 1M záznamů. 
 
 Po zvýšení místa n adisku pro index SOLR byl vygenerován index s 60M záznamů. Počáteční rychlost odezvy při prvním pokusu o připojení k aplikaci se zvýšila na cca 20s, odezva na následující dotazy a navigace v systému po úplné inicializaci indexu a cache se pohybují pod 1s.
-
-===Závěry testů===
-Závěru testů a doporučení budou publikovány (pravděpodobně) během měsíce září 2012 
