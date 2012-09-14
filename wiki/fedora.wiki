@@ -28,4 +28,16 @@ V případě zpomalení odezvy bude příčina analyzována a navrženo řešen�
 Po skončení testu budou všechny použité databáze, indexy a úložiště smazány.
 
 
-Výsledky měření jsou průběžně uváděny [ZatezoveTesty ZDE].
+Výsledky měření jsou k dispozici [ZatezoveTesty ZDE].
+
+==Ponaučení==
+
+Z výše uvedených výsledků testů vyplývá, že výkonnost úložiště Fedora i indexu SOLR je pro uložení 60 milionů objektů dostatečná při zohlednění následujích skutečností:
+
+  * Souborový systém pro úložiště Fedora (defaultní implementace Akubra) musí mít nastaven počet inodes větší, než je plánovaný počet objektů, které mají být v úložišti uchovány.
+  * Adresářová struktura úložiště Akubra by měla být nastavena na více úrovní, než defaultní 1 (viz dokumentace Fedory)
+  * Výchozí implementace resouce indexu Mulgara je pro uložení více než 100 000 objektů nepoužitelná.
+  * Alternativní implementace resource indexu MPTstore je funkční, ale podporuje pouze omezenou podmnožinu dotazovacího jazyka iTQL, neumožňuje například složené dotazy, které jsou použity v jedné ze záložek adminstrátorského rozhraní pro indexaci dokumentů K4.
+  * Index MPT store je při daném objemu dat vysoce náročný na optimalizaci použité databáze PostreSQL (500M uložených RDF tripletů zabírá cca 1.3TB diskového prostoru), pro dosažení potřebné výkonnosti indexu je třeba průběžná údržba databáze kvalifikovaným administrátorem (aktualizace indexů, statistik, čištění nepoužívaných segmentů atd.).
+  * Pro index SOLR by bylo vhodné vyhradit minimálně dvojnásobek použité diskové kapacity (pro test 60M záznamů zabírá index 411GB), aby bylo možné průběžně provádět optimalizaci indexu
+ 
