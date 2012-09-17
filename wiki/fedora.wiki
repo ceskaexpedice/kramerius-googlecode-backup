@@ -10,7 +10,7 @@ V současné době není implementována podpora uložení dat do databáze. Př
 
 ==Probíhající zátěžové testy==
 
-V rámci požadavku a dohody s NKČR probíhají od 6/2012 zátěžové testy s cílem ověřit schopnost systému pojmout 30 a 60 milionů objektů.
+V rámci požadavku a dohody s NKČR proběhly od 6 do 9/2012 zátěžové testy s cílem ověřit schopnost systému pojmout 30 a 60 milionů objektů.
 
 
 ===Postup===
