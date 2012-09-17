@@ -1,4 +1,4 @@
-#summary Novinky ve verzi 4.6 beta
+#summary Novinky ve verzi 4.6
 <wiki:toc max_depth="1" />
 
 =Replikace K4=
@@ -45,5 +45,3 @@ určité strany Issue 363, Stavy RUNNING a BATCH_STARTED jsou nyní zeleně, sta
 Přibyl sloupec informující o datu skončení procesu a v jeho tooltipu se objeví i jak dlouho proces běžel. 
 
 http://kramerius.googlecode.com/svn/wiki/features_46/processes.png
-
-
