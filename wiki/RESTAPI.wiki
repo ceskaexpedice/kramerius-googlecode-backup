@@ -264,4 +264,4 @@ Výsledná data vypadají následovně:
 Kde hodnota raw v Base64 zakódovaná FOXML data.
 
 
-Poznámka: Některé části API se do vydání ostré verze mohou ještě změnit.  
+Poznámka: *Některé části API se do vydání ostré verze mohou ještě změnit.*  
