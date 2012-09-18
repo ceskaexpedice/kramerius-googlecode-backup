@@ -25,7 +25,7 @@ Správa procesů umožňuje základní operace
 ===Plánování nového procesu===
 Plánování procesu bez parametrů
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/plainStart/mock?userName=xxx&pswd=xxx    
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/plainStart/mock?userName=xxx&pswd=xxx    
 }}}
 
 Server odpoví JSON strukturou, která popisuje právě provedenou operaci. 
@@ -42,7 +42,7 @@ Server odpoví JSON strukturou, která popisuje právě provedenou operaci.
 }}}
 Pokud se jedná o proces, který vyžaduje parametry, je možné je předat HTTP atributem params. 
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/plainStart/mock?params={first;second;third}    
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/plainStart/mock?params={first;second;third}    
 }}}
 Parametry je nutno předávat ve struktuře, která se dá nejlépe vystihnout následující zjednodušeným pravidlem
 {{{
@@ -56,7 +56,7 @@ Server odpoví stejně jako v předchozím případě.
 ===Plánování nového procesu s pojmenovanými parametry===
 Plánování procesu s pojmenovanými parametry viz [http://code.google.com/p/kramerius/wiki/Processes#Procesy_s_uživatelským_vstupem Procesy s uživatelským vstupem]
 {{{
-    GET https://.../seach/api/parametrizedStart/testsimpleprocess2?paramsMapping={user=strycek;email=strycek@sit.net;serverFolder=/dev/null}    
+    GET https://.../seach/api/processes/parametrizedStart/testsimpleprocess2?paramsMapping={user=strycek;email=strycek@sit.net;serverFolder=/dev/null}    
 }}}
 Struktura definující mapování mezi formálním jménem parametru a jeho hodnotou je podobná té předchozí. Zjednodušeně lze napsat
 {{{
@@ -68,7 +68,7 @@ Kde params reprezentuje seznam jednotlivých mapovaní. Mapování je dvojice kl
 
 ===Zastavení procesu===
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/stop/9e3195af-a70b-4756-8af6-19a269eab064
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/stop/9e3195af-a70b-4756-8af6-19a269eab064
 }}}
 Po úspěšném zastavení procesu server odpoví následovně
 {{{
@@ -90,13 +90,13 @@ Po úspěšném zastavení procesu server odpoví následovně
 
 ===Získání informace o procesu===
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/desc/9e3195af-a70b-4756-8af6-19a269eab064
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/desc/9e3195af-a70b-4756-8af6-19a269eab064
 }}}
 Odpověd ze serveru bude podobná jako v předchozím případě.
 
 ===Smazání procesu===
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/delete/9e3195af-a70b-4756-8af6-19a269eab064
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/delete/9e3195af-a70b-4756-8af6-19a269eab064
 }}}
 Odpověd ze serveru bude bude JSON objekt obsahující pouze informaci o smazání daného procesu.
 {{{
@@ -106,7 +106,7 @@ Odpověd ze serveru bude bude JSON objekt obsahující pouze informaci o smazán
 ===Výpis procesů===
 Nejednodušší případ je prostý výpis procesů (bez použitého filtru).
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/list
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/list
 }}}
 
 Výstupem je pole json popisných objektů stejných jako v přechozích případech
@@ -140,7 +140,7 @@ Výstupem je pole json popisných objektů stejných jako v přechozích přípa
 
 Výpis je omezen maximálním počtem záznamů. Následující záznamy je možné získat atributem offset.
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/list?offset=50
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/list?offset=50
 }}}
 Atributem filter je možné data filtrovat. Pravidla pro filtr jde napsat následovně:
 {{{
@@ -155,17 +155,17 @@ Tečka v pravidlech reprezentuje jakýkoliv znak. Pravidlo *key* reprezentuje kl
  
 ====Příklad filtru pro stav FINISHED====
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/list?filter={{state='FINISHED'}} 
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/list?filter={{state='FINISHED'}} 
 }}}
 
 ====Filtrování procesu dle uuid====
 {{{
-    GET https://xxx.xxx.xxx.xxx/seach/api/list?filter={{uuid='e8259955-fe77-4a83-8f5a-7fc1a2eb57f6'}} 
+    GET https://xxx.xxx.xxx.xxx/seach/api/processes/list?filter={{uuid='e8259955-fe77-4a83-8f5a-7fc1a2eb57f6'}} 
 }}}
 
 ====Filtrování procesů dle data====
 {{{
-    http://xxx.xxx.xxx.xxx/search/api/processes/list?filter={{planned>'01/01/1970 01\:00\:00\:000'}}
+    http://xxx.xxx.xxx.xxx/search/api/processes/processes/list?filter={{planned>'01/01/1970 01\:00\:00\:000'}}
 }}}
 
 ====Časový interval====
@@ -179,7 +179,7 @@ Jednotlivé podmínky v dotazu jsou spojeny operátorem *AND*
 ====Výstupy procesu====
 Výstup procesu jsou dostupné pomocí dotazu
 {{{
-    http://xxx.xxx.xxx.xxx/search/api/processes/logs/9e3195af-a70b-4756-8af6-19a269eab064
+    http://xxx.xxx.xxx.xxx/search/api/processes/processes/logs/9e3195af-a70b-4756-8af6-19a269eab064
 }}}
 
 Odpověď vypadá následovně:
