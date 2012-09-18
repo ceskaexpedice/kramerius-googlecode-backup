@@ -179,7 +179,7 @@ Jednotlivé podmínky v dotazu jsou spojeny operátorem *AND*
 ====Výstupy procesu====
 Výstup procesu jsou dostupné pomocí dotazu
 {{{
-    http://xxx.xxx.xxx.xxx/search/api/processes/processes/logs/9e3195af-a70b-4756-8af6-19a269eab064
+    http://xxx.xxx.xxx.xxx/search/api/processes/logs/9e3195af-a70b-4756-8af6-19a269eab064
 }}}
 
 Odpověď vypadá následovně:
