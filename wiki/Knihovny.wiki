@@ -12,7 +12,7 @@ Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích
   * Národní muzeum
   * Krajská knihovna Vysočiny
   * Knihovna Akademie věd ČR [http://kramerius.lib.cas.cz/search/]
-  * Moravská zemská knihovna v Brně [http://http://kramerius.mzk.cz/search/]
+  * Moravská zemská knihovna v Brně [http://kramerius.mzk.cz/search/]
   * Národní technická knihovna [http://k4.techlib.cz/search/]
 
 Pokud na seznamu chybí (případně tam nepatří) Vaše knihovna, ozvěte se prosím na kramerius@lib.cas.cz nebo na lhotak@knav.cz.
