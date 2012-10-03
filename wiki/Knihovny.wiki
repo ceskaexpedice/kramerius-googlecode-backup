@@ -7,7 +7,8 @@ Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích
   * Knihovna Akademie věd ČR [http://kramerius.lib.cas.cz/search/]
   * Krajská knihovna Vysočiny
   * Mendelova univerzita v Brně
-  * Městská knihovna Horažďovice 
+  * Městská knihovna Horažďovice
+  * Moravská zemská knihovna [http://kramerius.mzk.cz/search/]
   * Národní archiv 
   * Národní muzeum
   * Národní technická knihovna [http://k4.techlib.cz/search/]
