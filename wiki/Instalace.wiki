@@ -253,28 +253,57 @@ Vytvořte uživatele `proai` a databázi `proai`.
 
 == Aplikační server ==
 
-Na aplikační server nainstalujte aplikaci `oaiprovider.war` z adresáře oai v distribučním souboru `installation-x.x.zip`. 
+Aplikaci *OAI Provider* naleznete na stránkách [http://www.fedora-commons.org/software/current Fedora Commons Downloads] pro patřičnou verzi Fedory. `oaiprovider.zip` obsahuje `oaiprovider.war`, který se instaluje na aplikační server. Nejjednodušší je upravit `proai.properties` v `oaiprovider.war` před instalací.
 
-V nainstalované aplikaci `oaiprovider` upravte soubor `proai.properties` (pro Tomcat je to soubor  `$CATALINA_HOME/webapps/oaiprovider/WEB-INF/classes/proai.properties`) :
+=== Konfigurace ===
+V nainstalované aplikaci `oaiprovider` upravte soubor `proai.properties`. Pro Tomcat je to soubor `$CATALINA_HOME/webapps/oaiprovider/WEB-INF/classes/proai.properties`.
+
+Jakékoli změny v proai.properties se projeví *až po restartu* aplikace `oaiprovider` (např. Tomcat manager).
+
+Lze použít předpřipravenou šablonu z distribučního souboru `installation-x.x.zip/oai/proai.properties`. Obsahuje konfiguraci formátů Dublin Core (`oai_dc`), Europeana (`ese`) a Registr digitalizace (`drkramerius4`). Nutná kontrola URL, uživatelů a hesel podle aktuální instalace Fedory.
+
+Důležitá nastavení:
 {{{
-# /tmp/proai obsahuje exportovaná data a nesmí být mazán bez úpravy proai databáze
-proai.cacheBaseDir = /tmp/proai/cache
-proai.sessionBaseDir = /tmp/proai/sessions
-proai.schemaDir = /tmp/proai/schemas
+# Zapnutí/vypnutí hledání dat pro export z Fedory do OAI
+proai.driverPollingEnabled = true
 
-# nahradit všechny odkazy 'localhost' skutečným serverem
+# /data/proai obsahuje exportovaná data a nesmí být mazán bez úpravy proai databáze
+proai.cacheBaseDir = /data/proai/cache
+proai.sessionBaseDir = /data/proai/sessions
+proai.schemaDir = /data/proai/schemas
 
-# v případě potřeby změnit jdbc url, přístupová jména a hesla podle skutečnosti
+# databáze proai
 proai.db.url = jdbc:postgresql://localhost/proai
 proai.db.username = proai
 proai.db.password = ********
+
+# aplikace Fedora
+driver.fedora.baseURL = http://localhost:8080/fedora/
 driver.fedora.user = fedoraAdmin
 driver.fedora.pass = ********
+driver.fedora.identify = http://localhost:8080/fedora/get/model:Repository/Identify.xml
+
+# v případě použití MPT resource indexu
+driver.fedora.mpt.jdbc.url = jdbc:postgresql://localhost/riTriples
 driver.fedora.mpt.jdbc.user = fedoraAdmin
 driver.fedora.mpt.jdbc.password = ********
 
-# povolit export dat z Fedory
-proai.driverPollingEnabled = true
+# definice setů podle datových modelů Krameria
+driver.fedora.itemSetSpecPath = $item <info:fedora/fedora-system:def/model#hasModel> $set $set <http://www.openarchives.org/OAI/2.0/setSpec> $setSpec
+
+}}}
+
+Popis všech parametrů je na stránkách [https://wiki.duraspace.org/display/FCSVCS/OAI+Provider+Configuration+Reference Fedory].
+
+=== Konfigurace OAI Formatů ===
+Ukázka definice formátu `ese` pro Europeana.
+{{{
+# seznam formátů
+driver.fedora.md.formats = ese
+driver.fedora.md.format.ese.loc = http://www.europeana.eu/schemas/ese/ESE-V3.2.xsd
+driver.fedora.md.format.ese.uri = http://www.europeana.eu/schemas/ese/
+# definice obsahu pro daný formát
+driver.fedora.md.format.ese.dissType = info:fedora/*/service:ESEDef/get
 }}}
 
 =Aktualizace na novou verzi K4=
