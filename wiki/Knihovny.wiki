@@ -1,6 +1,6 @@
 #summary One-sentence summary of this page.
 
-= Kramerius 4 v knihovnách =
+= Kramerius 4 v produkčním nasazení=
 
 Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích:
 
