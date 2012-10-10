@@ -7,8 +7,9 @@ Pro garantované termíny musí mít instituce uzavřenu samostatnou smlouvu o p
 
 ==INSTALACE K4==
 Instalační postup a konfigurace systému jsou popsány na Wiki.
+Realizované instalace s informací kdo je provedl : [http://code.google.com/p/kramerius/wiki/Knihovny]
 
-Službu instalace lze také objednat na [http://www.unidata.cz/system-kramerius] 
+Službu instalace lze také objednat na [http://www.unidata.cz/system-kramerius] nebo domluvit s některou s institucí, které mají se systémem praktické zkušenosti.
 
 Distribuovanou instalaci u společnosti Incad, která zajišťuje vývoj K4 [http://www.incad.cz]
 
