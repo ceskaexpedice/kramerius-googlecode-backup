@@ -3,18 +3,21 @@
 = Kramerius 4 v produkčním nasazení=
 
 Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích:
+[Instituce [odkaz] - instaloval]
 
-  * Knihovna Akademie věd ČR [http://kramerius.lib.cas.cz/search/]
-  * Krajská knihovna Vysočiny
-  * Mendelova univerzita v Brně
-  * Městská knihovna Horažďovice
-  * Moravská zemská knihovna [http://kramerius.mzk.cz/search/]
-  * Národní archiv 
-  * Národní muzeum
-  * Národní technická knihovna [http://k4.techlib.cz/search/]
-  * Národní technické muzeum
-  * Studijní a vědecká knihovna v Hradci Králové
-  * Vysoká škola ekonomická
+  * FSVUK [] - MŘ
+  * Knihovna Akademie věd ČR [http://kramerius.lib.cas.cz/search/] - KNAV
+  * Krajská knihovna Vysočiny [] - Unidata
+  * Mendelova univerzita v Brně [] - Unidata
+  * Městská knihovna Horažďovice [] - Unidata
+  * Moravská zemská knihovna [http://kramerius.mzk.cz/search/] - MZK
+  * Národní archiv [] - Unidata
+  * Národní knihovny [test] - INCAD
+  * Národní muzeum [] - Unidata
+  * Národní technická knihovna [http://k4.techlib.cz/search/] - NTK
+  * Národní technické muzeum [] - Unidata
+  * Studijní a vědecká knihovna v Hradci Králové [] - Unidata
+  * Vysoká škola ekonomická [] - Unidata
 
 
 Pokud na seznamu chybí (případně tam nepatří) Vaše knihovna, ozvěte se prosím na kramerius@lib.cas.cz nebo na lhotak@knav.cz.
