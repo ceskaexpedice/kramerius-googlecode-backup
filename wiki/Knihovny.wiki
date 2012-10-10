@@ -12,7 +12,7 @@ Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích
   * Městská knihovna Horažďovice [] - Unidata
   * Moravská zemská knihovna [http://kramerius.mzk.cz/search/] - MZK
   * Národní archiv [] - Unidata
-  * Národní knihovny [testy] - INCAD
+  * Národní knihovny [testovací] - INCAD
   * Národní muzeum [] - Unidata
   * Národní technická knihovna [http://k4.techlib.cz/search/] - NTK
   * Národní technické muzeum [] - Unidata
