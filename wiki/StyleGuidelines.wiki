@@ -8,6 +8,8 @@ Pravidla vycházejí z obecně uznávaných pravidel stylu programování v jazy
   * [http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html Java Code Conventions]
   * [http://www.ambysoft.com/javaCodingStandards.html Ambysoft Coding Standards for Java]
 
+Nový kód musí navazovat na existující stávající kód Krameria 4 a být napsán v obdobném duchu.
+
 =Obecná pravidla=
 
   * *Většinu pravidel v tomto dokumentu je možno porušit, pokud to v konkrétním případě přispěje k čitelnosti kódu.* Tento obecný dokument nemůže pokrýt všechny případy, se kterými se programátor může setkat.
