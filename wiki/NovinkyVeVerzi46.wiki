@@ -4,8 +4,8 @@
 =Replikace K4=
 Byla přidána možnost replikace mezi systémy K4. Celý popis replikace je vidět zde [Replikace]
 
-=REST API=
-Bylo vytvořeno nové RESTful API nyní pokytující možnosti replikace nebo správu procesů [RESTAPI]. 
+=Remote API=
+Bylo vytvořeno nové API nyní pokytující možnosti replikace nebo správu procesů [RemoteAPI]. 
 
 =Rozšíření editace práv o správu parametrů=
 V hlavním menu přibyla položka pro editaci dodatečných podmínek. Po spuštění se objeví dialog 
