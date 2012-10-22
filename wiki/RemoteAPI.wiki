@@ -54,16 +54,16 @@ Výstupem je JSON pole
 }}}
 
 ===Filtr===
-Filtrování výsledků je možné pomocí standardních atritubutů dotazu. Tedy dotaz na procesy spuštěné ukončené stavem  FAILED by vypadal následovně:
+Filtrování výsledků je možné pomocí standardních atritubutů dotazu. Tedy dotaz na procesy spuštěné ukončené stavem  `FAILED` by vypadal následovně:
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?state=FAILED
 }}}
 Výpis procesů vypadá stejně jako v předchozím případě.
 
-Pozn.:Filtrovat lze dle všech parametrů json objektu krom datumových. 
+Pozn.:Filtrovat lze dle všech klíčů json objektu krom datumových. 
 
 ===Velikost výsledného pole===
-Velikost vraceného pole je implicitně nastavena na hodnotu 25. Je možno to změnit parametrem resultSize. Dotaz vypadá následovně:
+Velikost vraceného pole je implicitně nastavena na hodnotu 25. Je možno to změnit parametrem `resultSize`. Dotaz vypadá následovně:
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?resultSize=2
 }}}
@@ -90,11 +90,15 @@ Parametr def určuje identifikátor plánovaného procesu. Výsledkem je popis n
     }
 }}}
 
-Pokud v K4 není nadefinován proces s identifikátorem předávaným v parametru [MenuAdministrace#Definice_procesu], api vrací chybový kód 404 a v těle dotazu je následující:
+Pokud v K4 není nadefinován proces s identifikátorem předávaným v parametru ([MenuAdministrace#Definice_procesu]), API vrací chybový kód 404 a v těle dotazu je následující:
 {{{
     {"message":"cannot find definition 'moc'","status":404}
 }}}
 
 ===Plánování nového procesu s parmetry===
+Parametry pro spuštění procesů se předávají v těle dotazu jako JSONObjekt. Objekt musí obsahovat klíč `parameters`, hodnotou je pole parametrů procesu.
+{{{
+    {"parameters":["first","second","third"]}
+}}}
 
-
+===Plánování nového procesu s pojmenovanými parmetry===
