@@ -179,7 +179,7 @@ Rozhraní pro replikace umožňuje tři operace
 
 ===Získání popisu replikovaného objektu===
 {{{
-    GET https://xxx.xxx.xxx.xxx/search/api/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba
+    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba
 }}}
 Výstupem je JSON popisný objekt, který vypadá následovně
 {{{
@@ -195,7 +195,7 @@ Výstupem je JSON popisný objekt, který vypadá následovně
 
 ===Získání seznamu všech objektů zahrnutých do replikace===
 {{{
-    GET https://xxx.xxx.xxx.xxx/search/api/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/tree
+    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/tree
 }}}
 
 Výstupem je pole všech objektů nutných replikovat do cílové instance K4. Vypadá nějak následovně.
@@ -213,6 +213,19 @@ Výstupem je pole všech objektů nutných replikovat do cílové instance K4. V
 }
 }}}
 
+===Získání FOXML objektu===
+{{{
+    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/foxml
+}}}
 
+Zde se mohou vracet dvě reprezentace. Záleží na tom, jaký mimetype akceptuje klient, který požadavek poslal. 
 
+JSON výstup vypadá následovně
+{{{
+ {"raw":"PD94bWwgdmVyc2lvbj0iMS4w..."}
+}}}
 
+XML výstup pak  
+{{{
+<foxml:digitalObject PID="uuid:045b1250.....
+}}}
