@@ -95,10 +95,36 @@ Pokud v K4 není nadefinován proces s identifikátorem předávaným v parametr
     {"message":"cannot find definition 'moc'","status":404}
 }}}
 
-===Plánování nového procesu s parmetry===
-Parametry pro spuštění procesů se předávají v těle dotazu jako JSONObjekt. Objekt musí obsahovat klíč `parameters`, hodnotou je pole parametrů procesu.
+====Plánování nového procesu s parmetry====
+Parametry pro spuštění procesů se předávají v těle dotazu jako JSON objekt, který musí obsahovat klíč `parameters`. Hodnotou je pole parametrů procesu.
 {{{
     {"parameters":["first","second","third"]}
 }}}
 
-===Plánování nového procesu s pojmenovanými parmetry===
+====Plánování nového procesu s pojmenovanými parmetry====
+Podobně jako v předchozím připadě, API očekává v těle dotazu JSON objekt, tenktokrát by měl objekt obsahovat klíč `mapping`. Očekává se, že položka klíč obsahuje objekt popisující jendotlivé parametry.
+  
+{{{
+    {"mapping":{"first":"firstVal","second":"secondVal"}}
+}}}
+
+===Popis procesu===
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/<uuid>
+}}}
+
+Vrací JSON objekt reprezentující daný proces
+
+
+===Výpis logů===
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/<uuid>/logs
+}}}
+
+Výstupem je objekt obsahující dva klíče `sout` a `serr`. Hodnoty jsou logy zakódované pomocí Base64. 
+
+{{{
+{"sout":"NS42LjIwMTIgMTA6MjI6NTQgY...","serr":""}
+}}}
+
+===Zastavení procesu===
