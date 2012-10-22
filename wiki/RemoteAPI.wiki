@@ -231,5 +231,5 @@ XML výstup pak
 
 Pro účely testování jsou k dispozici pomocné testovací třídy. 
 
-[ProcessesClient http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ProcessesClient.java]
-[ReplicationsClient http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ReplicationsClient.java]
+[http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ProcessesClient.java ProcessClient]
+[http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ReplicationsClient.java]
