@@ -124,7 +124,50 @@ Vrací JSON objekt reprezentující daný proces
 Výstupem je objekt obsahující dva klíče `sout` a `serr`. Hodnoty jsou logy zakódované pomocí Base64. 
 
 {{{
-{"sout":"NS42LjIwMTIgMTA6MjI6NTQgY...","serr":""}
+{
+    "sout":"NS42LjIwMTIgMTA6MjI6NTQgY...",
+    "serr":""
+}
 }}}
 
 ===Zastavení procesu===
+{{{
+    PUT https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/<uuid>?stop
+}}}
+Výstupem je JSON objekt reprezentující proces:
+{{{
+{
+    "uuid":"552bf224-7238-47d1-a64e-8e26a800c7c5",
+    "pid":"27748",
+    "def":"mock",
+    "state":"KILLED",
+    "batchState":"NO_BATCH",
+    "name":"Jmeno procesu mock..",
+    "started":"10/22/2012 11:29:03:572",
+    "planned":"10/22/2012 11:28:59:629",
+    "finished":"10/22/2012 11:29:20:611",
+    "userid":"krameriusAdmin",
+    "userFirstname":
+    "kramerius",
+    "userSurname":"admin"
+}
+}}}
+
+Opětovný pokus o zastavení procesu způsobí chybu 409. 
+ 
+ 
+===Smazání procesu===
+{{{
+    DELETE https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/<uuid>
+}}}
+
+Výstup vypadá následovně:
+{{{
+{
+    "deleted":"552bf224-7238-47d1-a64e-8e26a800c7c5"
+}
+}}}
+
+
+
+
