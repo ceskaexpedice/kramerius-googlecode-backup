@@ -69,7 +69,7 @@ Velikost vraceného pole je implicitně nastavena na hodnotu 25. Je možno to zm
 }}}
 
 ===Offset===
-Offset lze měnít parametrem offset 
+Offset lze měnit parametrem offset 
 {{{
     GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?offset=100
 }}}
@@ -95,13 +95,13 @@ Pokud v K4 není nadefinován proces s identifikátorem předávaným v parametr
     {"message":"cannot find definition 'moc'","status":404}
 }}}
 
-====Plánování nového procesu s parmetry====
+====Plánování nového procesu s parametry====
 Parametry pro spuštění procesů se předávají v těle dotazu jako JSON objekt, který musí obsahovat klíč `parameters`. Hodnotou je pole parametrů procesu.
 {{{
     {"parameters":["first","second","third"]}
 }}}
 
-====Plánování nového procesu s pojmenovanými parmetry====
+====Plánování nového procesu s pojmenovanými parametry====
 Podobně jako v předchozím připadě, API očekává v těle dotazu JSON objekt, tenktokrát by měl objekt obsahovat klíč `mapping`. Očekává se, že položka klíč obsahuje objekt popisující jendotlivé parametry.
   
 {{{
@@ -166,6 +166,41 @@ Výstup vypadá následovně:
 {
     "deleted":"552bf224-7238-47d1-a64e-8e26a800c7c5"
 }
+}}}
+
+==Replikace==
+
+Rozhraní pro replikace umožňuje tři operace
+
+  * Získání popisu replikovaného objektu
+  * Získání seznamu všech objektů zahrnutých do replikace
+  * Získání FOXML dat
+
+
+===Získání popisu replikovaného objektu===
+{{{
+    GET https://xxx.xxx.xxx.xxx/search/api/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba
+}}}
+Výstupem je JSON popisný objekt, který vypadá následovně
+{{{
+{
+    "identifiers":["uuid:045b1250-7e47-11e0-add1-000d606f5dc6","issn:0862-6111"],
+    "publishers":[],
+    "creators":[],
+    "title":"Dějiny a současnost",
+    "type":"periodical",
+    "handle":"http://localhost:8080/search/handle/uuid:045b1250-7e47-11e0-add1-000d606f5dc6"
+}
+}}}
+
+===Získání seznamu všech objektů zahrnutých do replikace===
+{{{
+    GET https://xxx.xxx.xxx.xxx/search/api/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/tree
+}}}
+
+Výstupem je pole všech objektů nutných replikovat do cílové instance K4. Vypadá nějak následovně.
+{{{
+    
 }}}
 
 
