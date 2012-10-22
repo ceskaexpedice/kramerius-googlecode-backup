@@ -1,0 +1,12 @@
+#summary Remote API
+<wiki:toc max_depth="1" />
+
+=API=
+Verze 4.6 přineslo možnost třetím stranám využít vzdálené API pro: 
+
+ * Správu procesů
+ * Repliaci dat
+
+API je verzováno a je přístupné na kontextu ../search/api/v4.6. API je autentizováno, narozdíl od aplikace, pomocí autentizace BASIC. 
+Nutno podotknout, že je vhodné tuto autentizaci používat pouze v kombinaci se zapnutým HTTPS protokolem. 
+ 
