@@ -90,7 +90,11 @@ Parametr def určuje identifikátor plánovaného procesu. Výsledkem je popis n
     }
 }}}
 
-Pokud v K4 není nadefinován proces s identifikátorem předávaným v parametru, api vrací chybový kód 404 a v těle dotazu je následující:
+Pokud v K4 není nadefinován proces s identifikátorem předávaným v parametru [MenuAdministrace#Definice_procesu], api vrací chybový kód 404 a v těle dotazu je následující:
 {{{
     {"message":"cannot find definition 'moc'","status":404}
 }}}
+
+===Plánování nového procesu s parmetry===
+
+
