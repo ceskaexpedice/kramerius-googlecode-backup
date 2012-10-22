@@ -28,9 +28,7 @@ Prostý výpis procesů
     GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/
 }}}
 Výstupem je JSON pole 
-
 {{{
-
 [
     {
         "uuid":"90b8a07a-14f5-4817-a47f-16f2b88c2724",
@@ -55,10 +53,32 @@ Výstupem je JSON pole
 ]
 }}}
 
+===Filtr===
+Filtrování výsledků je možné pomocí standardních atritubutů dotazu. Tedy dotaz na procesy spuštěné ukončené stavem  FAILED by vypadal následovně:
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?state=FAILED
+}}}
+Výpis procesů vypadá stejně jako v předchozím případě.
+
+Pozn.:Filtrovat lze dle všech parametrů json objektu krom datumových. 
+
+===Velikost výsledného pole===
+Velikost vraceného pole je implicitně nastavena na hodnotu 25. Je možno to změnit parametrem resultSize. Dotaz vypadá následovně:
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?resultSize=2
+}}}
+
+===Offset===
+Offset lze měnít parametrem offset 
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?offset=100
+}}}
+
+
+
 
 ===Plánování nového procesu===
 Plánování procesu bez parametrů
 {{{
     POST https://xxx.xxx.xxx.xxx/seach/api/processes/
 }}}
- 
