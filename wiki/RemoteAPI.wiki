@@ -7,6 +7,58 @@ Verze 4.6 přineslo možnost třetím stranám využít vzdálené API pro:
  * Správu procesů
  * Repliaci dat
 
-API je verzováno a je přístupné na kontextu ../search/api/v4.6 a je autentizováno, narozdíl od aplikace, pomocí autentizace BASIC. 
-Nutno podotknout, že je vhodné tuto autentizaci používat pouze v kombinaci se zapnutým HTTPS protokolem. 
+API je verzováno a je připojeno na kontextu ../search/api/v4.6. Vyžaduje autentizovanou HTTP session, pokud není session autentizovaná, je možno se 
+autentizovat pomocí protokolu BASIC. Nutno podotknout, že je vhodné tuto autentizaci používat pouze v kombinaci se zapnutým HTTPS protokolem. 
+
+
+==Správa procesů==
+Správa procesů umožňuje základní operace 
+
+ * Získávat výpisy procesů  
+ * Plánovat nový proces
+ * Získávat informace o procesu (Stav, čas spuštění, dávkový stav..) 
+ * Zastavit proces
+ * Smazat proces z procesní databáze
+ * Získat logy procesů
+
+
+===Výpisy procesů===
+Prostý výpis procesů 
+{{{
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/
+}}}
+Výstupem je JSON pole 
+
+{{{
+
+[
+    {
+        "uuid":"90b8a07a-14f5-4817-a47f-16f2b88c2724",
+        "pid":"20227",
+        "def":"mock",
+        "state":"FINISHED",
+        "batchState":"NO_BATCH",
+        "name":"Jmeno procesu mock..",
+        "started":"02/07/2012 09:15:31:600",
+        "planned":"02/07/2012 09:15:23:570",
+        "userid":"krameriusAdmin",
+        "userFirstname":"kramerius",
+        "userSurname":"admin"
+    },
+    {
+        "uuid":"ed38ac05-a90e-41b5-b922-31b7b7fa44e6",
+        "pid":"17900",
+        "def":"replikator_periodicals",
+        "state":"FINISHED",
+        ...
+    }
+]
+}}}
+
+
+===Plánování nového procesu===
+Plánování procesu bez parametrů
+{{{
+    POST https://xxx.xxx.xxx.xxx/seach/api/processes/
+}}}
  
