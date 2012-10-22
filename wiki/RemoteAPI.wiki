@@ -74,11 +74,19 @@ Offset lze měnít parametrem offset
     GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?offset=100
 }}}
 
-
-
-
 ===Plánování nového procesu===
-Plánování procesu bez parametrů
+Nejjednodušší je plánování nového procesu bez parametrů
 {{{
-    POST https://xxx.xxx.xxx.xxx/seach/api/processes/
+    POST https://xxx.xxx.xxx.xxx/seach/api/processes?def=mock
 }}}
+Parametr def určuje identifikátor plánovaného procesu. Výsledkem je popis naplánovaného objektu
+{{{
+    {
+        "uuid":"2d7ead5b-daee-4fa4-b967-ffff57769e6d",
+        "def":"mock",
+        "state":"PLANNED",
+        "batchState":"NO_BATCH",
+        "planned":"10/22/2012 09:39:16:961"
+    }
+}}}
+
