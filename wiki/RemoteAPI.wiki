@@ -188,7 +188,7 @@ Výstupem je JSON popisný objekt, který vypadá následovně
     "publishers":[],
     "creators":[],
     "title":"Dějiny a současnost",
-    "type":"periodical",
+    "type":"model:periodical",
     "handle":"http://localhost:8080/search/handle/uuid:045b1250-7e47-11e0-add1-000d606f5dc6"
 }
 }}}
@@ -215,7 +215,8 @@ Výstupem je pole všech objektů nutných replikovat do cílové instance K4. V
 
 ===Získání FOXML objektu===
 {{{
-    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/foxml
+    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/
+    replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/foxml
 }}}
 Zde se mohou vracet dvě reprezentace JSON a XML, zaleží na tom, jaký typ reprezentace akceptuje klient.  
 
@@ -235,4 +236,9 @@ Pro účely testování jsou k dispozici pomocné utilitní třídy.
 [http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ReplicationsClient.java ReplicationsClient]
 
 
+Bližší informace o procesech 
+[Processes], [MenuAdministrace#Manipulace_s_procesy]
+
 Poznámka: *Některé části API se do vydání ostré verze mohou ještě změnit.*  
+
+
