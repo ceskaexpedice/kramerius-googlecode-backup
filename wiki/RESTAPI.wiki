@@ -1,4 +1,4 @@
-#summary REST API
+#summary ...
 <wiki:toc max_depth="1" />
 
 [RemoteAPI]
