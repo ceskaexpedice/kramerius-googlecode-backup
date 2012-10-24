@@ -237,7 +237,7 @@ Pro účely testování jsou k dispozici pomocné utilitní třídy.
 
 
 Bližší informace o procesech 
-[Processes], [Procesy http://code.google.com/p/kramerius/wiki/MenuAdministrace#Procesy_v_systému_Kramerius]
+[Processes], [http://code.google.com/p/kramerius/wiki/MenuAdministrace#Procesy_v_systému_Kramerius]
 
 Poznámka: *Některé části API se do vydání ostré verze mohou ještě změnit.*  
 
