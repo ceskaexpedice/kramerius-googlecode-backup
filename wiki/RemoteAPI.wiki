@@ -5,7 +5,7 @@
 Verze 4.6 přineslo možnost třetím stranám využít vzdálené API pro: 
 
  * Správu procesů
- * Repliaci dat
+ * Replikaci dat
 
 API je verzováno a je připojeno na kontextu ../search/api/v4.6. Vyžaduje autentizovanou HTTP session, pokud není session autentizovaná, je možno se 
 autentizovat pomocí protokolu BASIC. Nutno podotknout, že je vhodné tuto autentizaci používat pouze v kombinaci se zapnutým HTTPS protokolem. 
@@ -77,7 +77,7 @@ Offset lze měnit parametrem offset
 ===Plánování nového procesu===
 Nejjednodušší je plánování nového procesu bez parametrů
 {{{
-    POST https://xxx.xxx.xxx.xxx/seach/api/processes?def=mock
+    POST https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?def=mock
 }}}
 Parametr def určuje identifikátor plánovaného procesu. Výsledkem je popis naplánovaného objektu
 {{{
