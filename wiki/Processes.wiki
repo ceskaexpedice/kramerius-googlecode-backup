@@ -34,7 +34,7 @@ public class TestSimpleProcess {
 </processes>
 }}}
 
-Takto definovaný proces je možno rovnou spustit přes [RESTAPI] nebo pomocí staršího přístupu, přes lr servlet [MenuAdministrace#Manipulace_s_procesy]. 
+Takto definovaný proces je možno rovnou spustit přes [RemoteAPI] nebo pomocí staršího přístupu, přes lr servlet [MenuAdministrace#Manipulace_s_procesy]. 
 
 ==Procesy s uživatelským vstupem==
 Tato možnost byla přidána až v souvislosti s Issue 114 a je přítomna od verze 4.6. Spouštěná metoda je zde určena anotací 
