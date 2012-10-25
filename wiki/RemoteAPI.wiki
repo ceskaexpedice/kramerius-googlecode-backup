@@ -168,6 +168,10 @@ Výstup vypadá následovně:
 }
 }}}
 
+Další informace o procesech 
+[Processes], [http://code.google.com/p/kramerius/wiki/MenuAdministrace#Procesy_v_systému_Kramerius]
+
+
 ==Replikace==
 
 Rozhraní pro replikace umožňuje tři operace
@@ -236,8 +240,6 @@ Pro účely testování jsou k dispozici pomocné utilitní třídy.
 [http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ReplicationsClient.java ReplicationsClient]
 
 
-Bližší informace o procesech 
-[Processes], [http://code.google.com/p/kramerius/wiki/MenuAdministrace#Procesy_v_systému_Kramerius]
 
 Poznámka: *Některé části API se do vydání ostré verze mohou ještě změnit.*  
 
