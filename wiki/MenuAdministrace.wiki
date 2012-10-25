@@ -184,52 +184,7 @@ V definicích procesu jsou všechny náležitosti potřebné ke spuštění. Uk�
 
 ===Manipulace s procesy===
 
-Pro spuštení procesu se používá řídici servlet *lr*, který krom spuštění může ještě procesy vypínat, vypisovat případně měnit jméno. Syntaxe použití je následující:
-
-{{{<server_host:port>/search/lr?action=[start|stop|updateName][otherActionParams][authenticationParams]}}}
-
- * parametr definuje akci, která se má stát, 
- * parametr otherActionParams pak závisí na zvolené akci. 
- * parametry authenticationParams definuje autentizační údaje (jméno a heslo). 
-
-====Spuštění procesu==== 
-
-Spuštění procesu má nasledující syntaxi: 
-{{{<server_host:port>/search/lr?action=start&def=<def_id_procesu>&params=<runtime_params>&userName=***&pswd=***}}}
-
- * *start*  Parametr proces spustí případně naplánuje na spuštění. To se řídí aktualním počtem pravě bežících procesů. 
- * *def*  ID procesu, který se má spustit.	
- * *params* Tzv. runtime parametry procesu. Před spuštěním se "slejou" parametry definované v xml souboru s runtime parametry do jednoho pole. To pak reprezentuje spouštěcí parametry procesu.
- * *userName* Uživatel pod kterým se porces spouští (Uživatel musí mít právo spouštět daný proces.) 
- * *pswd* Heslo pro autentizaci uživatele.
-
-====Spuštení vybraných procesů====
-
-=====Replikace monografií===== 
-{{{<server_host:port>/search/lr?action=start&def=replikator_monographs&userName=***&pswd=***}}}
-
-=====Replikace periodik===== 
-{{{<server_host:port>/search/lr?action=start&def=replikator_periodicals&userName=***&pswd=***}}} 
-
-=====Reindexace objektu===== 
-{{{<server_host:port>/search/lr?action=start&def=reindex&out=text&params=fromKrameriusModel,<uuidObjektu>,<titulek_procesu>&userName=***&pswd=***}}} 
-
-=====Smazání objektu===== 
-{{{<server_host:port>/search/lr?action=start&def=delete&out=text&params=<uuidObjektu>,<cestaUUIDodKorene>&userName=***&pswd=*** }}} 
- * Parametr *cestaUUIDodOkrene* reprezentuje seznam uuid objektů od kořenového objektu až po ten, který se má smazat. Jako oddělovač cesty je použitý znak */*. 
-
-=====Nastavení viditelnosti na public===== 
-{{{<server_host:port>/search/lr?action=start&def=setpublic&out=text&params=<uuidObjektu>&userName=***&pswd=***}}}
-
-=====Nastavení viditelnosti na private===== 
-{{{<server_host:port>/search/lr?action=start&def=setprivate&out=text&params=<uuidObjektu>&userName=***&pswd=***}}}
-
-
-====Zastavení procesu====
-
-Syntaxe je následující: 
-{{{<application>/lr?action=stop&uuid=<uuidProcesu>&userName=***&pswd=***}}} 
-  * *uuidProcesu* je identifikator procesu přiřazovaný akcí start.
+Pro manipulaci doporučujeme použít [RemoteAPI]
 
 
 ===Stavy procesů===
