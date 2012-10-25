@@ -139,7 +139,7 @@ Dále se řadí dle priority pokud je větší nebo rovna 1. Platí, že čím v
 Následuje rozdělění dle úrovně kritéria. Kriteria jsou formálně rozdelena na úrovně MAX, NORMAL a MIN. Nejdříve se řadí kriteria v "přihrádce" MAX, poté NORMAL a nakonec MIN. V každé "příhrádce" se respektuje řazení dle dědičnosti (tzn. Pravidla blíž listu stromu má výšší váhu, směrem ke kořenu se pak váha snižuje)  a pokud jsou pravidla na stejné hierarchické úrovni, pak dle času přidání. 
 
 ===Poznámka=== 
-V K4 jsou v úrovni MAX definovány pouze IP filtry, ostatní kritéria mají úroveň NORMAL. Tímto jsou reflektovány případy, kdy na nejvyšší úrovni repositáře (REPOSITORY) jsou definovaná adresy pro přístup (IP filtry) a na různých, nižších úrovních pak ostatní dodatečné podmínky (MovingWall, Příznak, atd..). IP filtry se budou zpracovávat dřív, než ostatní dodatečné podmínky i když jsou (ty dodatečné podmínky) definované na nižší konkrétnější úrovni.
+V K4 jsou v úrovni MAX definovány pouze filtry (IP i Domain), ostatní kritéria mají úroveň NORMAL. Tímto jsou reflektovány případy, kdy na nejvyšší úrovni repositáře (REPOSITORY) jsou definovaná adresy pro přístup (IP filtry) a na různých, nižších úrovních pak ostatní dodatečné podmínky (MovingWall, Příznak, atd..). IP filtry se budou zpracovávat dřív, než ostatní dodatečné podmínky i když jsou (ty dodatečné podmínky) definované na nižší konkrétnější úrovni.
 
 
   
