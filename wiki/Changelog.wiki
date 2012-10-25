@@ -5,23 +5,23 @@
 
 Podrobný popis významných změn je na stránce NovinkyVeVerzi46
 
-Issue 445 - Zapracované změny API (dokument z mailové konference)  - [RemoteAPI]
-Issue 425, Issue 424, Issue 423, Issue 421  - Opravy a návrhy v API 
-Issue 436 - Přidána BASIC autentizace 
-Issue 450 - Časová osa, špatný formát
-Issue 332 - Výjimka NumberFormatException při konverzi dat
-Issue 457, Isseu 446 - Dlaždice z image serveru, 
-Issue 407 - Replikace K3->K4 
-Issue 422 - Popisky procesu a přeorganizovaní menu 
-Issue 449 - Mazání rolí s českými znaky 
-Issue 448 - Čeština při registraci uživatele
-Issue 434 - Info o viditelnosti 
-Issue 438 - Doménový filtr a lokalizace
-Issue 431 - Přidání pravidla criteria_rights_manage
-Issue 429 - Chybějící položka Export do FOXML
-Issue 419 - Správa procesu,  mezery 
-Issue 430 - Parametrizovaný import, vstupní formular 
-Issue 409 - Změna anglického textu v labels.properties
+  * Issue 445 - Zapracované změny API (dokument z mailové konference)  - [RemoteAPI]
+  * Issue 425, Issue 424, Issue 423, Issue 421  - Opravy a návrhy v API 
+  * Issue 436 - Přidána BASIC autentizace 
+  * Issue 450 - Časová osa, špatný formát
+  * Issue 332 - Výjimka NumberFormatException při konverzi dat
+  * Issue 457, Isseu 446 - Dlaždice z image serveru, 
+  * Issue 407 - Replikace K3->K4 
+  * Issue 422 - Popisky procesu a přeorganizovaní menu 
+  * Issue 449 - Mazání rolí s českými znaky 
+  * Issue 448 - Čeština při registraci uživatele
+  * Issue 434 - Info o viditelnosti 
+  * Issue 438 - Doménový filtr a lokalizace
+  * Issue 431 - Přidání pravidla criteria_rights_manage
+  * Issue 429 - Chybějící položka Export do FOXML
+  * Issue 419 - Správa procesu,  mezery 
+  * Issue 430 - Parametrizovaný import, vstupní formular 
+  * Issue 409 - Změna anglického textu v labels.properties
 
 =4.6-alfa (trunk)=
 
