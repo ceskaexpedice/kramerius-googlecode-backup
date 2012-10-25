@@ -8,9 +8,10 @@ Podrobný popis významných změn je na stránce NovinkyVeVerzi46
   * Issue 445 - Zapracované změny API (dokument z mailové konference)  - [RemoteAPI]
   * Issue 425, Issue 424, Issue 423, Issue 421  - Opravy a návrhy v API 
   * Issue 436 - Přidána BASIC autentizace 
+  * Issue 435 - K4 replikace - Předávání autentizace 
   * Issue 450 - Časová osa, špatný formát
   * Issue 332 - Výjimka NumberFormatException při konverzi dat
-  * Issue 457, Isseu 446 - Dlaždice z image serveru, 
+  * Issue 457, Issue 446 - Dlaždice z image serveru, 
   * Issue 407 - Replikace K3->K4 
   * Issue 422 - Popisky procesu a přeorganizovaní menu 
   * Issue 449 - Mazání rolí s českými znaky 
@@ -22,6 +23,7 @@ Podrobný popis významných změn je na stránce NovinkyVeVerzi46
   * Issue 419 - Správa procesu,  mezery 
   * Issue 430 - Parametrizovaný import, vstupní formular 
   * Issue 409 - Změna anglického textu v labels.properties
+  * Issue 453 - Nesprávné typy stránek z formátu METS NDK
 
 =4.6-alfa (trunk)=
 
