@@ -219,8 +219,7 @@ Výstupem je pole všech objektů nutných replikovat do cílové instance K4. V
 
 ===Získání FOXML objektu===
 {{{
-    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/
-    replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/foxml
+    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/foxml
 }}}
 Zde se mohou vracet dvě reprezentace JSON a XML, zaleží na tom, jaký typ reprezentace akceptuje klient.  
 
