@@ -169,7 +169,7 @@ Výstup vypadá následovně:
 }}}
 
 Další informace o procesech 
-[Processes], [http://code.google.com/p/kramerius/wiki/MenuAdministrace#Procesy_v_systému_Kramerius]
+[Processes], [MenuAdministrace#Procesy_v_syst%C3%A9mu_Kramerius]
 
 
 ==Replikace==
