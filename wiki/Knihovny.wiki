@@ -18,7 +18,7 @@ Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích
   * Národní technické muzeum [] - Unidata
   * Studijní a vědecká knihovna v Hradci Králové [] - Unidata
   * Vysoká škola ekonomická [] - Unidata
-  * Vysoká škola uměleckoprůmyslová v Praze [] - M.Řehánek
+  * Vysoká škola uměleckoprůmyslová v Praze (klasifikační práce) [] - M.Řehánek
 
 
 Pokud na seznamu chybí (případně tam nepatří) Vaše knihovna, ozvěte se prosím na kramerius@lib.cas.cz nebo na lhotak@knav.cz.
