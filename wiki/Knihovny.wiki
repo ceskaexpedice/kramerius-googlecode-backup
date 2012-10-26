@@ -3,7 +3,7 @@
 = Kramerius 4 v produkčním nasazení=
 
 Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích:
-[Instituce [odkaz] - instaloval]
+[Instituce (odkaz) - instaloval]
 
   * FSVUK [] - MŘ
   * Knihovna Akademie věd ČR [http://kramerius.lib.cas.cz/search/] - KNAV
