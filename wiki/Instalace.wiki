@@ -284,6 +284,7 @@ driver.fedora.pass = ********
 driver.fedora.identify = http://localhost:8080/fedora/get/model:Repository/Identify.xml
 
 # v případě použití MPT resource indexu
+driver.fedora.queryFactory = fedora.services.oaiprovider.MPTQueryFactory 
 driver.fedora.mpt.jdbc.url = jdbc:postgresql://localhost/riTriples
 driver.fedora.mpt.jdbc.user = fedoraAdmin
 driver.fedora.mpt.jdbc.password = ********
