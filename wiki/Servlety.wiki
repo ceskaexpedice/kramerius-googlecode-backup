@@ -165,7 +165,7 @@ Produkuje json  objekt zpracovatelný javascriptem.
 
 Použití:
 
-`viewInfo?uuid=4502faf0-4953-11de-9ddf-000d606f5dc6` - json informace o objektu
+`viewInfo?pid=uuid:4502faf0-4953-11de-9ddf-000d606f5dc6` - json informace o objektu
 
 
 ==rightsServlet==  
