@@ -26,7 +26,7 @@ Příklad:
 
     * *GETRAW* - vrací surová data z požadovaného streamu. Nevyžaduje žádné dodatečné parametry. 
 
-Příklad:  `img?pid=0...&stream=IMG_FULL&action=GETRAW`
+Příklad:  `img?pid=uuid:0...&stream=IMG_FULL&action=GETRAW`
 
   * *outputFormat* - výstupní formát pro akci TRANSCODE. Podporovované výstupní parametry servletu: 
     * “outputFormat=jpg”  - JPEG format
