@@ -22,7 +22,7 @@ Příklad:
 
 `img?pid=0...&stream=IMG_FULL&action=TRANSCODE&outputFormat=jpg`
 
-    * *SCALE* - vrací zmenšeninu nebo zvětšeninu obrázku ve formátu JPG. Vyžaduje dodatečné parametry pro zmešení/zvětšení. Umožnuje měnit velikost dle výšky, šířky a dle procent.  Příklady: `img?uuid=0...&stream=IMG_FULL&action=SCALE&scaledHeight=128, img?uuid=0...&stream=IMG_FULL&action=SCALE&scaledWidth=450, img?uuid=0...&stream=IMG_FULL&action=SCALE&scaled=0.5` 
+    * *SCALE* - vrací zmenšeninu nebo zvětšeninu obrázku ve formátu JPG. Vyžaduje dodatečné parametry pro zmešení/zvětšení. Umožnuje měnit velikost dle výšky, šířky a dle procent.  Příklady: `img?pid=uuid:0...&stream=IMG_FULL&action=SCALE&scaledHeight=128, img?pid=uuid:0...&stream=IMG_FULL&action=SCALE&scaledWidth=450, img?pid=uuid:0...&stream=IMG_FULL&action=SCALE&scaled=0.5` 
 
     * *GETRAW* - vrací surová data z požadovaného streamu. Nevyžaduje žádné dodatečné parametry. 
 
