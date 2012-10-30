@@ -76,7 +76,7 @@ Vrací mime type streamu IMG_FULL jako textový řetězec.
 
 Použití: 
 
-`mimetype?uuid=<uuid>`
+`mimetype?pid=<pid>`
 
 ==handle== 
 
