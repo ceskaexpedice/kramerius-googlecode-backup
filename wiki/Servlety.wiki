@@ -90,15 +90,6 @@ Použití:
 
 `handle/ABA001/12b34a` 
 
-==titlePage== 
-
-třída `cz.incad.Kramerius.TitlePageServlet`
-
-Prochází objekt rekurzivně dolů až nalezne stránku, která je v metadatech označena jako titulní. Pak na ni provede redirect.
-
-Použití: 
-`titlePage?uuid=8b0b25e0-49b7-11de-a45e-000d606f5dc6` 
-
 
 ==dsProxyServlet== 
 
