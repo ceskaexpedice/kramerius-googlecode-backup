@@ -41,6 +41,16 @@ Atributy elementu part jsou převzaty z odpovídajícího elementu div v logick�
 
 Dokumenty v původním formátu DTD Kramerius 3 mají hierarchickou stromovou strukturu (typicky monografie/svazek/stránka nebo periodikum/ročník/číslo/stránka). Úložiště Fedora není hierarchické. Každému uzlu původní stromové struktury odpovídá digitální objekt FOXML s příslušným content modelem, jednotlivé objekty jsou do stromové struktury propojeny pomocí RDF vazeb definovaných v datovém streamu RELS-EXT.
 
+==Pořadí objektů v hierarchii==
+
+Pořadí objektů zobrazovaných v hierarchické stromové struktuře K4 je určeno výhradně pořadím RDF vazeb uvedených v datastreamu RELS-EXT. Pořadí vazeb je možno editovat pomocí editoru, který je součástí instalace K4 ( [MenuAdministrace#Editor_pořadí_částí_dokumentu])
+
+Při konverzi dat do FOXML z formátů K3 nebo METS NDK je zachováno pořadí součástí uvedené v rámci původního konvertovaného dokumentu.
+
+Pokud je titul do K4 importován po jednotlivých částech (například samostatné ročníky periodika), importní proces K4 automaticky přidá RDF vazby na nově importované součásti na konec datastreamu RELS-EXT  v již existujícím nadřazeném FOXML objektu. K tomuto spojení vazeb dojde tehdy, pokud existující i nově přidávaný nadřazený FOXML objekt mají stejný PID.
+
+
+ 
 ==Content modely==
 
 Datová struktura, vycházející z formátu dat Kramerius 3, předpokládá následující content modely:
