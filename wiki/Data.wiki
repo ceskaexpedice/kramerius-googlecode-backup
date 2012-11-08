@@ -43,7 +43,7 @@ Dokumenty v původním formátu DTD Kramerius 3 mají hierarchickou stromovou st
 
 ==Pořadí objektů v hierarchii==
 
-Pořadí objektů zobrazovaných v hierarchické stromové struktuře K4 je určeno výhradně pořadím RDF vazeb uvedených v datastreamu RELS-EXT. Pořadí vazeb je možno editovat pomocí editoru, který je součástí instalace K4 ( [MenuAdministrace#Editor_pořadí_částí_dokumentu popis zde])
+Pořadí objektů zobrazovaných v hierarchické stromové struktuře K4 je určeno výhradně pořadím RDF vazeb uvedených v datastreamu RELS-EXT. Pořadí vazeb je možno editovat pomocí editoru, který je součástí instalace K4 ( [MenuAdministrace popis zde])
 
 Při konverzi dat do FOXML z formátů K3 nebo METS NDK je zachováno pořadí součástí uvedené v rámci původního konvertovaného dokumentu.
 
