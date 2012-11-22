@@ -160,7 +160,8 @@ V případě rozsáhlejších, víceřádkových textů, systém K4 disponuje me
   * `texts/help`  - Obsahuje text nápovědy.  Pokud není definovaný, zobrazí interní nápovědu K4.
   * `texts/rightMsg`  - Obsahuje text o nedostupnosti dokumentu.  Pokud není definovaný, zobrazí krátký text z `labels.properties` určený klíčem `rightMsg`
   * `texts/intro`  - Obsahuje popisný text o digitální knihovně.  Implicitně zobrazovaný text [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/service/impl/res/default_intro intro].
-  
+
+Poznámka: V adresáři `~/.kramerius4/texts/` mohou existovat soubory `first_page_xml`, `first_page_html`, `first_page`. Ty od ostre verze 4.6 nejsou potřeba je možno je smazat. 
 
 Nově založenému uživateli je aplikací rightseditor přiděleno heslo a zasláno na email. Pro tuto funkci je třeba mít k dispozici SMTP server a do adresáře `~/.kramerius4` přidat soubor `mail.properties` s obsahem:
 
