@@ -156,10 +156,10 @@ Požadované změny je možno provádět přepsáním hodnoty příslušného kl
 
 V případě rozsáhlejších, víceřádkových textů, systém K4 disponuje mechanismem zápisu textu do samostatného souboru. Soubory mohou být předefinovány v adresáři `~/.kramerius4/texts`.
 
-  * texts/first_page_nolines_xml  - obsahuje text o nedostupnosti, který se objeví v dialogu při generování PDF i v samotném dokumentu. Implicitně zobrazovaný text je [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/texts/first_page_no_lines_xml first_page_nolines_xml]
-  * texts/help  - Obsahuje text nápovědy.  Pokud není definovaný, zobrazí interní nápovědu K4.
-  * texts/rightMsg  - Obsahuje text o nedostupnosti dokumentu.  Pokud není definovaný, zobrazí krátký text z `labels.properties` určený klíčem rightMsg
-  * texts/intro  - Obsahuje popisný text o digitální knihovně.  Implicitně zobrazovaný text [src/main/java/cz/incad/kramerius/service/impl/res/default_intro intro].
+  * `texts/first_page_nolines_xml`  - obsahuje text o nedostupnosti, který se objeví v dialogu při generování PDF i v samotném dokumentu. Implicitně zobrazovaný text je [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/texts/first_page_no_lines_xml first_page_nolines_xml]
+  * `texts/help`  - Obsahuje text nápovědy.  Pokud není definovaný, zobrazí interní nápovědu K4.
+  * `texts/rightMsg`  - Obsahuje text o nedostupnosti dokumentu.  Pokud není definovaný, zobrazí krátký text z `labels.properties` určený klíčem `rightMsg`
+  * `texts/intro`  - Obsahuje popisný text o digitální knihovně.  Implicitně zobrazovaný text [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/service/impl/res/default_intro intro].
   
 
 Nově založenému uživateli je aplikací rightseditor přiděleno heslo a zasláno na email. Pro tuto funkci je třeba mít k dispozici SMTP server a do adresáře `~/.kramerius4` přidat soubor `mail.properties` s obsahem:
