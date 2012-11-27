@@ -6,3 +6,4 @@ Oproti předchozí verzi, založené na procházení stromové struktury dat, je
 Popis uživatelského rozhraní je v okně nápověda, přístupném ze záhlaví hlavní stránky aplikace Kramerius 4 ([http://krameriusdemo.mzk.cz/search/help/cs.jsp například zde])
 
 Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi45
+Popis změn v GUI verze 4.6 najdete na stránce NovinkyVeVerzi46
