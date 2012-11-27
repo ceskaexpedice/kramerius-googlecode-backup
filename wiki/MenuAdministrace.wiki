@@ -120,6 +120,27 @@ Příkaz *Odstranit dokument z fedory* v kontextové nabídce odstraní daný do
 
 Příkaz *Změna viditelnosti* v kontextové nabídce umožňuje měnit příznak `kramerius:policy` dokumentu a všech jeho podřízených částí mezi stavy public a private a ovládat tak, jestli jsou plná obrazová data dokumentu přístupná i z počítačů mimo prostory knihovny. Seznam povolených IP adres je definován v editoru práv v kritériu IP Filtr (viz [Prava Práva]) .  
 
+
+===Přehled parametrů volání indexeru===
+
+||deleteDocument|| odstraní rekursivně dokument||
+||deleteModel|| odstraní všechny dokumenty daného modelu, rekursivně||
+||deletePid|| odstraní jeden dokument||
+||fromPid|| indexuje jeden dokument||
+||fullRepo|| indexuje rekursivně všechny modely přítomné ve vlastnosti `fedora.topLevelModels`||
+||fullRepoWithClean|| smaže celý index, a pak volá fullRepo||
+||optimize|| volání `optimize` v SOLR||
+||fromKrameriusModel|| indexuje rekursivně dokument, který před tím rekursivně smaže z indexu||
+||fromKrameriusModelNoCheck|| indexuje rekursivně dokument,  který před tím NEsmaže rekursivně z indexu (používat pouze, pokud je jistota, že v indexu nejsou podřízené dokumenty, ktere neexistují v úložišti fedora)||
+||krameriusModel|| indexuje rekursivně všechny dokumenty daného modelu,  které před tím smaže rekursivně z indexu||
+||krameriusModelNoCheck|| indexuje rekursivně všechny dokumenty daného modelu,  které před tím NEsmaže rekursivně z indexu||
+||reindexDoc|| indexuje rekursivně dokument, jestliže jeho datum v úložišti fedora je novější než v indexu||
+||reindexDocForced|| indexuje rekursivně daný dokument||
+||checkIntegrity|| smaže z indexu dokumenty, které nejsou v úložišti fedora (proces se spustí rekursivně na modely uvedené ve vlastnosti `fedora.topLevelModels`||
+||checkIntegrityByModel|| smaže z indexu rekursivně dokumenty daného modelu, které nejsou v úložišti fedora||
+||checkIntegrityByDocument|| smaže z indexu rekursivně všechny dokumenty, které nejsou v úložišti fedora||
+||reindexCollection|| reindexuje rekursivně dokumenty dané virtuální sbírky||
+
 = Export dokumentů =
 
 == Export PDF ==
