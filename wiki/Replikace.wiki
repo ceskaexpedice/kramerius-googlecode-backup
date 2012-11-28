@@ -14,7 +14,7 @@ http://kramerius.googlecode.com/svn/wiki/features_46/K4replications.png
 
  *  Nejdříve (bod 1.) si replikační proces vyžádá replikační deskriptor.  Pokud deskriptor dostane, uloží ho a pokusí parsovat. Tím končí fáze 1.
  *  Potom (bod 2.) algoritmus prochází jednotlivé identifikátory objektů a pro každý získá FOXML objekt, ten importuje do cílového uložistě.  Po zpracování všech identifikátorů končí fáze 2.
- *  Nakonec (bod 3.) proces naplánuje podproces indexace. Fáze 3.
+ *  Nakonec (bod 3.) smaže nekonzistence (v případě replikování pouze časti dokumentu, ne celku) a  naplánuje indexaci. Fáze 3.
 
 
 
@@ -52,4 +52,7 @@ Akci je možno definovat ja jakékoliv úrovni objektového stromu. Nastavení p
 ==Akce import_k4_replications==
 Akce operaci importu vyexportovaného foxml do cílového uložiště. Právo s touto akcí je možno definovat pouze na úrovni
 kořenového objektu REPOSITORY. 
+
+
+=Poznámky k implementaci=
 
