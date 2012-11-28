@@ -49,10 +49,23 @@ Pro replikace jsou definovány akce pro import a export:
 Definuje možnost exportu deskriptoru a foxml souboru na straně poskytující data (exportujícího serveru). 
 Akci je možno definovat ja jakékoliv úrovni objektového stromu. Nastavení probíhá pomocí kontextového menu. 
 
+
 ==Akce import_k4_replications==
 Akce operaci importu vyexportovaného foxml do cílového uložiště. Právo s touto akcí je možno definovat pouze na úrovni
 kořenového objektu REPOSITORY. 
 
+==Poznámky k implementaci==
 
-=Poznámky k implementaci=
+Replikace používá pro získání dat RemoteAPI. 
+
+Pokud jsou data v exportující instanci externě referencovaná, tzn. leží mimo repositář, mohou nastat dva případy. 
+
+ * URL je definováno protokolem file 
+ * URL je definováno protkolem http resp. https
+
+Pro první případ platí, že exportující instance získá data z uložiště, obsah vloží přímo do exportovaného foxml zakódovaný v Base64 a datový stream změní na typ `Managed Content`. 
+Pro druhý případ platí, že data zůstávají externě referencovaná i v cílovém repositáři, URL zůstane nezměněno.
+
+Pokud se replikuje pouze část celku (výtisk periodika, ročník, část monografie, atd..) proces provádí kontrolu konzistence a ruší
+vazby z vyšších částí na nižší, dosud nereplikované.
 
