@@ -56,7 +56,7 @@ kořenového objektu REPOSITORY.
 
 ==Poznámky k implementaci==
 
-Replikace používá pro získání dat RemoteAPI. 
+Replikace používá pro získání dat [RemoteAPI]. 
 
 Pokud jsou data v exportující instanci externě referencovaná, tzn. leží mimo repositář, mohou nastat dva případy. 
 
