@@ -69,3 +69,4 @@ Pro druhý případ platí, že data zůstávají externě referencovaná i v c�
 Pokud se replikuje pouze část celku (výtisk periodika, ročník, část monografie, atd..) proces provádí kontrolu konzistence a ruší
 vazby z vyšších částí na nižší, dosud nereplikované.
 
+Pokud digitální objekt obsahuje odkaz na IIPserver, zůstává tento nezměněn.   
