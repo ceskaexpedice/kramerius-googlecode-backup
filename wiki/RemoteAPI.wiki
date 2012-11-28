@@ -233,12 +233,19 @@ XML výstup pak
 <foxml:digitalObject PID="uuid:045b1250.....
 }}}
 
+====Poznámky k implementaci====
+Exportování FOXML objektů z fedory je implementováno pomocí APIM metodou export (https://wiki.duraspace.org/display/FEDORA36/API-M#API-M-exportexport). 
+Formát exportu je  `"info:fedora/fedora-system:FOXML-1.1` a parametr kontext je volen `archive`.  
+
+Pokud výsledné FOXML obsahuje datastreamy, které jsou referencované a URL referencovaného objektu obsahuje protokol file, dochází k modifikaci předáváného foxml. 
+Typ datastreamu se mění z typu External Referenced Content na typ Managed Content a obsah URL je vložen přímo do exportovaného foxml zakódovaný Base64. 
+
+
+
 Pro účely testování jsou k dispozici pomocné utilitní třídy. 
 
 [http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ProcessesClient.java ProcessClient]
 [http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ReplicationsClient.java ReplicationsClient]
-
-
 
 Poznámka: *Některé části API se do vydání ostré verze mohou ještě změnit.*  
 
