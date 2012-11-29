@@ -150,9 +150,7 @@ Obsah defaultních hodnot jednotlivých konfiguračních souborů najdete zde:
   * [http://code.google.com/p/kramerius/source/browse/trunk/import-cmdtool/src/main/java/res/configuration.properties  migration.properties]
   * [http://code.google.com/p/kramerius/source/browse/trunk/static-export/src/main/java/res/configuration.properties  static_export.properties]
 
-Texty jednotlivých součástí GUI K4 jsou lokalizovány pomocí standardního mechanismu resource bundle jazyka Java (viz např. [http://docs.oracle.com/javase/6/docs/api/java/util/ResourceBundle.html]), výchozí obsah lokalizačního souboru `labels.properties` je k dispozici zde: [http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/labels_cs.properties labels_cs.properties pro K4]
-
-[http://code.google.com/p/kramerius/source/browse/trunk/rightseditor/src/labels_cs.properties labels_cs.properties pro editor uživatelů]
+Texty jednotlivých součástí GUI K4 jsou lokalizovány pomocí standardního mechanismu resource bundle jazyka Java (viz např. [http://docs.oracle.com/javase/6/docs/api/java/util/ResourceBundle.html]), výchozí obsah lokalizačního souboru `labels.properties` je k dispozici zde: [http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/labels_cs.properties labels_cs.properties pro K4] [http://code.google.com/p/kramerius/source/browse/trunk/rightseditor/src/labels_cs.properties labels_cs.properties pro editor uživatelů]
 
 Požadované změny je možno provádět přepsáním hodnoty příslušného klíče v souboru `~/.kramerius4/bundles/labels.properties`, resp. `~/.kramerius4/bundles/labels_cs.properties` .
 
@@ -201,6 +199,8 @@ mail.subject=Vygenerované heslo
 registeruser.mail.subject=Aktivace uživatele
 registeruser.mail.message=Pro aktivaci uživatele {0} ({1}) je nutné kliknout na následující link {2}
 }}}
+
+Čísla ve složených závorkách jsou parametry, které budou nahrazeny skutečnými hodnotami proměnných login, heslo , resp login, jméno a potvrzující URL.
 
 =Podpora protokolu deepZoom (volitelné nastavení)=
 Kromě standardního zobrazení obrázků v jejich nativním formátu má aplikace Kramerius4 možnost prezentovat je pomocí integrované prohlížečky Seadragon (http://www.zoom.it). Prohlížečka Seadragon je aktivována pro konkrétní zobrazovaný digitální objekt (například stránku monografie), pokud jeho FOXML definice obsahuje v datastreamu RELS-EXT RDF literál `<kramerius4:tiles-url>`.  Je možno využít dvě alternativy: 
