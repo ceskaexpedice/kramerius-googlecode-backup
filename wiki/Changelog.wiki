@@ -4,6 +4,8 @@
 
 =4.6 (4445)=
 
+Podrobný popis významných změn je na stránce NovinkyVeVerzi46
+
   * Replikace částí  - změny v procesu replikace  - [Replikace]
   * Issue 486 - Podpora Fedory 3.6
   * Issue 478 - Externě referencované data streamy
