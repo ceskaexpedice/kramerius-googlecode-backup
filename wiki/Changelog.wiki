@@ -18,7 +18,12 @@
   * Issue 476 - Pruh s náhledy a víceřádkový název
   * Issue 479 - Dialogy pro generování pdf a sjednocené texty     
   * Issue 485 - Špatné znaky v konfiuračním souboru 
-
+  * Issue 400 - Nepřiřaditelná už. role 
+  * Issue 187 - Parametrizovaný mail uživateli 
+  * Issue 270 - Mazání dokumentu se špatnou referencí
+  * Issue 408 - Verze a revize v patičce
+    
+    
 =4.6-beta (trunk)=
 
 Podrobný popis významných změn je na stránce NovinkyVeVerzi46
