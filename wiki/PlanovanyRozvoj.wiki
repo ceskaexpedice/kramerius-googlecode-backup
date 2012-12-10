@@ -3,9 +3,8 @@ Návrhy prosíme na [https://docs.google.com/spreadsheet/ccc?key=0AkdG6SSAATo_dH
 
 = Plánovaný rozvoj pro rok 2012 =
 
-Rozvojové úkoly na letošní rok se domlouvají v rámci realizační skupiny. 
+Rozvojové úkoly na letošní rok byly dohodnuty v rámci realizační skupiny. 
 
-Mezi navržené body patří:
 
 * Statistiky - modul, který bude sbírat a zpracovávat informace o úložišti a uživatelských přístpech
 
@@ -15,12 +14,14 @@ Mezi navržené body patří:
 
 * Rozšíření editoru práv
 
-* Napojení na Vufind
+* Testy napojení na Vufind
 
 * Administrace
 
 * OAI Harvestr pro ČDK
 
 * ...
+
+Další informace v zápisech ze schůzek realizačního týmu
 
 Rozvoj za rok 2011 ([rozvoj2011])
