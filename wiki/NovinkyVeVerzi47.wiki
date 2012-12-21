@@ -1,4 +1,4 @@
-#summary Novinky ve verzi 4.6
+#summary Novinky ve verzi 4.7
 <wiki:toc max_depth="1" />
 
 
