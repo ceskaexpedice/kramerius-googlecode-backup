@@ -1,0 +1,39 @@
+#summary Novinky ve verzi 4.6
+<wiki:toc max_depth="1" />
+
+
+=Statistiky=
+Byla přidána možnost sledování a agregace statistik. Ukládá se každý přístup na stream IMG_FULL a IMG_PREVIEW. Statistiky jsou přístupné přes 
+administrátoreské menu:
+
+http://kramerius.googlecode.com/svn/wiki/features_47/statistiky-menu.png
+
+http://kramerius.googlecode.com/svn/wiki/features_47/statistiky-dialog.png
+
+==Agregace==
+
+Jsou k dispozici tři druhy agregací:
+
+  * Dle modelu
+  * Dle rozsahu datumu
+  * Dle autora
+
+Po volbě druhu agregace se objeví dialog s grafem a tabulkou zobrazující data.
+
+http://kramerius.googlecode.com/svn/wiki/features_47/statistiky-agregace.png
+
+
+
+==Ukládané informace==
+Ukládá se následující...
+
+==Získání plného logu==
+Získat plný log je možno ve dvou formátech CSV a XML 
+
+
+=Prohlížečka zoomify=
+Pro prohlížení obrázků z image serveru se nyní standardně používá prohlížečka zoomify.  
+
+
+=Podpora zvukových souborů=
+Bude doplněno.
