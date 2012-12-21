@@ -1,10 +1,10 @@
-#summary Novinky ve verzi 4.7
+#summary Novinky ve verzi 4.7-alfa
 <wiki:toc max_depth="1" />
 
 
 =Statistiky=
-Byla přidána možnost sledování a agregace statistik. Ukládá se každý přístup na stream IMG_FULL a IMG_PREVIEW. Statistiky jsou přístupné přes 
-administrátoreské menu:
+Byla přidána možnost sledování statistik přístupů na jednotlivé tituly a jejich agregace. Sleduje se každý přístup na datové streamy IMG_FULL a IMG_PREVIEW, a 
+a záznam o přístupu se ukládá do servisní databáze.  Statistiky jsou dostupné pomocí administrátoreského menu:
 
 http://kramerius.googlecode.com/svn/wiki/features_47/statistiky-menu.png
 
@@ -23,16 +23,41 @@ Po volbě druhu agregace se objeví dialog s grafem a tabulkou zobrazující dat
 http://kramerius.googlecode.com/svn/wiki/features_47/statistiky-agregace.png
 
 
+==Sledované informace==
 
-==Ukládané informace==
-Ukládá se následující...
+Při přístupu na datový stream se ukládá následující:
+
+  * PID objektu obsahujícího IMG_FULL případne IMG_PREVIEW
+  * Datum a čas přístupu 
+  * IP adresa dotazovatele 
+  * Uživatelské jméno (pokud byl uživatel přihlášen)  
+
+Pro každý záznam existuje vazba 1:N detailním záznamů, které reprezentují úplnou informaci o zobrazovaném titulu. Příklad pro periodikum: Pro každý přístup  
+na datový stream se ukládá informace o zobrazené stránce, zobrazeném výtisku periodika, zobrazeném ročníku periodika, zobrazeném periodiku.  
+Detailní záznamy obsahují:
+  * PID objketu 
+  * Model objketu 
+  * Datum vydání monografie nebo periodika  
+  * Autor případně autoři  
+  * Příznak viditelnosti  
+  * Jazyk  
+  * Název  
+    
 
 ==Získání plného logu==
-Získat plný log je možno ve dvou formátech CSV a XML 
+Pomocí tlačítek v dialogu je možno získat plný log ve dvou formátech a to XML a CSV. 
 
 
 =Prohlížečka zoomify=
-Pro prohlížení obrázků z image serveru se nyní standardně používá prohlížečka zoomify.  
+Pro prohlížení obrázků z image serveru se nyní standardně používá prohlížečka zoomify. Původní prohlížečka je dostupná jako alternativa pomocí konfigurační 
+položky:
+{{{
+    # mozne volby deepzoom|zoomify
+    zoom.viewer=deepzoom
+}}}
+
+Poznámka: Volba zoomify momentálně neumí pracovat s cache vygenerovanou pomocí procesu generateDeepZoomTiles. Issue XXX
+ 
 
 
 =Podpora zvukových souborů=
