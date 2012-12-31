@@ -1,8 +1,12 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
+=4.6.1 (4482)=
+ 
+  * Obnovena možnost spouštění administrátorských procesů přes původní servlet lr 
+  * Issue 498 - opravena chyba při zpracování výjimek v procesu Import FOXML
 
-=4.6 (4445)=
+=4.6.0 (4445)=
 
 Podrobný popis významných změn je na stránce NovinkyVeVerzi46
 
@@ -14,13 +18,13 @@ Podrobný popis významných změn je na stránce NovinkyVeVerzi46
   * Issue 467 - Špatný stav procesu
   * Issue 466 - Unexpected token
   * Issue 470 - Dialog indexace dokumentů
-  * Issue 475 - Import NDK je chráněn samostantou akcí
+  * Issue 475 - Import NDK je chráněn samostatnou akcí
   * Issue 477 - Parametrizované procesy jsou chráněny stejnou akcí, jako jejich neparametrizované protějšky    
   * Issue 474 - Načítání časové osy
   * Issue 476 - Pruh s náhledy a víceřádkový název
   * Issue 479 - Dialogy pro generování pdf a sjednocené texty     
-  * Issue 485 - Špatné znaky v konfiuračním souboru 
-  * Issue 400 - Nepřiřaditelná už. role 
+  * Issue 485 - Špatné znaky v konfiguračním souboru 
+  * Issue 400 - Nepřiřaditelná uživatelská role 
   * Issue 187 - Parametrizovaný mail uživateli 
   * Issue 270 - Mazání dokumentu se špatnou referencí
   * Issue 408 - Verze a revize v patičce
