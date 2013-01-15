@@ -14,6 +14,8 @@
 
 * [Shibb Shibboleth]
 
+* [VuFind VuFind]
+
 * [Data Datový model]
 
 * [Servlety Přehled servletů]
