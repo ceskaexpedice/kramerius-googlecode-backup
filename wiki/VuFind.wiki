@@ -1,4 +1,4 @@
-#summary Indexace obsahu K4 pomocí systému !VuFind
+#summary Indexace obsahu K4 pomocí systému VuFind
 
 = Propojení se systémem !VuFind =
 
