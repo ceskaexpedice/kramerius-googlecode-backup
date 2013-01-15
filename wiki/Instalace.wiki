@@ -244,7 +244,9 @@ Standardní IIP server rozeznává typy souborů dle koncovky. Aby mohl podávat
 http://iris.mzk.cz/iipimage.tar.bz2 
 
 
-=Editor pořadí částí dokumentu (volitelné nastavení)=
+=Editor pořadí částí dokumentu=
+
+(volitelné nastavení)
 
 Editor se instaluje jako samostatná webová aplikace nainstalováním souboru editor.war na aplikační server (viz instalace K4).
 
@@ -263,7 +265,9 @@ http://localhost:8080/editor/?openIDs=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&
 
 Případný alternativní editor tedy musí být schopen zpracovat parametry z tohoto URL.
 
-= Instalace OAI (volitelné nastavení)=
+= Instalace OAI =
+
+(volitelné nastavení)
 
 == Fedora model ==
 
