@@ -8,7 +8,7 @@ Administrátorské úlohy může spouštět autentizovaný uživatel s příslu�
 
 =Import dat=
 
-Data je možno importovat ze 3 zdrojů: 
+Data je možno importovat ze 4 zdrojů: 
 
 ==Automatický import z Krameria verze 3 přes replikační rozhraní== 
 
@@ -94,6 +94,15 @@ Příkaz *Konverze a import* je analogický s procesem Import periodik či monog
 Příkaz *Import FOXML* projde obsah serverového adresáře `.kramerius4/import` (případně jiného adresáře definovaného v `migration.properties`) a jeho podadresářů a soubory ve formátu FOXML 1.1 naimportuje do Krameria 4. Tuto funkci je možné též použít pro manuální replikaci dat mezi dvěma instancemi systému K4 (data ze zdrojové instance jsou vyexportována příkazem *Export FOXML*).
 
 Property `import.directory` specifikuje buď přímo adresář určený k importu nebo může odkazovat na textový soubor se seznamem adresářů k importu (na každém řádku jeden adresář). 
+
+==Replikace dokumentů z jiné instalace Krameria 4==
+
+Od verze 4.6 je možno importovat dokumenty automaticky z jiné instalace Krameria 4 přes replikační rozhraní. Replikace vyžaduje dva kroky:
+
+  # Ve zdrojovém K4 je třeba pomocí standardního systému přístupových práv povolit akci `export_k4_replications` pro požadované tituly pro uživatelský účet, který bude pro replikaci použit. 
+  # Replikace se spustí z administrátorského menu v cílové instalaci K4, příkazem *K4 replikace...*. Jako parametry procesu replikace je třeba zadat URL (handle) dokumentu, který má být replikován (lze je získat na zdrojovém K4 příkazem *Persistentní URL* v kontextovém menu příslušného dokumentu) a dále uživatelské jméno a heslo uživatele, který má na zdrojovém K4 povolena práva pro replikaci. 
+
+Podrobný popis procesu replikace je uveden na stránce [Replikace].
 
 =Indexace dokumentů=
 
