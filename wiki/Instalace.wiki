@@ -202,7 +202,10 @@ registeruser.mail.message=Pro aktivaci uživatele {0} ({1}) je nutné kliknout n
 
 Čísla ve složených závorkách jsou parametry, které budou nahrazeny skutečnými hodnotami proměnných login, heslo , resp login, jméno a potvrzující URL.
 
-=Podpora protokolu deepZoom (volitelné nastavení)=
+=Podpora protokolu deepZoom=
+
+(volitelné nastavení)
+
 Kromě standardního zobrazení obrázků v jejich nativním formátu má aplikace Kramerius4 možnost prezentovat je pomocí integrované prohlížečky Seadragon (http://www.zoom.it). Prohlížečka Seadragon je aktivována pro konkrétní zobrazovaný digitální objekt (například stránku monografie), pokud jeho FOXML definice obsahuje v datastreamu RELS-EXT RDF literál `<kramerius4:tiles-url>`.  Je možno využít dvě alternativy: 
 
  * Využít produkt IIP server (http://iipimage.sourceforge.net).
