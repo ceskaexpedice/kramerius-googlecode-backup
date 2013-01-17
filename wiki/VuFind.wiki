@@ -6,3 +6,170 @@ Pokud chcete data ze systému Kramerius 4 importovat a indexovat v systému !VuF
 
   * V systému Kramerius 4 nakonfigurujte OAI provider podle [Instalace#Instalace_OAI těchto instrukcí]
   * V systému !VuFind nakonfigurujte dávkový import pomocí protokolu OAI-PMH a dat ve formátu XML. Konfigurace importu je závislá na celkové konfiguraci vaší instalace !VuFind, postupuje podle dokumentace systému !VuFind, např. na této adrese: [http://vufind.org/wiki/importing_records]. Pro import je možné použít kterýkoli z profilů oaiprovideru v K4, tedy oai_dc, ese nebo drkramerius. V závislosti na použitém profilu a na indexačním schématu použitém v systému !VuFind je třeba podle uvedené dokumentace nastavit konfigurační properties a zejména XSLT šablonu pro transformaci dat z exportního formátu OAI do konkrétního importního formátu SOLR !VuFind. Jako výchozí bod je možno použít ukázku šablon a nastavení na této adrese: [http://vufind.org/wiki/importing_records:how_to_index_dspace_with_vufind]  
+
+==Příklady konfiguračních souborů VuFind==
+
+*oai.ini*
+
+{{{
+[krameriusdemo]
+url = http://krameriusdemo.mzk.cz/oaiprovider
+metadataPrefix = oai_dc
+;idSearch[] = "/^oai:myuniversity.edu:/"
+;idReplace[] = "ojs-"
+idSearch[] = "/\//"
+idReplace[] = "-"
+injectId = "identifier"
+injectDate = "datestamp"
+verbose = true
+}}}
+
+*kramerius.properties*
+
+{{{
+[General]
+xslt = kramerius.xsl
+custom_class[] = VuFind
+
+[Parameters]
+institution = "Library"
+collection = "Kramerius"
+}}}
+
+*kramerius.xsl*
+
+{{{
+<!-- available fields are defined in solr/biblio/conf/schema.xml -->
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:php="http://php.net/xsl"
+    xmlns:xlink="http://www.w3.org/2001/XMLSchema-instance">
+    <xsl:output method="xml" indent="yes" encoding="utf-8"/>
+    <xsl:param name="institution">MZK</xsl:param>
+    <xsl:param name="collection">Kramerius</xsl:param>
+    <xsl:template match="oai_dc:dc">
+        <add>
+            <doc>
+                <!-- ID -->
+                <field name="id">
+                    <xsl:value-of select="//identifier"/>
+                </field>
+
+                <!-- RECORDTYPE -->
+                <field name="recordtype">kramerius</field>
+
+                
+                <!-- INSTITUTION -->
+                <field name="institution">
+                    <xsl:value-of select="$institution" />
+                </field>
+
+                <!-- COLLECTION -->
+                <field name="collection">
+                    <xsl:value-of select="$collection" />
+                </field>
+
+                <!-- LANGUAGE -->
+                <xsl:if test="//dc:language">
+                    <xsl:for-each select="//dc:language">
+                        <xsl:if test="string-length() > 0">
+                            <field name="language">
+                                <xsl:value-of select="php:function('VuFind::mapString', normalize-space(string(.)), 'language_map_iso639-1.properties')"/>
+                            </field>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:if>
+
+                <!-- SUBJECT -->
+                <xsl:if test="//dc:subject">
+                    <xsl:for-each select="//dc:subject">
+                        <xsl:if test="string-length() > 0">
+                            <field name="topic">
+                                <xsl:value-of select="normalize-space()"/>
+                            </field>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:if>
+
+                <!-- DESCRIPTION -->
+                <xsl:if test="//dc:description">
+                    <field name="description">
+                        <xsl:value-of select="//dc:description" />
+                    </field>
+                </xsl:if>
+
+                <!-- ADVISOR / CONTRIBUTOR -->
+                <xsl:if test="//dc:contributor[normalize-space()]">
+                    <field name="author_additional">
+                        <xsl:value-of select="//dc:contributor[normalize-space()]" />
+                    </field>
+                </xsl:if>
+                
+
+		<field name="format">Electronic</field>
+
+                <!-- AUTHOR -->
+                <xsl:if test="//dc:creator">
+                    <xsl:for-each select="//dc:creator">
+                        <xsl:if test="normalize-space()">
+                            <!-- author is not a multi-valued field, so we'll put
+                                 first value there and subsequent values in author2.
+                             -->
+                            <xsl:if test="position()=1">
+                                <field name="author">
+                                    <xsl:value-of select="normalize-space()"/>
+                                </field>
+                                <field name="author-letter">
+                                    <xsl:value-of select="normalize-space()"/>
+                                </field>
+                            </xsl:if>
+                            <xsl:if test="position()>1">
+                                <field name="author2">
+                                    <xsl:value-of select="normalize-space()"/>
+                                </field>
+                            </xsl:if>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:if>
+
+                <!-- TITLE -->
+                <xsl:if test="//dc:title[normalize-space()]">
+                    <field name="title">
+                        <xsl:value-of select="//dc:title[normalize-space()]"/>
+                    </field>
+                    <field name="title_short">
+                        <xsl:value-of select="//dc:title[normalize-space()]"/>
+                    </field>
+                    <field name="title_full">
+                        <xsl:value-of select="//dc:title[normalize-space()]"/>
+                    </field>
+                    <field name="title_sort">
+                        <xsl:value-of select="php:function('VuFind::stripArticles', string(//dc:title[normalize-space()]))"/>
+                    </field>
+                </xsl:if>
+
+                <!-- PUBLISHER -->
+                <xsl:if test="//dc:publisher[normalize-space()]">
+                    <field name="publisher">
+                        <xsl:value-of select="//dc:publisher[normalize-space()]"/>
+                    </field>
+                </xsl:if>
+
+                <!-- PUBLISHDATE -->
+                <xsl:if test="//dc:date">
+			<!-- only take the last element as the actual date -->
+		        <field name="publishDate">
+				<xsl:value-of select="//dc:date[last()]"/>
+                	</field>
+		        <field name="publishDateSort">
+				<xsl:value-of select="//dc:date[last()]"/>
+                	</field>
+                </xsl:if>
+
+            </doc>
+        </add>
+    </xsl:template>
+</xsl:stylesheet>
+}}}
