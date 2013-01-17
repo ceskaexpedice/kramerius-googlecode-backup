@@ -7,7 +7,7 @@ Pokud chcete data ze systému Kramerius 4 importovat a indexovat v systému !VuF
   * V systému Kramerius 4 nakonfigurujte OAI provider podle [Instalace#Instalace_OAI těchto instrukcí]
   * V systému !VuFind nakonfigurujte dávkový import pomocí protokolu OAI-PMH a dat ve formátu XML. Konfigurace importu je závislá na celkové konfiguraci vaší instalace !VuFind, postupuje podle dokumentace systému !VuFind, např. na této adrese: [http://vufind.org/wiki/importing_records]. Pro import je možné použít kterýkoli z profilů oaiprovideru v K4, tedy oai_dc, ese nebo drkramerius. V závislosti na použitém profilu a na indexačním schématu použitém v systému !VuFind je třeba podle uvedené dokumentace nastavit konfigurační properties a zejména XSLT šablonu pro transformaci dat z exportního formátu OAI do konkrétního importního formátu SOLR !VuFind. Jako výchozí bod je možno použít ukázku šablon a nastavení na této adrese: [http://vufind.org/wiki/importing_records:how_to_index_dspace_with_vufind]  
 
-==Příklady konfiguračních souborů VuFind==
+==Příklady konfiguračních souborů !VuFind==
 
 *oai.ini*
 
