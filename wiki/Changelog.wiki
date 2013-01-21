@@ -1,6 +1,11 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
+
+=4.6.2 (4517)=
+
+  * Issue 510 - opraven problém s reindexací
+
 =4.6.1 (4482)=
  
   * Obnovena možnost spouštění administrátorských procesů přes původní servlet lr 
