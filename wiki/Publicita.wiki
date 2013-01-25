@@ -18,3 +18,5 @@ Robert Krátký - Czech Digital Library and the Kramerius Open Source System*
 *3/2012  OPEN SOURCE & praxe [http://osspraxe.cz/]
 
 Robert Krátký - Česká digitální knihovna a open-source systém Kramerius *
+
+Převzato pro  : http://www.linuxexpres.cz/business/ceska-digitalni-knihovna-a-open-source-system-kramerius 
