@@ -25,7 +25,7 @@ Kromě hlavního modulu aplikace [http://code.google.com/p/kramerius/source/brow
     * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fimaging imaging] - podpora formátu DeepZoom
     * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fpdf pdf] - online generování PDF
     * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fprinting printing] - tisková fronta na serveru
-    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fprocesses processes] - API pro správu administrátorských procesů  ([Processes], [RemoteAPI] - Popis API)  
+    * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fprocesses processes] - API pro správu administrátorských procesů  ([RemoteAPI] - Popis API, [Processes] - Popis procesu)  
     * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fsecurity security] - API pro správu přístupových práv
     * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fservice service] - ostatní sdílené služby
     * [http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/#kramerius%2Fvirtualcollections virtualcollections] - podpora virtuálních sbírek
