@@ -12,13 +12,21 @@ Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích
   * Městská knihovna Horažďovice [] - Unidata
   * Moravská zemská knihovna [http://kramerius.mzk.cz/search/] - MZK
   * Národní archiv [] - Unidata
-  * Národní knihovny [testovací] - INCAD
+  * Národní knihovna [testovací] - INCAD
   * Národní muzeum [] - Unidata
   * Národní technická knihovna [http://k4.techlib.cz/search/] - NTK
   * Národní technické muzeum [] - Unidata
   * Studijní a vědecká knihovna v Hradci Králové [] - Unidata
   * Vysoká škola ekonomická [] - Unidata
   * Vysoká škola uměleckoprůmyslová v Praze (klasifikační práce) [] - M.Řehánek
+  * Studijní a vědecká knihovna v Hradci Králové [] - Unidata
+  * Středočeská vědecká knihovna v Kladně [] - Unidata
+  * Karlovarský kraj [] - Unidata
+  * Krajská knihovna Františka Bartoše [] - Unidata
+  * Zemědělská a potravinářská knihovna ÚZEI [] - Unidata
+  * Muzeum východních Čech v Hradci Králové [] - Unidata
+  * Výzkumný ústav geodetický, topografický a kartografický [] - Unidata
+
 
 
 Pokud na seznamu chybí (případně tam nepatří) Vaše knihovna, ozvěte se prosím na kramerius@lib.cas.cz nebo na lhotak@knav.cz.
