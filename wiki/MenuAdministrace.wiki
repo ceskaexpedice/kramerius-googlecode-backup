@@ -83,7 +83,7 @@ Při použití hodnot external a referenced musí být výstupní adresář konv
 
 ===Konverze formátu obrazových souborů do JPG===
 
-Nastavením vlastnosti `convert.originalToJPG=true` (výchozí hodnota je `false`) určíte, že při konverzi dat z K3 budou soubory v plné velikosti převedeny z formátu DjVu, případně z formátů podporovaných knihovnou Java Advanced Imaging, do formátu JPG, při zachování rozlišení.
+Nastavením vlastnosti `convert.originalToJPG=true` (výchozí hodnota je `false`) určíte, že při konverzi dat z K3 budou soubory v plné velikosti převedeny z formátu DjVu, případně z formátů podporovaných knihovnou Java Advanced Imaging, do formátu JPG, při zachování původního rozlišení a s výchozí kompresí JAI (0.75).
 
 Náhledy malé i střední velikosti jsou vždy konvertovány z původního obrazového souboru v plné velikosti, zmenšeny a uloženy ve formátu JPG. Ke konverzi a zmenšování je použita knihovna Java Advanced Imaging (JAI), jejíž architektura umožňuje používat různé implementace kodeků pro jednotlivé typy formátů. Ve standardní instalaci K4 je zahrnut základní kodek z distribuce JAI (jai_imageio-1.1.jar). Tento kodek je možno nahradit jinou implementací, případně rozšířit o nativní konverzní knihovny pro konkrétní platformu, nahrazením defaultního souboru `jai_imageio-1.1.jar` v adresáři knihoven aplikace K4 (tedy `tomcat/webapps/search/WEB-INF/lib`). Podrobnější informace o systému JAI a jeho pluginů najdete na stránkách [http://www.oracle.com/technetwork/java/javase/tech/jai-142803.html]
 
