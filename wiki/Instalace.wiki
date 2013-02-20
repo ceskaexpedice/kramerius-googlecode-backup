@@ -240,13 +240,6 @@ Příklad:
 Pozn.: Je samozřejmě nejdříve nutné cache naplnit a to akcí "Generování Deep Zoom Cache..." v administrátorském menu aplikace Kramerius 4.  
 
 
-==Verze IIP serveru==
-
-Standardní IIP server rozeznává typy souborů dle koncovky. Aby mohl podávat soubory, které nemají koncovky (např. datastreamy z fedory) bylo potřeba udělat zásah do serveru.  Pozměněnou verzi IIP serveru je možné najít zde: 
-
-http://iris.mzk.cz/iipimage.tar.bz2 
-
-
 =Editor pořadí částí dokumentu=
 
 (volitelné nastavení)
