@@ -1,4 +1,4 @@
-#summary Novinky ve verzi 4.7-alfa
+#summary Novinky ve verzi 4.7
 <wiki:toc max_depth="1" />
 
 
@@ -45,7 +45,7 @@ Detailní záznamy obsahují:
   * Název  
   * Prováděná akce (Tisk, Generování PDF, Prohlížení)  
     
-Každá z agregací může mít výstup v CSV nebo  XML formátu.  
+Každá z agregací může mít výstup v CSV nebo XML formátu.  
 
 ==Získání plného logu==
 Pomocí tlačítek v dialogu je možno získat plný log ve formátu XML.  
@@ -59,9 +59,8 @@ položky:
     zoom.viewer=deepzoom
 }}}
 
-Poznámka: Volba zoomify momentálně neumí pracovat s cache vygenerovanou pomocí procesu generateDeepZoomTiles. Issue XXX
- 
+=Mazání starších procesů=
+Do administrátorksé části menu byla přídána akce umožňující mazat starší, skončené procesy. Mazat lze dle zvoleného filtru. Viz. Dialog:
 
+http://kramerius.googlecode.com/svn/wiki/features_47/processes-delete-dialog.png
 
-=Podpora zvukových souborů=
-Bude doplněno.
