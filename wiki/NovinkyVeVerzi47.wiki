@@ -64,3 +64,4 @@ Do administrátorksé části menu byla přídána akce umožňující mazat sta
 
 http://kramerius.googlecode.com/svn/wiki/features_47/processes-delete-dialog.png
 
+
