@@ -12,7 +12,7 @@ http://kramerius.googlecode.com/svn/wiki/features_47/statistiky-dialog.png
 
 ==Agregace==
 
-Jsou k dispozici tři druhy agregací:
+Jsou k dispozici následující druhy agregací:
 
   * Dle modelu
   * Dle rozsahu datumu
