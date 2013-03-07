@@ -17,6 +17,7 @@ Jsou k dispozici tři druhy agregací:
   * Dle modelu
   * Dle rozsahu datumu
   * Dle autora
+  * Dle jazyků
 
 Po volbě druhu agregace se objeví dialog s grafem a tabulkou zobrazující data.
 
@@ -42,10 +43,12 @@ Detailní záznamy obsahují:
   * Příznak viditelnosti  
   * Jazyk  
   * Název  
+  * Prováděná akce (Tisk, Generování PDF, Prohlížení)  
     
+Každá z agregací může mít výstup v CSV nebo  XML formátu.  
 
 ==Získání plného logu==
-Pomocí tlačítek v dialogu je možno získat plný log ve dvou formátech a to XML a CSV. 
+Pomocí tlačítek v dialogu je možno získat plný log ve formátu XML.  
 
 
 =Prohlížečka zoomify=
