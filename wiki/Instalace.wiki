@@ -202,7 +202,47 @@ registeruser.mail.message=Pro aktivaci uživatele {0} ({1}) je nutné kliknout n
 
 Čísla ve složených závorkách jsou parametry, které budou nahrazeny skutečnými hodnotami proměnných login, heslo , resp login, jméno a potvrzující URL.
 
-=Podpora protokolu deepZoom=
+=Přizpůsobení vzhledu uživatelského rozhraní=
+
+==Pořadí záložek, obsah úvodní stránky==
+
+Tyto základní atributy uživatelského rozhraní je možno měnit bez zásahu do aplikace změnou konfiguračních souborů uvedených v předchozí sekci [Konfigurace].
+
+Obsah záložky s vybranými položkami i to, které záložky jsou zobrazeny, se nastavuje v souboru ~/.kramerius4/search.properties
+
+Důležité jsou tyto položky:
+
+{{{
+#Seznam a poradi zalozek
+search.home.tabs=custom,mostDesirables,newest,facets,browseAuthor,browseTitle,info,collections,favorites
+}}}
+
+{{{
+#Seznam pids (oddelene carkou) objektu, zobrazenych na zalozce custom
+search.home.tab.custom.uuids=
+}}}
+(zde stačí doplnit např. uuid:045b1250-7e47-11e0-add1-000d606f5dc6,uuid:0eaa6730-9068-11dd-97de-000d606f5dc6 …)
+
+Obsah záložky informace je možno nahradit souborem `~/.kramerius4/texts/intro`.
+
+==Styly, grafika, ikony==
+
+Šablona stránek lze měnit pouze přímo jejich editací v rozbalené aplikaci v adresáři `tomcat/webapps/search`, důležité jsou zejména adresáře css a img (tam je např. soubor `logo.png`). 
+
+Případně můžete upravit celé téma UI jQuery takto:
+
+Na strankach jQuery [http://jqueryui.com/themeroller/] vytvořte svoje vlastní grafické téma a uložte si jej do příslušného podadresáře v adresáři css,
+název css souboru musí být `jquery-ui.custom.css` (tj. bez čísla verze).
+
+Mezi tématy můžete přepínat pomocí URL parametru `theme`, jehož hodnotou je název podadresáře s tématem.
+
+Chcete-li např. použít předdefinované téma  jQuery  `sunny`, stáhněte a rozzipujete jeho obsah do adresáře `webapps/search/css/sunny`. Změňte název css souboru na `jquery-ui.custom.css` a vyzkoušejte adresu k4server/search/?theme=sunny
+
+Pokud chcete svoje téma nastavit jako výchozí,  v souboru search/inc/html_header.jsp můžete změnit řádek 76, a misto "smoothness" napsat název svého tématu.
+
+
+
+=Podpora protokolů deepZoom a zoomify=
 
 (volitelné nastavení)
 
@@ -230,6 +270,8 @@ Příklad:
 <pre><kramerius4:tiles-url>kramerius4://deepZoomCache</kramerius4:tiles-url></pre>
 
 Pozn.: Je samozřejmě nejdříve nutné cache naplnit a to akcí "Generování Deep Zoom Cache..." v administrátorském menu aplikace Kramerius4.  
+
+Od verze 4.7 je možno volitelně používat buď prohlížečku Seadragon (protokol deepZoom) nebo OpenLayers (protokol zoomify). Výchozí nastavení (OpenLayers) je možno změnit nastavením  property `zoom.viewer=deepzoom` v souboru `search.properties` 
 
 
 =Editor pořadí částí dokumentu=
