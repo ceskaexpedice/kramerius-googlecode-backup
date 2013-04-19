@@ -2,12 +2,13 @@
 <wiki:toc max_depth="1" />
 
 =4.7.1.beta (4657)=
-  * Automatické třídění 
+  * Automatické třídění [NovinkyVeVerzi46#Automatické_třídění_součástí_dokumentů_(od_verze_4.7.1.]
   * Issue 552 - Přidáno tlačítko pro zobrazení přes celou obrazovku
   * Issue 548 - Upravena funkce tisku
 
 
-=4.7.0 ()=
+=4.7.0 (4610)=
+Podrobný popis významných změn je na stránce NovinkyVeVerzi47
 
 
 =4.6.2 (4517)=
