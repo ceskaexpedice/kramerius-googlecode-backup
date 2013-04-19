@@ -64,9 +64,9 @@ Do administrátorksé části menu byla přídána akce umožňující mazat sta
 
 http://kramerius.googlecode.com/svn/wiki/features_47/processes-delete-dialog.png
 
-=Automatické třídění součástí dokumentů (od verze 4.7.1.beta)=
+=Automatické třídění součástí dokumentů =
 
-Přibyla možnost automatické třídění částí dokumentů a to buď jako součást 
+Ve verzi od verze 4.7.1.beta přibyla možnost automatické třídění částí dokumentů a to buď jako součást 
 procesu import. Řídí se konfigurační proměnnou:
 {{{
     ingest.sortRelations=false
@@ -88,4 +88,3 @@ sort.xpaths=page;//mods:mods/mods:part/mods:detail[@type='pageIndex']/mods:numbe
 }}}
 
 Jednotlivé řádky tohoto nastavení obsahují 3 prvky oddělené středníkem - první je název FOXML modelu, druhý je XPath pro výběr z BIBLIO_MODS a poslední je logická hodnota určující, jestli vybraná hodnota má být tříděna jako číslo (nastavení true) nebo jako řetězec (nastavení false). Výchozí nastavení selektorů Xpath obsahují alternativy jak pro původní formát MODS používaný při konverzi dat z K3, tak nový formát MODS podle specifikace NDK.
-
