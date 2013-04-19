@@ -1,7 +1,7 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
-=4.6.2 (4657)=
+=4.7.1.beta (4657)=
   * Automatické třídění 
   * Issue 552 - Přidáno tlačítko pro zobrazení přes celou obrazovku
   * Issue 540 - Upravena funkce tisku
