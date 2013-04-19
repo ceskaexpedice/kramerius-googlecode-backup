@@ -4,7 +4,7 @@
 =4.7.1.beta (4657)=
   * Automatické třídění 
   * Issue 552 - Přidáno tlačítko pro zobrazení přes celou obrazovku
-  * Issue 540 - Upravena funkce tisku
+  * Issue 548 - Upravena funkce tisku
 
 
 =4.7.0 ()=
