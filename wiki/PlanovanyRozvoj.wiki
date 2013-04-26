@@ -9,7 +9,7 @@ K4
 
 K4/K5 
   * 4 Propojení na Autority NKCR pro ověřování (podpora procesu rozhodnutí o nastavení přístupu)
-  * 9 generování eBook formátu z fultextu
+  * 9 Generování eBook formátu z fultextu
   * 10 Podpora image serveru mets konvertorem
   * 11 Sjednocení textu v ./kramerius/texts (sjednocení) / editace textů v UI
   * 17 Možnost přidat datastream do existujícího objektu
@@ -25,8 +25,7 @@ K5
   * 14 Přehlednost menu (globální i k objektu)
   * 15 Propojení K4 a Aleph - možnost dodatečného zapsání sysno do K4
   * 16 Vylepšení RSS (přidat náhled a více bibliografických údajů, prodloužit životnost publikovaných záznamů při hromadných importech dat do K4)
-  * 18/19 Změna hesla, zapomenuté heslo, potvrzení
-+ Identikovat přihlášení - informace kdo je přihlášen
+  * 18/19 Změna hesla, zapomenuté heslo, potvrzení+Identikovat přihlášení - informace kdo je přihlášen
   * 20 Ikona zámečku – všude
   * 21 Standardizace šablon
 
