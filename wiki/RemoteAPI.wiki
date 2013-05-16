@@ -101,8 +101,9 @@ Parametry pro spuštění procesů se předávají v těle dotazu jako JSON obje
     {"parameters":["first","second","third"]}
 }}}
 
-Poznámka: Pro předání objetku je potřeba mít v dotazu nastavenou položku `Content-type` na hodnotu `application/json`.  
+Pozn.: Pro předání objetku je potřeba mít v dotazu nastavenou položku `Content-type` na hodnotu `application/json`.  
 
+Pozn 2.: Pokud není v dotazu přítomen JSON objekt, nebo neobsahuje položku  `parameters` případně  `mapping`, spustí proces proces bez parametrů.
 
 ====Plánování nového procesu s pojmenovanými parametry====
 Podobně jako v předchozím připadě, API očekává v těle dotazu JSON objekt, tenktokrát by měl objekt obsahovat klíč `mapping`. Očekává se, že položka klíč obsahuje objekt popisující jendotlivé parametry.
@@ -111,7 +112,9 @@ Podobně jako v předchozím připadě, API očekává v těle dotazu JSON objek
     {"mapping":{"first":"firstVal","second":"secondVal"}}
 }}}
 
-Poznámka: Pro předání objetku je potřeba mít v dotazu nastavenou položku `Content-type` na hodnotu `application/json`.  
+Pozn 1.: Pro předání objetku je potřeba mít v dotazu nastavenou položku `Content-type` na hodnotu `application/json`.  
+
+Pozn 2.: Pokud není v dotazu přítomen JSON objekt, nebo neobsahuje položku  `parameters` případně  `mapping`, spustí proces proces bez parametrů.
 
 
 ===Popis procesu===
