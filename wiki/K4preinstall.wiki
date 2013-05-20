@@ -13,10 +13,10 @@ Předinstalované řešení digitální knihovny postavené na produktu Krameriu
 == Přístupové údaje ==
 Všechna přístupová hesla je *NUTNO ZMĚNIT* !!! 
 
-=== Užívatelé systému ===
-V operačním systému je vytvořen uživatelský účet k4. Pod tímto účtem běží repozitář Fedora Commons i aplikace K4. Přihlašovací údaje naleznete na přiloženém lístku s K4 appliance.
+=== Uživatelé systému ===
+V operačním systému je vytvořen uživatelský účet k4. Pod tímto účtem běží repozitář Fedora Commons i aplikace K4. Přihlašovací údaje naleznete na lístku přiloženém k počítači.
 
-=== Užívatelé repozitáře fedora ===
+=== Uživatelé repozitáře fedora ===
 {{{
  fedoraAdmin:fedoraAdmin
 }}}
