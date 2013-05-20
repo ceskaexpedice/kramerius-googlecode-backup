@@ -1,4 +1,4 @@
-#summary Předinstalovaný Kramerius 4.
+#summary Předinstalovaný Kramerius 4 na fyzickém serveru.
 
 = Úvod =
 Předinstalované řešení digitální knihovny postavené na produktu Kramerius verze 4. 
