@@ -4,6 +4,7 @@
 Předinstalované řešení digitální knihovny postavené na produktu Kramerius verze 4. 
 
 == Produkt obsahuje obsahuje ==
+ * Server Zotac ZBOX Plus
  * Opearční systém: Debian Linux verze 6.0 "squeeze". 
  * Fedora repozítář: 3.6.2
  * Digitální knihovna K4: 4.7.0
