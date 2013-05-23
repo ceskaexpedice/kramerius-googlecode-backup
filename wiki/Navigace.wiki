@@ -6,6 +6,8 @@
 
 * [Instalace Instalace a konfigurace (jednotlivé komponenty), aktualizace]
 
+* [K4app K4 appliance]
+
 * [MenuAdministrace Administrace]
 
 * [Prava Práva]
