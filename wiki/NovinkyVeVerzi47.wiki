@@ -67,7 +67,7 @@ http://kramerius.googlecode.com/svn/wiki/features_47/processes-delete-dialog.png
 =Automatické třídění součástí dokumentů =
 
 Ve verzi od verze 4.7.1.beta přibyla možnost automatického třídění částí dokumentů a to buď jako součást 
-procesu import. Řídí se konfigurační proměnnou ze souboru migration.properties:
+procesu import. Řídí se konfigurační proměnnou ze souboru  [http://code.google.com/p/kramerius/source/browse/trunk/import-cmdtool/src/main/java/res/configuration.properties  migration.properties]:
 {{{
     ingest.sortRelations=false
 }}}
