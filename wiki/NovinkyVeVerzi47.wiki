@@ -75,7 +75,7 @@ procesu import. Řídí se konfigurační proměnnou ze souboru migration.proper
 
 Nebo je možné proces spouštět samostatně z kontextového menu. 
  
-Proces třídí součásti podle dat v jejich datastreamu BIBLIO_MODS, příslušný údaj je vybírán pomocí výrazu XPath, který je definován v konfigurační property sort.xpaths, jejíž defaultní nastavení je následující:
+Proces třídí součásti podle dat v jejich datastreamu BIBLIO_MODS, příslušný údaj je vybírán pomocí výrazu XPath, který je definován v konfigurační property sort.xpaths ze souboru common.properties, jejíž defaultní nastavení je následující:
 
 {{{
 sort.xpaths=page;//mods:mods/mods:part/mods:detail[@type='pageIndex']/mods:number;true,\
