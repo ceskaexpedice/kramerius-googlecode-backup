@@ -1,10 +1,22 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
-=4.7.1.beta (4657)=
+=4.7.2-SNAPSHOT=
+
+  * Issue 567 - korektní vypínání Tomcatu
+  * Issue 577 - opraveno chybné vyhledávání textu s diakritikou v MSIE
+  * Issue 574 - opraveno chybné vyhledávání textu s řídicími znaky (např. : )
+  * Issue 558 - změna pořadí sloupců v seznamu procesů
+  * Issue 569 - úprava stránkování v seznamu procesů
+
+
+=4.7.1 (4699)=
   * Automatické třídění [http://code.google.com/p/kramerius/wiki/NovinkyVeVerzi47#Automatické_třídění_součástí_dokumentů popis]
   * Issue 552 - Přidáno tlačítko pro zobrazení přes celou obrazovku
   * Issue 548 - Upravena funkce tisku
+  * Issue 531 - podpora Imageserveru v METS konvertoru
+  * Issue 514 - METS konvertor prochází rekurzivně podadresáře
+  * Issue 544 - opravy a dokumentace REST API pro spouštění procesů
 
 
 =4.7.0 (4610)=
