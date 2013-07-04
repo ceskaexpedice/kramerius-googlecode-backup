@@ -1,13 +1,42 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
-=4.7.2-SNAPSHOT=
+=4.8.0-SNAPSHOT=
 
-  * Issue 567 - korektní vypínání Tomcatu
-  * Issue 577 - opraveno chybné vyhledávání textu s diakritikou v MSIE
-  * Issue 574 - opraveno chybné vyhledávání textu s řídicími znaky (např. : )
-  * Issue 558 - změna pořadí sloupců v seznamu procesů
-  * Issue 569 - úprava stránkování v seznamu procesů
+  * Issue 567: korektní vypínání Tomcatu
+  * Issue 577: opraveno chybné vyhledávání textu s diakritikou v MSIE
+  * Issue 574: opraveno chybné vyhledávání textu s řídicími znaky (např. : )
+  * Issue 558: změna pořadí sloupců v seznamu procesů
+  * Issue 569: úprava stránkování v seznamu procesů
+  * Issue 553: Chybný součet ve správci procesů
+  * Issue 557: Domenovy filter - Chyba
+  * Issue 555: Polozka tisk - přesunuta
+  * Issue 556: Konfigurovatelny prikaz tisk
+  * Issue 524: Statistiky - vyhledávání podle UUID
+  * Issue 565: 4.7.1 doplnění dokumentace
+  * Issue 570: Třídit... se hned spustí
+  * Issue 571: drobné chyby na wiki stránce StyleGuidlines
+  * Issue 580: Bundles pro EN, CZ - doplnění
+  * Issue 183: Shibboleth - odhlášení
+  * Issue 369: Generování PDF AZ chráněného dokumentu
+  * Issue 375: Špatný tvar URL po kliknutí na tlačítka sociálních sítí
+  * Issue 441: Obarvení stavů ve Správě admin. procesů
+  * Issue 442: Pojmenování procesů ve Správě admin. procesů
+  * Issue 547: Chybějící konzole v IE
+  * Issue 350: Chyba při vytváření sbírky
+  * Issue 405: špatné zobrazení počtu dokumentů autora pro monografie obsahující pdf
+  * Issue 447: Hledani uvnitr dokumentu a enter
+  * Issue 474: Optimalizace načítání úvodní stránky
+  * Issue 497: Připomínky ke Krameriovi 4
+  * Issue 500: jak opravit virtuální sbírky?
+  * Issue 501: editace virtuální sbírky
+  * Issue 415: Napsat na wiki podporované prohlížeče
+  * Issue 508: Cislo dvojstrany
+  * Issue 515: Error getting virtual collections
+  * Issue 546: rozbita struktura dokumentu v levem panelu
+  * Issue 563: K4 v 4.7.1 revision 4699 - problem s IE
+  * Issue 564: K4 v 4.7.1 revision 4699 - problem s dlouhym nazvem clanku
+  * Issue 582: Chyba při použití convert.useImageServer
 
 
 =4.7.1 (4699)=
