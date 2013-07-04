@@ -4,9 +4,8 @@
 
 Tento dokument popisuje pravidla a konvence používané při vývoji systému Kramerius4 a jeho modulů. 
 
-Pravidla vycházejí z obecně uznávaných pravidel stylu programování v jazyce Java, která jsou k popsána například v těchto dokumentech :
+Pravidla vycházejí z obecně uznávaných pravidel stylu programování v jazyce Java, která jsou k popsána například zde :
   * [http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html Java Code Conventions]
-  * [http://www.ambysoft.com/javaCodingStandards.html Ambysoft Coding Standards for Java]
 
 Nový kód pro Kramerius musí navazovat na existující stávající kód Krameria 4 a být napsán v obdobném duchu.
 
@@ -111,7 +110,7 @@ class Rectangle extends Shape
 {{{
 if (condition) {
     statements;
-} else if {
+} else if (condition) {
     statements;
 } else {
     statements;
