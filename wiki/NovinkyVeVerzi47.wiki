@@ -94,7 +94,7 @@ Jednotlivé řádky tohoto nastavení obsahují 3 prvky oddělené středníkem 
 =Podpora IIP image serveru v konvertoru METS NDK=
 
 
-Nastavení property 'convert.useImageServer=true' (v 'migration.properties') změní chování konvertoru METS NDK -> K4 tak, že namísto ukládání obrazových souborů v datastreamech IMG_FULL, IMG_PREVIEW a IMG_THUMB přesune zdrojové soubory do nakonfigurovaného adresáře s dokumenty imageserveru a příslušné datastreamy nastaví jako externí reference do imageserveru. Adresáře imageserveru a tvar URL jednotlivých externích referencí se nastavují pomocí následujících hodnot v 'migration.properties' :   
+Nastavení property `convert.useImageServer=true` (v `migration.properties`) změní chování konvertoru METS NDK -> K4 tak, že namísto ukládání obrazových souborů v datastreamech IMG_FULL, IMG_PREVIEW a IMG_THUMB přesune zdrojové soubory do nakonfigurovaného adresáře s dokumenty imageserveru a příslušné datastreamy nastaví jako externí reference do imageserveru. Adresáře imageserveru a tvar URL jednotlivých externích referencí se nastavují pomocí následujících hodnot v `migration.properties` :   
 
 {{{
 # when true, images in FOXML files will be external references to IIP Image Server
