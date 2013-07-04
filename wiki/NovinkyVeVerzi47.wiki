@@ -89,3 +89,36 @@ sort.xpaths=page;//mods:mods/mods:part/mods:detail[@type='pageIndex']/mods:numbe
 }}}
 
 Jednotlivé řádky tohoto nastavení obsahují 3 prvky oddělené středníkem - první je název FOXML modelu, druhý je XPath pro výběr z BIBLIO_MODS a poslední je logická hodnota určující, jestli vybraná hodnota má být tříděna jako číslo (nastavení true) nebo jako řetězec (nastavení false). Výchozí nastavení selektorů Xpath obsahují alternativy jak pro původní formát MODS používaný při konverzi dat z K3, tak nový formát MODS podle specifikace NDK.
+
+
+=Podpora IIP image serveru v konvertoru METS NDK=
+
+
+Nastavení property 'convert.useImageServer=true' (v 'migration.properties') změní chování konvertoru METS NDK -> K4 tak, že namísto ukládání obrazových souborů v datastreamech IMG_FULL, IMG_PREVIEW a IMG_THUMB přesune zdrojové soubory do nakonfigurovaného adresáře s dokumenty imageserveru a příslušné datastreamy nastaví jako externí reference do imageserveru. Adresáře imageserveru a tvar URL jednotlivých externích referencí se nastavují pomocí následujících hodnot v 'migration.properties' :   
+
+{{{
+# when true, images in FOXML files will be external references to IIP Image Server
+convert.useImageServer=false
+
+# base directory of the image server data. Image files will be copied to the subfolders of this directory, name of hte subfolder is the packageid of the imported PSP
+convert.imageServerDirectory=${sys:user.home}/iip-data
+
+# base URL of the tiles references from FOXML to imageserver. This base URL will be appended with packageid, image filename and convert.imageServerSuffix.tiles (see properties convert.imageServerSuffix...)
+convert.imageServerTilesURLPrefix=http://localhost/fcgi-bin/iipsrv.fcgi?Zoomify=${convert.imageServerDirectory}
+
+# base URL of the image references from FOXML to imageserver. This base URL will be appended with packageid, image filename and appropriate suffix (see properties convert.imageServerSuffix...)
+convert.imageServerImagesURLPrefix=http://localhost/fcgi-bin/iipsrv.fcgi?FIF=${convert.imageServerDirectory}
+
+# suffix of the image reference URL for full size images
+convert.imageServerSuffix.big=&CVT=jpeg
+
+# suffix of the image reference URL for thumbnail images
+convert.imageServerSuffix.thumb=&HEI=128&CVT=jpeg
+
+# suffix of the image reference URL for preview images
+convert.imageServerSuffix.preview=&HEI=700&CVT=jpeg
+
+# suffix of the image reference URL for zoomify/deepzoom tiles
+convert.imageServerSuffix.tiles=
+
+}}}
