@@ -275,4 +275,8 @@ Pořadí částí v rámci daného dokumentu můžete změnit přesouváním iko
 
 Opakovaným použitím příkazu načíst můžete otevřít více dokuemntů současně. K přesouvání částí mezi různými dokumenty slouží v aplikaci Editor schránka (clipboard). Schránku otevřete stažením oddělovacího proužku na dolním okraji záhlaví okna editoru. Části dokumentů mezi různými dokumenty přesunete tak, že je nejprve přetáhnete ze zdrojového dokumentu do schránky, pak přejdete do cílového dokumentu (klepnutím na jeho záložku) a pak do něj na požadovanou pozici přesunete příslušný objekt ze schránky. Změny opět uložíte příkazem Uložit. 
 
+=Další funkce=
+
+Další funkce administrátorského prostředí jsou popsány na stránkách NovinkyVeVerzi46 a NovinkyVeVerzi47  
+
   
