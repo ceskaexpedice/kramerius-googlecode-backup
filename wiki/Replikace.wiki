@@ -38,6 +38,8 @@ který ovšem bude pokračovat až tam, kde předchozí skončil. Restart je mo�
 
 http://kramerius.googlecode.com/svn/wiki/features_46/replication-template-error.png
 
+_Poznámka: _ Získání replikačního deskriptoru může pro rozsáhlé tituly trvat poměrně dlouho. V případě potíží je třeba zvýšit nastavení timeoutů requestů na serveru zdroje replikace.
+
 =Nastavení práv=
 
 Pro replikace jsou definovány akce pro import a export:
