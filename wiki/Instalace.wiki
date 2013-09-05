@@ -6,7 +6,7 @@ Před instalací aplikace Kramerius 4 je třeba nainstalovat následující syst
 || Java || Oracle JDK 1.6||
 || Aplikační server|| podporující specifikace Servlet 2.5 a JSP 2.1 nebo novější (popsaná ukázková instalace předpokládá použití Apache Tomcat 6)||
 || Databáze||Postgres 8.4 nebo novější||
-||Úložiště||Fedora Commons 3.4 nebo 3.5|| 
+||Úložiště||Fedora Commons 3.4, 3.5 nebo 3.6|| 
 ||SMTP server||libovolný||
 
 Kramerius 4 nevyžaduje žádné specifické revize uvedených komponent, obecně je rozumné používat jejich pokud možno nejnovější aktualizace. Popis instalace a administrace těchto systémových komponent není součástí této dokumentace, předpokládáme, že administrátor aplikace Kramerius 4 ovládá instalaci a administraci výše uvedených komponent.
