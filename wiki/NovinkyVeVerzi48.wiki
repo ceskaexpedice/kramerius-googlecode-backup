@@ -14,7 +14,9 @@ Stav BATCH_WARNING definuje podobně jako BATCH_FAILED. Minimálně jeden podpro
 
 
 =Zobrazení procesů=
-(strany..)
+
 
 =Statistiky pro konkrétní PID=
 Do konktextového menu byla přidána možnost otevřít si statistiky pro konkrétní titul. 
+
+Rozeditovano
