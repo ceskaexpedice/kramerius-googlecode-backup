@@ -1,13 +1,18 @@
-#summary One-sentence summary of this page.
+#Novinky ve verzi 4.8
 
-= Introduction =
+=Nové stavy WARNING a BATCH_WARNING=
+Pro lepší rozlišení situací vznikl nový stav WARNING a dávkový ekvivalent BATCH_WARNING.  
 
-Add your content here.
+Stav *WARNING* by měl definovat nekritické chyby nebo varování procesu. Standardně se do stavu WARNING dostane každý proces, který vypíše jakoukoliv hlášku do error streamu procesu.  Toto chování lze u kteréhokoliv procesu potlačit konfiguračním elementem: 
+{{{
+<checkErrorStream>false</checkErrorStream>
+}}}
+
+Stav * BATCH_WARNING* definuje podobně jako BATCH_FAILED. Minimálně jeden podproces se dostal do stavu WARNING ale zároveň žádný ne do stavu FAILED. 
 
 
-= Details =
+=Zobrazení procesů=
+(strany..)
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+=Statistiky pro konkrétní PID=
+Do konktextového menu byla přidána možnost otevřít si statistiky pro konkrétní titul. 
