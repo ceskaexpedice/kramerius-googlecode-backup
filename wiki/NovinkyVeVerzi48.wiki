@@ -23,7 +23,7 @@ Do konktextového menu byla přidána možnost otevřít si statistiky pro konkr
 
 
 ==Nové kritérium, okno==
-Přibylo nové kritérium. Vyžaduje dva parametry, roky, a zobrazí ty tituly, pro které platí že datum přečtený z metadat je v rozmezí těchto dvou let. 
+Přibylo nové kritérium. Vyžaduje dva parametry( roky vydání ) a zobrazí ty tituly, pro které platí že datum přečtený z metadat je v rozmezí těchto dvou let. 
 {{{
 	spodní mez < metadatové datum < horní mez
 }}}
