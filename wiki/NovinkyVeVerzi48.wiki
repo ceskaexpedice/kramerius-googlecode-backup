@@ -1,22 +1,31 @@
 #Novinky ve verzi 4.8
 
-=Nové stavy=
-Pro lepší rozlišení situací vznikl nový stav *WARNING* a dávkový ekvivalent *BATCH_WARNING*.  
+=Procesy=
+Pro lepší rozlišení situací vznikly nový stavy  *WARNING* a *BATCH_WARNING*.  
 
-==WARNING==
-Stav WARNING by měl definovat nekritické chyby nebo varování procesu. Standardně se do stavu WARNING dostane každý proces, který vypíše jakoukoliv hlášku do error streamu procesu.  Toto chování lze u kteréhokoliv procesu potlačit konfiguračním elementem: 
+==Nový stav WARNING==
+Nový stav definuje varování nebo nekritickou chybu procesu. Standardně (pokud není předefinováno) se do stavu WARNING dostane každý proces, který vypíše  jakoukoliv hlášku do error streamu procesu. Toto chování je konfigurovatelné, lze ho změnit 
+v `lp.xml` konfiguračním elementem: 
 {{{
 <checkErrorStream>false</checkErrorStream>
 }}}
 
-==BATCH_WARNING==
-Stav BATCH_WARNING definuje podobně jako BATCH_FAILED. Minimálně jeden podproces se dostal do stavu WARNING ale zároveň žádný ne do stavu FAILED. 
+==Nový stav BATCH_WARNING==
+Stav BATCH_WARNING definuje stav dávkového procesu, kde jeden (nebo více) podprocesů je ve stavu WARNING ale zároveň žádný ve stavu FAILED.
 
 
-=Zobrazení procesů=
+==Zobrazení procesů==
+Při větším počtu procesů docházelo k nepřehlednému stránkování. Nyní se, při větším počtu, zobrazí prvních 25 stránek, zbytek je dostpný přes tlačítko. Viz obr.:  
 
 
-=Statistiky pro konkrétní PID=
-Do konktextového menu byla přidána možnost otevřít si statistiky pro konkrétní titul. 
+==Statistiky pro konkrétní PID==
+Do konktextového menu byla přidána možnost otevřít si statistiky pro konkrétní titul.  
 
-Rozeditovano
+
+==Nové kritérium, okno==
+Přibylo nové kritérium. Vyžaduje dva parametry, roky, a zobrazí ty tituly, pro které platí že datum přečtený z metadat je v rozmezí těchto dvou let. 
+{{{
+	spodní mez < metadatové datum < horní mez
+}}}
+
+
