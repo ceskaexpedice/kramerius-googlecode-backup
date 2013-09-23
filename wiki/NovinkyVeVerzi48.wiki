@@ -15,13 +15,17 @@ Stav BATCH_WARNING definuje stav dávkového procesu, kde jeden (nebo více) pod
 
 
 ==Zobrazení procesů==
-Při větším počtu procesů docházelo k nepřehlednému stránkování. Nyní se, při větším počtu, zobrazí prvních 25 stránek, zbytek je dostpný přes tlačítko. Viz obr.:  
+Při větším počtu procesů docházelo k nepřehlednému stránkování. Nyní se, při větším počtu, zobrazí prvních 25 stránek, zbytek je dostpný přes tlačítko, které zobrazí vyskakovací okno 
+Viz obr.:  
 
 http://kramerius.googlecode.com/svn/wiki/features_48/procesy-hodne.png
 
 
 ==Statistiky pro konkrétní PID==
-Do konktextového menu byla přidána možnost otevřít si statistiky pro konkrétní titul.  
+Do konktextového menu byla přidána možnost otevřít si statistiky pro konkrétní titul.  Viz obr.:
+
+http://kramerius.googlecode.com/svn/wiki/features_48/context-menu-item.png
+
 
 ==Nové kritérium, okno==
 Přibylo nové kritérium. Vyžaduje dva parametry( roky vydání ) a zobrazí ty tituly, pro které platí že datum přečtený z metadat je v rozmezí těchto dvou let. 
@@ -29,6 +33,5 @@ Přibylo nové kritérium. Vyžaduje dva parametry( roky vydání ) a zobrazí t
 	spodní_mez < metadatové_datum < horní_mez
 }}}
 
-Poznámky 
 
 
