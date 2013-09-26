@@ -1,7 +1,7 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
-=4.8.0-SNAPSHOT=
+=4.8.0=
 
   * Issue 567: korektní vypínání Tomcatu
   * Issue 577: opraveno chybné vyhledávání textu s diakritikou v MSIE
@@ -37,6 +37,25 @@
   * Issue 563: K4 v 4.7.1 revision 4699 - problem s IE
   * Issue 564: K4 v 4.7.1 revision 4699 - problem s dlouhym nazvem clanku
   * Issue 582: Chyba při použití convert.useImageServer
+  * Issue 385: Automatické rozbalování stromu konfigurovatelné pomocí property search.expand.tree
+  * Issue 578: Indikátor přístupnosti plublic/private konfigurovatelný pomocí search.policy.public
+  * Issue 576: Možnost skoku na začátek seznamu titulů se znaky mimo abecedu
+  * Issue 494: Opravena chyba v zobrazovací šabloně pro OCR
+  * Issue 482: Opravena synchronizace Fedora => K4 po smazání objektu ve Fedora/admin
+  * Issue 588, Issue 609: Procesy, které úspěšně skončí, ale zapíšou něco do error logu, jsou označeny stavem WARNING, resp. BATCH_WARNING
+  * Issue 590: Opravena chyba v popisku stránky typu obsah
+  * Issue 600: Opraven problém při startu K4 se zcela prázdným úložištěm Fedora a MPTstore
+  * Issue 596: Rámečky pro vyhledávání ALTO se vykreslují vzhledem ke stránce a ne tiskové oblasti
+  * Issue 481: Vylepšeno RSS nových přírůstků
+  * Issue 598: Kontrola maximálního počtu stran v generovaném PDF při ručním výběru
+  * Issue 597: Statistiky - doplněno sledování přístupů na imageserver
+  * Issue 603: Aktualizována verze knihovny pdfBox pro generování náhledů z PDF
+  * Issue 608: Zablokováno generování pdf z originálů v pdf
+  * Issue 610: Při konverzi K3->K4 z PDF je ignorována property convert.originalToJPG
+  * Issue 611: Pokročilé vyhledávání - formulář - pole pro klíčová slova
+  * Issue 607: Velký náhled PDF doplněn o kurzor typu pointer
+  * Issue 613: Opraveny problémy s texty vloženými do generovaného PDF
+  * Issue 615: Nestandardní znaky v názvech souborů při konverzi z K3 způsobovaly problémy
 
 
 =4.7.1 (4699)=
