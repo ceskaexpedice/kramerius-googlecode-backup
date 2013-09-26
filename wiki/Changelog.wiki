@@ -22,9 +22,9 @@
   * Issue 375: Špatný tvar URL po kliknutí na tlačítka sociálních sítí
   * Issue 441: Obarvení stavů ve Správě admin. procesů
   * Issue 442: Pojmenování procesů ve Správě admin. procesů
-  * Issue 547: Chybějící konzole v IE
+  * Issue 547: Chybějící konzole v IE
   * Issue 350: Chyba při vytváření sbírky
-  * Issue 405: špatné zobrazení počtu dokumentů autora pro monografie obsahující pdf
+  * Issue 405: špatné zobrazení počtu dokumentů autora pro monografie obsahující pdf
   * Issue 447: Hledani uvnitr dokumentu a enter
   * Issue 474: Optimalizace načítání úvodní stránky
   * Issue 497: Připomínky ke Krameriovi 4
@@ -32,7 +32,7 @@
   * Issue 501: editace virtuální sbírky
   * Issue 415: Napsat na wiki podporované prohlížeče
   * Issue 508: Cislo dvojstrany
-  * Issue 515: Error getting virtual collections
+  * Issue 515: Error getting virtual collections
   * Issue 546: rozbita struktura dokumentu v levem panelu
   * Issue 563: K4 v 4.7.1 revision 4699 - problem s IE
   * Issue 564: K4 v 4.7.1 revision 4699 - problem s dlouhym nazvem clanku
