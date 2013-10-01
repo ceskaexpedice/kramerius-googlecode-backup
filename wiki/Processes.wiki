@@ -104,7 +104,7 @@ Parametr `action` určuje operaci, `def` určuje identifikátor procesu ze soubo
 
 Jako druhý krok musí klient (browser) poslat vyplněné hodnoty ud uživatele. To se dějě pomocí dotazu
 {{{
-    GET http://xxx.xxx.xxx.xxx/seach/lr?action=form_post&def=<process_def_id>&paramsMapping={firstParamName=firstParamVal, secondParamName=secondParamValue}
+    GET http://xxx.xxx.xxx.xxx/seach/lr?action=form_post&def=<process_def_id>&paramsMapping={firstParamName=firstParamVal; secondParamName=secondParamValue}
 }}}
 Zde je důležitý parametr paramsMapping, který obsahuje vyplněné položky od uživatele. Nemusí být přitomny všechny, pokud některý parametr není, bude mít ve spuštěném 
 procesu hodnotu null. Při posílání parametrů je nutno pro znaky  `';'|'\'|'{'|'}'|':'` použít jejich escape sekvence `'\;'|'\\'|'\{'|'\}'|'\:'`.  
@@ -152,4 +152,3 @@ Poznámky:
  # Parametr `params` je pole parametrů procesu. 
 
  
-
