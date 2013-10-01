@@ -127,7 +127,7 @@ Zde je definovaný kontrakt, každá vstupní šablona musí definovat javascrip
 
             var firstValue = "Value from TextField 1".escapeChars(charsThatMustBeEscaped);
             var secondValue = "Value from TextField 2".escapeChars(charsThatMustBeEscaped);
-            var thirdValue = "Value from TextField 2".escapeChars(charsThatMustBeEscaped);
+            var thirdValue = "Value from TextField 3".escapeChars(charsThatMustBeEscaped);
 
             var url = "lr?action=form_post&def=custom_process&paramsMapping={first="+firstValue+";second="+secondValue+";third="+thirdValue}&out=text";
             processStarter("custom_process").start(url);
