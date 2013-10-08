@@ -140,6 +140,16 @@ Příkaz *Odstranit dokument z indexu* v kontextové nabídce odstraní daný do
 
 Příkaz *Odstranit dokument z fedory* v kontextové nabídce odstraní daný dokument z úložiště Fedora i z indexu SOLR.
 
+
+===Odstranění dokumentů pomocí REST API===
+
+K mazání dokumentů z fedory slouží proces "delete" s parametrem uuid, který smaže z fedory daný foxml objekt a dále rekurzivně všechny objekty, které jsou tomuto objektu podřízeny v hierarchické struktuře. Pokud má odstraňovaný objekt v hierarchii nějaký nadřazený objekt, je z tohoto nadřazeného objektu odstraněna odpovídající RDF vazba. Nakonec je tento nadřazený objekt automaticky přeindexován a všechny smazané objekty jsou také odstraněny z indexu.
+
+K mazání dokumentu pouze z indexu slouží proces "reindex" s parametry deleteDocument a uuid. Z indexu je odstraněn požadovaný dokument a opět rekurzivně celý jeho podřízený hierarchický strom.
+
+Pokud byste potřebovali smazat z fedory pouze jediný foxml objekt a v zápětí jej nahrát zpět kvůli aktualizaci metadat, byl by uvedený postup s mazáním celé hierarchie objektů poněkud neefektivní. V takovém případě bude vhodnější použít přímo SOAP nebo REST API fedory, konkrétně metody purgeObject a ingest. Případně můžete přes stejná API aktualizovat přímo datastreamy DC a BIBLIO_MODS, bez nutnosti mazání celého objektu, k tomu slouží metoda modifyDatastreamByValue. Ve všech těchto případech je pak nutné změněný dokument přeindexovat pomocí REST API K4, spuštěním procesu reindex s parametry reindexDoc a uuid.  
+
+
 == Změna viditelnosti (přístupových práv) ==
 
 Příkaz *Změna viditelnosti* v kontextové nabídce umožňuje měnit příznak `kramerius:policy` dokumentu a všech jeho podřízených částí mezi stavy public a private a ovládat tak, jestli jsou plná obrazová data dokumentu přístupná i z počítačů mimo prostory knihovny. Seznam povolených IP adres je definován v editoru práv v kritériu IP Filtr (viz [Prava Práva]) .  
