@@ -1,4 +1,4 @@
-#summary Datový model
+#summary CDK rozhrani
 <wiki:toc max_depth="1" />
 
 =ČDK replikační rozhraní=
