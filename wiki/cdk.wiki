@@ -14,7 +14,7 @@ http://kramerius.googlecode.com/svn/wiki/cdk/CDK.png
 Rozhraní pro poskytovaní dat pro ČDK vychází ze standardního replikačního rozhraní s drobnými rozdíly. 
  * Umožňuje získávat data nově importovaná a indexovaná. 
  * Získává navíc solr záznam.  
- * FOXML objekty importované do ČDK serveru neobsahují obrázky ale pouze odkazy. (Referencovane streamy)
+ * FOXML objekty importované do ČDK serveru neobsahují obrázky ale pouze odkazy. (External Referenced Content)
 
 Získání dat je rozdělěno do dvou fází. 
 
