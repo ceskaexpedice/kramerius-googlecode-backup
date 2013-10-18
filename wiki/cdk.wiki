@@ -7,7 +7,6 @@ Verze 4.8 RC4 přináší rozhraní pro sklízení dat do systému ČDK.
 =Popis systému=
 Na straně ČDK serveru se spustí sklízecí proces, který získává data (podobně jako je tomu u replikací) z jednotlivých instancí do svého uložiště. Nutno podotknout, že zdrojový K4  musí být ve verzi 4.8 RC4 a vyšší). 
 
-Viz obrázek:
 http://kramerius.googlecode.com/svn/wiki/cdk/CDK.png
 
 
