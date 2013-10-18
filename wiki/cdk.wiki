@@ -24,7 +24,7 @@ Získání dat je rozdělěno do dvou fází.
 http://kramerius.googlecode.com/svn/wiki/cdk/cdk-repl-sequence-diagram.png
 
 
-=Poznámky k implemtaci= 
+=Poznámky k implementaci= 
 Pro získání dat do ČDK nelze použít standardní OAI a to z toho důvodu, že rozhraní poskytuje přístup k chráněným částem jako (TEXT_OCR) a musí být ošetřeno standardním mechanismem práv K4.  Druhým důvodem je rychlost.
 Pro získávání dat musí zdrojová instance povolit přístup pomocí práva  `export_cdk_replications` 
 
