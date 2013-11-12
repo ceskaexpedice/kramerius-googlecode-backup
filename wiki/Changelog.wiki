@@ -64,7 +64,14 @@
   * Issue 594: Konvertor NDK->K4: náhrada nevalidních znaků v packageID
   * Issue 333: Proces mazání objektů z fedory možno kvůli kompatibilitě s OAI providerem konfigurovat tak, aby pouze nastavoval stav "Deleted" (property delete.purgeObjects=false)
   * Issue 625: Opraven problém v implementaci kriteria Moving wall
+  * Issue 529: Změna orientace zobrazení stránky
+  * Issue 513: Upraveno RSS nových přírůstků při masivních importech
+  * Issue 624: opraveno vyhledávání podle MDT
+  * Issue 614: indexace dc:identifier a mods:identifier
+  * Issue 599: indexace autorů bez kódu role
+  * Issue 605: opravena chyba v aktualizaci SOLR indexu
 
+Podrobný popis významných změn je na stránce NovinkyVeVerzi48
 
 =4.7.1 (4699)=
   * Automatické třídění [http://code.google.com/p/kramerius/wiki/NovinkyVeVerzi47#Automatické_třídění_součástí_dokumentů popis]
