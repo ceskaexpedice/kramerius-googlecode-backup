@@ -2,9 +2,9 @@
 
 * [UI Uživatelské rozhraní]
 
-* [InstalaceK4 Instalace a konfigurace (předpřipravená)]
+* [VirtualBoxImage Ukázková konfigurace]
 
-* [Instalace Instalace a konfigurace (jednotlivé komponenty), aktualizace]
+* [Instalace Postup instalace a konfigurace, aktualizace]
 
 * [K4App K4 appliance]
 
