@@ -107,7 +107,7 @@ Pozn 2.: Pokud není v dotazu přítomen JSON objekt, nebo neobsahuje položku  
 
 Příklad volání procesu delete pomocí příkazu `curl`:
 {{{
-curl -u krameriusAdmin:krameriusAdmin -H "Content-Type: application/json" -d '{"parameters":["uuid:02459330-7669-11dc-9041-000d606f5dc6","index"]}' -X POST http://localhost:8080/search/api/v4.6/processes?def=delete
+curl -u krameriusAdmin:krameriusAdmin -H "Content-Type: application/json" -d '{"parameters":["uuid:02459330-7669-11dc-9041-000d606f5dc6","uuid:02459330-7669-11dc-9041-000d606f5dc6"]}' -X POST http://localhost:8080/search/api/v4.6/processes?def=delete
 }}}
 
 ====Plánování nového procesu s pojmenovanými parametry====
