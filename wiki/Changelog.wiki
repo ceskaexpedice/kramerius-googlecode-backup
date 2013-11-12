@@ -1,7 +1,7 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
-=4.8.0 (r4957)=
+=4.8.0 (4957)=
 
   * Issue 567: korektní vypínání Tomcatu
   * Issue 577: opraveno chybné vyhledávání textu s diakritikou v MSIE
