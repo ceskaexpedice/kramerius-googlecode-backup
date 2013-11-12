@@ -1,7 +1,7 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
-=4.8.0=
+=4.8.0 (r4957)=
 
   * Issue 567: korektní vypínání Tomcatu
   * Issue 577: opraveno chybné vyhledávání textu s diakritikou v MSIE
@@ -70,6 +70,7 @@
   * Issue 614: indexace dc:identifier a mods:identifier
   * Issue 599: indexace autorů bez kódu role
   * Issue 605: opravena chyba v aktualizaci SOLR indexu
+  * Issue 511: Opravena výstupní šablona procesu replikace
 
 Podrobný popis významných změn je na stránce NovinkyVeVerzi48
 
