@@ -56,6 +56,14 @@
   * Issue 607: Velký náhled PDF doplněn o kurzor typu pointer
   * Issue 613: Opraveny problémy s texty vloženými do generovaného PDF
   * Issue 615: Nestandardní znaky v názvech souborů při konverzi z K3 způsobovaly problémy
+  * Issue 616: Podpora replikace s ČDK
+  * Issue 618: Podpora encrypted PDF v konvertoru K3->K4
+  * Issue 619: Oprava chyby v inicializaci tabulek statistik
+  * Issue 621: Volitelný prefix externích URL v konvertorech K3->K4 a NDK->K4
+  * Issue 622: Výstupní podadresáře konvertoru K3->K4 volitelně pojmenovány podle UUID (místo čísla zakázky)
+  * Issue 594: Konvertor NDK->K4: náhrada nevalidních znaků v packageID
+  * Issue 333: Proces mazání objektů z fedory možno kvůli kompatibilitě s OAI providerem konfigurovat tak, aby pouze nastavoval stav "Deleted" (property delete.purgeObjects=false)
+  * Issue 625: Opraven problém v implementaci kriteria Moving wall
 
 
 =4.7.1 (4699)=
