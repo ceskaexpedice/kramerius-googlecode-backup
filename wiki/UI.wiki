@@ -10,3 +10,5 @@ Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi45
 Popis změn v GUI verze 4.6 najdete na stránce NovinkyVeVerzi46
 
 Popis změn v GUI verze 4.7 najdete na stránce NovinkyVeVerzi47
+
+Popis změn v GUI verze 4.8 najdete na stránce NovinkyVeVerzi48
