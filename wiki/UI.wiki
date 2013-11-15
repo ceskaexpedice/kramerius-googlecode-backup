@@ -7,3 +7,4 @@ Popis uživatelského rozhraní je v okně nápověda, přístupném ze záhlav�
 
 Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi45
 Popis změn v GUI verze 4.6 najdete na stránce NovinkyVeVerzi46
+Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi47
