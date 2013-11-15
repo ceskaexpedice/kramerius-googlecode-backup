@@ -276,7 +276,7 @@ Pozn.: Je samozřejmě nejdříve nutné cache naplnit a to akcí "Generování 
 
 Od verze 4.7 je možno volitelně používat buď prohlížečku Seadragon (protokol deepZoom) nebo OpenLayers (protokol zoomify). Výchozí nastavení (OpenLayers) je možno změnit nastavením  property `zoom.viewer=deepzoom` v souboru `search.properties` 
 
-Upozornění: U verze 4.8 a protokolu deepZoom byla opravena chyba při dotazování *dzi* deskriptoru. Deskriptor byl dotazován pomocí postfixu <url_to_jp2>/deepzoom.dzi na misto <url_to_jp2>.dzi (viz http://iipimage.sourceforge.net/documentation/protocol/).  Pokud máte již nastaven mod_url rewriting modul na toto chybné chování, prosím, přenastavte si ho.    
+Upozornění: U verze 4.8 a protokolu deepZoom byla opravena chyba při dotazování *dzi* deskriptoru. Deskriptor byl dotazován pomocí postfixu url_to_jp2/deepzoom.dzi na misto url_to_jp2.dzi (viz http://iipimage.sourceforge.net/documentation/protocol/).  Pokud máte již nastaven mod_url rewriting modul na toto chybné chování, prosím, přenastavte si ho.    
 
 
 =Editor pořadí částí dokumentu=
