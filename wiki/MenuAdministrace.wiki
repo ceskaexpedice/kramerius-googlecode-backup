@@ -134,7 +134,9 @@ Příkaz *Reindexace* v kontextové nabídce dokumentu umožňuje opakovanou rei
 
 == Odstranění dokumentu z indexu ==
 
-Příkaz *Odstranit dokument z indexu* v kontextové nabídce odstraní daný dokument z indexu SOLR a dokuemnt tak není veřejně přístupný a vyhledatelný v aplikaci Kramerius 4. Opětovné zveřejnění je možné příkazem *Indexace dokumentů* v menu administrace.
+Příkaz *Odstranit dokument z indexu* v kontextové nabídce odstraní daný dokument z indexu SOLR a dokument tak není veřejně přístupný a vyhledatelný v aplikaci Kramerius 4. Opětovné zveřejnění je možné příkazem *Indexace dokumentů* v menu administrace.
+
+_Pozn.: Autoři odstraněných dokumentů se mohou ještě určitý čas objevovat v seznamu na záložce Autoři. Toto prodlení je závislé na konfiguraci indexu SOLR. Okamžité odstranění autorů smazaných dokumentů ze seznamu můžete provést optimalizaci indexu SOLR příkazem `http://adresa_serveru_solr:8080/solr/update?stream.body=<optimize/>`. Tato optimalizace však u větších indexů může být poměrně časově náročná. _
 
 == Odstranění dokumentu z indexu i úložiště ==
 
