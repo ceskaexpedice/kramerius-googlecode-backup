@@ -5,6 +5,18 @@ import cz.incad.kramerius.FedoraNamespaceContext;
 import cz.incad.kramerius.impl.FedoraAccessImpl;
 import cz.incad.kramerius.utils.DCUtils;
 import cz.incad.kramerius.utils.conf.KConfiguration;
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.pdfbox.cos.COSDocument;
+import org.apache.pdfbox.pdfparser.PDFParser;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.util.PDFTextStripper;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
@@ -14,23 +26,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathFactory;
-import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.pdfbox.cos.COSDocument;
-import org.apache.pdfbox.pdfparser.PDFParser;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.util.PDFTextStripper;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 
 /**
  *
  * @author Alberto
  * Handles and manages the fields not directly present in doc FOXML
- * 
+ *
  */
 public class ExtendedFields {
 
@@ -97,8 +98,8 @@ public class ExtendedFields {
     public void setPDFDocument(String pid) throws Exception {
         if (!pdfPid.equals(pid)) {
             try {
-            pdfPid = "";
-            closePDFDocument();
+                pdfPid = "";
+                closePDFDocument();
                 InputStream is = fa.getDataStream(pid, "IMG_FULL");
                 PDFParser parser = new PDFParser(is);
                 parser.parse();
@@ -106,6 +107,10 @@ public class ExtendedFields {
 
                 pdDoc = new PDDocument(cosDoc);
                 pdfPid = pid;
+
+                if( pdDoc.isEncrypted() ){
+                    pdDoc.decrypt( KConfiguration.getInstance().getConfiguration().getString("convert.pdfPassword") );
+                }
 
             } catch (Exception ex) {
                 closePDFDocument();
@@ -136,55 +141,19 @@ public class ExtendedFields {
 
     private String getPDFPage(int page) throws Exception {
         try {
-            StringBuffer docText = new StringBuffer();
-            PDFTextStripper stripper = new PDFTextStripper();
+            PDFTextStripper stripper = new PDFTextStripper("UTF-8");
             if (page != -1) {
                 stripper.setStartPage(page);
                 stripper.setEndPage(page);
             }
-            docText = new StringBuffer(stripper.getText(pdDoc));
-            /*
-            ByteArrayOutputStream bout = new ByteArrayOutputStream();
-            OutputStreamWriter writer = new OutputStreamWriter(bout);
-            //StringWriter writer = new StringWriter();
-            stripper.writeText(pdDoc, writer);
-            
-            bout.flush();
-            writer.flush();
-            byte[] bytes = bout.toByteArray();
-            String enc = UnicodeUtil.getEncoding(bytes);
-            enc = "UTF-8";
-            InputStreamReader isr = new InputStreamReader(new ByteArrayInputStream(bytes), enc);
-            int c = isr.read();
-            while (c > -1) {
-            docText.append((char) c);
-            c = isr.read();
-            }
-            
-             */
 
-            return StringEscapeUtils.escapeXml(removeTroublesomeCharacters(docText.toString()));
+            return StringEscapeUtils.escapeXml(stripper.getText(pdDoc));
         } catch (Exception ex) {
             return "";
         }
     }
 
-    private String removeTroublesomeCharacters(String inString) {
-        if (null == inString) {
-            return null;
-        }
-        byte[] byteArr = inString.getBytes();
-        for (int i = 0; i < byteArr.length; i++) {
-            byte ch = byteArr[i];
-            // remove any characters outside the valid UTF-8 range as well as all control characters
-            // except tabs and new lines
-            if (!((ch > 31 && ch < 253) || ch == '\t' || ch == '\n' || ch == '\r')) {
-                byteArr[i] = ' ';
-            }
-        }
-        return new String(byteArr);
 
-    }
 
     private String getModelPath(String pid_path) throws IOException {
         String[] pids = pid_path.split("/");
@@ -224,7 +193,7 @@ public class ExtendedFields {
                 }
             }
         }
-        
+
         for (Integer i : rels_ext_indexes) {
             sb.append("<field name=\"rels_ext_index\">").append(i).append("</field>");
         }
@@ -323,7 +292,7 @@ public class ExtendedFields {
     }
 
     private void parseDatum(String datumStr) {
-            DateFormat outformatter = new SimpleDateFormat("yyyy");
+        DateFormat outformatter = new SimpleDateFormat("yyyy");
         try {
             Date dateValue = df.parse(datumStr);
             rok = outformatter.format(dateValue);
@@ -337,7 +306,7 @@ public class ExtendedFields {
                 datum_begin = datumStr.substring(0, 2) + "00";
                 datum_end = datumStr.substring(0, 2) + "99";
             } else if (datumStr.matches("\\d\\d\\.-\\d\\d\\.\\d\\d\\.\\d\\d\\d\\d")) {  //Datum muze byt typu 19.-20.03.1890
-                
+
                 String end = datumStr.split("-")[1].trim();
                 try{
                     Date dateValue = df.parse(end);
