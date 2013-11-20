@@ -48,6 +48,7 @@ Akce zde reprezentuje formálně zapsanou opraci, kterou uživatel provadí. Kra
  # *import_k4_replications* - Akce import objektů objektů do  K4
  # *edit_info_text* - Akce editace textu na úvodní stránce. _Uživatel  může editovat text na úvodní stránce._
  # *virtualcollection_manage* - Akce správa virtuálních sbírek. _Uživatel může spravovat virtuální sbírky._
+ # *export_cdk_replications* - Export  pro CDK 
  # *display_admin_menu* - Akce zobrazení menu určeného pro administrátory. _Uživateli se zobrazí menu určené pro administrátory._
 
 
