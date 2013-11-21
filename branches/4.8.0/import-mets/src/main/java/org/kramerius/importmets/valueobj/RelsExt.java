@@ -2,18 +2,19 @@ package org.kramerius.importmets.valueobj;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 
 /**
  * Value objekt pro naplneni dat RELS-EXT
- * 
+ *
  * @author xholcik
  */
 public class RelsExt {
 
-    
+
     public static final String ITEM_ID = "itemID";
-    
+
     public static final String HAS_MODEL = "hasModel";
 
     public static final String HAS_UNIT = "hasUnit";
@@ -35,18 +36,18 @@ public class RelsExt {
     public static final String HANDLE = "handle";
 
     public static final String CONTRACT = "contract";
-    
+
     public static final String FILE = "file";
-    
+
     public static final String ISBN = "isbn";
-    
+
     public static final String ISSN = "issn";
-    
+
     public static final String EXTID = "extid";
 
     public static final String TILES_URL = "tiles-url";
-    
-    
+
+
 
     private final String pid;
 
@@ -63,6 +64,23 @@ public class RelsExt {
         if (id == null || "".equals(id))
             return;
         relations.add(new Relation(key, id, literal));
+    }
+
+    public void insertPage( String id) {
+        if (id == null || "".equals(id))
+            return;
+        ListIterator<Relation> it = relations.listIterator();
+        while(it.hasNext()){
+            String k = it.next().getKey();
+            if (HAS_MODEL.equals(k)||ITEM_ID.equals(k)){
+                continue;
+            }
+            if(!HAS_PAGE.equals(k)){
+                it.previous();
+                break;
+            }
+        }
+        it.add(new Relation(RelsExt.HAS_PAGE, id, false));
     }
 
     public List<Relation> getRelations() {
@@ -100,6 +118,24 @@ public class RelsExt {
             return literal;
         }
 
+        @Override
+        public String toString() {
+            return "Relation{" +
+                    "key='" + key + '\'' +
+                    ", id='" + id + '\'' +
+                    ", literal=" + literal +
+                    "}\n";
+        }
     }
+
+    @Override
+    public String toString() {
+        return "RelsExt{" +
+                "pid='" + pid + '\'' +
+                ", relations=" + relations +
+                '}';
+    }
+
+
 
 }
