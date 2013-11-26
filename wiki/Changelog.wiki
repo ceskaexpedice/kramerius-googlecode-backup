@@ -1,12 +1,13 @@
 #summary Přehled změn v jednotlivých verzích
 <wiki:toc max_depth="1" />
 
-=4.8.1 (4996)=
+=4.8.1 (5009)=
 
   * opravena chyba v stránkování seznamu autorů na záložce Autoři
   * opravena chyba ve fulltextovém indexování PDF dokumentů
   * vylepšeno generování dvouvrstvých PDF
   * Issue 627: změněno generování pořadí komponent v konvertoru METS-> K4. Stránky jsou řazeny před ostatní součásti. Původní chování možno obnovit nastavením property convert.pagesFirst = false  
+  * Isuue 633: chyba při skrývání pásu náhledů
 
 =4.8.0 (4957)=
 
