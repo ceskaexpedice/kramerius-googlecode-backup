@@ -1,4 +1,4 @@
-#summary Remote API for client.
+#Clients API.
 
 = POZNAMKA =
 Pracovni dokument. Vse co je napsno nize se muze v prubehu praci menit! 
@@ -69,4 +69,3 @@ Info o prihlasenem uzivateli a roli. V tenkem klientu se vyuziva i v JAAS modulu
 
 = Tenky testovaci klient -  =
 Pro potreby testovani a pouzitelnosti API vzikl na serveru github projekt k5testclient. (https://github.com/ceskaexpedice/k5testclient).
-
