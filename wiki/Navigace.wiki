@@ -10,7 +10,7 @@
 
 * [MenuAdministrace Administrace]
 
-* [RemoteAPI REST API]
+* [RemoteAPI Remote API]
 
 * [Prava Práva]
 
