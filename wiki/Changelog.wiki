@@ -5,7 +5,7 @@
 
   * opravena chyba ve vyhledávání podle klíčových slov
   * opravena chyba v třídění součástí dokumentů s duplicitními identifikátory
-  * vylepšeno automatické spouštění indexace po importu víceúrovňových dokumentů
+  * vylepšeno automatické spouštění indexace po importu víceúrovňových dokumentů
   * doplněna možnost indexace více PID v jednom procesu (PID defaultně odděleny středníkem, možno konfigurovat property indexer.pidSeparator
   * indexace více dokumentů může při chybě pokračovat, konfigurovatelné property indexer.continueOnError=false
   * doplněno filtrování neplatných znaků v OCR a PDF při indexaci
