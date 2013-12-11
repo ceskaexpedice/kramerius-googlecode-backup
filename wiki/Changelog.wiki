@@ -1,6 +1,6 @@
 #summary Přehled změn v jednotlivých verzích
 
-=4.8.2 (r5048)=
+=4.8.2 (r5056)=
 
   * opravena chyba ve vyhledávání podle klíčových slov
   * opravena chyba v třídění součástí dokumentů s duplicitními identifikátory
