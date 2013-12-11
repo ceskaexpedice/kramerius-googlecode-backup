@@ -1,7 +1,6 @@
 #summary Přehled změn v jednotlivých verzích
-<wiki:toc max_depth="1" />
 
-=4.8.2 (5048)=
+=4.8.2 (r5048)=
 
   * opravena chyba ve vyhledávání podle klíčových slov
   * opravena chyba v třídění součástí dokumentů s duplicitními identifikátory
@@ -10,7 +9,7 @@
   * indexace více dokumentů může při chybě pokračovat, konfigurovatelné property indexer.continueOnError=false
   * doplněno filtrování neplatných znaků v OCR a PDF při indexaci
 
-=4.8.1 (5009)=
+=4.8.1 (r5009)=
 
   * opravena chyba v stránkování seznamu autorů na záložce Autoři
   * opravena chyba ve fulltextovém indexování PDF dokumentů
@@ -18,7 +17,7 @@
   * Issue 627: změněno generování pořadí komponent v konvertoru METS-> K4. Stránky jsou řazeny před ostatní součásti. Původní chování možno obnovit nastavením property convert.pagesFirst = false  
   * Isuue 633: chyba při skrývání pásu náhledů
 
-=4.8.0 (4957)=
+=4.8.0 (r4957)=
 
   * Issue 567: korektní vypínání Tomcatu
   * Issue 577: opraveno chybné vyhledávání textu s diakritikou v MSIE
@@ -91,7 +90,7 @@
 
 Podrobný popis významných změn je na stránce NovinkyVeVerzi48
 
-=4.7.1 (4699)=
+=4.7.1 (r4699)=
   * Automatické třídění [http://code.google.com/p/kramerius/wiki/NovinkyVeVerzi47#Automatické_třídění_součástí_dokumentů popis]
   * Issue 552 - Přidáno tlačítko pro zobrazení přes celou obrazovku
   * Issue 548 - Upravena funkce tisku
@@ -100,20 +99,20 @@ Podrobný popis významných změn je na stránce NovinkyVeVerzi48
   * Issue 544 - opravy a dokumentace REST API pro spouštění procesů
 
 
-=4.7.0 (4610)=
+=4.7.0 (r4610)=
 Podrobný popis významných změn je na stránce NovinkyVeVerzi47
 
 
-=4.6.2 (4517)=
+=4.6.2 (r4517)=
 
   * Issue 510 - opraven problém s reindexací
 
-=4.6.1 (4482)=
+=4.6.1 (r4482)=
  
   * Obnovena možnost spouštění administrátorských procesů přes původní servlet lr 
   * Issue 498 - opravena chyba při zpracování výjimek v procesu Import FOXML
 
-=4.6.0 (4445)=
+=4.6.0 (r4445)=
 
 Podrobný popis významných změn je na stránce NovinkyVeVerzi46
 
