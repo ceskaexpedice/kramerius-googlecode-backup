@@ -1,4 +1,4 @@
-*Vývoj systému Kramerius byl přemístěn na GitHub na adresu https://github.com/ceskaexpedice/kramerius*
+*Vývoj systému Kramerius byl přemístěn na !GitHub na adresu https://github.com/ceskaexpedice/kramerius*
 
 
 =Kramerius 4=
