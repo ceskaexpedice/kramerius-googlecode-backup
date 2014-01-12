@@ -5,7 +5,7 @@
   * robustnější algoritmus třídění vazeb
   * doplněna podpora loadNonSeq parseru při konverzi a indexaci PDF (property `convert.pdf.loadNonSeq`)
   * opravena chyba ve skrolování seznamu titulů
-  * v konvertoru K3->K4 změněna defaultní viditelnost objektů z private na inherit
+  * v konvertoru K3->K4 změněna defaultní viditelnost objektů z private na inherit
 
 =4.8.2 (r5056)=
 
