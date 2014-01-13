@@ -1,6 +1,6 @@
 #summary Přehled změn v jednotlivých verzích
 
-=4.8.3 (r5073)=
+=4.8.3 (r5076)=
 
   * robustnější algoritmus třídění vazeb
   * doplněna podpora loadNonSeq parseru při konverzi a indexaci PDF (property `convert.pdf.loadNonSeq`)
