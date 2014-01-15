@@ -37,7 +37,11 @@ public class ConvertorConfig {
     }
 
     public String getExportFolder() {
-        return exportFolder;
+        if (Main.useContractSubfolders() && contract!= null && !("".equals(contract))){
+            return exportFolder+ System.getProperty("file.separator")+contract;
+        }else{
+            return exportFolder;
+        }
     }
 
     public void setExportFolder(String exportFolder) {
@@ -79,9 +83,9 @@ public class ConvertorConfig {
 	public void setContract(String contract) {
         this.contract = contract.replaceAll("[\\\\/:\"*?<>|]","_");
 		if (Main.useContractSubfolders()){
-			this.exportFolder = this.exportFolder+ System.getProperty("file.separator")+this.contract;
-			IOUtils.checkDirectory(this.exportFolder);
-			String xmlSubfolder = this.exportFolder+ System.getProperty("file.separator")+"xml";//Issue 73
+			//this.exportFolder = this.exportFolder+ System.getProperty("file.separator")+this.contract;
+			IOUtils.checkDirectory(exportFolder+ System.getProperty("file.separator")+contract);
+			String xmlSubfolder = exportFolder+ System.getProperty("file.separator")+contract+ System.getProperty("file.separator")+"xml";//Issue 73
 			IOUtils.checkDirectory(xmlSubfolder);
 		}
 	}
