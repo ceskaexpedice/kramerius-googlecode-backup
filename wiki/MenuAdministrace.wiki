@@ -174,8 +174,8 @@ Příklady parametrů:
 ||fullRepo|| ignorován|| indexuje rekursivně všechny modely přítomné ve vlastnosti `fedora.topLevelModels`||
 ||fullRepoWithClean|| ignorován || smaže celý index, a pak volá fullRepo||
 ||optimize|| ignorován || volání `optimize` v SOLR||
-||fromKrameriusModel|| MODEL || indexuje rekursivně dokument, který před tím rekursivně smaže z indexu||
-||fromKrameriusModelNoCheck|| MODEL || indexuje rekursivně dokument,  který před tím NEsmaže rekursivně z indexu (používat pouze, pokud je jistota, že v indexu nejsou podřízené dokumenty, ktere neexistují v úložišti fedora)||
+||fromKrameriusModel|| PID || indexuje rekursivně dokument, který před tím rekursivně smaže z indexu||
+||fromKrameriusModelNoCheck|| PID || indexuje rekursivně dokument,  který před tím NEsmaže rekursivně z indexu (používat pouze, pokud je jistota, že v indexu nejsou podřízené dokumenty, ktere neexistují v úložišti fedora)||
 ||krameriusModel|| MODEL || indexuje rekursivně všechny dokumenty daného modelu,  které před tím smaže rekursivně z indexu||
 ||krameriusModelNoCheck|| MODEL || indexuje rekursivně všechny dokumenty daného modelu,  které před tím NEsmaže rekursivně z indexu||
 ||reindexDoc|| PID || indexuje rekursivně dokument, jestliže jeho datum v úložišti fedora je novější než v indexu||
