@@ -53,6 +53,55 @@ Výstupem je JSON pole
 ]
 }}}
 
+Pokud je některý proces dávkový, obsahuje klíč `children` s podprocesy: 
+{{{
+[
+ {
+        "uuid": "cd13ffc2-b119-4ff4-9f3b-25128894352d",
+        "pid": "14952",
+        "def": "aggregate",
+        "state": "FINISHED",
+        "batchState": "BATCH_FINISHED",
+        "name": "Davkove spusteny process [virtualcollections]",
+        "started": "01/29/2014 19:02:31:491",
+        "planned": "01/29/2014 19:02:27:732",
+        "finished": "01/29/2014 19:02:32:745",
+        "userid": "krameriusAdmin",
+        "userFirstname": "kramerius",
+        "userSurname": "admin",
+        "children": [
+            {
+                "uuid": "cd13ffc2-b119-4ff4-9f3b-25128894352d",
+                "pid": "14952",
+                "def": "aggregate",
+                "state": "FINISHED",
+                "batchState": "BATCH_FINISHED",
+                "name": "Davkove spusteny process [virtualcollections]",
+                "started": "01/29/2014 19:02:31:491",
+                "planned": "01/29/2014 19:02:27:732",
+                "finished": "01/29/2014 19:02:32:745",
+                "userid": "krameriusAdmin",
+                "userFirstname": "kramerius",
+                "userSurname": "admin"
+            },{
+                "uuid": "35ca70b3-f764-4219-92c9-f945758b1af2",
+                "pid": "14974",
+                "def": "virtualcollections",
+                "state": "FINISHED",
+                "batchState": "NO_BATCH",
+                "name": "Add uuid:c32e0540-3e38-11e2-8227-5ef3fc9bb22f to collection vc:f73dee31-ae76-4dbc-b7b9-d986df497596",
+                "started": "01/29/2014 19:02:42:423",
+                "planned": "01/29/2014 19:02:32:632",
+                "finished": "01/29/2014 19:03:46:141",
+                "userid": "krameriusAdmin",
+                "userFirstname": "kramerius",
+                "userSurname": "admin"
+            },
+...
+]
+}}}
+
+
 ===Filtr===
 Filtrování výsledků je možné pomocí standardních atritubutů dotazu. Tedy dotaz na procesy spuštěné ukončené stavem  `FAILED` by vypadal následovně:
 {{{
