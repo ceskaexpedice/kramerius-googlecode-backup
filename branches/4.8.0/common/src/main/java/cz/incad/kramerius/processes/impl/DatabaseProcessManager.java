@@ -16,42 +16,10 @@
  */
 package cz.incad.kramerius.processes.impl;
 
-import static cz.incad.kramerius.processes.database.ProcessDatabaseUtils.registerProcess;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.logging.Level;
-
-import org.apache.commons.io.FileUtils;
-
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.name.Named;
-
-import cz.incad.kramerius.processes.BatchStates;
-import cz.incad.kramerius.processes.DefinitionManager;
-import cz.incad.kramerius.processes.LRPRocessFilter;
-import cz.incad.kramerius.processes.LRProcess;
-import cz.incad.kramerius.processes.LRProcessDefinition;
-import cz.incad.kramerius.processes.LRProcessManager;
-import cz.incad.kramerius.processes.LRProcessOffset;
-import cz.incad.kramerius.processes.LRProcessOrdering;
-import cz.incad.kramerius.processes.NotReadyException;
-import cz.incad.kramerius.processes.ProcessManagerException;
-import cz.incad.kramerius.processes.States;
-import cz.incad.kramerius.processes.TypeOfOrdering;
+import cz.incad.kramerius.processes.*;
 import cz.incad.kramerius.processes.database.ProcessDatabaseUtils;
 import cz.incad.kramerius.security.User;
 import cz.incad.kramerius.users.LoggedUsersSingleton;
@@ -61,6 +29,21 @@ import cz.incad.kramerius.utils.database.JDBCQueryTemplate;
 import cz.incad.kramerius.utils.database.JDBCTransactionTemplate;
 import cz.incad.kramerius.utils.database.JDBCUpdateTemplate;
 import cz.incad.kramerius.utils.properties.PropertiesStoreUtils;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Level;
+
+import static cz.incad.kramerius.processes.database.ProcessDatabaseUtils.registerProcess;
 
 public class DatabaseProcessManager implements LRProcessManager {
 
@@ -508,13 +491,53 @@ public class DatabaseProcessManager implements LRProcessManager {
         if (offset != null) {
             buffer.append(offset.getSQLOffset());
         }
+        long start = System.currentTimeMillis();
+        LOGGER.fine("\tSTART reading from db");
         List<LRProcess> processes = new JDBCQueryTemplate<LRProcess>(connection) {
-            @Override
+        	long startRow = System.currentTimeMillis();
+        	long acumulated = 0;
+        	long maxTime = 0;
+        	long minTime = System.currentTimeMillis();
+        	int counter = 0;
+        	
+        	@Override
             public boolean handleRow(ResultSet rs, List<LRProcess> returnsList) throws SQLException {
-                returnsList.add(processFromResultSet(rs));
-                return super.handleRow(rs, returnsList);
+            	long currentVal = System.currentTimeMillis() - startRow;
+            	
+            	acumulated += currentVal;
+            	counter += 1;
+            	if (counter == 1) {
+                	LOGGER.fine("\t\t the first row from database ("+currentVal+") ms");
+                	returnsList.add(processFromResultSet(rs));
+            	}
+
+            	
+            	maxTime = Math.max(currentVal, this.maxTime);
+            	if (currentVal > maxTime) {
+                	LOGGER.fine("\t\t row from database ("+currentVal+") ms");
+                	returnsList.add(processFromResultSet(rs));
+            	}
+            	if ((counter % 200) == 0) {
+            		StringBuilder builder = new StringBuilder();
+            		builder.append("this row cost(").append(currentVal).append("), ");
+            		builder.append("maxtime (").append(this.maxTime).append("), ");
+            		builder.append("mintime (").append(this.minTime).append("), ");
+            		builder.append("accumulated (").append(this.acumulated).append("), ");
+            		builder.append("number of processes (").append(this.counter).append("), ");
+            		
+            		builder.append("avg (").append((this.counter/this.acumulated)).append(")");
+            		
+                	LOGGER.fine("\t\t "+builder.toString());
+            	}
+            	
+            	minTime = Math.min(currentVal, this.minTime);
+            	startRow = System.currentTimeMillis();
+            	
+            	return super.handleRow(rs, returnsList);
             }
         }.executeQuery(buffer.toString());
+        LOGGER.fine("\tFINISH reading from db ("+(System.currentTimeMillis() - start)+")ms");
+        
         return processes;
     }
 
