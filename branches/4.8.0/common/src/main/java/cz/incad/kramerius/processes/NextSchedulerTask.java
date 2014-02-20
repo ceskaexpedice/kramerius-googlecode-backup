@@ -30,10 +30,10 @@ public class NextSchedulerTask extends TimerTask {
 	public void run() {
 		try {
 			// neco delej
-            LOGGER.fine("Process scheduler run started.");
+            LOGGER.fine("Process scheduler started.");
 			definitionManager.load();
 			List<LRProcess> plannedProcess = lrProcessManager.getPlannedProcess(allowRunningProcesses());
-			LOGGER.fine("Planned processes :"+plannedProcess.size());
+			LOGGER.fine("Planned processes: "+plannedProcess.size());
 			if (!plannedProcess.isEmpty()) {
 				int runningProcesses = 0;
 				List<LRProcess> longRunningProcesses = this.lrProcessManager.getLongRunningProcessesAsFlat(null, null, null);
@@ -42,19 +42,21 @@ public class NextSchedulerTask extends TimerTask {
 						runningProcesses +=1;
 					}
 				}
-                LOGGER.fine("Running processes :" +runningProcesses);
+                LOGGER.fine("Running processes: " +runningProcesses);
 				if (runningProcesses < allowRunningProcesses()) {
 					LRProcess lrProcess = plannedProcess.get(0);
 					lrProcess.startMe(false, this.processScheduler.getApplicationLib(), this.processScheduler.getAdditionalJarFiles());
+                    LOGGER.fine("Started process: "+lrProcess);
 				}
 			}  else {
-				LOGGER.fine("No planned process found");
+				//LOGGER.fine("No planned process found");
 			}
 			this.processScheduler.scheduleNextTask();
 		} catch(Throwable e) {
 			this.processScheduler.shutdown();
 			LOGGER.log(Level.SEVERE,e.getMessage(), e);
 		}
+        LOGGER.fine("Process scheduler finished.");
 		
 	}
 
