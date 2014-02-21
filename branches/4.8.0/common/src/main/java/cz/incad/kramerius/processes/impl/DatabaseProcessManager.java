@@ -491,53 +491,13 @@ public class DatabaseProcessManager implements LRProcessManager {
         if (offset != null) {
             buffer.append(offset.getSQLOffset());
         }
-        long start = System.currentTimeMillis();
-        LOGGER.fine("\tSTART reading from db");
         List<LRProcess> processes = new JDBCQueryTemplate<LRProcess>(connection) {
-        	long startRow = System.currentTimeMillis();
-        	long acumulated = 0;
-        	long maxTime = 0;
-        	long minTime = System.currentTimeMillis();
-        	int counter = 0;
-        	
-        	@Override
+            @Override
             public boolean handleRow(ResultSet rs, List<LRProcess> returnsList) throws SQLException {
-            	long currentVal = System.currentTimeMillis() - startRow;
-            	
-            	acumulated += currentVal;
-            	counter += 1;
-            	if (counter == 1) {
-                	LOGGER.fine("\t\t the first row from database ("+currentVal+") ms");
-                	returnsList.add(processFromResultSet(rs));
-            	}
-
-            	
-            	maxTime = Math.max(currentVal, this.maxTime);
-            	if (currentVal > maxTime) {
-                	LOGGER.fine("\t\t row from database ("+currentVal+") ms");
-                	returnsList.add(processFromResultSet(rs));
-            	}
-            	if ((counter % 200) == 0) {
-            		StringBuilder builder = new StringBuilder();
-            		builder.append("this row cost(").append(currentVal).append("), ");
-            		builder.append("maxtime (").append(this.maxTime).append("), ");
-            		builder.append("mintime (").append(this.minTime).append("), ");
-            		builder.append("accumulated (").append(this.acumulated).append("), ");
-            		builder.append("number of processes (").append(this.counter).append("), ");
-            		
-            		builder.append("avg (").append((this.counter/this.acumulated)).append(")");
-            		
-                	LOGGER.fine("\t\t "+builder.toString());
-            	}
-            	
-            	minTime = Math.min(currentVal, this.minTime);
-            	startRow = System.currentTimeMillis();
-            	
-            	return super.handleRow(rs, returnsList);
+                returnsList.add(processFromResultSet(rs));
+                return super.handleRow(rs, returnsList);
             }
         }.executeQuery(buffer.toString());
-        LOGGER.fine("\tFINISH reading from db ("+(System.currentTimeMillis() - start)+")ms");
-        
         return processes;
     }
 
