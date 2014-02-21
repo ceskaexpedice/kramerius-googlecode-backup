@@ -31,12 +31,18 @@ public class NextSchedulerTask extends TimerTask {
 		try {
 			// neco delej
             LOGGER.fine("Process scheduler started.");
+
 			definitionManager.load();
+            long start = System.currentTimeMillis();
 			List<LRProcess> plannedProcess = lrProcessManager.getPlannedProcess(allowRunningProcesses());
-			LOGGER.fine("Planned processes: "+plannedProcess.size());
+            long end = System.currentTimeMillis();
+			LOGGER.fine("Planned processes: "+plannedProcess.size()+ " ("+(end-start)+" ms)");
 			if (!plannedProcess.isEmpty()) {
 				int runningProcesses = 0;
+                start = System.currentTimeMillis();
 				List<LRProcess> longRunningProcesses = this.lrProcessManager.getLongRunningProcessesAsFlat(null, null, null);
+                end = System.currentTimeMillis();
+                LOGGER.fine("Total processes: "+longRunningProcesses.size()+ " ("+(end-start)+" ms)");
 				for (LRProcess lrProcess : longRunningProcesses) {
 					if (lrProcess.getProcessState().equals(States.RUNNING)) {
 						runningProcesses +=1;
