@@ -1,13 +1,12 @@
 package cz.incad.kramerius.processes;
 
-import java.io.IOException;
+import cz.incad.kramerius.processes.utils.PIDList;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
 import java.util.concurrent.locks.Lock;
 import java.util.logging.Level;
-
-import cz.incad.kramerius.processes.utils.PIDList;
 
 public class GCCheckFoundCandidatesTask extends TimerTask {
 
@@ -47,9 +46,9 @@ public class GCCheckFoundCandidatesTask extends TimerTask {
 
 							}
 						} else {
-							LOGGER.severe("cannot find pid for process '"+lr.getUUID()+"'");
-							lr.setProcessState(States.FAILED);
-                            lr.setFinishedTime(System.currentTimeMillis());
+                            LOGGER.severe("cannot find pid for process '" + lr.getUUID() + "' -> change state to NOT_RUNNING");
+                            lr.setProcessState(States.NOT_RUNNING);
+							lr.setFinishedTime(System.currentTimeMillis());
                             this.lrProcessManager.updateLongRunningProcessState(lr);
                             this.lrProcessManager.updateLongRunningProcessFinishedDate(lr);
 
