@@ -31,16 +31,16 @@
 </style>
 <div id="intro" >
     <ul>
-    <c:forEach varStatus="status" var="tab" items="${cols.homeTabs}">
-        <li><a href="#intro${status.count}"><fmt:message bundle="${lctx}">home.tab.${tab}</fmt:message></a></li>
-    </c:forEach>
+        <c:forEach varStatus="status" var="tab" items="${cols.homeTabs}">
+            <li><a href="#intro${status.count}"><fmt:message bundle="${lctx}">home.tab.${tab}</fmt:message></a></li>
+        </c:forEach>
     </ul>
 
     <c:forEach varStatus="status" var="tab" items="${cols.homeTabs}">
         <div id="intro${status.count}" style="height: 510px; overflow:auto;"></div>
         <script type="text/javascript">
             $.get('inc/home/${tab}.jsp', function(data){
-               $('#intro${status.count}').html(data) ;
+                $('#intro${status.count}').html(data) ;
             });
         </script>
     </c:forEach>
@@ -50,14 +50,14 @@
     var letters = "0,A,B,C,Č,D,E,F,G,H,CH,I,J,K,L,M,N,O,P,Q,R,Ř,S,Š,T,U,V,W,X,Y,Z,Ž";
     var titleDivTopBorder;
     var titleDivBottomBorder;
-        
+
     $('#intro').tabs({
         select: function (event, ui) {
             window.location.hash = ui.tab.hash;
         }
     });
     $('#homedabox').tabs();
-    
+
     $(document).ready(function(){
         $('.term').live('click', function(){
             var field = $(this).parent().attr('id');
@@ -70,18 +70,18 @@
         });
 
         $('.letters>div>a').live('click', function(){
-           //var field = $(this).parent().parent().attr('id').substring("letters_".length);
-           var field = $(this).attr("class");
-           var value = $(this).html();
-           if(value.startsWith("<")){
-               value = "";
-           }
-           doBrowse(value, field);
-           
+            //var field = $(this).parent().parent().attr('id').substring("letters_".length);
+            var field = $(this).attr("class");
+            var value = $(this).html();
+            if(value.startsWith("<")){
+                value = "";
+            }
+            doBrowse(value, field);
+
         });
 
     });
-    
+
     function hideSuggest(obj){
         $(obj).hide();
     }
@@ -92,7 +92,7 @@
         var field_id = input_id.substring(3);
         doBrowse(value, field_id);
         return;
-        var url = 'terms.jsp?i=false&field=' + field_id + '&t=' + value;
+        var url = 'terms.jsp?field=' + field_id + '&t=' + value;
         $.get(url, function(data){
             $('#'+res_id+">div.content").html(data);
             if(data!=""){
@@ -102,26 +102,26 @@
             }
         });
     }
-    
+
     function escapeValue(value){
         return '#' + value.replace(/(\"|\.)/g,'\\$1');
     }
-    
+
     function checkScroll(id, id2){
         if($('#'+id+">div.more_terms").length>0 && isTermVisible(id)){
-           getMoreTerms(id);
+            getMoreTerms(id);
         }
         selectLetter(id);
     }
-    
+
     function doBrowse(value, field){
         var url = 'terms.jsp?field=' + field;
         $.post(url, {t: value}, function(data){
             $('#'+field).html(data);
             $('#'+field).scrollTop(0);
             selectLetter(field);
-            
-            
+
+
             //$('#'+field).bind('scroll', function(event){
             //    var id = $(this).attr('id');
             //    if($('#'+id+">div.more_terms").length>0 && isTermVisible(id)){
@@ -129,7 +129,7 @@
             //    }
             //    selectLetter(id);
             //});
-        
+
         });
     }
 
@@ -150,24 +150,24 @@
                 if(letter != "CH"){
                     letter = letter.substring(0,1);
                 }
-                
+
                 return false;
             }
         });
         if(letters.indexOf(letter)<0){
             letter = '0';
-        }  
+        }
         $('#letters_'+field+'>div').removeClass('sel');
         $('#letters_'+field+'>div.'+letter).addClass('sel');
     }
-    
+
     function setBrowseScrollPosition(){
         if(titleDivTopBorder==null){
             titleDivTopBorder = $('#browse_title').offset().top;
             titleDivBottomBorder = titleDivTopBorder + $('#browse_title').height() ;
         }
     }
-    
+
     function isTermVisible(id){
         var t = $('#'+id+">div.more_terms").position().top;
         var b = $('#'+id+">div.more_terms").position().top + $('#'+id+">div.more_terms").height();
