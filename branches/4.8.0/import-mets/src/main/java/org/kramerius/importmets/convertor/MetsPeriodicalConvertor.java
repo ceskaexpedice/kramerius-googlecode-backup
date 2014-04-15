@@ -162,6 +162,7 @@ public class MetsPeriodicalConvertor extends BaseConvertor {
             if ("PHYSICAL".equalsIgnoreCase(sm.getTYPE())) {
                 processPages(sm);
             } else if ("LOGICAL".equalsIgnoreCase(sm.getTYPE())) {
+                singleVolumeMonograph = false;
                 processDiv(null, sm.getDiv());
             } else {
                 log.warn("Unsupported StructMap type: " + sm.getTYPE()
@@ -251,7 +252,10 @@ public class MetsPeriodicalConvertor extends BaseConvertor {
         boolean containsTypeElement = false;//check if DC already contains some type element
         for (JAXBElement<ElementType> el:dclist){
             if ("type".equalsIgnoreCase(el.getName().getLocalPart())){
-                containsTypeElement=true;
+                if (el.getValue().getValue().startsWith("model:")){
+                    el.getValue().setValue(model);
+                    containsTypeElement=true;
+                }
             }
         }
         if (!containsTypeElement){
@@ -260,11 +264,13 @@ public class MetsPeriodicalConvertor extends BaseConvertor {
         dclist.add(dcObjectFactory.createRights(createDcElementType(policy)));
     }
 
-
+    private boolean singleVolumeMonograph = false;
     private Foxml processDiv(Foxml parent, DivType div) {
         String divType = div.getTYPE();
+        MdSecType modsIdObj = (MdSecType) firstItem(div.getDMDID());
         //if ("PICTURE".equalsIgnoreCase(divType)) return null;//divs for PICTURE are not supported in K4
-        if ("MONOGRAPH".equalsIgnoreCase(divType)){//special hack to ignore extra div for monograph
+        if ("MONOGRAPH".equalsIgnoreCase(divType)&&modsIdObj==null){//special hack to ignore extra div for single volume monograph
+            singleVolumeMonograph = true;
             List<DivType> volumeDivs = div.getDiv();
             if (volumeDivs == null) return null;
             if (volumeDivs.size()==1){//process volume as top level
@@ -280,7 +286,6 @@ public class MetsPeriodicalConvertor extends BaseConvertor {
             return null;
         }
 
-        MdSecType modsIdObj = (MdSecType) firstItem(div.getDMDID());
         if (modsIdObj == null) {
             collectAlto(parent, div);
             return null;//we consider only div with associated metadata (DMDID)
@@ -348,9 +353,15 @@ public class MetsPeriodicalConvertor extends BaseConvertor {
         }else if ("PICTURE".equalsIgnoreCase(divType)){
             return MODEL_PICTURE;
         }else if ("VOLUME".equalsIgnoreCase(divType)){
-            return MODEL_MONOGRAPH;
+            if (singleVolumeMonograph) {
+                return MODEL_MONOGRAPH;
+            }else{
+                return MODEL_MONOGRAPH_UNIT;
+            }
         }else if ("CHAPTER".equalsIgnoreCase(divType)){
             return MODEL_INTERNAL_PART;
+        }else if ("MONOGRAPH".equalsIgnoreCase(divType)){
+            return MODEL_MONOGRAPH;
         }
         throw new ServiceException("Unsupported div type in logical structure: "+divType);
     }
@@ -368,6 +379,8 @@ public class MetsPeriodicalConvertor extends BaseConvertor {
             return RelsExt.HAS_INT_COMP_PART;
         }else if (MODEL_INTERNAL_PART.equalsIgnoreCase(model)){
             return RelsExt.HAS_INT_COMP_PART;
+        }else if (MODEL_MONOGRAPH_UNIT.equalsIgnoreCase(model)){
+            return RelsExt.HAS_UNIT;
         }
         throw new ServiceException("Unsupported model mapping in logical structure: "+model);
     }
