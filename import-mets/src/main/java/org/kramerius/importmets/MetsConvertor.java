@@ -131,10 +131,20 @@ public class MetsConvertor {
 
         String packageid = getPackageid(infoFile);
 
-        File importFile = findMetsFile(importFolder);
+        String metsFilename = getMetsFilename(infoFile);
 
+        File importFile = null;
+        if (metsFilename != null){
+            importFile = new File(importFolder, metsFilename);
+        }else {
+            importFile = findMetsFile(importFolder);
+        }
 
-        foundvalidPSP = true;
+        if (importFile!= null&&importFile.exists()) {
+            foundvalidPSP = true;
+        }else{
+            foundvalidPSP = false;
+        }
 
 
 
@@ -182,6 +192,22 @@ public class MetsConvertor {
         try {
             Document doc = XMLUtils.parseDocument(new BOMInputStream(new FileInputStream(infoFile)));
             Element elem = XMLUtils.findElement(doc.getDocumentElement(), "packageid");
+            if (elem != null) {
+                return elem.getTextContent();
+            }
+
+        } catch (Exception e) {
+            log.error("Invalid import descriptor: " + infoFile.getAbsolutePath());
+            throw new RuntimeException("Invalid import descriptor: " + infoFile.getAbsolutePath());
+        }
+        return null;
+    }
+
+
+    private static String getMetsFilename(File infoFile) {
+        try {
+            Document doc = XMLUtils.parseDocument(new BOMInputStream(new FileInputStream(infoFile)));
+            Element elem = XMLUtils.findElement(doc.getDocumentElement(), "mainmets");
             if (elem != null) {
                 return elem.getTextContent();
             }
