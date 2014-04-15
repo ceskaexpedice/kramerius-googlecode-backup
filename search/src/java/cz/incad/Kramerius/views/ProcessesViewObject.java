@@ -1,36 +1,24 @@
 package cz.incad.Kramerius.views;
 
+import antlr.RecognitionException;
+import antlr.TokenStreamException;
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+import cz.incad.Kramerius.Initializable;
+import cz.incad.kramerius.processes.*;
+import cz.incad.kramerius.processes.LRPRocessFilter.Tripple;
+import cz.incad.kramerius.processes.template.OutputTemplateFactory;
+import cz.incad.kramerius.service.ResourceBundleService;
+import cz.incad.kramerius.utils.params.ParamsLexer;
+import cz.incad.kramerius.utils.params.ParamsParser;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-
-import antlr.RecognitionException;
-import antlr.TokenStreamException;
-
-import cz.incad.Kramerius.Initializable;
-import cz.incad.kramerius.processes.BatchStates;
-import cz.incad.kramerius.processes.DefinitionManager;
-import cz.incad.kramerius.processes.LRPRocessFilter;
-import cz.incad.kramerius.processes.LRProcess;
-import cz.incad.kramerius.processes.LRProcessDefinition;
-import cz.incad.kramerius.processes.LRProcessManager;
-import cz.incad.kramerius.processes.LRProcessOffset;
-import cz.incad.kramerius.processes.LRProcessOrdering;
-import cz.incad.kramerius.processes.States;
-import cz.incad.kramerius.processes.TypeOfOrdering;
-import cz.incad.kramerius.processes.LRPRocessFilter.Tripple;
-import cz.incad.kramerius.processes.template.OutputTemplateFactory;
-import cz.incad.kramerius.service.ResourceBundleService;
-import cz.incad.kramerius.utils.params.ParamsLexer;
-import cz.incad.kramerius.utils.params.ParamsParser;
 
 public class ProcessesViewObject implements Initializable {
 
@@ -128,7 +116,7 @@ public class ProcessesViewObject implements Initializable {
     		pageSize = pageSize + (getNumberOfRunningProcess() % getPageSize());
     	}
 
-    	LRProcessOffset offset = new LRProcessOffset(""+getOffset(getPage()), ""+getPageSize());
+        LRProcessOffset offset = new LRProcessOffset(""+getOffset(getPage()), ""+pageSize);
     	
     	List<LRProcess> lrProcesses = this.processManager.getLongRunningProcessesAsGrouped(this.ordering, this.typeOfOrdering, offset, this.filter);
         List<ProcessViewObject> objects = new ArrayList<ProcessViewObject>();
@@ -666,7 +654,7 @@ public class ProcessesViewObject implements Initializable {
 	}
 
 	public boolean isCurrentFirstPage() {
-		return getPage() == getNumberOfPages();
+		return getPage() == getNumberOfPages()-1;
 	}
 
 	public boolean isCurrentLastPage() {
