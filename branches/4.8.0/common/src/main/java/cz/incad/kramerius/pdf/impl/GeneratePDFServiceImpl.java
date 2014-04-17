@@ -170,18 +170,25 @@ public class GeneratePDFServiceImpl extends AbstractPDFRenderSupport implements 
 
         } catch (DocumentException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (XPathExpressionException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (TransformerException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (InstantiationException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (IllegalAccessException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (ParserConfigurationException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (SAXException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         }
         return rdoc;
     }
@@ -228,18 +235,25 @@ public class GeneratePDFServiceImpl extends AbstractPDFRenderSupport implements 
 
         } catch (DocumentException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (XPathExpressionException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (TransformerException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (InstantiationException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (IllegalAccessException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (ParserConfigurationException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         } catch (SAXException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw new IOException(e.getMessage());
         }
 
     }
