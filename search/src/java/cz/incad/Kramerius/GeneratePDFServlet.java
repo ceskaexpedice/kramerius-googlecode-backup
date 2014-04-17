@@ -1,39 +1,10 @@
 package cz.incad.Kramerius;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.StringReader;
-import java.net.MalformedURLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.Semaphore;
-import java.util.logging.Level;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.pdfbox.exceptions.COSVisitorException;
-import org.apache.pdfbox.util.PDFMergerUtility;
-
 import antlr.RecognitionException;
 import antlr.TokenStreamException;
-
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.name.Named;
 import com.lowagie.text.DocumentException;
-
 import cz.incad.Kramerius.backend.guice.GuiceServlet;
 import cz.incad.kramerius.FedoraAccess;
 import cz.incad.kramerius.ObjectPidsPath;
@@ -49,6 +20,19 @@ import cz.incad.kramerius.utils.ApplicationURL;
 import cz.incad.kramerius.utils.conf.KConfiguration;
 import cz.incad.kramerius.utils.params.ParamsLexer;
 import cz.incad.kramerius.utils.params.ParamsParser;
+import org.apache.commons.io.IOUtils;
+import org.apache.pdfbox.exceptions.COSVisitorException;
+import org.apache.pdfbox.util.PDFMergerUtility;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
 
 public class GeneratePDFServlet extends GuiceServlet {
 
@@ -143,6 +127,18 @@ public class GeneratePDFServlet extends GuiceServlet {
 		}
 	}
 
+    static void renderGenericError(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        LOGGER.info("error while generating pdf document");
+        resp.setContentType("text/plain");
+        resp.getWriter().println("{" +
+                "errorType:'generateerror',\n"
+                + "redirect:'generatepdferror.jsp',\n"
+                + "returnUrl:'"+req.getParameter("redirectURL")+"'"+
+                "}");
+
+
+    }
+
     static void renderErrorServerBusy(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         LOGGER.info("server busy forward");
 //        RequestDispatcher dispatcher = req.getRequestDispatcher("serverbusy.jsp");
@@ -171,24 +167,33 @@ public class GeneratePDFServlet extends GuiceServlet {
     }
 
     public void renderPDF(HttpServletRequest req, HttpServletResponse resp) throws MalformedURLException, IOException, ProcessSubtreeException {
-        String imgServletUrl = ApplicationURL.applicationURL(req)+"/img";
-        if ((configuration.getApplicationURL() != null) && (!configuration.getApplicationURL().equals(""))){
-        	imgServletUrl = configuration.getApplicationURL()+"img";
-        }
-        String i18nUrl = ApplicationURL.applicationURL(req)+"/i18n";
-        if ((configuration.getApplicationURL() != null) && (!configuration.getApplicationURL().equals(""))){
-        	i18nUrl = configuration.getApplicationURL()+"i18n";
-        }
+        try{
+            String imgServletUrl = ApplicationURL.applicationURL(req)+"/img";
 
-        
-        String action = req.getParameter("action");
-        String imagesOnly = req.getParameter("firstpageType");
-        
-        FirstPage fp = (imagesOnly != null && (!imagesOnly.trim().equals(""))) ? FirstPage.valueOf(imagesOnly) : FirstPage.TEXT;
-        if (fp == FirstPage.IMAGES) {
-            Action.valueOf(action).renderPDF(req, resp, this.imageFirstPage, this.service,this.solrAccess, this.documentService, "", imgServletUrl, i18nUrl);
-        } else {
-            Action.valueOf(action).renderPDF(req, resp, this.textFirstPage ,this.service,this.solrAccess, this.documentService, "", imgServletUrl, i18nUrl);
+            if ((configuration.getApplicationURL() != null) && (!configuration.getApplicationURL().equals(""))){
+                imgServletUrl = configuration.getApplicationURL()+"img";
+            }
+            String i18nUrl = ApplicationURL.applicationURL(req)+"/i18n";
+            if ((configuration.getApplicationURL() != null) && (!configuration.getApplicationURL().equals(""))){
+                i18nUrl = configuration.getApplicationURL()+"i18n";
+            }
+
+
+            String action = req.getParameter("action");
+            String imagesOnly = req.getParameter("firstpageType");
+
+            FirstPage fp = (imagesOnly != null && (!imagesOnly.trim().equals(""))) ? FirstPage.valueOf(imagesOnly) : FirstPage.TEXT;
+            if (fp == FirstPage.IMAGES) {
+                Action.valueOf(action).renderPDF(req, resp, this.imageFirstPage, this.service,this.solrAccess, this.documentService, "", imgServletUrl, i18nUrl);
+            } else {
+                Action.valueOf(action).renderPDF(req, resp, this.textFirstPage ,this.service,this.solrAccess, this.documentService, "", imgServletUrl, i18nUrl);
+            }
+        } catch (Exception e) {
+            try {
+                renderGenericError(req, resp);
+            } catch (ServletException e1) {
+                LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+            }
         }
     }
 
@@ -257,20 +262,76 @@ public class GeneratePDFServlet extends GuiceServlet {
                     
                 } catch (IOException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (ProcessSubtreeException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (RecognitionException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (TokenStreamException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (COSVisitorException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (DocumentException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (ServletException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (Exception e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
 				} finally {
                     for (File file : filesToDelete) {
                         file.delete();
@@ -335,14 +396,49 @@ public class GeneratePDFServlet extends GuiceServlet {
 
                 } catch (IOException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (ProcessSubtreeException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (COSVisitorException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (DocumentException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
                 } catch (ServletException e) {
                     LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                    try {
+                        renderGenericError(request, response);
+                    } catch (ServletException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    } catch (IOException e1) {
+                        LOGGER.log(Level.SEVERE,e1.getMessage(),e1);
+                    }
 				} finally {
                     for (File file : filesToDelete) {
                         file.delete();
