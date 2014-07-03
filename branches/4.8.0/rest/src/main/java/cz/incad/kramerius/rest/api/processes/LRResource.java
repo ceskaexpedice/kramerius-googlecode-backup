@@ -352,7 +352,7 @@ public class LRResource {
             try {
                 LRProcess longRunningProcess = this.lrProcessManager.getLongRunningProcess(uuid);
                 if (longRunningProcess != null) {
-                    if (BatchStates.expect(longRunningProcess.getBatchState(), BatchStates.BATCH_FAILED, BatchStates.BATCH_FINISHED)) {
+                    if (BatchStates.expect(longRunningProcess.getBatchState(), BatchStates.BATCH_FAILED, BatchStates.BATCH_FINISHED, BatchStates.BATCH_WARNING)) {
                         lrProcessManager.deleteBatchLongRunningProcess(longRunningProcess);
                     } else {
                         lrProcessManager.deleteLongRunningProcess(longRunningProcess);
