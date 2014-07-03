@@ -141,19 +141,25 @@ public class DatabaseProcessManager implements LRProcessManager {
         }
     }
 
-    
+
     @Override
     public void deleteBatchLongRunningProcess(LRProcess longRunningProcess) {
+
+        Connection connection = null;
         try {
+            connection = connectionProvider.get();
+            if (connection == null)
+                throw new NotReadyException("connection not ready");
+
             List<JDBCCommand> commands = new ArrayList<JDBCCommand>();
-            
+
             final String token = longRunningProcess.getGroupToken();
             final List<LRProcess> childSubprecesses = getLongRunningProcessesByGroupToken(token);
 
- 
-            final int id = ProcessDatabaseUtils.getProcessId(longRunningProcess, connectionProvider.get());
+
+            final int id = ProcessDatabaseUtils.getProcessId(longRunningProcess, connection);
             commands.add(new JDBCCommand() {
-                
+
                 @Override
                 public Object executeJDBCCommand(Connection con) throws SQLException {
                     PreparedStatement prepareStatement = con.prepareStatement("delete from PROCESS_2_TOKEN where process_id = ?");
@@ -165,7 +171,7 @@ public class DatabaseProcessManager implements LRProcessManager {
             for (final LRProcess lrProcess : childSubprecesses) {
                 if (lrProcess.getAuthToken() != null) {
                     commands.add(new JDBCCommand() {
-                        
+
                         @Override
                         public Object executeJDBCCommand(Connection con) throws SQLException {
                             PreparedStatement prepareStatement = con.prepareStatement("delete from PROCESS_2_TOKEN where auth_token = ?");
@@ -173,13 +179,23 @@ public class DatabaseProcessManager implements LRProcessManager {
                             return prepareStatement.executeUpdate();
                         }
                     });
-                    
+
                 }
             }
-            
 
             commands.add(new JDBCCommand() {
-                
+
+                @Override
+                public Object executeJDBCCommand(Connection con) throws SQLException {
+                    PreparedStatement prepareStatement = con.prepareStatement("delete from PROCESS_2_TOKEN where auth_token = ?");
+                    prepareStatement.setString(1, token);
+                    return prepareStatement.executeUpdate();
+                }
+            });
+
+
+            commands.add(new JDBCCommand() {
+
                 @Override
                 public Object executeJDBCCommand(Connection con) throws SQLException {
                     PreparedStatement prepareStatement = con.prepareStatement("delete from PROCESSES where token = ?");
@@ -187,14 +203,14 @@ public class DatabaseProcessManager implements LRProcessManager {
                     return prepareStatement.executeUpdate();
                 }
             });
-            
+
             JDBCTransactionTemplate.Callbacks callbacks = new JDBCTransactionTemplate.Callbacks() {
-                
+
                 @Override
                 public void rollbacked() {
                     // do nothing
                 }
-                
+
                 @Override
                 public void commited() {
                     for (int i = 0; i < childSubprecesses.size(); i++) {
@@ -208,10 +224,18 @@ public class DatabaseProcessManager implements LRProcessManager {
                     }
                 }
             };
-            
-            new JDBCTransactionTemplate(connectionProvider.get(),true).updateWithTransaction(callbacks, (JDBCCommand[]) commands.toArray(new JDBCCommand[commands.size()]));
+
+            new JDBCTransactionTemplate(connection,true).updateWithTransaction(callbacks, (JDBCCommand[]) commands.toArray(new JDBCCommand[commands.size()]));
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
+        } finally {
+            try {
+                if (connection != null && (!connection.isClosed())) {
+                    DatabaseUtils.tryClose(connection);
+                }
+            } catch (SQLException e) {
+                LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            }
         }
     }
 
