@@ -1,9 +1,11 @@
 package org.kramerius.importmets;
 
 import com.qbizm.kramerius.imp.jaxb.DigitalObject;
+
 import cz.incad.kramerius.utils.IOUtils;
 import cz.incad.kramerius.utils.XMLUtils;
 import cz.incad.kramerius.utils.conf.KConfiguration;
+
 import org.apache.commons.io.input.BOMInputStream;
 import org.apache.log4j.Logger;
 import org.kramerius.Import;
@@ -21,6 +23,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 
 import javax.xml.bind.*;
 import javax.xml.transform.sax.SAXSource;
+
 import java.io.*;
 
 
@@ -45,7 +48,7 @@ public class MetsConvertor {
             throw new RuntimeException("bad usage");
         } else {
             boolean defaultVisibility = Boolean.parseBoolean(args[0]);
-            
+
             String importRoot = null;
             if (args.length == 1){
                 importRoot = KConfiguration.getInstance().getConfiguration().getString("migration.directory");
@@ -99,14 +102,14 @@ public class MetsConvertor {
         }
         File exportFolderFile = IOUtils.checkDirectory(exportRoot);
 
-        File infoFile = new File(importFolder, "info.xml");
+        File infoFile = findInfoFile(importFolder);
         if (!infoFile.exists()) {
-               for(File child: importFolder.listFiles()){
-                   if (child.isDirectory()){
-                       String subFolder = System.getProperty("file.separator")+child.getName();
-                       checkAndConvertDirectory(importRoot+subFolder, exportRoot+subFolder, defaultVisibility);
-                   }
-               }
+            for(File child: importFolder.listFiles()){
+                if (child.isDirectory()){
+                    String subFolder = System.getProperty("file.separator")+child.getName();
+                    checkAndConvertDirectory(importRoot+subFolder, exportRoot+subFolder, defaultVisibility);
+                }
+            }
         }else{
             if (!useContractSubfolders()){
                 IOUtils.cleanDirectory(exportFolderFile);
@@ -114,6 +117,22 @@ public class MetsConvertor {
             convert(importRoot, exportRoot, defaultVisibility);
         }
 
+    }
+
+    private static File findInfoFile(File importFolder) {
+        File infoFile = null;
+        File[] lfiles = importFolder.listFiles(new FileFilter() {
+            
+            @Override
+            public boolean accept(File p) {
+                String fname = p.getName().toLowerCase();
+                if (fname.startsWith("info") && fname.endsWith(".xml")) {
+                    return true;
+                } else return false;
+            }
+        });
+        infoFile = (lfiles !=null && lfiles.length >0) ? lfiles[0] : new File(importFolder, "info.xml");
+        return infoFile;
     }
 
 
@@ -125,9 +144,7 @@ public class MetsConvertor {
 
         File importFolder = new File(importRoot);
 
-        File infoFile = new File(importFolder, "info.xml");
-
-
+        File infoFile = findInfoFile(importFolder);
 
         String packageid = getPackageid(infoFile);
 
@@ -177,8 +194,7 @@ public class MetsConvertor {
         File[] fileList = importFolder.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
-                return pathname.isFile() && pathname.getName().toLowerCase().endsWith(".xml") && !(pathname.getName().equalsIgnoreCase("info.xml"));
-
+                return pathname.isFile() && pathname.getName().toLowerCase().endsWith(".xml") && pathname.getName().toLowerCase().startsWith("mets");
             }
         });
         if (fileList.length!=1){
@@ -261,7 +277,7 @@ public class MetsConvertor {
                 }
                 config.setContractLength(l);
                 //try {
-                    convertOneDirectory(unmarshaller, importFile, config, convertedURI);
+                convertOneDirectory(unmarshaller, importFile, config, convertedURI);
                 /*} catch (InterruptedException e) {
                     log.error("Cannot convert "+importFile, e);
                 } catch (JAXBException e) {
@@ -283,7 +299,7 @@ public class MetsConvertor {
         reader.setEntityResolver(new EntityResolver(){
             @Override
             public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
-                    return new InputSource(new ByteArrayInputStream("<?xml version='1.0' encoding='UTF-8'?>".getBytes()));
+                return new InputSource(new ByteArrayInputStream("<?xml version='1.0' encoding='UTF-8'?>".getBytes()));
             }
         });
         SAXSource saxSource = new SAXSource( reader, new InputSource( new FileInputStream(importFile) ) );
@@ -347,8 +363,8 @@ public class MetsConvertor {
 
 
     /**
-   *
-   */
+     *
+     */
 
     public static class NamespacePrefixMapperInternalImpl extends com.sun.xml.internal.bind.marshaller.NamespacePrefixMapper {
 
