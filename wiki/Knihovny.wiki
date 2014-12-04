@@ -14,6 +14,7 @@ Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích
   * Národní archiv [] - Unidata
   * Národní knihovna [testovací] - INCAD
   * Národní muzeum [] - Unidata
+  * Židovské muzeum [] - Unidata
   * Národní technická knihovna [http://k4.techlib.cz/search/] - NTK
   * Národní technické muzeum [] - Unidata
   * Studijní a vědecká knihovna v Hradci Králové [] - Unidata
@@ -21,11 +22,13 @@ Kramerius 4 je v ostrému provozu využíván v těchto knihovnách/institucích
   * Vysoká škola uměleckoprůmyslová v Praze (klasifikační práce) [] - M.Řehánek
   * Studijní a vědecká knihovna v Hradci Králové [] - Unidata
   * Středočeská vědecká knihovna v Kladně [] - Unidata
-  * Karlovarský kraj [] - Unidata
   * Krajská knihovna Františka Bartoše [] - Unidata
   * Zemědělská a potravinářská knihovna ÚZEI [] - Unidata
   * Muzeum východních Čech v Hradci Králové [] - Unidata
   * Výzkumný ústav geodetický, topografický a kartografický [] - Unidata
+  * Studijní a vědecká knihovna v Plzni [] - Unidata
+  * Krajská knihovna v Karlovy Vary [] - Unidata
+  * Vojenský historický ústav [] - Unidata
 
 
 
