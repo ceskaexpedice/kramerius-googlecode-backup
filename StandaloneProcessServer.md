@@ -1,0 +1,33 @@
+
+
+# O #
+Systém procesů v K4 byl navrhnut tak, aby šla, v případě potřeby, snadno vytvořit infrasktura
+s dedikovaným serverem pro spouštění procesů a dedikovaným serverem prezentačním. Tento článek
+popisuje jak toho docílit.
+
+## Předpoklady ##
+Nejdřív uvedu nutné podmínky:
+
+  1. Společná Fedora
+  1. Společná procesní databáze - uživatelé, ukládání procesů, atd..
+  1. Společný diskový prostor pro vytváření a čtení logů dlouhotrvajících procesů
+  1. Společný soubor definic procesů, případně stejná kopie na všech instancích
+
+
+## Presentační server ##
+Sloužil by pouze pro prezentaci výsledků. Uživatel by zde měl možnost se přihlásit do amdinistrátorského
+rozhraní, měl možnost naplánovat nový proces (případně sadu procesů), nicméně instance instance by žádný proces
+fakticky nespouštěla. Toho by bylo docíleno nastavením proměnné:
+
+```
+processQueue.activeProcess=0
+```
+
+
+## Procesní  server ##
+Jednalo by se o standardní instanci K4, která by byla pouze dedikovaná pro spouštění procesů
+(a z toho titulu samozřejmě i jinak nastavenou proměnnou `processQueue.activeProcesses`).
+
+
+To je vše.
+

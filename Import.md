@@ -1,0 +1,15 @@
+# Návrh konverze #
+
+Pro konverzi dat K3->K4 bude použito replikační rozhraní obou systémů. Samotnou konverzi pravděpodobně provede pouze KNAV a NKP, ostatní knihovny po přechodu na K4 replikují od nich.
+
+## Postup replikace: ##
+  * K3 – přes replikační rozhraní exportovat data
+  * konverzní utilita přede do nového formátu, načte ostatní data z DB (oprávnění, viditelnost a handl) a zapíše je do POLICY DS a DC DS(handl).
+  * import do K4 přes replikační rozhraní
+
+
+Při konverzi by měla být dostupná volba pro slučování titulů, zachování viditelnosti a oprávnění.
+
+
+## Úpravy dat při konverzi ##
+číslování pořadí částí není vždy číselné. Při konverzi bude

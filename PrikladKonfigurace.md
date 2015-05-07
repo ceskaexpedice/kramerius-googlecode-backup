@@ -1,0 +1,147 @@
+# System Variables #
+
+```
+export JAVA_HOME=/usr/java/jre1.6.0_20
+export CATALINA_HOME=$HOME/tomcat
+export FEDORA_HOME=$HOME/fedora
+export JAVA_OPTS=" -Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr -XX:MaxPermSize=128m -Xms512m -Xmx1024m" 
+export PATH=$PATH:$FEDORA_HOME/server/bin:$FEDORA_HOME/client/bin:$CATALINA_HOME/bin:$JAVA_HOME/bin 
+```
+
+# Fedora #
+
+Příklad výpisu odpovědí na otázky instalátoru fcrepo-installer-3.3.jar, volby odlišné od defaultních jsou označeny 
+
+```
+Installation type: custom  ******
+
+Fedora home: default (/usr/local/fedora)
+
+admin password: fedoraAdmin  ******
+
+Fedora server: default (localhost)
+
+Fedora context: default (fedora)
+
+API-A authentication: default (false)
+
+SSL availability: default (true)
+
+API-A SSL required: default (false)
+
+API-M SSL required: false ******
+
+Servlet engine: existingTomcat  ********
+
+Tomcat home directory: default  (CATALINA_HOME)
+
+Tomcat HTTP port: default (8080)
+
+Tomcat shutdown port: default (8005)
+
+Tomcat secure HTTP port: default (8443)
+
+Keystore file: included *****
+
+Database: postgresql   ******
+
+JDBC driver : default (included)
+
+Database username: fedoraAdmin
+
+Database password: fedoraAdmin
+
+Database URL: default (localhost/fedora3)
+
+JDBC driver: default 
+
+Enable FESL:  default  (false)
+
+Policy enforcement enabled: default (true)
+
+Enable resource index: true  *********
+
+Enable messaging : default (false)
+
+Deploy local services: default (true)
+```
+
+# Konfigurace datasource #
+
+Do souboru `$CATALINA_HOME/conf/context.xml` přidat definici datasource:
+```
+<Resource name="jdbc/kramerius4" auth="Container" type="javax.sql.DataSource"
+        initialSize="3"
+        maxActive="100" maxIdle="30" maxWait="10000"
+        username="fedoraAdmin" password="fedoraAdmin" driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://localhost/kramerius4"/>
+
+```
+
+# URIEncoding #
+
+Do souboru `$CATALINA_HOME/conf/server.xml` přidat URIEncoding:
+```
+ <Connector port="8080" protocol="HTTP/1.1" 
+               connectionTimeout="20000" URIEncoding="UTF-8"
+               redirectPort="8443" />
+```
+
+# Single Sign-on #
+
+V souboru `$CATALINA_HOME/conf/server.xml` povolit single sign-on:
+```
+<Host name="localhost" ...>
+  ...
+  <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+  ...
+</Host>
+```
+
+
+Do adresáře `$CATALINA_HOME/conf/Catalina/localhost` přidat soubory `search.xml` a `rightseditor.xml` s tímto obsahem
+
+```
+<Context>
+	<Realm className="org.apache.catalina.realm.JAASRealm"                 
+	appName="search"
+roleClassNames="cz.incad.kramerius.security.jaas.K4RolePrincipal"
+		debug="99"/>
+</Context>
+```
+
+
+
+Do souboru  `$FEDORA_HOME/server/config/jaas.conf` přidat:
+```
+search {
+ cz.incad.kramerius.security.jaas.K4LoginModule required debug=true;
+};
+
+
+rightseditor {
+ cz.incad.kramerius.security.jaas.K4LoginModule required debug=true;
+};
+```
+
+
+# Konfigurace mail připojení #
+
+Konfigurace smtp klienta pro odesílání mailu se nachází v ~/.kramerius4/mail.properties.
+
+Příklad:
+```
+
+mail.smtp.user=xxx@gmail.com
+mail.smtp.pass=xxxx
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=465
+mail.smtp.starttls.enable=true
+mail.smtp.auth=true
+mail.smtp.socketFactory.port=465
+mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+mail.smtp.socketFactory.fallback=false
+
+```
+
+Odkaz všech možnáných vlastností nastavení http://www.websina.com/bugzero/kb/javamail-properties.html

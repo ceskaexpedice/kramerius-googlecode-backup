@@ -1,0 +1,237 @@
+
+
+# Veřejné služby #
+
+## img ##
+
+Univerzální servlet, který zpřístupňuje obrázky (případně modifikované).
+
+Parametry:
+
+  * **pid** - pid dotazovaného objektu
+  * **stream** - obrázkový stream (IMG\_FULL, IMG\_THUMB, případně i jiný) #
+  * **action** - specifikuje akci, která se má provádět. Akce nelze v rámci jednoho volání kombinovat.
+
+Možné akce jsou:
+
+  * **TRANSCODE** - vrací obrázek v jiném formátu.  Vyžaduje dodatečný parametr výstupního formátu.
+
+Příklad:
+
+`img?pid=0...&stream=IMG_FULL&action=TRANSCODE&outputFormat=jpg`
+
+  * **SCALE** - vrací zmenšeninu nebo zvětšeninu obrázku ve formátu JPG. Vyžaduje dodatečné parametry pro zmešení/zvětšení. Umožnuje měnit velikost dle výšky, šířky a dle procent.  Příklady: `img?pid=uuid:0...&stream=IMG_FULL&action=SCALE&scaledHeight=128, img?pid=uuid:0...&stream=IMG_FULL&action=SCALE&scaledWidth=450, img?pid=uuid:0...&stream=IMG_FULL&action=SCALE&scaled=0.5`
+
+  * **GETRAW** - vrací surová data z požadovaného streamu. Nevyžaduje žádné dodatečné parametry.
+
+Příklad:  `img?pid=uuid:0...&stream=IMG_FULL&action=GETRAW`
+
+  * **outputFormat** - výstupní formát pro akci TRANSCODE. Podporovované výstupní parametry servletu:
+    * “outputFormat=jpg”  - JPEG format
+    * “outputFormat=png”  - PNG format
+    * “outputFormat=gif”  - GIF format
+  * **scaledHeight, scaledWidth, scaled** - požadovaná velikost výstupního obrázku pro akci SCALE - viz příklady výše
+
+
+## i18n ##
+
+třída  `cz.incad.Kramerius.I18NServlet`
+
+Servlet umožňující různými způsoby podávat resource bundly a lokalizované texty. Použivá se při XSLT transformaci (lokalizování textů - model, page, monograph, atd...), při lokalizaci dialogu pomocí ajaxu (login dialog), atd..
+
+Produkuje bundle nebo text jako  xml a json.
+
+Použití:
+
+`i18n?action=(text | bundle)&name=<name_of_bundle|name_of_text>&format=(xml|json) [&lang=<lang>&country=<country>]`
+
+Pozn.: Parametry `lang=<language>&country=<country>` mohou měnit locale, které se použije pro podání textu či resourcebundle. Musí být uvedené oba parametry. Pokud nejsou, použije se locale svázaný s requestem a session v K4 (viz dokument O lokalizaci v K4).
+
+Příklad:
+
+`i18n?action=bundle&name=labels&format=xml&lang=cs&country=cz`   _správné použití_
+`i18n?action=bundle&name=labels&format=xml&lang=cs`   _špatné použití_
+
+
+
+
+## mets ##
+
+třída `cz.incad.Kramerius.METSServlet`
+
+Produkuje textovový soubor s obsahem METS.
+
+Použití:
+
+`mets?pid=<pid>`
+
+
+## mimetype ##
+
+třída `cz.incad.Kramerius.MimeTypeServlet`
+
+Vrací mime type streamu IMG\_FULL jako textový řetězec.
+
+Použití:
+
+`mimetype?pid=<pid>`
+
+## handle ##
+
+třída `cz.incad.Kramerius.HandleServlet`
+
+Podpora funkce persistentního URL (tzv. handle). Provádí redirect na stránku zobrazující konkrétní dokument na základě parametru ve tvaru uuid tohoto dokumentu nebo handle. Handle je řetězec získávaný při konverzi dat z K3 (databázová tabulka `handle`) a je zapsán v datastreamu RELS-EXT jako literál v RDF vazbě `kramerius:handle`. Persistentní URL konkrétního dokumentu může uživatel získat z kontextového menu “Persistentní adresa”.
+
+Použití:
+
+`handle/uuid:8b0b25e0-49b7-11de-a45e-000d606f5dc6`
+
+`handle/ABA001/12b34a`
+
+
+## dsProxyServlet ##
+
+třída `cz.incad.Kramerius.ProxyDatastreamServlet`
+
+Umožní získávat data z fedory.  Slouží jako klasický proxy servlet.
+
+Použití:
+
+`dsProxyServlet?pid=uuid:8b0b25e0-49b7-11de-a45e-000d606f5dc6&dsname=DC`
+
+
+## deepZoomServlet ##
+
+třída `cz.incad.Kramerius.imaging.DeepZoomServlet`
+
+Podpora protokolu deepZoom. Použití definuje protokol deepZoom -> nelze měnit.
+
+`deepZoom/8b0b25e0-49b7-11de-a45e-000d606f5dc6/` - vrací DZI deskriptor
+
+`deepZoom/4502faf0-4953-11de-9ddf-000d606f5dc6/_files/6/0_0.jpg` - vrací jednu dlaždici
+
+
+
+
+## oaiExport ##
+
+třída `cz.incad.Kramerius.oai.OaiServlet`
+
+Disseminátor obsahu fedora objektů v různých formátech určených pro OAI. V současnosti je implementován jediný formát drkramerius pro Registr digitalizace CZ.
+
+Použití:
+
+`oaiExport?pid=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&format=drkramerius` vrací XML pro pid
+
+nebo
+
+`info:fedora/uuid:0eaa6730-9068-11dd-97de-000d606f5dc6/service:OAIExportDef/getDigitizationRegistry`
+
+
+# Interní a historické #
+
+## pdf ##
+
+třída `cz.incad.Kramerius.GeneratePDFServlet`
+
+Generuje PDF soubor
+
+
+## startupServlet ##
+
+třída `cz.incad.Kramerius.StartupServlet`
+
+Slouží k inicializaci aplikace. Spouští se při startu a provádí následující operace:
+Vytváří, případně modifikuje tabulky pro security, procesy a oblíbené.
+
+## viewInfoServlet ##
+
+třída `cz.incad.Kramerius.ViewInfoServlet`
+
+Středobod vesmíru pro zobrazovací část krameria. Shromažďuje všechny informace důležité pro výběr zobrazovacího prvku.  (DeepZoom prohlížečka, standardní obrázek, DJVU,..)  Dále informace o právu zobrazit a ostatních právech pro povolování či zakazování kontextového menu.
+
+Produkuje json  objekt zpracovatelný javascriptem.
+
+Použití:
+
+`viewInfo?pid=uuid:4502faf0-4953-11de-9ddf-000d606f5dc6` - json informace o objektu
+
+
+## rightsServlet ##
+
+třída `cz.incad.Kramerius.security.RightsServlet`
+
+Podpora pro UI práv, podává json objekty a html pro dialogy.  (seznamy práv pro objekt atd..)
+
+
+## usersServlet ##
+
+třída `cz.incad.Kramerius.security.UsersServlet`
+
+Podpora pro UI práv, podává json objekty a html pro dialogy (seznamy uživatelů - nápověda)
+
+
+## adminActionsServlet ##
+
+třída `cz.incad.Kramerius.security.AdministratorsActions`
+
+Podpora pro pro administrátorské akce, nyní pouze získání informace a změnu informace o viditelnosti.
+
+Akce setPublic/setPrivate flag
+
+
+## privateContent ##
+
+nepoužíván, nahradil ho `viewInfoServlet`
+
+## iip ##
+
+podpora IIP protokolu, vznikl ještě před deepZoom servletem v době, kdy ještě nebyla vybrána prohlížečka.   - Mohlo by obživnout pokud by byla potřeba
+
+## fullImageServlet ##
+
+třída `cz.incad.Kramerius.FullImageServlet`
+
+Slouží k podávání obsahu streamu IMG\_FULL, případně k manipulaci s ním (zvětšovnání, zmenšování, enkódování do jiného formátu, atd..). Používá se  při zjištění, zda je prvek zobrazitelný, při generování PDF dokumentů, při generování velkých náhledů a dlaždic.
+
+Produkuje obrázky různých typů.
+
+Použití:
+
+`fullImageServlet?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )] &[(scale=<percent> | scaledWidth=<scaledWidth> | scaledHeight=<scaledHeight>)]`
+
+`fullImageServlet?uuid=<uuid>&outputFormat=RAW`  - podá surová data ze streamu IMG\_FULL
+
+`fullImageServlet?uuid=<uuid>&outputFormat=JPEG&scaledHeight=128` - podá změnšeninu
+
+Servlet podává mime typ obrázku (jako text?):  `fullImage?uuid=<uuid>&imageType`
+
+Servlet  podává   obsah IMG\_FULL jako soubor ke stažení :  	`fullImageServlet?uuid=<uuid>&outputFormat=RAW&asFile`
+
+
+## thumb ##
+
+třída `cz.incad.Kramerius.SmallThumbnailImageServlet`
+
+Podává obsah streamu IMG\_THUMB.  Podporuje stejné parametry jako předchozí servlet. Slouží pro zobrazování kaleidoskopu, náhledů vyhledaných výsledků
+
+Produkuje obrázky různých typů.
+
+Použití:
+
+`thumb?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )] &[(scale=<percent> | scaledWidth=<scaledWidth> | scaledHeight=<scaledHeight>)]`
+
+## fullThumb ##
+
+třída `cz.incad.Kramerius.FullThumbnailImageServlet`
+
+Podává obsah streamu IMG\_PREVIEW. Narozdíl od předchozích nepodporuje zmenšování.
+
+`fullThumb?uuid=<uuid> &[outputFormat=(RAW|JPEG| PNG | VNDDJVU| XDVJU| DVJU )]`
+
+
+
+
+
+
+

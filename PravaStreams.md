@@ -1,0 +1,58 @@
+
+
+# O článku #
+Článek popisuje rozšíření systému práv o možnost zviditelnění technických a administrativních metadat pouze autorizovaným uživatelům.
+
+# Popis #
+V systému práv je základní chráněnou jednotku objekt. Může to být jakýkykoliv objekt: stránka, monografie, periodikum, atd..  Pro
+potřeby autorizace přístupu na jednotlivé datastreamy ([Issue 186](https://code.google.com/p/kramerius/issues/detail?id=186)) bylo nutné v určitých případech jemněji chráněný objekt granulovat. Vzniklo rozšíření, které umožňuje chránit jednotlivé části objektu - jednotlivé streamy.
+
+# Chráněný objekt v db #
+V původním konceptu je chráněný objekt určen jeho unikátním PIDem. Ten je definován přímo repositářem fedora viz https://wiki.duraspace.org/display/FEDORA34/Fedora+Identifiers.  V rozšíření je navíc přidán postfix streamu. Celý identifikátor chráněného objektu pak vypadá:
+```
+    PID "/" datastream. 
+```
+Příklad:
+```
+    "uuid:4a7ec660-af36-11dd-a782-000d606f5dc6/TEXT-OCR"  // Identifikuje datastream TEXT-OCR na objektu uuid:4a7ec...
+```
+
+
+## Dědičnost mezi chráněnými objekty specifikující datastream ##
+Zde je situace o něco komplikovanější než tomu bylo u prostých objektů. Systém při posuzování nepostupuje po celých objektech ale po streamech u daných objektů v hierarchii až k objektu REPOSITORY. Situaci lépe ilustruje následující obrázek.
+
+
+![http://kramerius.googlecode.com/svn/wiki/rights/fedora-obj-tree-streams.png](http://kramerius.googlecode.com/svn/wiki/rights/fedora-obj-tree-streams.png)
+
+Pokud by například přišel požadavek na čtení dat ze streamu TEXT-OCR pro objekt 1 (Stránka), mechanismus práv by prve zkoumal práva v následujícím pořadí:
+
+  1. **PID objektu(1 Stránka) / TEXT-OCR** - pokud by právo na streamu nebylo nadefinováno nebo by nemohlo rozhodnout, mechanismus by pokračoval krokem 2
+  1. **PID objektu(Zápisky z mrtvého...) / TEXT-OCR** - pokud by právo na streamu nebylo nadefinováno nebo by momohlo rozhodnout, systém by pokračoval krokem 3
+  1. **REPOSITORY** - Zde se už zkoumá pouze samotný objekt REPOSITORY.
+
+
+# Konfigurace #
+Doplněné chování je extenze ke stávajícímu mechanismu. Aby začal systém K4 jednotlivé datastreamy chránit, musí být prvé řadě definovaná proměnná `securedstreams`.Ta by měla obsahovat výčet všech streamů u kterých je chtěno aby podléhaly autorizačnímu mechanismu. Jsou zde ale výjimky.
+
+## Vždy chráněné streamy ##
+  1. **IMG\_FULL**
+  1. **IMG\_PREVIEW**
+
+## Vždy volné streamy ##
+  1. **DC**
+  1. **MODS**
+  1. **RELS-EXT**
+
+Všechny ostatní streamy mohou být uvedené v konfigurační položce.
+
+# Nastavování práv a UI #
+Samotné vytváření práv je realizováno přes kontextové menu.
+
+![http://kramerius.googlecode.com/svn/wiki/rights/prava-streamy-contextmenu.png](http://kramerius.googlecode.com/svn/wiki/rights/prava-streamy-contextmenu.png)
+
+Po spuštění položky kontextového menu se objeví dialog pro výběr streamu.
+
+![http://kramerius.googlecode.com/svn/wiki/rights/prava-streamy-dialog.png](http://kramerius.googlecode.com/svn/wiki/rights/prava-streamy-dialog.png)
+
+
+Po výběru streamu se dostaneme do [dialogu](http://code.google.com/p/kramerius/wiki/PravaGUI#Administrace_objektu_pomoc%C3%AD_kontextov%C3%A9ho_menu)  přiřazování, odebírání a editace práv s tím, že všechny operace se vztahují k vybranému streamu.

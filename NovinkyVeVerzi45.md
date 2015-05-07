@@ -1,0 +1,187 @@
+
+
+# Profily #
+
+Od verze 4.5 přibyla možnost předddefinovat si uživatelské rozhraní a nastavené vlastnosti si uložit do tzv. uživatelského profilu.
+Jedná se o následující:
+
+  * Preferovaná jazková mutace
+  * Preferované třídění
+  * Preferovaný počet sloupců ve výsledích hledání
+
+
+## Ukázka práce s profilem ##
+
+Při přihlášení nastavíte danou vlastnost a poté v položce administrativního menu zvolíte funkci **Uložení profilu**
+
+### Příklad ###
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/cesky.png](http://kramerius.googlecode.com/svn/wiki/features_45/cesky.png)
+
+Nastavení jazkové mutace
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu.png](http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu.png)
+
+Volba položky
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu_dialog.png](http://kramerius.googlecode.com/svn/wiki/features_45/ulozeniprofilu_dialog.png)
+
+Dialog uložení profilu
+
+
+## Historie hledání ##
+
+Do profilu se rovněž ukládá historie hledaných výrazů a to jak hledaných pomocí vyhledavacích polí (**Název**, **Autor**, **ISSN**, **atd..**) tak i pomocí facetů (**Typ dokumentu**, **Jazyk**, **Dostupnost**, **Autor**, **Hlavní název**)
+
+Jednotlivé položky je možné si prohlídnout pomocí položky Historie hledání.
+
+
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/historiehledani.png](http://kramerius.googlecode.com/svn/wiki/features_45/historiehledani.png)
+
+Položka menu
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/historiehledani_dialog.png](http://kramerius.googlecode.com/svn/wiki/features_45/historiehledani_dialog.png)
+
+Dialog hledaných výrazů. Obsahuje prostý odkaz a RSS.
+
+
+Počet ukládáných výsledků je omezen konfigurační položkou:
+
+```
+usersprofile.searchhistory.maxitems=10
+```
+
+
+
+# Virtuální sbírky #
+Ve verzi 4.5 přibyla možnost vytvářet si vlastní virtuální sbírky. Jedná se o kolekce různých již ve fedoře existujících objektů.
+
+
+## Postup vytváření kolekce ##
+
+Pro vytvoření nové kolekce zvolíme menu "**Administrace virtuálních sbírek**", objeví se dialog pro administraci. Zde  můžeme vytvořit novou virtuální sbírku.
+
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek.png](http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek.png)
+
+Menu pro administraci
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek_dialog.png](http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek_dialog.png)
+
+Administrační dialog
+
+Význam polí v dialogu je následující:
+
+  * PID:  Pid virtuální sbírky. Kažkdá virtuální sbírka figuruje ve fedoře jako samostatný objekt a tudíž musí mít i svůj identifikátor, pid.
+  * LABEL: klíč k internacionalizaci popisku sbírky.
+  * ČESKY: český název pro virtuální sbírku
+  * ENGLISH: anglický název pro virtuální sbírku.
+
+### Poznámka ###
+
+Pro vytvoření nové kolekce je zapotřebí mít přidělena právo **virtualcollection\_manage**.
+Standardně se při instalaci verze 4.5 právo přidělí roli k4\_admins.
+
+
+## Přidání položky do kolekce ##
+
+Přidání do kolekce je pomocí kontextového menu.
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek_zarazeni.png](http://kramerius.googlecode.com/svn/wiki/features_45/administracevirtualnisbirek_zarazeni.png)
+
+Obrázek kontextového menu.
+
+
+
+## Přepnutí do kolekce ##
+Aktivování kolekce je pomocí záložky **Virtuální sbírky** kde se nachází seznam všech virtuálních sbírek.
+Kliknutím na danou virtuální sbírku se sbírka aktivuje.
+
+
+
+Deaktivace se provádí klikem na název sbírky vpravo nahoře.
+
+
+
+# Uživatelé #
+Ve verzi 4.5 přibyla možnost registrace nových uživatelů z internetu bez nutnosti zásahu administrátora. Uživatelé takto vytvoření mají specifickou roli "PUBLIC\_USER" a práva stejná jako nepřihlášený uživatel.  Registrace je umožněna novým tlačítkem "**Registrovat**". Po zmáčknutí se objeví registrační dialog.
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/registrace.png](http://kramerius.googlecode.com/svn/wiki/features_45/registrace.png)
+
+Tlačítko registrace
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/registrace-dialog.png](http://kramerius.googlecode.com/svn/wiki/features_45/registrace-dialog.png)
+
+Dialog pro nově registrované uživatele
+Po registraci uživatele se odešle na jeho emailovou adresu mail, kde jsou uvedeny základní údaje (Jméno, příjmení a přihlašovací jméno) a rovněž url na které je nutno kliknout, pokud má být uživatel aktivován.  Dokud nebude provedena aktivace, uživatel se nepřihlásí.
+
+Tlačítko registrace je možno skrýt vlastností v souboru search.properties
+```
+search.mainbuttons.showregistrationbutton = false
+```
+
+
+[search.properties](http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/res/configuration.properties)
+
+
+## Nastavení mail.properties ##
+
+Pro odeslání mailu je zapotřebí nastavit adresu SMTP serveru. Využívá se stejné nestavení jako v případě edditoru uživatelů.
+
+
+[Instalace#Konfigurace](Instalace#Konfigurace.md)
+
+
+# Sociální sítě #
+
+V nové verzi je možnost mít u každého titulu tlačítka pro zveřejnění titulu na sociálních sítích. Jedná se zejména o Facebook, Google+ a Twitter. Polovelní nebo zakázání je řízeno konfiguračními položkami:
+
+```
+# Povoleni tlacitka I like it pro facebook
+facebook.likeit=false | true
+
+# Povoleni tlacitka Google plus
+googleplus.plus=false | true
+
+# Povoleni tlacitka Tweet pro sit twitter
+twitter.tweet=false | true
+```
+
+
+Pozn.: Pro správnou funkci tlačítek je nutno mít síť přístupnou z Internetu.
+
+
+# Oblíbené položky #
+
+Přihlášený uživatel může mít na úvodní stránce záložku oblíbených položek.  Přidání do oblíbených se děje pomocí kontextového menu. Viz obr.
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/addfavorites.png](http://kramerius.googlecode.com/svn/wiki/features_45/addfavorites.png)
+
+Odebrání z oblíbených je pomocí tlačítek v záložce oblíbené
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/removefavorites.png](http://kramerius.googlecode.com/svn/wiki/features_45/removefavorites.png)
+
+Pozn: Odebrání z oblíbených je dostupné až od verze 4.5.4  viz [Issue 340](https://code.google.com/p/kramerius/issues/detail?id=340)
+
+
+# Tisk do tiskove fronty na serveru #
+
+Verze 4.5 umožňuje tisknout tituly přímo do tiskové fronty na serveru. K tomuto slouží kontextové menu **Tisk...**. (Zobrazuje pouze přihlášeným uživatelům.)
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/tiskfronta.png](http://kramerius.googlecode.com/svn/wiki/features_45/tiskfronta.png)
+
+
+Po spuštění položky menu se zobrazí dialog podobný tomu, který se zobrazuje při generování PDF. Výsledkem je však tisk na serveru.
+
+![http://kramerius.googlecode.com/svn/wiki/features_45/tiskfronta-dialog.png](http://kramerius.googlecode.com/svn/wiki/features_45/tiskfronta-dialog.png)
+
+Tisk lze ovlivnit následujícími položkami v configuration.properties:
+```
+
+#Počet kopií k tisku
+print.copies = 1  
+
+#Jednostranný tisk, oboustranný tisk  s delším okrajem, oboustranný tisk s kratším okrajem
+print.sided = ONE_SIDE |  TWO_SIDED_LONG_EDGE |  TWO_SIDED_SHORT_EDGE
+```

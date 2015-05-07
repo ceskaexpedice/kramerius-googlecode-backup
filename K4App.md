@@ -1,0 +1,26 @@
+# Úvod #
+Předinstalované řešení digitální knihovny postavené na produktu Kramerius verze 4.
+
+## Produkt obsahuje obsahuje ##
+  * Server Zotac ZBOX Plus
+  * Opearční systém: Debian Linux verze 6.0 "squeeze".
+  * Fedora repozítář: 3.6.2
+  * Digitální knihovna K4: 4.7.0
+  * IIPImage server: 0.9.9
+  * Postgres SQL: 9.2
+
+## Přístupové údaje ##
+Všechna přístupová hesla je **NUTNO ZMĚNIT** !!!
+
+### Uživatelé systému ###
+V operačním systému je vytvořen uživatelský účet k4. Pod tímto účtem běží repozitář Fedora Commons i aplikace K4. Přihlašovací údaje naleznete na lístku přiloženém k počítači.
+
+### Uživatelé repozitáře fedora ###
+```
+ fedoraAdmin:fedoraAdmin
+```
+
+### Administrátor K4 ###
+```
+ krameriusAdmin:krameriusAdmin
+```

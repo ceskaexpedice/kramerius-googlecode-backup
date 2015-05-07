@@ -1,0 +1,57 @@
+## PODPORA SYSTÉMU K4 ##
+Systém Kramerius je opensource řešení.
+SW podporu poskytuje vývojový tým.
+Pro garantované termíny musí mít instituce uzavřenu samostatnou smlouvu o podpoře.
+
+## INSTALACE K4 ##
+Instalační postup a konfigurace systému jsou popsány na Wiki.
+Realizované instalace s informací kdo je provedl : http://code.google.com/p/kramerius/wiki/Knihovny
+
+Službu instalace lze také objednat na http://www.unidata.cz/system-kramerius nebo domluvit s některou s institucí, které mají se systémem praktické zkušenosti.
+
+Distribuovanou instalaci u společnosti Incad, která zajišťuje vývoj K4 http://www.incad.cz
+
+## SPRÁVA SYSTÉMU K4 ##
+Správa a dohled instalovaného systému může být zajištěna na základě individuální dohody.http://www.incad.cz
+
+## HLÁŠENÍ A OPRAVY CHYB ##
+Hlášení o chybách a požadavky na novou funkcionalitu zadávejte pomocí formuláře New Issue v sekci Issues.
+
+Prosíme o stručnost, věcnost a správné zařazení.
+
+### Typ ###
+  * Defect – chyba software
+  * Enhancement – požadavek na rozšíření
+  * Task – úkol bez zásahu do kódu nebo dokumentace
+  * Review – požadavek na revizi kódu
+  * Other – ostatní
+
+### Priorita ###
+  * Critical - pro požadavky vyžadující okamžitou reakci a vytvoření záplaty pro aktuální verzi
+  * Medium - pro požadavky vyžadující řešení v nejbližší plánované verzi
+  * Low - pro požadavky, které snesou odklad do případné pozdější verze
+
+### Status ###
+**otevřený**
+
+  * New – výchozí stav po nahlášení
+  * Accepted – problém reprodukován
+  * Started – započata práce
+**uzavřený**
+
+  * Fixed – opraveno, změna kódu
+  * Verified
+  * Invalid – není platným hlášením
+  * Duplicate – již existuje
+  * Wontfix – rozhodnuto, že se nebude opravovat
+  * Onhold – odloženo
+  * Done - dokončeno
+
+Pole Status nastavte na New, pole Owner nevyplňujte.
+
+## VÝVOJOVÉ PRÁCE ##
+Úkoly pro dané období domlouvá realizační tým.
+V případě specifického požadavku, lze podmínky vývoje dohodnout individuálně.
+
+Přejímání kódu třetí strany, podléhá schválení zařazení funkcinality realizační skupinou a revizi kódu programátory.
+http://www.incad.cz

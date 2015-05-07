@@ -1,0 +1,152 @@
+
+
+# About #
+Článek popisuje možnosti definice procesů v systému K4.
+
+## Procesy ##
+Procesy v systému K4 jsou definovány dvojí, jednodužší bez uživatelského vstupu a složitější, s možností definice spouštěných parametrů přes
+webové rozhraní.
+
+
+## Procesy bez uživatelského vstupu ##
+Základní procesy v K4 jsou jednoduché java programy se standardní metodou main. Vytvoření takového procesu spočívá ve vytvoření třídy a zavedení
+příslušného elementu do souboru lp.xml.
+```
+package org.someorg;
+
+public class TestSimpleProcess {
+    
+    public static main(String[] args) {
+        ....
+    }
+} 
+```
+```
+<processes>
+    <process>
+        <id>testsimpleprocess</id>
+        <description>Testik process</description>
+        <mainClass>org.someorg.TestSimpleProcess</mainClass>
+        <standardOs>lrOut</standardOs>
+        <errOs>lrErr</errOs>
+    </process>
+</processes>
+```
+
+Takto definovaný proces je možno rovnou spustit přes [RemoteAPI](RemoteAPI.md) nebo pomocí staršího přístupu, přes lr servlet [MenuAdministrace#Manipulace\_s\_procesy](MenuAdministrace#Manipulace_s_procesy.md).
+
+## Procesy s uživatelským vstupem ##
+Tato možnost byla přidána až v souvislosti s [Issue 114](https://code.google.com/p/kramerius/issues/detail?id=114) a je přítomna od verze 4.6. Spouštěná metoda je zde určena anotací
+`Process` a parametry metody anotacemi `ParameterName` z balíčku `cz.incad.kramerius.processes.annotations`.
+
+```
+package org.someorg;
+
+public class TestSimpleProcess2 {
+
+    @DefaultParameterValue("user")
+    public static final String DEFAULT_USER="pan_nikdo";
+    
+    
+    @Process    
+    public static void process(@ParamName("user")String user, 
+                               @ParamName("email")String email, 
+                               @ParamName("serverFolder")File serverFolder) {
+        ...
+    }
+} 
+```
+
+Anotace `@Process` určí metodu, kterou plánovač spustí, anotace `@ParamName` definuje formální jméno položky získané z formuláře od uživatele.
+Pokud taková položka nebyla od uživatele získána, algoritmus zkoumá jestli není definována implicitní hodnota určená parametrem `@DefaultParameterValue`.
+Parametry metody musí být typu `java.lang.String` nebo typu, který má definovaný konstruktor s jedním parametrem typu `java.lang.String`. Příkladem může být
+`java.io.File`.
+
+## Uživateslký vstup ProcessInputTemplate ##
+Pokud má proces definovanou tzv. vstupní šablonu, znamená to, že očekává pojmenované parametry, většinou získané od uživatele přes webové rozhraní.
+Vstupní šablona určena implementací třídy `ProcessInputTemplate` z balíčku `cz.incad.kramerius.processes.template`.  Definice takového procesu v lp.xml
+vypadá
+```
+<processes>
+    <process>
+        <id>testsimpleprocess2</id>
+        <description>Testik process</description>
+        <mainClass>org.someorg.TestSimpleProcess2</mainClass>
+        <standardOs>lrOut</standardOs>
+        <errOs>lrErr</errOs>
+        <templates>
+            <input class="org.someorg.TestSimpleProcess2InputTemplate"></input>
+        </templates>
+    </process>
+</processes>
+```
+Server při dotazu na vstupní formulář instanciuje třídu `TestSimpleProcess2InputTemplate` a zavolá na ni metodu `renderInput`, která má na startosti
+generování vstupního formuláře. Uživateli se formulář objeví v samostatném dialogu.  Příklad takového dialogu je vidět zde [Replikace#Gui](Replikace#Gui.md).
+
+## Implicitní šablona ##
+Pro procesy je definována třída `DefaultTemplate` z balíčku  `cz.incad.kramerius.processes.def`. Ta umí vygenerovat formulář pro všechny anotované paramtery
+anotací  `@ParamName`.
+
+## Výstup, šablona ProcessOutputTemplate ##
+Pokud je záhodno aby proces zobrazil výsledek jiným způsobem než standardně (tedy ve formě logu), je možno definovat výstupní šablonu. Ta je určena implementací
+rozhraní `ProcessOutputTemplate` z balíčku `cz.incad.kramerius.processes.def`. Výstupních šablon může být u procesu víc, zobrazení nabídky výstupních šablon a
+a samotnou výstupní šablonu jsou vidět zde  [Replikace#Gui](Replikace#Gui.md)
+
+
+## Komunikační protokol ##
+Naplánování procesu s uživatelským vstupem se děje ve dvou fázích.  Nejdříve si klient (browser) vyžádá vstupní formulář dotazem
+```
+    GET http://xxx.xxx.xxx.xxx/seach/lr?action=form_get&def=<process_def_id>
+```
+
+Parametr `action` určuje operaci, `def` určuje identifikátor procesu ze souboru `lp.xml` resp. `lp.st`.
+
+Jako druhý krok musí klient (browser) poslat vyplněné hodnoty ud uživatele. To se dějě pomocí dotazu
+```
+    GET http://xxx.xxx.xxx.xxx/seach/lr?action=form_post&def=<process_def_id>&paramsMapping={firstParamName=firstParamVal; secondParamName=secondParamValue}
+```
+Zde je důležitý parametr paramsMapping, který obsahuje vyplněné položky od uživatele. Nemusí být přitomny všechny, pokud některý parametr není, bude mít ve spuštěném
+procesu hodnotu null. Při posílání parametrů je nutno pro znaky  `';'|'\'|'{'|'}'|':'` použít jejich escape sekvence `'\;'|'\\'|'\{'|'\}'|'\:'`.
+
+
+## Definování vlastní vstupní a výstupní šablony ##
+Vlastní implementace šablon, ať už vstupní nebo výstupní, spočívá hlavně na implementaci metod `renderInput` resp. `renderOutput`. Parameterem metod je výstupní proud
+servletu java.io.Writer, který slouží pro standardní html výstup. Při generování je možno využít nějakého šablonovacího nástroje (freemarker, stringtemplate). V K4 je
+standardně přítomen StringTemplate ve verzi 3.2.1.
+
+Při definici vlastní vstupní šablony je nutno myslet na to, že je zodopovědná za předání parametrů od uživatele a tedy i vlastní naplánování procesu.
+Zde je definovaný kontrakt, každá vstupní šablona musí definovat javascriptovou metodu `window.onProcessFormSend`, kterou dialog před ukončením zavolá.
+```
+    <script language="JavaScript" type="text/javascript"> 
+    <!--    
+
+        window.onProcessFormSend = function() {
+            
+            var charsThatMustBeEscaped = [':',';','}','{'];
+
+            var firstValue = "Value from TextField 1".escapeChars(charsThatMustBeEscaped);
+            var secondValue = "Value from TextField 2".escapeChars(charsThatMustBeEscaped);
+            var thirdValue = "Value from TextField 3".escapeChars(charsThatMustBeEscaped);
+
+            var url = "lr?action=form_post&def=custom_process&paramsMapping={first="+firstValue+";second="+secondValue+";third="+thirdValue}&out=text";
+            processStarter("custom_process").start(url);
+        }
+    -->        
+    </script>
+```
+
+Poznámky:
+  1. Metoda `.escapeChars` je definována na objektu String a je definována až krameriem a slouží pro opatření escape sekvencí v libovolném stringu.
+  1. Snippet kódu  `processStarter("custom_process").start(url);` umožní naplánovat process `custom_process`.
+
+
+## Podprocesy ##
+Každý proces může v rámci sebe naplánovat další samostatný proces, který se ve správci procesů jeví jako dětský proces. Toto se může uskutečnit
+pomocí následujícího snippetu kódu
+```
+    ProcessUtils.startProcess(processDefId, params);
+```
+Poznámky:
+  1. Parametr `processDefId` je identifikátor procesu z `lp.xml` resp. `lp.st`.
+  1. Parametr `params` je pole parametrů procesu.
+

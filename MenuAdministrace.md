@@ -1,0 +1,293 @@
+
+
+_Dokumentace na této stránce je organizována podle jednotlivých logicky souvisejích činností, které nemusí nutně odpovídat samostatným položkám v administrátorském menu._
+
+
+Administrátorské úlohy může spouštět autentizovaný uživatel s příslušnou rolí. Operace prováděné na konkrétním dokumentu nebo jeho části se spouštějí z kontextové nabídky v příslušné záložce pravého panelu na obrazovce Zobrazení titulu. Obecné operace, nesouvisející s konkrétním titulem, se spouštějí z menu Administrace v záhlaví stránky. Všechny operace je také možno spustit zadáním URL s potřebnými parametry (popsáno v závěru tohoto dokumentu). Po spuštění procesu jak z menu nebo pomocí URL je pouze zobrazena informace o tom, že proces byl spuštěn, průběh a výsledky jeho zpracování je možné sledovat pomocí  příkazu Správa dlouhotrvajících procesů (viz níže)
+
+# Import dat #
+
+Data je možno importovat ze 4 zdrojů:
+
+## Automatický import z Krameria verze 3 přes replikační rozhraní ##
+
+Příkazy **Import monografií** nebo **Import periodik** spustí replikaci monografií nebo periodik. Import probíhá ve 3 fázích: Nejprve jsou data stažena přes replikační rozhraní K3 z původní instance K3 do pracovního adresáře na serveru K4. K4 je zde v roli replikačního klienta. V druhé fázi jsou XML soubory a obrázky v pracovním adresáři převedeny z formátu K3 do FOXML souborů K4, výsledné soubory jsou uloženy do dalšího pracovního adresáře na serveru K4. Ve třetí fázi je obsah tohoto pracovního adresáře naimportován do úložiště Fedora K4.
+
+### Nastavení replikačního rozhraní K3 a komunikace K3-K4 ###
+
+Podrobný popis replikačního rozhraní K3 najdete v dokumentaci K3, zde jsou jen shrnuty jednotlivé kroky.
+
+Před zahájením replikace je třeba v Krameriovi 3 založit replikační instituci, která bude použita pro replikaci a která je v Krameriovi 4 definována v konfiguračním souboru `migration.properties`. V Krameriovi 3 je také potřeba povolit přístup z IP adresy serveru Krameria4.
+
+Pro tuto replikační instituci si poznamenejte sigla, login a heslo a zadejte je v migration.properties do properties `k3.replication.sigla`, `k3.replication.login` a `k3.replication.password`. Heslo je třeba zadat tak, jak je interně uloženo v databázi K3, tabulka `institution`, sloupec `replicationoutpass`.
+
+Do property `k3.replication.url` v `migration.properties` zadejte URL replikačního rozhraní Krameria 3 ve tvaru http://...
+
+Některé informace, které jsou potřebné ke konverzi dat z Krameria 3 do Krameria 4, bohužel nejsou dostupné přes replikační rozhraní, ale musí se získávat přímo z databáze Krameria 3. V migration.properties tedy musíte nastavit přístupové údaje do databáze Krameria3 v properties:
+
+> `k3.db.driver=org.postgresql.Driver`
+
+> `k3.db.url=jdbc:postgresql://...`
+
+> `k3.db.user=...`
+
+> `k3.db.password=...`
+
+V konfiguraci databázového serveru Krameria 3 je také potřeba povolit vzdálený přístup z IP adresy serveru Krameria 4.
+
+Všem dokumentům, které chcete z Krameria 3 replikovat, musíte také pro tuto replikační instituci nastavit potřebná replikační práva. Abyste tento krok nemuseli dělat ručně v GUI Krameria 3 pro velké množství dokumentů, Kramerius 4 nabízí příkaz **K3 - replikační práva,** který v jedné dávce nastaví potřebná práva k replikaci pro všechny dokumenty.
+
+### Určení titulů pro replikaci ###
+
+To, které dokumenty se budou z K3 replikovat, se řídí podle obsahu souborů `monographs.txt` nebo `periodicals.txt` . Umístění a názvy těchto souborů jsou definovány v souboru .kramerius4/migration.properties, property `migration.periodicals` a `migration.monographs`.
+
+Seznam všech identifikátorů dokumentů obsažených v Krameriovi 3 můžete získat spuštěním příkazu  **K3 - seznam identifikátorů** (proces Enumerator). Připojí se k databázi Krameria 3 a do souborů monographs.txt a periodicals.txt vypíše její kompletní obsah (interní ID pro monografie, ISSN a ročník pro periodika - toto jsou údaje, se kterými umí pracovat replikační rozhraní K3). Vytvořené soubory můžete přejmenovat a rozdělit na menší kusy a řídit tak, po jakých  úsecích se bude replikovat příkazem **Import...**. Vždy se replikuje vše, co je v souboru `monographs.txt`, resp. `periodicals.txt`. Importní proces čte tyto řídící soubory řádek po řádku, a pro každý řádek parsuje identifikátor dokumentu a postupně provede všechny 3 fáze importu.
+
+### Nastavení pracovních adresářů ###
+
+V souboru `.kramerius4/migration.properties` jsou definovány i pracovní adresáře.
+
+Property `migration.directory` (defaultně `.kramerius4/replication`) definuje adresář, do kterého jsou stahována data z K3 - adresář musí existovat a je vyprázdněn před každým importem titulu nebo ročníku.
+
+Property `migration.target.directory` určuje adresář, do kterého jsou ukládány soubory ve formátu FOXML K4, vytvořené ve fázi konverze dat z K3. Pokud je nastavena property `convert.useContractSubfolders`  na hodnotu `true` (defaultní hodnota je `false`), je pro každý zpracovávaný dokument z K3 v cílovém adresáři vytvořen podadresář s názvem odpovídajícím číslu zakázky uvedené v původním dokumentu. Cílový adresář v tomto případě není mazán a výsledně v něm vzniká datová struktura se všemi konvertovanými dokumenty ve formátu K4, rozdělená podle čísel zakázek.
+
+Pokud je property `convert.useContractSubfolders` false, podadresáře se nevytvářejí a obsah cílového adresáře je před každým dalším procesem konverze smazán.
+
+### Omezení importu pouze na fázi konverze ###
+
+Nastavením property `ingest.skip` na hodnotu true je proces importu zastaven po skončení fáze konverze a neproběhne fáze importu do úložiště Fedora. Proces importu se tak vlastně stává procesem konverze.
+
+
+### Kódování binárních datastreamů FOXML ###
+
+Property `convert.files`, `convert.previews` a `convert.thumbnails` určují způsob kódování binárních datastreamů v konvertovaných FOXML souborech.
+
+Property `convert.files` ovládá streamy IMG\_FULL, TEXT\_OCR,  property `convert.previews` stream IMG\_PREVIEW a property `convert.thumbnails` stream  IMG\_THUMB.
+
+Výchozí hodnota `encoded` znamená, že příslušný stream je typu Managed (M) a jeho data jsou pro import zakódována v FOXML souboru pomocí  kódování base64.
+
+Hodnota `referenced` znamená, že stream je typu Managed(M) a jeho data jsou pro import odkazována pomocí file URL do výstupního adresáře konvertoru. Při importu jsou data zkopírována do úložiště Fedora.
+
+Hodnota `external` znamená, že stream je typu External (E) a jeho data  jsou odkazována pomocí file URL do výstupního adresáře konvertoru, kde tedy musí trvale zůstat.
+
+Pro hodnoty external a referenced jsou odkazované soubory umístěny v následujících podadresářích výstupního adresáře:
+  * IMG\_FULL - img
+  * TEXT\_OCR - txt
+  * IMG\_PREVIEW - preview
+  * IMG\_THUMB - thumbnail
+
+Vlastní FOXML soubory jsou ve všech případech přímo ve výstupním adresáři.
+
+Při použití hodnot external a referenced musí být výstupní adresář konvertoru přístupný ze serveru, na kterém běží úložiště Fedora, tedy musí být součástí  filesystému tohoto serveru.
+
+### Konverze formátu obrazových souborů do JPG ###
+
+Nastavením vlastnosti `convert.originalToJPG=true` (výchozí hodnota je `false`) určíte, že při konverzi dat z K3 budou soubory v plné velikosti převedeny z formátu DjVu, případně z formátů podporovaných knihovnou Java Advanced Imaging, do formátu JPG, při zachování původního rozlišení a s výchozí kompresí JAI (0.75).
+
+Náhledy malé i střední velikosti jsou vždy konvertovány z původního obrazového souboru v plné velikosti, zmenšeny a uloženy ve formátu JPG. Ke konverzi a zmenšování je použita knihovna Java Advanced Imaging (JAI), jejíž architektura umožňuje používat různé implementace kodeků pro jednotlivé typy formátů. Ve standardní instalaci K4 je zahrnut základní kodek z distribuce JAI (jai\_imageio-1.1.jar). Tento kodek je možno nahradit jinou implementací, případně rozšířit o nativní konverzní knihovny pro konkrétní platformu, nahrazením defaultního souboru `jai_imageio-1.1.jar` v adresáři knihoven aplikace K4 (tedy `tomcat/webapps/search/WEB-INF/lib`). Podrobnější informace o systému JAI a jeho pluginů najdete na stránkách http://www.oracle.com/technetwork/java/javase/tech/jai-142803.html
+
+Kvalita zmenšených náhledů může být v závislosti na formátu a velikosti originálního souboru ovlivněna kromě použitého kodeku také algoritmem použitým pro zmenšování. Konvertor pro zmenšování opět používá knihovnu JAI (resp. Java2D) a použitý algoritmus je řízen konfigurační property `scalingMethod`:
+
+```
+## Metody zmenosovani obrazku 
+## Podporovane hodnoty: REPLICATE, AREA_AVERAGING, BILINEAR, BICUBIC, NEAREST_NEIGHBOR, BILINEAR_STEPPED, BICUBIC_STEPPED, NEAREST_NEIGHBOR_STEPPED
+scalingMethod=BICUBIC_STEPPED
+```
+
+Výchozí algoritmus je tedy BICUBIC\_STEPPED, význam jednotlivých hodnot je popsán v dokumentaci třídy [RenderingHints](http://docs.oracle.com/javase/6/docs/api/java/awt/RenderingHints.html).
+
+
+
+
+## Import dokumentů ve formátu DTD Krameria 3 ##
+
+Příkaz **Konverze a import** je analogický s procesem Import periodik či monografií, je v něm ale vynechána první fáze. Namísto replikace dat z K3 proces projde obsah serverového adresáře definovaného v property `convert.directory`  a jeho podadresářů, pokud obsahují data ve formátu DTD Kramerius3, překonvertuje je do formátu FOXML a naimportuje do Krameria 4. Každý podadresář může obsahovat data (XML + obrázky + OCR) pro jeden titul.
+
+## Import dokumentů ve formátu FOXML Krameria 4 ##
+
+Příkaz **Import FOXML** projde obsah serverového adresáře `.kramerius4/import` (případně jiného adresáře definovaného v `migration.properties`) a jeho podadresářů a soubory ve formátu FOXML 1.1 naimportuje do Krameria 4. Tuto funkci je možné též použít pro manuální replikaci dat mezi dvěma instancemi systému K4 (data ze zdrojové instance jsou vyexportována příkazem **Export FOXML**).
+
+Property `import.directory` specifikuje buď přímo adresář určený k importu nebo může odkazovat na textový soubor se seznamem adresářů k importu (na každém řádku jeden adresář).
+
+## Replikace dokumentů z jiné instalace Krameria 4 ##
+
+Od verze 4.6 je možno importovat dokumenty automaticky z jiné instalace Krameria 4 přes replikační rozhraní. Replikace vyžaduje dva kroky:
+
+  1. Ve zdrojovém K4 je třeba pomocí standardního systému přístupových práv povolit akci `export_k4_replications` pro požadované tituly pro uživatelský účet, který bude pro replikaci použit.
+  1. Replikace se spustí z administrátorského menu v cílové instalaci K4, příkazem **K4 replikace...**. Jako parametry procesu replikace je třeba zadat URL (handle) dokumentu, který má být replikován (lze je získat na zdrojovém K4 příkazem **Persistentní URL** v kontextovém menu příslušného dokumentu) a dále uživatelské jméno a heslo uživatele, který má na zdrojovém K4 povolena práva pro replikaci.
+
+Podrobný popis procesu replikace je uveden na stránce [Replikace](Replikace.md).
+
+# Indexace dokumentů #
+
+Data naimportovaná do Krameria 4 jsou pouze uložena v úložišti Fedora. Aby je mohl Kramerius zpřístupnit uživatelům, musí se importované soubory indexovat pro vyhledávač SOLR. Indexací a případným odebíráním dokuemntů z indexu je tak možné řídit, jestli jsou dokumenty v úložišti zveřejněné.
+
+## Indexace nových dokumentů ##
+
+Příkaz **Indexace dokumentů** v menu administrace otevře seznam všech titulů pro indexaci,  nahoře můžete vybrat typ monograph nebo periodical, v tabulce se objeví příslušný seznam, kliknutím na titul spustíte jeho indexaci, po ukončení indexace je titul vyhledatelný v uživatelském GUI. Tituly, které již jsou v indexu, jsou označeny zeleným zaškrtávátkem. Kliknutím na položku index vedle přepínače typů spustíte indexaci všech titulů daného typu.
+
+
+## Reindexace existujících dokumentů ##
+
+Příkaz **Reindexace** v kontextové nabídce dokumentu umožňuje opakovanou reindexaci daného dokumentu, například po změně v jeho datech.
+
+## Odstranění dokumentu z indexu ##
+
+Příkaz **Odstranit dokument z indexu** v kontextové nabídce odstraní daný dokument z indexu SOLR a dokument tak není veřejně přístupný a vyhledatelný v aplikaci Kramerius 4. Opětovné zveřejnění je možné příkazem **Indexace dokumentů** v menu administrace.
+
+_Pozn.: Autoři odstraněných dokumentů se mohou ještě určitý čas objevovat v seznamu na záložce Autoři. Toto prodlení je závislé na konfiguraci indexu SOLR. Okamžité odstranění autorů smazaných dokumentů ze seznamu můžete provést optimalizaci indexu SOLR příkazem `http://adresa_serveru_solr:8080/solr/update?stream.body=<optimize/>`. Tato optimalizace však u větších indexů může být poměrně časově náročná._
+
+## Odstranění dokumentu z indexu i úložiště ##
+
+Příkaz **Odstranit dokument z fedory** v kontextové nabídce odstraní daný dokument z úložiště Fedora i z indexu SOLR.
+
+
+### Odstranění dokumentů pomocí REST API ###
+
+K mazání dokumentů z fedory slouží proces "delete" s parametrem uuid, který smaže z fedory daný foxml objekt a dále rekurzivně všechny objekty, které jsou tomuto objektu podřízeny v hierarchické struktuře. Pokud má odstraňovaný objekt v hierarchii nějaký nadřazený objekt, je z tohoto nadřazeného objektu odstraněna odpovídající RDF vazba. Nakonec je tento nadřazený objekt automaticky přeindexován a všechny smazané objekty jsou také odstraněny z indexu.
+
+K mazání dokumentu pouze z indexu slouží proces "reindex" s parametry deleteDocument a uuid. Z indexu je odstraněn požadovaný dokument a opět rekurzivně celý jeho podřízený hierarchický strom.
+
+Pokud byste potřebovali smazat z fedory pouze jediný foxml objekt a v zápětí jej nahrát zpět kvůli aktualizaci metadat, byl by uvedený postup s mazáním celé hierarchie objektů poněkud neefektivní. V takovém případě bude vhodnější použít přímo SOAP nebo REST API fedory, konkrétně metody purgeObject a ingest. Případně můžete přes stejná API aktualizovat přímo datastreamy DC a BIBLIO\_MODS, bez nutnosti mazání celého objektu, k tomu slouží metoda modifyDatastreamByValue. Ve všech těchto případech je pak nutné změněný dokument přeindexovat pomocí REST API K4, spuštěním procesu reindex s parametry reindexDoc a uuid.
+
+
+## Změna viditelnosti (přístupových práv) ##
+
+Příkaz **Změna viditelnosti** v kontextové nabídce umožňuje měnit příznak `kramerius:policy` dokumentu a všech jeho podřízených částí mezi stavy public a private a ovládat tak, jestli jsou plná obrazová data dokumentu přístupná i z počítačů mimo prostory knihovny. Seznam povolených IP adres je definován v editoru práv v kritériu IP Filtr (viz [Práva](Prava.md)) .
+
+
+### Přehled parametrů volání indexeru ###
+
+Kromě možnosti spouštění indexace z administrátorského rozhraní je indexer možno spustit jako kterýkoli jiný administrátorský proces pomocí API spouštění procesů, proces je v seznamu procesů definován s identifikátorem `indexer` a má vždy následující 3 parametry: akce, subjekt a název. Možné hodnoty parametrů akce a subjekt jsou popsány v následující tabulce, parametr název je název příslušného indexačního procesu v tabulce přehledu procesů.
+
+Příklady parametrů:
+  * `deleteDocument uuid:0eaa6730-9068-11dd-97de-000d606f5dc6 Drobnustky-mazani`
+  * `krameriusModel monograph Indexace_monografii`
+  * `optimize cokoli Optimalizace_indexu`
+
+| **Akce** | **Subjekt** | **Popis** |
+|:---------|:------------|:----------|
+|deleteDocument| PID | odstraní rekursivně dokument|
+|deleteModel| MODEL | odstraní všechny dokumenty daného modelu, rekursivně|
+|deletePid| PID | odstraní jeden dokument|
+|fromPid| PID | indexuje jeden dokument|
+|fullRepo| ignorován| indexuje rekursivně všechny modely přítomné ve vlastnosti `fedora.topLevelModels`|
+|fullRepoWithClean| ignorován | smaže celý index, a pak volá fullRepo|
+|optimize| ignorován | volání `optimize` v SOLR|
+|fromKrameriusModel| PID | indexuje rekursivně dokument, který před tím rekursivně smaže z indexu|
+|fromKrameriusModelNoCheck| PID | indexuje rekursivně dokument,  který před tím NEsmaže rekursivně z indexu (používat pouze, pokud je jistota, že v indexu nejsou podřízené dokumenty, ktere neexistují v úložišti fedora)|
+|krameriusModel| MODEL | indexuje rekursivně všechny dokumenty daného modelu,  které před tím smaže rekursivně z indexu|
+|krameriusModelNoCheck| MODEL | indexuje rekursivně všechny dokumenty daného modelu,  které před tím NEsmaže rekursivně z indexu|
+|reindexDoc| PID | indexuje rekursivně dokument, jestliže jeho datum v úložišti fedora je novější než v indexu|
+|reindexDocForced| PID | indexuje rekursivně daný dokument|
+|checkIntegrity| ignorován | smaže z indexu dokumenty, které nejsou v úložišti fedora (proces se spustí rekursivně na modely uvedené ve vlastnosti `fedora.topLevelModels`|
+|checkIntegrityByModel| MODEL | smaže z indexu rekursivně dokumenty daného modelu, které nejsou v úložišti fedora|
+|checkIntegrityByDocument| PID | smaže z indexu rekursivně všechny dokumenty, které nejsou v úložišti fedora|
+|reindexCollection| PID sbírky | reindexuje rekursivně dokumenty dané virtuální sbírky|
+
+# Export dokumentů #
+
+## Export PDF ##
+
+Příkaz **Generování PDF** v kontextové nabídce umožňuje vyexportovat podmnožinu vybraných stránek daného dokumentu do PDF souboru.
+
+## Export FOXML ##
+
+Příkaz **Exportovat FOXML** v kontextové nabídce vyexportuje všechny soubory daného dokumentu ve formátu FOXML 1.1 do složky `.kramerius4/export` na serveru.
+
+## Export METS ##
+
+Příkaz **Záznam METS** v kontextové nabídce zobrazí data daného dokumentu ve formátu METS v samostatném okně prohlížeče.
+
+# Podpora prohlížeče Deep Zoom #
+
+## Generování cache dlaždic ##
+
+Příkaz **Generovat cache pro deep zoom** v kontextové nabídce vytvoří pro vybraný dokument dlaždice pro jednotlivá přiblížení v prohlížečce Seadragon.
+
+## Smazání cache dlaždic ##
+
+Příkaz **Smazat cache pro deep zoom** v kontextové nabídce smaže ro vybraný dokument dlaždice pro jednotlivá přiblížení v prohlížečce Seadragon.
+
+# Procesy v systému Kramerius #
+Pro dlouho trvající akce má system kramerius definován termín dlouhotrvající procesy. Spouští se jako standardní systémové procesy a lze je spravovat systemovými prodstředky (ps, kill, top, apod.). Vždy se jedná o java programy.
+
+## Správa dlouhotrvajících procesů ##
+
+Příkaz **Správa dlouhotrvajících procesů** v menu administrace otevře okno se seznam všech procesů, které kdy byly spuštěny, defaultně seřazené podle času spuštění sestupně, takže na první stránce vidíte nejčerstvější procesy. Kliknutím na hlavičku sloupce se podle něj  řadí.
+
+V posledním sloupci tabulky procesů jsou k dispozici kontextové operace. Kliknutím na příkaz `Logs` otevřete v samostatném okně detailní informace o jeho běhu (logy). Některé typy procesů ale mohou mít kromě  logů vlastní typ výstupu - to je případ procesu Replikace, kde je seznam úspěšně a neúspěšně importovaných titulů. Procesy ve stavu PLANNED nebo RUNNING je možno ukončit kliknutím na příkaz Kill v příslušném řádku.
+
+Procesy spuštěné pro více dokumentů najednou a také procesy, které jsou automaticky spouštěny následně po jiném procesu (např. indexace po importu dat nebo po změně přístupových práv) jsou sdruženy do skupin - skupina je v tabulce označena ikonkou + před názvem hlavního procesu, kliknutím na tuto ikonku jsou zobrazeny další procesy ve skupině.
+
+### Definice procesu ###
+Všechny procesy jsou definovány v souboru lp.st, který je součástí distribučního war souboru. Obsah definičního souboru procesů najdete v úložišti SVN na této adrese: http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/processes/res/lp.st
+
+(Definice procesů jsou rozšiřitelné - administrátor může definovat vlastní procesy případně předefinovavat existující. K tomu slouží textový soubor `{user_home}/.kramerius4/lp.xml`. Jeho syntaxe je stejná, jako u "vestavěného" souboru lp.st. Pokud obsahuje definici procesu se stejným id, tato definice přepisuje odpovídající definici v lp.st).
+
+V definicích procesu jsou všechny náležitosti potřebné ke spuštění. Ukázka definice procesu:
+```
+<processes>
+        <process>
+		<!-- Identifikator procesu -->
+		<id>replikator_monographs</id>
+		<description> ... </description>
+		<mainClass>org.kramerius.Replicate</mainClass>
+                <!--soubor standardniho vystupu-->
+		<standardOs>lrOut</standardOs>
+                <!--soubor chyboveho vystupu-->
+		<errOs>lrErr</errOs>
+		<!-- Parametry predavane JVM -->		
+		<javaProcessParameters>-Xmx512m -Xms256m</javaProcessParameters>
+		<!-- Parametry predavane samotnemu procesu -->
+		<parameters>monographs</parameters>
+		...
+        </process>
+</processes>
+```
+
+
+### Manipulace s procesy ###
+
+Pro manipulaci doporučujeme použít [RemoteAPI](RemoteAPI.md)
+
+
+### Stavy procesů ###
+
+Spouštěné procesy mohou mít stavy, které vypovídají o fázi života procesu. Jedná se o stavy:
+  * **PLANNED** - Proces byl naplánován ke spuštění.
+  * **RUNNING** - Proces běží. Výpis běžících procesů (příkaz ps resp. tasklist) by měl proces zobrazit.
+  * **FINISHED** - Proces skončil bez chyb.
+  * **KILLED** - Proces byl zabit.
+  * **FAILED** - Proces skončil s chybami.
+
+
+### Dávkové stavy procesů ###
+
+Pocesy rovněž mohou v rámci svého života naplánovat nový, dětský podproces. V takovém případě se hlavní proces stává dávkovým a může mít jeden z
+následujících dávkových stavů.
+
+  * **BATCH\_STARTED** - Alespoň jeden z procesů je běžící.
+  * **BATCH\_FAILED** - Všechny procesy doběhly a alespoň jeden je ve stavu FAILED nebo KILLED.
+  * **BATCH\_FINISHED** - Všechny procesy doběhly se stavem FINISED.
+
+Poznámka: V případě, že server nemůže např. z důvodu nedostatku paměti spustit instanci JVM pro daný proces, nedojde ani k vytvoření adresáře s logy procesu a v rootu složky procesu se ale objeví soubor hs\_err\_pid**.log**
+
+
+
+# Editor pořadí částí dokumentu #
+
+Položka Editor v hlavním administrátorském menu otevře v samostatném okně prohlížeče aplikaci, umožňující přesouvání jednotlivých podčástí dokumentu v rámci dané úrovně (například změnu pořadí stránek), případně přesun jednotlivých podčástí mezi dokumenty (např. přesun čísla periodika mezi dvěma ročníky nebo sloučení dvou rozdělených ročníků do jednoho).
+
+Příkazem **Načíst** v pravém horním rohu okna editoru můžete otevřít požadovaný dokument (buď zadáním jeho PID nebo vyhledáním pomocí názvu či autora). Pokud byl editor otevřen z kontextové nabídky (namísto hlavního administrátorského menu), je v něm rovnou načten příslušný dokument.
+
+Načtený dokument je zobrazen v samostatné záložce v hlavní pracovní ploše editoru, pod touto záložkou je pak seznam jednotlivých podčástí daného dokumentu, rozdělený opět pod záložkami podle jednotlivých typů RDF vazeb.
+
+Pořadí částí v rámci daného dokumentu můžete změnit přesouváním ikonek jednotlivých částí na požadovanou pozici (metodou drag & drop). Po dokončení změn klikněte na příkaz Uložit  v pravém horním rohu okna, provedené změny budou uloženy do odpovídajích objektů FOXML a následně je automaticky spuštěna reindexace příslušného dokumentu. Po úspěšné reindexaci (průběh je možno kontrolovat v Správě procesů) a znovuotevření stránky příslušného dokumentu se změny projeví v aplikaci Kramerius4.
+
+Opakovaným použitím příkazu načíst můžete otevřít více dokuemntů současně. K přesouvání částí mezi různými dokumenty slouží v aplikaci Editor schránka (clipboard). Schránku otevřete stažením oddělovacího proužku na dolním okraji záhlaví okna editoru. Části dokumentů mezi různými dokumenty přesunete tak, že je nejprve přetáhnete ze zdrojového dokumentu do schránky, pak přejdete do cílového dokumentu (klepnutím na jeho záložku) a pak do něj na požadovanou pozici přesunete příslušný objekt ze schránky. Změny opět uložíte příkazem Uložit.
+
+# Další funkce #
+
+Další funkce administrátorského prostředí jsou popsány na stránkách NovinkyVeVerzi46 a NovinkyVeVerzi47
+

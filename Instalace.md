@@ -1,0 +1,398 @@
+
+
+Před instalací aplikace Kramerius 4 je třeba nainstalovat následující systémové komponenty:
+
+| Java | Oracle JDK 1.6|
+|:-----|:--------------|
+| Aplikační server| podporující specifikace Servlet 2.5 a JSP 2.1 nebo novější (popsaná ukázková instalace předpokládá použití Apache Tomcat 6)|
+| Databáze|Postgres 8.4 nebo novější|
+|Úložiště|Fedora Commons 3.4, 3.5 nebo 3.6|
+|SMTP server|libovolný|
+
+Kramerius 4 nevyžaduje žádné specifické revize uvedených komponent, obecně je rozumné používat jejich pokud možno nejnovější aktualizace. Popis instalace a administrace těchto systémových komponent není součástí této dokumentace, předpokládáme, že administrátor aplikace Kramerius 4 ovládá instalaci a administraci výše uvedených komponent.
+
+Operační systém může být libovolný, na kterém je možno tyto komponenty provozovat, vlastní aplikace Kramerius 4 žádné speciální požadavky na systém nemá. Systém je vyvíjen a testován na běžných distribucích Linuxu. Hardware serveru musí být dimenzován na uvažované množství dat, doporučujeme minimálně dvojnásobnou velikost pevného disku, než je plánovaná velikost obrazových dat. Vzhledem k velké paměťové náročnosti práce s grafickými daty (náhledy stránek, zoomování) je třeba i při minimálním provozu aplikace alespoň 8GB RAM.
+
+K4 je vhodné nainstalovat pod samostatným uživatelským účtem, například kramerius4.
+
+V produkčním prostředí je před J2EE server (Tomcat) vhodné předřadit webserver přístupný na portu 80, například Apache s nakonfigurovanými moduly mod\_proxy a mod\_proxy\_ajp.
+
+Každou komponentu systému Kramerius (tedy repository Fedora, vlastní aplikaci K4, indexer SOLR, databázi PostgreSQL)  je možné nainstalovat na samostatný server.
+
+**Distribuční soubory**
+
+Distribuční soubory aplikace Kramerius 4 najdete v sekci Downloads. Aplikace je rozdělena do dvou archivních souborů (znaky x.x.x jsou samozřejmě nahrazeny konkrétním číslem verze):
+  * `installation-x.x.x.zip` obsahuje podpůrné soubory potřebné při prvotní instalaci K4, jejich obsah se mezi jednotlivými aktualizacemi K4 nemění
+  * `Kramerius-x.x.x.zip` obsahuje vlastní aplikaci K4, soubory z tohoto archivu je třeba instalovat jak při prvotní instalaci, tak při následných aktualizacích.
+
+_Poznámka: Distribuční soubory aktuální verze K4 jsou označeny jako `Featured`. K této verzi se vztahuje  i obsah dokumentace na wiki. Volbou `Search All Downloads` se dostanete k seznamu starších verzí K4, které jsou zároveň doplněny o archiv dokumentace v odpovídajícím souboru `Kramerius-doc-x.x.x.zip`._
+
+V následujících odstavcích jsou uvedeny požadavky aplikace Kramerius 4 na specifickou konfiguraci systémových komponent, pokud možno i s odkazy na příklady konkrétních úprav příslušných konfiguračních souborů. Tyto příklady jsou uvedeny pouze pro ilustraci jedné z možných konfigurací a nenahrazují dokumentaci k jednotlivým systémovým komponentám. V případě distribuované instalace je třeba uvedené příklady konfiguračních URL (localhost) nahradit adresami příslušných serverů.
+
+# Operační systém #
+
+  * Nastavit systémovou proměnnou pro instalaci Fedora Commons( `FEDORA_HOME`).
+  * Nastavit dodatečné spouštěcí parametry pro aplikační server : `-Djava.awt.headless=true  -Dsolr.solr.home=$FEDORA_HOME/solr -XX:MaxPermSize=128m -Xms512m -Xmx1024m`
+
+
+[Příklad konfigurace systémových proměnných](PrikladKonfigurace#System_Variables.md)
+
+(v uvedených příkladech konfigurace předpokládáme instalaci Tomcatu a Fedory do domácího adresáře uživatele kramerius4)
+
+# PostgreSQL #
+
+  * Vytvořit uživatele `fedoraAdmin` a pro něj databáze `fedora3`, `kramerius4` a (při použití implementace Fedora Resource Indexu MPTTripleStore) `riTriples`.
+
+
+# Fedora Commons #
+
+Nainstalujte úložiště Fedora Commons podle jeho dokumentace.
+
+[Příklad instalace Fedora Commons](PrikladKonfigurace#Fedora.md)
+
+## Nastavení aliasů ##
+
+Po instalaci fedory je třeba do souboru `$FEDORA_HOME/server/config/fedora.fcfg` do sekce začínající `<module role="fedora.server.resourceIndex.ResourceIndex" ` přidat následující parametry (definice aliasů pro XML namespace):
+
+```
+ <param name="alias:kramerius" value="http://www.nsdl.org/ontologies/relationships#">
+      <comment>Alias for Kramerius</comment>
+ </param>
+ <param name="alias:oai" value="http://www.openarchives.org/OAI/2.0/">
+      <comment>Alias for OAI</comment>
+ </param>
+```
+
+## Nastavení implementace resource indexu ##
+
+Ve stejné sekci fedora.fcfg, jako pro nastavení aliasů (resource index) je třeba změnit u parametru `datastore` hodnotu na `localPostgresMPTTriplestore`. V odpovídající sekci localPostgresMPTTriplestore, kde je definován datasource pro MPTTriplesotre, je třeba nastavit databázové heslo na heslo, které jste přiřadili uživateli fedoraAdmin.
+
+_(Poznámka: Kramerius 4 podporuje implementaci Resource index Mulgara i MPTtripleStore. To, která implementace bude použita, je určeno konfigurační property `resource.index.service.class` v souboru `configuration.properties` - viz níže. Výchozí hodnota této property je nastavena na MPTtripleStore, protože implementace Mulgara není v současné podobě použitelná se službou OAI provider. )_
+
+## Nastavení přístupových práv ##
+
+Aplikace Kramerius 4 má vlastní systém řízení přístupových práv a nevyužívá systém XACML pravidel Fedora Commons. Pokud nepotřebujete k úložišti přistupovat odjinud, než z aplikace Kramerius 4, je tedy nejjednodušší úložiště vůbec nezveřejňovat a systém pravidel XACML nevyužívat. Deaktivace autorizačního systému je popsána v dokumentaci Fedora Commons, jednou z možností je v souboru fedora.fcfg v sekci `<module role="org.fcrepo.server.security.Authorization"` nastavit parametr `<param name="ENFORCE-MODE" value="permit-all-requests"/>`.
+
+Jestliže z nějakého důvodu autorizační systém Fedora Commons potřebujete používat, je pravděpodobné, že narazíte na následující situace:
+
+  * Pokud k administrátorskému rozhraní Fedory chcete přistupovat z jiného počítače, než na kterém je nainstalovaná, musíte deaktivovat nebo upravit omezení přístupu ` deny-apim-if-not-localhost.xml`
+
+  * Při použití FOXML objektů s externě referencovaným obsahem datastreamů je třeba  deaktivovat nebo upravit pravidlo `deny-unallowed-file-resolution.xml`
+
+XACML pravidla jsou uložena ve složce `$FEDORA_HOME/data/fedora-xacml-policies/repository-policies`. Deaktivaci lze provést buď editací xacml pravidel v souboru nebo jeho prostým odstraněním. Editace xacml pravidel je popsána v dokumentaci úložiště Fedora Commons.
+
+## Import FOXML modelů ##
+
+Přes administrátorské rozhraní Fedory je třeba naimportovat FOXML objekty obsažené v distribučním souboru  installation-x.x.zip, adresář `fedora`. _Pokud budete importovat i [OAI Fedora model](#Fedora_model.md), je před jeho importem nutné provést konfiguraci ._ Popis administrátorského rozhraní je součástí dokumentace Fedora Commons.
+
+# Instalace Apache SOLR #
+
+Na aplikační server nainstalovat aplikaci `solr.war` z distribučního souboru installation-x.x.zip.
+
+Do adresáře $FEDORA\_HOME/solr (nebo jinam podle vašich potřeb) nakopírovat obsah adresáře `solr`  z distribučního souboru installation-x.x.zip.
+
+V adresáři  $FEDORA\_HOME/solr/conf editovat soubor solrconfig.xml - položka `dataDir`
+
+Nastavit systémovou property JDK `solr.solr.home` na cestu k adresáři s instalací solr (tedy obvykle $FEDORA\_HOME/solr, pro Tomcat se nastavuje jako součást systémové proměnné `JAVA_OPTS`)
+
+# Instalace K4 #
+
+Na aplikační server nainstalovat aplikace search.war, editor.war a rightseditor.war z distribučního souboru Kramerius-x.x.zip.
+
+## Konfigurace datasource ##
+
+V aplikačním serveru nakonfigurujte JDBC datasource pro databázi `kramerius4` ( [příklad pro Tomcat](PrikladKonfigurace#Konfigurace_datasource.md)).
+
+Do adresáře sdílených knihoven aplikačního serveru (v případě Tomcatu `$CATALINA_HOME/lib`) přidejte jar soubor s JDBC ovladačem pro PostgreSQL, který je součástí instalace vašeho databázového serveru.
+
+## Instalace sdílených knihoven ##
+
+Do adresáře sdílených knihoven  (v případě Tomcatu `$CATALINA_HOME/lib`) je třeba nainstalovat knihovnu `security-core.jar` z distribučního souboru Kramerius-x.x.zip.
+
+
+Pokud instalujete aplikaci K4 na stejnou instanci aplikačního serveru, na kterém je nainstalováno úložiště Fedora Commons, je třeba do adresáře sdílených knihoven aplikačního serveru překopírovat také následující knihovní soubory jar z aplikace fedora (v případě Tomcatu adresář `$CATALINA_HOME/webapps/fedora/WEB-INF/lib`):
+  * `carol`
+  * `commons-logging`  (pro Fedora Commons 3.4 a novější již není třeba)
+  * `log4j` (pro Fedora Commons 3.4 a novější již není třeba)
+
+## Nastavení kódování URI ##
+
+V aplikačním serveru nastavte kódování URI na UTF-8  ([příklad pro Tomcat](PrikladKonfigurace#URIEncoding.md))
+
+## Autentizace a single sign-on ##
+
+Pro autentizaci a jednotné přihlášení uživatele pro všechny 3 webové aplikace systému Kramerius4 (tedy hlavní `search` a administrátorské `editor` a `rightseditor`), aktivujte single sign-on v konfiguraci aplikačního serveru.
+
+Aplikace K4 využívá standardní autentizační mechanismus JAAS, (třída autentizačního modulu je `cz.incad.kramerius.security.jaas.K4LoginModule`, třída uživatelské role je  `cz.incad.kramerius.security.jaas.K4RolePrincipal` ).
+
+Pokud Kramerius 4 provozujete na stejném serevru, jako úložiště Fedora, povolte autentizaci těchto modulů v konfiguraci  JAAS úložiště Fedora Commons ([příklad pro Tomcat](PrikladKonfigurace#Single_Sign-on.md))
+
+Pokud Kramerius4 provozujete na jiném serveru, než úložiště Fedora, nastavte výšeuvedené autentizační údaje podle dokumentace JAAS vašeho serveru.
+
+Po prvním spuštění aplikace se v databázi vytvoří databázové tabulky s předdefinovanými autorizačními pravidly a implicitnim administrátorským uživatelem.  Předdefinované jméno a heslo admin uživatele je:
+
+`krameriusAdmin`
+
+`krameriusAdmin`
+
+
+# Konfigurace #
+
+Po prvním spuštění aplikačního serveru s nainstalovanou aplikací Kramerius 4 (pod systémovým uživatelem kramerius4) je v domovském adresáři uživatele kramerius4 vytvořen adresář `.kramerius4` a v něm prázdné soubory `configuration.properties`, `search.properties`, `indexer.properties` a `migration.properties`. Konfigurační soubory K4 využívají rozšířené syntaxe properties podporované použitou knihovnou Apache commons-configuration.  Soubory jsou uspořádány ve dvoustupňové hierarchii: Základní sdílené properties jsou v souboru configuration.properties, jednotlivé plugin moduly externích procesů je pak rozšiřují ve svých konfiguračních souborech (např. migration.properties, indexer.properties). Konfigurační properties specifické pro GUI K4 jsou v souboru search.properties.
+
+Defaultní hodnoty properties (viz níže) jsou definovány uvnitř aplikačního archivu search.war. Hodnoty je možno předefinovat jejich uvedením ve stejně pojmenovaném souboru umístěném v adresáři $USER\_HOME/.kramerius4. Tyto konfigurační soubory (prázdné) jsou vytvořeny automaticky při prvním spuštění K4, resp. příslušného externího procesu.
+
+Obsah defaultních hodnot jednotlivých konfiguračních souborů najdete zde:
+
+  * [configuration.properties](http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/res/configuration.properties)
+  * [search.properties](http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/res/configuration.properties)
+  * [indexer.properties](http://code.google.com/p/kramerius/source/browse/trunk/indexer/src/res/configuration.properties)
+  * [migration.properties](http://code.google.com/p/kramerius/source/browse/trunk/import-cmdtool/src/main/java/res/configuration.properties)
+  * [static\_export.properties](http://code.google.com/p/kramerius/source/browse/trunk/static-export/src/main/java/res/configuration.properties)
+
+Texty jednotlivých součástí GUI K4 jsou lokalizovány pomocí standardního mechanismu resource bundle jazyka Java (viz např. http://docs.oracle.com/javase/6/docs/api/java/util/ResourceBundle.html), výchozí obsah lokalizačního souboru `labels.properties` je k dispozici zde: [labels\_cs.properties pro K4](http://code.google.com/p/kramerius/source/browse/trunk/search/src/java/labels_cs.properties) [labels\_cs.properties pro editor uživatelů](http://code.google.com/p/kramerius/source/browse/trunk/rightseditor/src/labels_cs.properties)
+
+Požadované změny je možno provádět přepsáním hodnoty příslušného klíče v souboru `~/.kramerius4/bundles/labels.properties`, resp. `~/.kramerius4/bundles/labels_cs.properties` .
+
+V případě rozsáhlejších, víceřádkových textů, systém K4 disponuje mechanismem zápisu textu do samostatného souboru. Soubory mohou být předefinovány v adresáři `~/.kramerius4/texts`.
+
+  * `texts/first_page_nolines_xml`  - obsahuje text o nedostupnosti, který se objeví v dialogu při generování PDF i v samotném dokumentu. Implicitně zobrazovaný text je [first\_page\_nolines\_xml](http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/texts/first_page_no_lines_xml)
+  * `texts/help`  - Obsahuje text nápovědy.  Pokud není definovaný, zobrazí interní nápovědu K4.
+  * `texts/rightMsg`  - Obsahuje text o nedostupnosti dokumentu.  Pokud není definovaný, zobrazí krátký text z `labels.properties` určený klíčem `rightMsg`
+  * `texts/intro`  - Obsahuje popisný text o digitální knihovně.  Implicitně zobrazovaný text [intro](http://code.google.com/p/kramerius/source/browse/trunk/common/src/main/java/cz/incad/kramerius/service/impl/res/default_intro).
+
+Poznámka: V adresáři `~/.kramerius4/texts/` mohou existovat soubory `first_page_xml`, `first_page_html`, `first_page`. Ty od verze 4.6 nejsou potřeba je možno je smazat.
+
+Nově založenému uživateli je aplikací rightseditor přiděleno heslo a zasláno na email. Pro tuto funkci je třeba mít k dispozici SMTP server a do adresáře `~/.kramerius4` přidat soubor `mail.properties` s obsahem:
+
+```
+# Mail properties bez SSL
+mail.smtp.user=hudlibudli@gmail.com
+mail.smtp.pass=blablabla
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=25
+```
+
+nebo
+
+```
+# Mail properties s podporou SSL
+mail.smtp.user=hudlibudli@gmail.com
+mail.smtp.pass=blablabla
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=465
+mail.smtp.starttls.enable=true
+mail.smtp.auth=true
+mail.smtp.socketFactory.port=465
+mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+mail.smtp.socketFactory.fallback=false
+```
+
+
+Text emailu je možné konfigurovat pomocí property mail.message, předmět pomocí property mail.subject v lokalizačním souboru labels\_en.properties, resp. labels\_cs.properties.
+Registrační email se konfiguruje obdobně pomocí properties registeruser.mail.subject a registeruser.mail.message.
+
+Výchozí hodnoty properties jsou
+```
+mail.message=Vážený uživateli systému Kramerius,\n pro Vaše přihlašovací jméno {0} bylo vygenerováno heslo {1}
+mail.subject=Vygenerované heslo
+registeruser.mail.subject=Aktivace uživatele
+registeruser.mail.message=Pro aktivaci uživatele {0} ({1}) je nutné kliknout na následující link {2}
+```
+
+Čísla ve složených závorkách jsou parametry, které budou nahrazeny skutečnými hodnotami proměnných login, heslo , resp login, jméno a potvrzující URL.
+
+# Přizpůsobení vzhledu uživatelského rozhraní #
+
+## Pořadí záložek, obsah úvodní stránky ##
+
+Tyto základní atributy uživatelského rozhraní je možno měnit bez zásahu do aplikace změnou konfiguračních souborů uvedených v předchozí sekci [Konfigurace](Konfigurace.md).
+
+Obsah záložky s vybranými položkami i to, které záložky jsou zobrazeny, se nastavuje v souboru ~/.kramerius4/search.properties
+
+Důležité jsou tyto položky:
+
+```
+#Seznam a poradi zalozek
+search.home.tabs=custom,mostDesirables,newest,facets,browseAuthor,browseTitle,info,collections,favorites
+```
+
+```
+#Seznam pids (oddelene carkou) objektu, zobrazenych na zalozce custom
+search.home.tab.custom.uuids=
+```
+(zde stačí doplnit např. uuid:045b1250-7e47-11e0-add1-000d606f5dc6,uuid:0eaa6730-9068-11dd-97de-000d606f5dc6 …)
+
+Obsah záložky informace je možno nahradit souborem `~/.kramerius4/texts/intro`.
+
+## Styly, grafika, ikony ##
+
+Šablona stránek lze měnit pouze přímo jejich editací v rozbalené aplikaci v adresáři `tomcat/webapps/search`, důležité jsou zejména adresáře css a img (tam je např. soubor `logo.png`).
+
+Případně můžete upravit celé téma UI jQuery takto:
+
+Na strankach jQuery http://jqueryui.com/themeroller/ vytvořte svoje vlastní grafické téma a uložte si jej do příslušného podadresáře v adresáři css,
+název css souboru musí být `jquery-ui.custom.css` (tj. bez čísla verze).
+
+Mezi tématy můžete přepínat pomocí URL parametru `theme`, jehož hodnotou je název podadresáře s tématem.
+
+Chcete-li např. použít předdefinované téma  jQuery  `sunny`, stáhněte a rozzipujete jeho obsah do adresáře `webapps/search/css/sunny`. Změňte název css souboru na `jquery-ui.custom.css` a vyzkoušejte adresu k4server/search/?theme=sunny
+
+Pokud chcete svoje téma nastavit jako výchozí,  v souboru search/inc/html\_header.jsp můžete změnit řádek 76, a misto "smoothness" napsat název svého tématu.
+
+
+
+# Podpora protokolů deepZoom a zoomify #
+
+(volitelné nastavení)
+
+Kromě standardního zobrazení obrázků v jejich nativním formátu má aplikace Kramerius4 možnost prezentovat je pomocí integrované prohlížečky Seadragon (http://www.zoom.it). Prohlížečka Seadragon je aktivována pro konkrétní zobrazovaný digitální objekt (například stránku monografie), pokud jeho FOXML definice obsahuje v datastreamu RELS-EXT RDF literál `<kramerius4:tiles-url>`.  Je možno využít dvě alternativy:
+
+  * Využít produkt IIP server (http://help.oldmapsonline.org/jpeg2000).
+
+Zde slouží Kramerius jako prostředník. Klientské dotazy na jednotlivé dlaždice přeposílá IIP serveru a sám se stará pouze o autorizaci požadavku. Hodnotou literálu `<kramerius4:tiles-url>` je přímo URL na zoomovaný obrázek v IIP serveru.
+
+Příklady definic v RELS-EXT:
+
+<pre><kramerius4:tiles-url>http://192.168.1.1/fcgi-bin/iipsrv.fcgi?DeepZoom=/mzk03/001/042/654/2619265924.jp2<br>
+<br>
+Unknown end tag for </tiles><br>
+<br>
+<br>
+<br>
+<kramerius4:tiles-url>http://imageserver.mzk.cz/mzk03/001/066/607/2619320306/1<br>
+<br>
+Unknown end tag for </tiles-url><br>
+<br>
+<br>
+<br>
+<kramerius4:tiles-url>http://iipserv.nkp.cz/fcgi-bin/iipsrv.fcgi?Zoomify=/home/k4/iip-data/2619265924.jp2<br>
+<br>
+Unknown end tag for </tiles-url><br>
+<br>
+<br>
+<br>
+</pre>
+
+
+  * Systémem kramerius si vygenerovat soubory do interní cache.
+
+Tato interní cache vlastně nahrazuje funkci externího image serveru. V tomto případě je nutné mít v literálu kramerius4:tiles-url mít uvedenou konstantu
+`kramerius4://deepZoomCache`.
+
+Příklad:
+
+<pre><kramerius4:tiles-url>kramerius4://deepZoomCache<br>
+<br>
+Unknown end tag for </tiles-url><br>
+<br>
+</pre>
+
+Pozn.: Je samozřejmě nejdříve nutné cache naplnit a to akcí "Generování Deep Zoom Cache..." v administrátorském menu aplikace Kramerius4.
+
+Od verze 4.7 je možno volitelně používat buď prohlížečku Seadragon (protokol deepZoom) nebo OpenLayers (protokol zoomify). Výchozí nastavení (OpenLayers) je možno změnit nastavením  property `zoom.viewer=deepzoom` v souboru `search.properties`
+
+Upozornění: U verze 4.8 a protokolu deepZoom byla opravena chyba při dotazování **dzi** deskriptoru. Deskriptor byl dotazován pomocí postfixu url\_to\_jp2/deepzoom.dzi na misto url\_to\_jp2.dzi (viz http://iipimage.sourceforge.net/documentation/protocol/).  Pokud máte již nastaven mod\_url rewriting modul na toto chybné chování, prosím, přenastavte si ho.
+
+
+# Editor pořadí částí dokumentu #
+
+(volitelné nastavení)
+
+Editor se instaluje jako samostatná webová aplikace nainstalováním souboru editor.war na aplikační server (viz instalace K4).
+
+Před spuštěním je potřeba mít nakonfigurován single-sign-on (viz Přístupová práva).
+
+Kramerius 4 umožňuje nahradit tento výchozí editor jiným editorem. To, který editor se spustí z kontextového menu v GUI K4, je určeno položkou editorUrl v souboru `~/.kramerius4/configuration.properties`:
+
+```
+editorUrl=${_fedoraTomcatHost}/editor
+```
+
+Volané url z kontextového menu má například takovýto tvar:
+```
+http://localhost:8080/editor/?openIDs=uuid:0eaa6730-9068-11dd-97de-000d606f5dc6&locale=en
+```
+
+Případný alternativní editor tedy musí být schopen zpracovat parametry z tohoto URL.
+
+# Instalace OAI #
+
+(volitelné nastavení)
+
+## Fedora model ##
+
+V  souborech `service_ESEDep.xml` a `model_repository.xml` v adresáři `fedora` z distribučního souboru `installation-x.x.zip` upravte všechna místa označená `FIXME` podle vaší konkrétní instalace. Soubory potom nainstalujte jako ostatní FOXML modely do úložiště Fedora Commons.
+
+## PostgreSQL ##
+
+Vytvořte uživatele `proai` a databázi `proai`.
+
+## Aplikační server ##
+
+Aplikaci **OAI Provider** naleznete na stránkách [Fedora Commons Downloads](http://www.fedora-commons.org/software/current) pro patřičnou verzi Fedory. `oaiprovider.zip` obsahuje `oaiprovider.war`, který se instaluje na aplikační server. Nejjednodušší je upravit `proai.properties` v `oaiprovider.war` před instalací.
+
+### Konfigurace ###
+V nainstalované aplikaci `oaiprovider` upravte soubor `proai.properties`. Pro Tomcat je to soubor `$CATALINA_HOME/webapps/oaiprovider/WEB-INF/classes/proai.properties`.
+
+Jakékoli změny v proai.properties se projeví **až po restartu** aplikace `oaiprovider` (např. Tomcat manager).
+
+Lze použít předpřipravenou šablonu z distribučního souboru `installation-x.x.zip/oai/proai.properties`. Obsahuje konfiguraci formátů Dublin Core (`oai_dc`), Europeana (`ese`) a Registr digitalizace (`drkramerius4`). Nutná kontrola URL, uživatelů a hesel podle aktuální instalace Fedory.
+
+Důležitá nastavení:
+```
+# Zapnutí/vypnutí hledání dat pro export z Fedory do OAI
+proai.driverPollingEnabled = true
+
+# /data/proai obsahuje exportovaná data a nesmí být mazán bez úpravy proai databáze
+proai.cacheBaseDir = /data/proai/cache
+proai.sessionBaseDir = /data/proai/sessions
+proai.schemaDir = /data/proai/schemas
+
+# databáze proai
+proai.db.url = jdbc:postgresql://localhost/proai
+proai.db.username = proai
+proai.db.password = ********
+
+# aplikace Fedora
+driver.fedora.baseURL = http://localhost:8080/fedora/
+driver.fedora.user = fedoraAdmin
+driver.fedora.pass = ********
+driver.fedora.identify = http://localhost:8080/fedora/get/model:Repository/Identify.xml
+
+# v případě použití MPT resource indexu
+driver.fedora.queryFactory = fedora.services.oaiprovider.MPTQueryFactory 
+driver.fedora.mpt.jdbc.url = jdbc:postgresql://localhost/riTriples
+driver.fedora.mpt.jdbc.user = fedoraAdmin
+driver.fedora.mpt.jdbc.password = ********
+
+# definice setů podle datových modelů Krameria
+driver.fedora.itemSetSpecPath = $item <info:fedora/fedora-system:def/model#hasModel> $set $set <http://www.openarchives.org/OAI/2.0/setSpec> $setSpec
+
+```
+
+Popis všech parametrů je na stránkách [Fedory](https://wiki.duraspace.org/display/FCSVCS/OAI+Provider+Configuration+Reference).
+
+### Konfigurace OAI Formatů ###
+Ukázka definice formátu `ese` pro Europeana.
+```
+# seznam formátů
+driver.fedora.md.formats = ese
+driver.fedora.md.format.ese.loc = http://www.europeana.eu/schemas/ese/ESE-V3.2.xsd
+driver.fedora.md.format.ese.uri = http://www.europeana.eu/schemas/ese/
+# definice obsahu pro daný formát
+driver.fedora.md.format.ese.dissType = info:fedora/*/service:ESEDef/get
+```
+
+# Aktualizace na novou verzi K4 #
+
+Při aktualizaci existující instalace K4 stačí na aplikační server nainstalovat nové verze souborů `*.war` (a případně sdílené knihovny `securtiy-core.jar` ) z distribučního balíčku `Kramerius-x.x.x.zip`. Konfiguraci systému a ostatních komponent z balíčku `installation-x.x.x.zip` není obvykle třeba měnit (pokud u konkrétní verze není uvedeno jinak). Pokud je v distribučním balíčku soubor `schema.xml`, nakopírujte jej do adresáře $FEDORA\_HOME/solr/conf.
+
+Soubor kramerius-javadoc.jar obsahuje javadoc pro aktuální verzi K4, je určen pro referenční účely.
+
+Postup instalace je závislý na konkrétním aplikačním serveru. Pro server Tomcat je vhodné postupovat takto:
+
+  * vypněte Tomcat
+  * **Důležité:** smažte rozbalené adresáře `search`, `editor` a `rightseditor` z adresáře `tomcat/webapps` a `tomcat/work/Catalina/localhost`
+  * do adresáře `tomcat/webapps` nakopírujte nové verze souborů `search.war`, `editor.war` a `rightseditor.war`, do adresáře `tomcat/lib` soubor `security-core.jar`
+  * restartujte Tomcat

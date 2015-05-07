@@ -1,0 +1,9 @@
+# Vývojový tým: #
+
+Vývojový tým tvoří zaměstnanci Knihovny AV ČR, Národní knihovny ČR a Moravské zemské knihovny v Brně. Technologickým partnerem je na základě výběrového řízení firma INCAD, s.r.o.
+
+Garantem současného vývoje je Knihovna Akademie věd ČR zastoupená ředitelem Ing. Martinem Lhotákem.
+
+Kontakt: Ing. Martin Lhoták, Knihovna AV ČR, v. v. i., Národní 3, 115 22 Praha 1
+
+lhotak@knav.cz

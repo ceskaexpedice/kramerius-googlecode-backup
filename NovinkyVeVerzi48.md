@@ -1,0 +1,36 @@
+#Novinky ve verzi 4.8
+
+# Procesy #
+Pro lepší rozlišení situací vznikly nový stavy  **WARNING** a **BATCH\_WARNING**.
+
+## Nový stav WARNING ##
+Nový stav definuje varování nebo nekritickou chybu procesu. Standardně (pokud není předefinováno) se do stavu WARNING dostane každý proces, který vypíše  jakoukoliv hlášku do error streamu procesu. Toto chování je konfigurovatelné, lze ho změnit
+v `lp.xml` konfiguračním elementem:
+```
+<checkErrorStream>false</checkErrorStream>
+```
+
+## Nový stav BATCH\_WARNING ##
+Stav BATCH\_WARNING definuje stav dávkového procesu, kde jeden (nebo více) podprocesů je ve stavu WARNING ale zároveň žádný ve stavu FAILED.
+
+
+## Zobrazení procesů ##
+Při větším počtu procesů docházelo k nepřehlednému stránkování. Nyní se, při větším počtu, zobrazí prvních 25 stránek, zbytek je dostpný přes tlačítko, které zobrazí vyskakovací okno
+Viz obr.:
+
+![http://kramerius.googlecode.com/svn/wiki/features_48/procesy-hodne.png](http://kramerius.googlecode.com/svn/wiki/features_48/procesy-hodne.png)
+
+
+## Statistiky pro konkrétní PID ##
+Do konktextového menu byla přidána možnost otevřít si statistiky pro konkrétní titul.  Viz obr.:
+
+![http://kramerius.googlecode.com/svn/wiki/features_48/context-menu-item.png](http://kramerius.googlecode.com/svn/wiki/features_48/context-menu-item.png)
+
+
+## Nové kritérium, okno ##
+Přibylo nové kritérium. Vyžaduje dva parametry( roky vydání ) a zobrazí ty tituly, pro které platí že datum přečtený z metadat je v rozmezí těchto dvou let.
+```
+	spodní_mez < metadatové_datum < horní_mez
+```
+
+

@@ -1,0 +1,1 @@
+[zapis](http://domain/page)

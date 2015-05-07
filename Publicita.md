@@ -1,0 +1,24 @@
+# Publikováno o projektu #
+
+**31.12.2012  http://JoinUp.eu**
+
+Gijs Hillenius - Open source helps Czech libraries protect and show historic documents
+
+http://joinup.ec.europa.eu/news/open-source-helps-czech-libraries-protect-and-show-historic-documents
+
+**30.12.2012  http://JoinUp.eu**
+
+Robert Krátký - Czech Digital Library and the Kramerius Open Source System
+
+
+http://joinup.ec.europa.eu/software/studies/czech-digital-library-and-kramerius-open-source-system
+
+**3/2012  OPEN SOURCE & praxe http://osspraxe.cz/**
+
+Robert Krátký - Česká digitální knihovna a open-source systém Kramerius 
+
+Převzato 12/2012 pro : http://www.linuxexpres.cz/business/ceska-digitalni-knihovna-a-open-source-system-kramerius
+
+**31.12.2012  opensource.knihovna.cz**
+
+http://opensource.knihovna.cz/index.php/aplikace?pid=89&sid=102:Kramerius

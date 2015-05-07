@@ -1,0 +1,56 @@
+# Plánovaný rozvoj pro rok 2013 #
+Rozvojové úkoly na letošní rok byly dohodnuty a odhlasovány v rámci realizační skupiny.
+
+K4
+
+  * 2 Automatické / ruční (dodatečné) řazení na základě obsahu  (periodik a částí monografií)
+  * 7 Rozšíření Statistik pro konkrétní UUID a sledování dostupných/nedostupných objektů, využití tisku a pdf
+
+
+K4/K5
+  * 4 Propojení na Autority NKCR pro ověřování (podpora procesu rozhodnutí o nastavení přístupu)
+  * 9 Generování eBook formátu z fultextu
+  * 10 Podpora image serveru mets konvertorem
+  * 11 Sjednocení textu v ./kramerius/texts (sjednocení) / editace textů v UI
+  * 17 Možnost přidat datastream do existujícího objektu
+
+
+K5
+  * 1 Kramerius jako aplikace pro mobilní zařízení + API pro zobrazovací část - rozšíření API (musí předcházet detailní analýza)
+  * 3 Zobrazení Periodikum (první strana ročníku) / Ročník (první strana čísla) - nejbližší nižší úroveň; ruční označení jiné než první stránky (dopad na aplikace)
+  * 5 Generování dvouvrstvého pdf z obrázku a ALTO
+  * 6 Tisk - přístupnější varianta pro uživatele. (pdf/html) / Uživatelská schránka
+  * 12 Automatická šířka layoutu - Responsive design
+  * 13 Vícenásobný výběr z facetů (multisearch)
+  * 14 Přehlednost menu (globální i k objektu)
+  * 15 Propojení K4 a Aleph - možnost dodatečného zapsání sysno do K4
+  * 16 Vylepšení RSS (přidat náhled a více bibliografických údajů, prodloužit životnost publikovaných záznamů při hromadných importech dat do K4)
+  * 18/19 Změna hesla, zapomenuté heslo, potvrzení+Identikovat přihlášení - informace kdo je přihlášen
+  * 20 Ikona zámečku – všude
+  * 21 Standardizace šablon
+
+
+
+
+# Plánovaný rozvoj pro rok 2012 #
+
+
+  * Statistiky - modul, který bude sbírat a zpracovávat informace o úložišti a uživatelských přístpech
+
+  * Podpora multimedií v rámci úložišt a UI systému K4, se zaměřením na zvukové soubory
+
+  * Správa procesů a API
+
+  * Rozšíření editoru práv
+
+  * Testy napojení na Vufind
+
+  * Administrace
+
+  * OAI Harvestr pro ČDK
+
+  * ...
+
+Další informace v zápisech ze schůzek realizačního týmu
+
+Rozvoj za rok 2011 ([rozvoj2011](rozvoj2011.md))

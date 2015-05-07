@@ -1,0 +1,42 @@
+### Problematika uložení velkého počtu záznamů ###
+
+Úložiště Fedora (http://fedora-commons.org/), které bylo zadavatelem vývoje zvoleno pro systém Kramerius4, je dostačující pro současná nasazení systému.
+Na internetu jsou dostupné informace o testech výkonu při uložení 14 milionů digitálních objektů a 750 milionů vazeb. Rychlost plnění dat se pohybovala kolem 10doc/s a výkon úložiště se při testech nesnižoval. (http://fedora.fiz-karlsruhe.de/docs/Wiki.jsp?page=Main).
+
+Souborové systémy jsou schopny uložit dostatečný počet souborů a neměly by být omezujícím faktorem pro úložiště. Např. EXT4 je schopen uložit 4 miliardy souborů (http://cs.wikipedia.org/wiki/Ext4)
+
+V současné době není implementována podpora uložení dat do databáze. Připravuje se obecné rozhraní Akubra, které je schopné ukládat do různých typů úložišť včetně DB, existuje zatím jen implementace pro souborový systém. Podporu databáze by bylo nutné naprogramovat.
+
+## Probíhající zátěžové testy ##
+
+V rámci požadavku a dohody s NKČR proběhly od 6 do 9/2012 zátěžové testy s cílem ověřit schopnost systému pojmout 30 a 60 milionů objektů.
+
+
+### Postup ###
+
+Pro ověření byly zvolené reálné tituly
+  * Monografie: Kniha zlatá (441 objektů)
+  * Periodikum: Jurendes Mahrischer Wanderer (1 ročník, 194 objektů)
+
+Test je prováděn na nově instalovaných virtuálních serverech NKČR v lokalitě Klementinum (kdbkram1, kfedkram1 a ksolrkram1).
+
+Záznamy budou multiplikovány  s rozdílným UUID pomocí skriptu a importovány v dávkách po 1600 multiplikacích (1 016 000 FOXML objektů). Multiplikované objekty budou sdílet stejné refernece na externí soubory s obrázky a OCR. Cílem testu je ověřit funkčnost Fedory a indexů, nikoli externího datového úložiště.
+
+Po každé dávce importu bude provedena indexace a ověřena odezva systému.
+V případě zpomalení odezvy bude příčina analyzována a navrženo řešení.
+Po skončení testu budou všechny použité databáze, indexy a úložiště smazány.
+
+
+Výsledky měření jsou k dispozici [ZDE](ZatezoveTesty.md).
+
+## Ponaučení ##
+
+Z výše uvedených výsledků testů vyplývá, že výkonnost úložiště Fedora i indexu SOLR je pro uložení 60 milionů objektů dostatečná při zohlednění následujích skutečností:
+
+  * Souborový systém pro úložiště Fedora (defaultní implementace Akubra) musí mít nastaven počet inodes větší, než je plánovaný počet objektů, které mají být v úložišti uchovány.
+  * Adresářová struktura úložiště Akubra by měla být nastavena na více úrovní, než defaultní 1 (viz dokumentace Fedory)
+  * Výchozí implementace resouce indexu Mulgara je pro uložení více než 100 000 objektů nepoužitelná.
+  * Alternativní implementace resource indexu MPTstore je funkční, ale podporuje pouze omezenou podmnožinu dotazovacího jazyka iTQL, neumožňuje například složené dotazy, které jsou použity v jedné ze záložek adminstrátorského rozhraní pro indexaci dokumentů K4.
+  * Index MPT store je při daném objemu dat vysoce náročný na optimalizaci použité databáze PostreSQL (500M uložených RDF tripletů zabírá cca 1.3TB diskového prostoru), pro dosažení potřebné výkonnosti indexu je třeba průběžná údržba databáze kvalifikovaným administrátorem (aktualizace indexů, statistik, čištění nepoužívaných segmentů atd.).
+  * Z testování možnosti implementace resource indexu pomocí Virtuoso Open-Source Edition vyplývá, že by to přineslo a i do budoucna mohlo přinášet větší komplikace a složitost, nicméně ukázalo se, že je to možné a dobré řešení v případech, kdyby bylo potřeba používat implementaci resource indexu, která by na tom byla ohledně dotazů lépe, než je tomu u standardních implementací resource indexu pomocí Mulgara nebo MPT store PostgreSQL.
+  * Pro index SOLR by bylo vhodné vyhradit minimálně dvojnásobek použité diskové kapacity (pro test 60M záznamů zabírá index 411GB), aby bylo možné průběžně provádět optimalizaci indexu

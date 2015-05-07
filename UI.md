@@ -1,0 +1,13 @@
+
+
+Oproti předchozí verzi, založené na procházení stromové struktury dat, je uživatelské rozhraní Kramerius 4 více orientováno na fulltextové vyhledávání dokumentů, doplněné o rychlý výběr skupin dokumentů pomocí faset a časové osy. Další změnou je způsob zobrazení vlastního obsahu vybraného dokumentu, kde je vždy vidět jeho celá struktura namísto "zanořování" do nižších úrovní dokumentu - uživatel má vždy k dispozici přehlednou informaci o celkovém kontextu.
+
+Popis uživatelského rozhraní je v okně nápověda, přístupném ze záhlaví hlavní stránky aplikace Kramerius 4 ([například zde](http://krameriusdemo.mzk.cz/search/help/cs.jsp))
+
+Popis změn v GUI verze 4.5 najdete na stránce NovinkyVeVerzi45
+
+Popis změn v GUI verze 4.6 najdete na stránce NovinkyVeVerzi46
+
+Popis změn v GUI verze 4.7 najdete na stránce NovinkyVeVerzi47
+
+Popis změn v GUI verze 4.8 najdete na stránce NovinkyVeVerzi48

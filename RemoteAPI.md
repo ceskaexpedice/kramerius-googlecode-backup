@@ -1,0 +1,309 @@
+
+
+# API #
+Verze 4.6 přineslo možnost třetím stranám využít vzdálené API pro:
+
+  * Správu procesů
+  * Replikaci dat
+
+API je verzováno a je připojeno na kontextu ../search/api/v4.6. Vyžaduje autentizovanou HTTP session, pokud není session autentizovaná, je možno se
+autentizovat pomocí protokolu BASIC. Nutno podotknout, že je vhodné tuto autentizaci používat pouze v kombinaci se zapnutým HTTPS protokolem.
+
+
+## Správa procesů ##
+Správa procesů umožňuje základní operace
+
+  * Získávat výpisy procesů
+  * Plánovat nový proces
+  * Získávat informace o procesu (Stav, čas spuštění, dávkový stav..)
+  * Zastavit proces
+  * Smazat proces z procesní databáze
+  * Získat logy procesů
+
+
+### Výpisy procesů ###
+Prostý výpis procesů
+```
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/
+```
+Výstupem je JSON pole
+```
+[
+    {
+        "uuid":"90b8a07a-14f5-4817-a47f-16f2b88c2724",
+        "pid":"20227",
+        "def":"mock",
+        "state":"FINISHED",
+        "batchState":"NO_BATCH",
+        "name":"Jmeno procesu mock..",
+        "started":"02/07/2012 09:15:31:600",
+        "planned":"02/07/2012 09:15:23:570",
+        "userid":"krameriusAdmin",
+        "userFirstname":"kramerius",
+        "userSurname":"admin"
+    },
+    {
+        "uuid":"ed38ac05-a90e-41b5-b922-31b7b7fa44e6",
+        "pid":"17900",
+        "def":"replikator_periodicals",
+        "state":"FINISHED",
+        ...
+    }
+]
+```
+
+Pokud je některý proces dávkový, obsahuje klíč `children` s podprocesy:
+```
+[
+ {
+        "uuid": "cd13ffc2-b119-4ff4-9f3b-25128894352d",
+        "pid": "14952",
+        "def": "aggregate",
+        "state": "FINISHED",
+        "batchState": "BATCH_FINISHED",
+        "name": "Davkove spusteny process [virtualcollections]",
+        "started": "01/29/2014 19:02:31:491",
+        "planned": "01/29/2014 19:02:27:732",
+        "finished": "01/29/2014 19:02:32:745",
+        "userid": "krameriusAdmin",
+        "userFirstname": "kramerius",
+        "userSurname": "admin",
+        "children": [
+            {
+                "uuid": "cd13ffc2-b119-4ff4-9f3b-25128894352d",
+                "pid": "14952",
+                "def": "aggregate",
+                "state": "FINISHED",
+                "batchState": "BATCH_FINISHED",
+                "name": "Davkove spusteny process [virtualcollections]",
+                "started": "01/29/2014 19:02:31:491",
+                "planned": "01/29/2014 19:02:27:732",
+                "finished": "01/29/2014 19:02:32:745",
+                "userid": "krameriusAdmin",
+                "userFirstname": "kramerius",
+                "userSurname": "admin"
+            },{
+                "uuid": "35ca70b3-f764-4219-92c9-f945758b1af2",
+                "pid": "14974",
+                "def": "virtualcollections",
+                "state": "FINISHED",
+                "batchState": "NO_BATCH",
+                "name": "Add uuid:c32e0540-3e38-11e2-8227-5ef3fc9bb22f to collection vc:f73dee31-ae76-4dbc-b7b9-d986df497596",
+                "started": "01/29/2014 19:02:42:423",
+                "planned": "01/29/2014 19:02:32:632",
+                "finished": "01/29/2014 19:03:46:141",
+                "userid": "krameriusAdmin",
+                "userFirstname": "kramerius",
+                "userSurname": "admin"
+            },
+...
+]
+```
+
+
+### Filtr ###
+Filtrování výsledků je možné pomocí standardních atritubutů dotazu. Tedy dotaz na procesy spuštěné ukončené stavem  `FAILED` by vypadal následovně:
+```
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?state=FAILED
+```
+Výpis procesů vypadá stejně jako v předchozím případě.
+
+Pozn.:Filtrovat lze dle všech klíčů json objektu krom datumových.
+
+### Velikost výsledného pole ###
+Velikost vraceného pole je implicitně nastavena na hodnotu 25. Je možno to změnit parametrem `resultSize`. Dotaz vypadá následovně:
+```
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?resultSize=2
+```
+
+### Offset ###
+Offset lze měnit parametrem offset
+```
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?offset=100
+```
+
+### Plánování nového procesu ###
+Nejjednodušší je plánování nového procesu bez parametrů
+```
+    POST https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes?def=mock
+```
+Parametr def určuje identifikátor plánovaného procesu. Výsledkem je popis naplánovaného objektu
+```
+    {
+        "uuid":"2d7ead5b-daee-4fa4-b967-ffff57769e6d",
+        "def":"mock",
+        "state":"PLANNED",
+        "batchState":"NO_BATCH",
+        "planned":"10/22/2012 09:39:16:961"
+    }
+```
+
+Pokud v K4 není nadefinován proces s identifikátorem předávaným v parametru ([MenuAdministrace#Definice\_procesu](MenuAdministrace#Definice_procesu.md)), API vrací chybový kód 404 a v těle dotazu je následující:
+```
+    {"message":"cannot find definition 'moc'","status":404}
+```
+
+#### Plánování nového procesu s parametry ####
+Parametry pro spuštění procesů se předávají v těle dotazu jako JSON objekt, který musí obsahovat klíč `parameters`. Hodnotou je pole parametrů procesu.
+```
+    {"parameters":["first","second","third"]}
+```
+
+Pozn.: Pro předání objetku je potřeba mít v dotazu nastavenou položku `Content-type` na hodnotu `application/json`.
+
+Pozn 2.: Pokud není v dotazu přítomen JSON objekt, nebo neobsahuje položku  `parameters` případně  `mapping`, spustí proces proces bez parametrů.
+
+Příklad volání procesu delete pomocí příkazu `curl`:
+```
+curl -u krameriusAdmin:krameriusAdmin -H "Content-Type: application/json" -d '{"parameters":["uuid:02459330-7669-11dc-9041-000d606f5dc6","uuid:02459330-7669-11dc-9041-000d606f5dc6"]}' -X POST http://localhost:8080/search/api/v4.6/processes?def=delete
+```
+
+#### Plánování nového procesu s pojmenovanými parametry ####
+Podobně jako v předchozím připadě, API očekává v těle dotazu JSON objekt, tenktokrát by měl objekt obsahovat klíč `mapping`. Očekává se, že položka klíč obsahuje objekt popisující jendotlivé parametry.
+
+```
+    {"mapping":{"first":"firstVal","second":"secondVal"}}
+```
+
+Pozn 1.: Pro předání objetku je potřeba mít v dotazu nastavenou položku `Content-type` na hodnotu `application/json`.
+
+Pozn 2.: Pokud není v dotazu přítomen JSON objekt, nebo neobsahuje položku  `parameters` případně  `mapping`, spustí proces proces bez parametrů.
+
+
+### Popis procesu ###
+```
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/<uuid>
+```
+
+Vrací JSON objekt reprezentující daný proces
+
+
+### Výpis logů ###
+```
+    GET https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/<uuid>/logs
+```
+
+Výstupem je objekt obsahující dva klíče `sout` a `serr`. Hodnoty jsou logy zakódované pomocí Base64.
+
+```
+{
+    "sout":"NS42LjIwMTIgMTA6MjI6NTQgY...",
+    "serr":""
+}
+```
+
+### Zastavení procesu ###
+```
+    PUT https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/<uuid>?stop
+```
+Výstupem je JSON objekt reprezentující proces:
+```
+{
+    "uuid":"552bf224-7238-47d1-a64e-8e26a800c7c5",
+    "pid":"27748",
+    "def":"mock",
+    "state":"KILLED",
+    "batchState":"NO_BATCH",
+    "name":"Jmeno procesu mock..",
+    "started":"10/22/2012 11:29:03:572",
+    "planned":"10/22/2012 11:28:59:629",
+    "finished":"10/22/2012 11:29:20:611",
+    "userid":"krameriusAdmin",
+    "userFirstname":
+    "kramerius",
+    "userSurname":"admin"
+}
+```
+
+Opětovný pokus o zastavení procesu způsobí chybu 409.
+
+
+### Smazání procesu ###
+```
+    DELETE https://xxx.xxx.xxx.xxx/seach/api/v4.6/processes/<uuid>
+```
+
+Výstup vypadá následovně:
+```
+{
+    "deleted":"552bf224-7238-47d1-a64e-8e26a800c7c5"
+}
+```
+
+Další informace o procesech
+[Processes](Processes.md), [MenuAdministrace#Procesy\_v\_syst%C3%A9mu\_Kramerius](MenuAdministrace#Procesy_v_syst%C3%A9mu_Kramerius.md)
+
+
+## Replikace ##
+
+Rozhraní pro replikace umožňuje tři operace
+
+  * Získání popisu replikovaného objektu
+  * Získání seznamu všech objektů zahrnutých do replikace
+  * Získání FOXML dat
+
+
+### Získání popisu replikovaného objektu ###
+```
+    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba
+```
+Výstupem je JSON popisný objekt, který vypadá následovně
+```
+{
+    "identifiers":["uuid:045b1250-7e47-11e0-add1-000d606f5dc6","issn:0862-6111"],
+    "publishers":[],
+    "creators":[],
+    "title":"Dějiny a současnost",
+    "type":"model:periodical",
+    "handle":"http://localhost:8080/search/handle/uuid:045b1250-7e47-11e0-add1-000d606f5dc6"
+}
+```
+
+### Získání seznamu všech objektů zahrnutých do replikace ###
+```
+    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/tree
+```
+
+Výstupem je pole všech objektů nutných replikovat do cílové instance K4. Vypadá nějak následovně.
+```
+{
+    'pids':[
+        'uuid:045b1250-7e47-11e0-add1-000d606f5dc6',
+        'uuid:f7e50720-80b6-11e0-9ec7-000d606f5dc6',
+        'uuid:91214030-80bb-11e0-b482-000d606f5dc6',
+        'uuid:ef065970-8137-11e0-85ae-000d606f5dc6',
+        'uuid:f5d05350-8137-11e0-9476-000d606f5dc6',
+        'uuid:914e1c90-80bb-11e0-ab75-000d606f5dc6',
+        ....
+    ]
+}
+```
+
+### Získání FOXML objektu ###
+```
+    GET https://xxx.xxx.xxx.xxx/search/api/v4.6/replication/uuid:1a43499e-c953-11df-84b1-001b63bd97ba/foxml
+```
+Zde se mohou vracet dvě reprezentace JSON a XML, zaleží na tom, jaký typ reprezentace akceptuje klient.
+
+JSON výstup
+```
+ {"raw":"PD94bWwgdmVyc2lvbj0iMS4w..."}
+```
+
+XML výstup pak
+```
+<foxml:digitalObject PID="uuid:045b1250.....
+```
+
+#### Poznámky k implementaci ####
+Exportování FOXML objektů z fedory je implementováno pomocí APIM metodou export (https://wiki.duraspace.org/display/FEDORA36/API-M#API-M-exportexport).
+Formát exportu je  `"info:fedora/fedora-system:FOXML-1.1"` a parametr kontext je volen `"archive"`.
+
+Pokud výsledné FOXML obsahuje datastreamy, které jsou referencované a URL referencovaného objektu obsahuje protokol file, dochází k modifikaci předáváného foxml.
+Typ datastreamu se mění z typu `External Referenced Content` na typ `Managed Content` a obsah URL je vložen přímo do exportovaného foxml zakódovaný Base64.
+
+
+Pro účely testování jsou k dispozici pomocné utilitní třídy.
+
+[ProcessClient](http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ProcessesClient.java)
+[ReplicationsClient](http://code.google.com/p/kramerius/source/browse/trunk/rest/src/main/java/cz/incad/kramerius/rest/api/client/ReplicationsClient.java)

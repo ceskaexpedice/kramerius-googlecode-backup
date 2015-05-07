@@ -1,0 +1,6 @@
+# Mailová konference #
+pro administrátory systému Kramerius: kramerius@lib.cas.cz
+
+První příhlášení do konference: https://mail.lib.cas.cz/mailman/listinfo/kramerius
+
+Do mailové konference je možné posílat hlášení chyb, návrhy na vylepšení a vývoj i na přispění ke zdrojovému kódu Krameria.

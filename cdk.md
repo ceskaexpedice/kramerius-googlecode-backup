@@ -1,0 +1,29 @@
+
+
+# ČDK replikační rozhraní #
+Verze 4.8 RC4 přináší rozhraní pro sklízení dat do systému ČDK.
+
+# Popis systému #
+Na straně ČDK serveru se spustí sklízecí proces, který získává data (podobně jako je tomu u replikací) z jednotlivých instancí do svého uložiště. Nutno podotknout, že zdrojový K4  musí být ve verzi 4.8 RC4 a vyšší).
+
+![http://kramerius.googlecode.com/svn/wiki/cdk/CDK.png](http://kramerius.googlecode.com/svn/wiki/cdk/CDK.png)
+
+
+# ČDK rozhraní #
+Rozhraní pro poskytovaní dat pro ČDK vychází ze standardního replikačního rozhraní s drobnými rozdíly.
+  * Umožňuje získávat data nově importovaná a indexovaná.
+  * Získává navíc solr záznam.
+  * FOXML objekty importované do ČDK serveru neobsahují obrázky ale pouze odkazy. (External Referenced Content)
+
+Získání dat je rozdělěno do dvou fází.
+
+  * Získání desktiptoru. Ten řekne co vše je potřeba replikovat. Pro rozlišení toho co už je replikováno a co ještě zbývá se používá datum získaný z předchozího volání čdk replikace.
+  * Ziskaní upraveného FOXML objektu a solr záznamu.
+
+![http://kramerius.googlecode.com/svn/wiki/cdk/cdk-repl-sequence-diagram.png](http://kramerius.googlecode.com/svn/wiki/cdk/cdk-repl-sequence-diagram.png)
+
+
+# Poznámky k implementaci #
+Pro získání dat do ČDK nelze použít standardní OAI a to z toho důvodu, že rozhraní poskytuje přístup k chráněným částem jako (TEXT\_OCR) a musí být ošetřeno standardním mechanismem práv K4.  Druhým důvodem je rychlost.
+Pro získávání dat musí zdrojová instance povolit přístup pomocí práva  `export_cdk_replications`
+
